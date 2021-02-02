@@ -32,9 +32,9 @@ import (
 	"github.com/persistenceOne/assetMantle/application/initialize"
 )
 
-const flagInvalidCheckPeriod = "invalid-check-period"
+const flagInvariantsCheckPeriod = "invariants-check-period"
 
-var invalidCheckPeriod uint
+var invariantsCheckPeriod uint
 
 func main() {
 
@@ -95,8 +95,8 @@ func main() {
 	rootCommand.AddCommand(debug.Cmd(application.Codec))
 	rootCommand.AddCommand(version.Cmd)
 	rootCommand.PersistentFlags().UintVar(
-		&invalidCheckPeriod,
-		flagInvalidCheckPeriod,
+		&invariantsCheckPeriod,
+		flagInvariantsCheckPeriod,
 		0,
 		"Assert registered invariants every N blocks",
 	)
@@ -125,7 +125,7 @@ func main() {
 			db,
 			traceStore,
 			true,
-			invalidCheckPeriod,
+			invariantsCheckPeriod,
 			skipUpgradeHeights,
 			viper.GetString(flags.FlagHome),
 			baseapp.SetPruning(pruningOpts),
