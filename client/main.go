@@ -14,7 +14,7 @@ import (
 	keysAdd "github.com/persistenceOne/persistenceSDK/utilities/rest/keys/add"
 	"github.com/persistenceOne/persistenceSDK/utilities/rest/queuing"
 	"github.com/persistenceOne/persistenceSDK/utilities/rest/queuing/rest"
-	"github.com/persistenceOne/persistenceSDK/utilities/rest/signTx"
+	"github.com/persistenceOne/persistenceSDK/utilities/rest/sign"
 	"os"
 	"path"
 	"strings"
@@ -86,7 +86,7 @@ func registerRoutes(restServer *lcd.RestServer) {
 	authREST.RegisterTxRoutes(restServer.CliCtx, restServer.Mux)
 	application.ModuleBasics.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
 	keysAdd.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
-	signTx.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
+	sign.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
 }
 
 func queryCommand(codec *amino.Codec) *cobra.Command {
