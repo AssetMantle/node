@@ -3,7 +3,7 @@
     <module name="assetMantle" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="tx identities define -y --chain-id test --from test --fromID test.cGn3HMW8M3t5gMDv-wXa9sseHnA=|cXbKF6hGMB0ei8unCEjb1z_s8r4= --immutableMetaTraits A:S|a --immutableTraits B:S| --mutableMetaTraits C:S| --mutableTraits D:S|" />
+    <parameters value="tx identities define -y --chain-id=test --from=test --fromID=test.DQOPDJEuwVDfdq1xpAN3BpXuHmUC8_g-LtRufFa-mCY=|tJ5bx7SKdhJ-_difFkAotMK0OLoKTNztqDWiJJlZU9Y= --immutableMetaProperties=A:S|a --immutableProperties=B:S| --mutableMetaProperties=C:S| --mutableProperties=D:S|" />
     <kind value="FILE" />
     <filePath value="$PROJECT_DIR$/client/main.go" />
     <package value="github.com/persistenceOne/assetMantle" />

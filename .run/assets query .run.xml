@@ -3,7 +3,7 @@
     <module name="assetMantle" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="query assets assets --assetID test...UA8qxbVvbgje9EU70vv6Qm5RohU= --chain-id test" />
+    <parameters value="query assets assets --chain-id=test --assetID=test.rwEgm9vevcdsXo_wJtGBm7K1tgae_ldiEvCCd2J0qF8=|zpFuGPDz9i2bkvtVCIRTxAC_9QfMI0_vwXIvsBiEupk=" />
     <kind value="FILE" />
     <filePath value="$PROJECT_DIR$/client/main.go" />
     <package value="github.com/persistenceOne/assetMantle" />
