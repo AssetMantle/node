@@ -7,6 +7,7 @@ package main
 
 import (
 	"encoding/json"
+	"github.com/CosmWasm/wasmd/x/wasm"
 	"github.com/cosmos/cosmos-sdk/client/debug"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/version"
@@ -32,9 +33,9 @@ import (
 	"github.com/persistenceOne/assetMantle/application/initialize"
 )
 
-const flagInvalidCheckPeriod = "invalid-check-period"
+const flagInvariantsCheckPeriod = "invariants-check-period"
 
-var invalidCheckPeriod uint
+var invariantsCheckPeriod uint
 
 func main() {
 
@@ -95,8 +96,8 @@ func main() {
 	rootCommand.AddCommand(debug.Cmd(application.Codec))
 	rootCommand.AddCommand(version.Cmd)
 	rootCommand.PersistentFlags().UintVar(
-		&invalidCheckPeriod,
-		flagInvalidCheckPeriod,
+		&invariantsCheckPeriod,
+		flagInvariantsCheckPeriod,
 		0,
 		"Assert registered invariants every N blocks",
 	)
@@ -120,12 +121,17 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		return application.NewApplication(
+		return application.NewApplication.Initialize(
+			application.Name,
+			application.Codec,
+			wasm.EnableAllProposals,
+			application.ModuleAccountPermissions,
+			application.TokenReceiveAllowedModules,
 			logger,
 			db,
 			traceStore,
 			true,
-			invalidCheckPeriod,
+			invariantsCheckPeriod,
 			skipUpgradeHeights,
 			viper.GetString(flags.FlagHome),
 			baseapp.SetPruning(pruningOpts),
@@ -146,7 +152,12 @@ func main() {
 	) (json.RawMessage, []tendermintTypes.GenesisValidator, error) {
 
 		if height != -1 {
-			genesisApplication := application.NewApplication(
+			genesisApplication := application.NewApplication.Initialize(
+				application.Name,
+				application.Codec,
+				wasm.EnableAllProposals,
+				application.ModuleAccountPermissions,
+				application.TokenReceiveAllowedModules,
 				logger,
 				db,
 				traceStore,
@@ -162,7 +173,12 @@ func main() {
 			return genesisApplication.ExportApplicationStateAndValidators(forZeroHeight, jailWhiteList)
 		}
 		//else
-		genesisApplication := application.NewApplication(
+		genesisApplication := application.NewApplication.Initialize(
+			application.Name,
+			application.Codec,
+			wasm.EnableAllProposals,
+			application.ModuleAccountPermissions,
+			application.TokenReceiveAllowedModules,
 			logger,
 			db,
 			traceStore,

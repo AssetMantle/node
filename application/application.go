@@ -34,7 +34,7 @@ import (
 	"github.com/persistenceOne/persistenceSDK/schema/applications/base"
 )
 
-var moduleAccountPermissions = map[string][]string{
+var ModuleAccountPermissions = map[string][]string{
 	auth.FeeCollectorName:     nil,
 	distribution.ModuleName:   nil,
 	mint.ModuleName:           {supply.Minter},
@@ -43,7 +43,7 @@ var moduleAccountPermissions = map[string][]string{
 	gov.ModuleName:            {supply.Burner},
 	splits.Prototype().Name(): nil,
 }
-var tokenReceiveAllowedModules = map[string]bool{
+var TokenReceiveAllowedModules = map[string]bool{
 	distribution.ModuleName: true,
 }
 var ModuleBasics = module.NewBasicManager(
@@ -70,10 +70,4 @@ var ModuleBasics = module.NewBasicManager(
 	orders.Prototype(),
 	splits.Prototype(),
 )
-var NewApplication = base.Prototype(
-	Name,
-	Codec,
-	wasm.EnableAllProposals,
-	moduleAccountPermissions,
-	tokenReceiveAllowedModules,
-)
+var NewApplication = base.NewApplication()
