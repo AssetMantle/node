@@ -70,7 +70,7 @@ function createStore(mnemonic, password, filename = "key") {
 }
 
 function decryptStore(file, password) {
-    const data = fs.readFileSync(file, { encoding: "utf8", flag: "r" });
+    const data = fs.readFileSync(file, {encoding: "utf8", flag: "r"});
     if (
         JSON.parse(data).hashpwd === crypto.createHash(passwordHashAlgorithm).update(password).digest("hex")
     ) {

@@ -1,13 +1,15 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="splits query" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="splits">
-    <module name="assetMantle" />
-    <working_directory value="$PROJECT_DIR$/" />
-    <go_parameters value="-i" />
-    <parameters value="query splits splits --chain-id test --splitID test.phkuuT6NjKalXUWqoyg5MriGfuBHH7JuK4Tdh0C_Ge0=|tJ5bx7SKdhJ-_difFkAotMK0OLoKTNztqDWiJJlZU9Y=*test.HY-fAOmdBU9SJB-nq7-7uwXPSwpLyjQJJj9RfM6Hi6s=|zpFuGPDz9i2bkvtVCIRTxAC_9QfMI0_vwXIvsBiEupk=" />
-    <kind value="FILE" />
-    <filePath value="$PROJECT_DIR$/client/main.go" />
-    <package value="github.com/persistenceOne/assetMantle" />
-    <directory value="$PROJECT_DIR$/" />
-    <method v="2" />
-  </configuration>
+    <configuration default="false" name="splits query" type="GoApplicationRunConfiguration" factoryName="Go Application"
+                   folderName="splits">
+        <module name="assetMantle"/>
+        <working_directory value="$PROJECT_DIR$/"/>
+        <go_parameters value="-i"/>
+        <parameters
+                value="query splits splits --chain-id test --splitID test.phkuuT6NjKalXUWqoyg5MriGfuBHH7JuK4Tdh0C_Ge0=|tJ5bx7SKdhJ-_difFkAotMK0OLoKTNztqDWiJJlZU9Y=*test.HY-fAOmdBU9SJB-nq7-7uwXPSwpLyjQJJj9RfM6Hi6s=|zpFuGPDz9i2bkvtVCIRTxAC_9QfMI0_vwXIvsBiEupk="/>
+        <kind value="FILE"/>
+        <filePath value="$PROJECT_DIR$/client/main.go"/>
+        <package value="github.com/persistenceOne/assetMantle"/>
+        <directory value="$PROJECT_DIR$/"/>
+        <method v="2"/>
+    </configuration>
 </component>

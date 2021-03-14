@@ -834,7 +834,7 @@ describe('Assets', async () => {
                     "fromID": identityID,
                     "toID": identityID1,
                     "ownableID": assetID,
-                    "split":"0.000000000000000001"
+                    "split": "0.000000000000000001"
                 }
             }
 

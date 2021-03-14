@@ -4,5 +4,5 @@
 [![license](https://img.shields.io/github/license/persistenceOne/assetMantle.svg)](https://github.com/persistenceOne/assetMantle/blob/master/LICENSE)
 [![LoC](https://tokei.rs/b1/github/persistenceOne/assetMantle)](https://github.com/persistenceOne/assetMantle)
 
-
-Application implementing the minimum clique of PersistenceSDK modules enabling interNFT definition, issuance, ownership transfer and decentralized exchange.
+Application implementing the minimum clique of PersistenceSDK modules enabling interNFT definition, issuance, ownership
+transfer and decentralized exchange.
