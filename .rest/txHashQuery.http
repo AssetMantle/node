@@ -9,4 +9,5 @@ Accept: application/json
         client.assert(!JSON.parse(JSON.stringify(response.body)).hasOwnProperty("code") , "Response Code is not 0");
     });
  %}
+
 ###

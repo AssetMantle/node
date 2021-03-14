@@ -63,28 +63,27 @@ IDENTITY_DEFINE_MUTABLE_1="$IDENTITY_DEFINE_MUTABLE_1_ID:D|"
 IDENTITY_DEFINE_MUTABLE_META_1_ID="identityDefineMutableMeta1$NONCE"
 IDENTITY_DEFINE_MUTABLE_META_1="$IDENTITY_DEFINE_MUTABLE_META_1_ID:H|"
 assetClient tx identities define -y --from $ACCOUNT_1 --fromID $ACCOUNT_1_NUB_ID \
- --immutableTraits "$IDENTITY_DEFINE_IMMUTABLE_1" \
- --immutableMetaTraits "$IDENTITY_DEFINE_IMMUTABLE_META_1" \
- --mutableTraits "$IDENTITY_DEFINE_MUTABLE_1" \
- --mutableMetaTraits "$IDENTITY_DEFINE_MUTABLE_META_1" $KEYRING $MODE
+  --immutableTraits "$IDENTITY_DEFINE_IMMUTABLE_1" \
+  --immutableMetaTraits "$IDENTITY_DEFINE_IMMUTABLE_META_1" \
+  --mutableTraits "$IDENTITY_DEFINE_MUTABLE_1" \
+  --mutableMetaTraits "$IDENTITY_DEFINE_MUTABLE_META_1" $KEYRING $MODE
 
 sleep $SLEEP
 IDENTITY_DEFINE_CLASSIFICATION=$(echo $(assetClient q classifications classifications) | awk -v var="$IDENTITY_DEFINE_IMMUTABLE_META_1_ID" '{for(i=1;i<=NF;i++)if($i==var)print $(i-10)"."$(i-7)}')
 
 assetClient tx identities issue -y --from $ACCOUNT_1 --fromID $ACCOUNT_1_NUB_ID --classificationID $IDENTITY_DEFINE_CLASSIFICATION --to $ACCOUNT_1 \
- --immutableProperties "$IDENTITY_DEFINE_IMMUTABLE_1""stringValue" \
- --immutableMetaProperties "$IDENTITY_DEFINE_IMMUTABLE_META_1" \
- --mutableProperties "$IDENTITY_DEFINE_MUTABLE_1""1.01" \
- --mutableMetaProperties "$IDENTITY_DEFINE_MUTABLE_META_1""123" \
- $KEYRING $MODE
+  --immutableProperties "$IDENTITY_DEFINE_IMMUTABLE_1""stringValue" \
+  --immutableMetaProperties "$IDENTITY_DEFINE_IMMUTABLE_META_1" \
+  --mutableProperties "$IDENTITY_DEFINE_MUTABLE_1""1.01" \
+  --mutableMetaProperties "$IDENTITY_DEFINE_MUTABLE_META_1""123" \
+  $KEYRING $MODE
 
 sleep $SLEEP
 IDENTITY_ISSUE_ACCOUNT_1=$(echo $(assetClient q identities identities) | awk -v var="$IDENTITY_DEFINE_CLASSIFICATION" '{for(i=1;i<=NF;i++)if($i==var)print $i"|"$(i+3)}')
-assetClient tx identities provision -y --from $ACCOUNT_1 --to $ACCOUNT_4 --identityID $IDENTITY_ISSUE_ACCOUNT_1  $KEYRING $MODE
+assetClient tx identities provision -y --from $ACCOUNT_1 --to $ACCOUNT_4 --identityID $IDENTITY_ISSUE_ACCOUNT_1 $KEYRING $MODE
 sleep $SLEEP
 assetClient tx identities unprovision -y --from $ACCOUNT_1 --to $ACCOUNT_4 --identityID $IDENTITY_ISSUE_ACCOUNT_1 $KEYRING $MODE
 sleep $SLEEP
-
 
 #metas reveal
 assetClient tx metas reveal -y --from $ACCOUNT_1 --metaFact "S|stringValue$NONCE"
@@ -103,11 +102,10 @@ ASSET_DEFINE_MUTABLE_1="$ASSET_DEFINE_MUTABLE_1_ID:D|"
 ASSET_DEFINE_MUTABLE_META_1_ID="assetDefineMutableMeta1$NONCE"
 ASSET_DEFINE_MUTABLE_META_1="$ASSET_DEFINE_MUTABLE_META_1_ID:H|"
 assetClient tx assets define -y --from $ACCOUNT_1 --fromID $ACCOUNT_1_NUB_ID \
- --immutableTraits "$ASSET_DEFINE_IMMUTABLE_1" \
- --immutableMetaTraits "$ASSET_DEFINE_IMMUTABLE_META_1" \
- --mutableTraits "$ASSET_DEFINE_MUTABLE_1" \
- --mutableMetaTraits "$ASSET_DEFINE_MUTABLE_META_1" $KEYRING $MODE
-
+  --immutableTraits "$ASSET_DEFINE_IMMUTABLE_1" \
+  --immutableMetaTraits "$ASSET_DEFINE_IMMUTABLE_META_1" \
+  --mutableTraits "$ASSET_DEFINE_MUTABLE_1" \
+  --mutableMetaTraits "$ASSET_DEFINE_MUTABLE_META_1" $KEYRING $MODE
 
 ASSET_DEFINE_IMMUTABLE_2_ID="assetDefineImmutable2$NONCE"
 ASSET_DEFINE_IMMUTABLE_2="$ASSET_DEFINE_IMMUTABLE_2_ID:S|"
@@ -118,44 +116,44 @@ ASSET_DEFINE_MUTABLE_2="$ASSET_DEFINE_MUTABLE_2_ID:D|"
 ASSET_DEFINE_MUTABLE_META_2_ID="assetDefineMutableMeta2$NONCE"
 ASSET_DEFINE_MUTABLE_META_2="$ASSET_DEFINE_MUTABLE_META_2_ID:H|"
 assetClient tx assets define -y --from $ACCOUNT_2 --fromID $ACCOUNT_2_NUB_ID \
- --immutableTraits "$ASSET_DEFINE_IMMUTABLE_2" \
- --immutableMetaTraits "$ASSET_DEFINE_IMMUTABLE_META_2" \
- --mutableTraits "$ASSET_DEFINE_MUTABLE_2" \
- --mutableMetaTraits "$ASSET_DEFINE_MUTABLE_META_2" $KEYRING $MODE
+  --immutableTraits "$ASSET_DEFINE_IMMUTABLE_2" \
+  --immutableMetaTraits "$ASSET_DEFINE_IMMUTABLE_META_2" \
+  --mutableTraits "$ASSET_DEFINE_MUTABLE_2" \
+  --mutableMetaTraits "$ASSET_DEFINE_MUTABLE_META_2" $KEYRING $MODE
 
 sleep $SLEEP
 ASSET_DEFINE_CLASSIFICATION_1=$(echo $(assetClient q classifications classifications) | awk -v var="$ASSET_DEFINE_IMMUTABLE_META_1_ID" '{for(i=1;i<=NF;i++)if($i==var)print $(i-10)"."$(i-7)}')
 assetClient tx assets mint -y --from $ACCOUNT_1 --fromID $ACCOUNT_1_NUB_ID --classificationID $ASSET_DEFINE_CLASSIFICATION_1 --toID $ACCOUNT_1_NUB_ID \
- --immutableProperties "$ASSET_DEFINE_IMMUTABLE_1""stringValue" \
- --immutableMetaProperties "$ASSET_DEFINE_IMMUTABLE_META_1" \
- --mutableProperties "$ASSET_DEFINE_MUTABLE_1""1.01" \
- --mutableMetaProperties "$ASSET_DEFINE_MUTABLE_META_1""123" \
- $KEYRING $MODE
+  --immutableProperties "$ASSET_DEFINE_IMMUTABLE_1""stringValue" \
+  --immutableMetaProperties "$ASSET_DEFINE_IMMUTABLE_META_1" \
+  --mutableProperties "$ASSET_DEFINE_MUTABLE_1""1.01" \
+  --mutableMetaProperties "$ASSET_DEFINE_MUTABLE_META_1""123" \
+  $KEYRING $MODE
 
 ASSET_DEFINE_CLASSIFICATION_2=$(echo $(assetClient q classifications classifications) | awk -v var="$ASSET_DEFINE_IMMUTABLE_META_2_ID" '{for(i=1;i<=NF;i++)if($i==var)print $(i-10)"."$(i-7)}')
 assetClient tx assets mint -y --from $ACCOUNT_2 --fromID $ACCOUNT_2_NUB_ID --classificationID $ASSET_DEFINE_CLASSIFICATION_2 --toID $ACCOUNT_2_NUB_ID \
- --immutableProperties "$ASSET_DEFINE_IMMUTABLE_2""stringValue" \
- --immutableMetaProperties "$ASSET_DEFINE_IMMUTABLE_META_2" \
- --mutableProperties "$ASSET_DEFINE_MUTABLE_2""1.01" \
- --mutableMetaProperties "$ASSET_DEFINE_MUTABLE_META_2""123" \
- $KEYRING $MODE
+  --immutableProperties "$ASSET_DEFINE_IMMUTABLE_2""stringValue" \
+  --immutableMetaProperties "$ASSET_DEFINE_IMMUTABLE_META_2" \
+  --mutableProperties "$ASSET_DEFINE_MUTABLE_2""1.01" \
+  --mutableMetaProperties "$ASSET_DEFINE_MUTABLE_META_2""123" \
+  $KEYRING $MODE
 
 sleep $SLEEP
 ASSET_MINT_1=$(echo $(assetClient q assets assets) | awk -v var="$ASSET_DEFINE_CLASSIFICATION_1" '{for(i=1;i<=NF;i++)if($i==var)print $i"|"$(i+3)}')
 ASSET_MINT_2=$(echo $(assetClient q assets assets) | awk -v var="$ASSET_DEFINE_CLASSIFICATION_2" '{for(i=1;i<=NF;i++)if($i==var)print $i"|"$(i+3)}')
 
 assetClient tx assets mutate -y --from $ACCOUNT_1 --fromID $ACCOUNT_1_NUB_ID --assetID $ASSET_MINT_1 \
- --mutableProperties "$ASSET_DEFINE_MUTABLE_1""1.012" \
- --mutableMetaProperties "$ASSET_DEFINE_MUTABLE_META_1""1234" $KEYRING $MODE
+  --mutableProperties "$ASSET_DEFINE_MUTABLE_1""1.012" \
+  --mutableMetaProperties "$ASSET_DEFINE_MUTABLE_META_1""1234" $KEYRING $MODE
 assetClient tx assets burn -y --from $ACCOUNT_2 --fromID $ACCOUNT_2_NUB_ID --assetID $ASSET_MINT_2 $KEYRING $MODE
 sleep $SLEEP
 #remint asset2
 assetClient tx assets mint -y --from $ACCOUNT_2 --fromID $ACCOUNT_2_NUB_ID --classificationID $ASSET_DEFINE_CLASSIFICATION_2 --toID $ACCOUNT_2_NUB_ID \
- --immutableProperties "$ASSET_DEFINE_IMMUTABLE_2""stringValue" \
- --immutableMetaProperties "$ASSET_DEFINE_IMMUTABLE_META_2" \
- --mutableProperties "$ASSET_DEFINE_MUTABLE_2""1.01" \
- --mutableMetaProperties "$ASSET_DEFINE_MUTABLE_META_2""123" \
- $KEYRING $MODE
+  --immutableProperties "$ASSET_DEFINE_IMMUTABLE_2""stringValue" \
+  --immutableMetaProperties "$ASSET_DEFINE_IMMUTABLE_META_2" \
+  --mutableProperties "$ASSET_DEFINE_MUTABLE_2""1.01" \
+  --mutableMetaProperties "$ASSET_DEFINE_MUTABLE_META_2""123" \
+  $KEYRING $MODE
 sleep $SLEEP
 
 ##wraping unwrapping send coins
@@ -180,10 +178,10 @@ ORDER_DEFINE_MUTABLE_1="$ORDER_DEFINE_MUTABLE_1_ID:D|"
 ORDER_DEFINE_MUTABLE_META_1_ID="orderDefineMutableMeta1$NONCE"
 ORDER_DEFINE_MUTABLE_META_1="$ORDER_DEFINE_MUTABLE_META_1_ID:H|"
 assetClient tx orders define -y --from $ACCOUNT_1 --fromID $ACCOUNT_1_NUB_ID \
- --immutableTraits "$ORDER_DEFINE_IMMUTABLE_1" \
- --immutableMetaTraits "$ORDER_DEFINE_IMMUTABLE_META_1" \
- --mutableTraits "$ORDER_DEFINE_MUTABLE_1" \
- --mutableMetaTraits "$ORDER_DEFINE_MUTABLE_META_1"",takerID:I|,exchangeRate:D|,expiry:H|,makerOwnableSplit:D|" $KEYRING $MODE
+  --immutableTraits "$ORDER_DEFINE_IMMUTABLE_1" \
+  --immutableMetaTraits "$ORDER_DEFINE_IMMUTABLE_META_1" \
+  --mutableTraits "$ORDER_DEFINE_MUTABLE_1" \
+  --mutableMetaTraits "$ORDER_DEFINE_MUTABLE_META_1"",takerID:I|,exchangeRate:D|,expiry:H|,makerOwnableSplit:D|" $KEYRING $MODE
 
 ORDER_DEFINE_IMMUTABLE_2_ID="orderDefineImmutable2$NONCE"
 ORDER_DEFINE_IMMUTABLE_2="$ORDER_DEFINE_IMMUTABLE_2_ID:S|"
@@ -194,29 +192,29 @@ ORDER_DEFINE_MUTABLE_2="$ORDER_DEFINE_MUTABLE_2_ID:D|"
 ORDER_DEFINE_MUTABLE_META_2_ID="orderDefineMutableMeta2$NONCE"
 ORDER_DEFINE_MUTABLE_META_2="$ORDER_DEFINE_MUTABLE_META_2_ID:H|"
 assetClient tx orders define -y --from $ACCOUNT_2 --fromID $ACCOUNT_2_NUB_ID \
- --immutableTraits "$ORDER_DEFINE_IMMUTABLE_2" \
- --immutableMetaTraits "$ORDER_DEFINE_IMMUTABLE_META_2" \
- --mutableTraits "$ORDER_DEFINE_MUTABLE_2" \
- --mutableMetaTraits "$ORDER_DEFINE_MUTABLE_META_2"",takerID:I|,exchangeRate:D|,expiry:H|,makerOwnableSplit:D|" $KEYRING $MODE
+  --immutableTraits "$ORDER_DEFINE_IMMUTABLE_2" \
+  --immutableMetaTraits "$ORDER_DEFINE_IMMUTABLE_META_2" \
+  --mutableTraits "$ORDER_DEFINE_MUTABLE_2" \
+  --mutableMetaTraits "$ORDER_DEFINE_MUTABLE_META_2"",takerID:I|,exchangeRate:D|,expiry:H|,makerOwnableSplit:D|" $KEYRING $MODE
 
 sleep $SLEEP
 ORDER_DEFINE_CLASSIFICATION_1=$(echo $(assetClient q classifications classifications) | awk -v var="$ORDER_DEFINE_IMMUTABLE_META_1_ID" '{for(i=1;i<=NF;i++)if($i==var)print $(i-10)"."$(i-7)}')
 assetClient tx orders make -y --from $ACCOUNT_1 --fromID $ACCOUNT_1_NUB_ID --classificationID $ORDER_DEFINE_CLASSIFICATION_1 --toID $ACCOUNT_1_NUB_ID \
- --makerOwnableID "$ASSET_MINT_1" --makerOwnableSplit "0.000000000000000001" --takerOwnableID stake\
- --immutableProperties "$ORDER_DEFINE_IMMUTABLE_1""stringValue" \
- --immutableMetaProperties "$ORDER_DEFINE_IMMUTABLE_META_1" \
- --mutableProperties "$ORDER_DEFINE_MUTABLE_1""1.01" \
- --mutableMetaProperties "$ORDER_DEFINE_MUTABLE_META_1""123,takerID:I|,exchangeRate:D|1" \
- $KEYRING $MODE
+  --makerOwnableID "$ASSET_MINT_1" --makerOwnableSplit "0.000000000000000001" --takerOwnableID stake \
+  --immutableProperties "$ORDER_DEFINE_IMMUTABLE_1""stringValue" \
+  --immutableMetaProperties "$ORDER_DEFINE_IMMUTABLE_META_1" \
+  --mutableProperties "$ORDER_DEFINE_MUTABLE_1""1.01" \
+  --mutableMetaProperties "$ORDER_DEFINE_MUTABLE_META_1""123,takerID:I|,exchangeRate:D|1" \
+  $KEYRING $MODE
 
 ORDER_DEFINE_CLASSIFICATION_2=$(echo $(assetClient q classifications classifications) | awk -v var="$ORDER_DEFINE_IMMUTABLE_META_2_ID" '{for(i=1;i<=NF;i++)if($i==var)print $(i-10)"."$(i-7)}')
 assetClient tx orders make -y --from $ACCOUNT_2 --fromID $ACCOUNT_2_NUB_ID --classificationID $ORDER_DEFINE_CLASSIFICATION_2 --toID $ACCOUNT_2_NUB_ID \
- --makerOwnableID "$ASSET_MINT_2" --makerOwnableSplit "0.000000000000000001" --takerOwnableID "$ASSET_MINT_1"\
- --immutableProperties "$ORDER_DEFINE_IMMUTABLE_2""stringValue" \
- --immutableMetaProperties "$ORDER_DEFINE_IMMUTABLE_META_2" \
- --mutableProperties "$ORDER_DEFINE_MUTABLE_2""1.01" \
- --mutableMetaProperties "$ORDER_DEFINE_MUTABLE_META_2""123,takerID:I|,exchangeRate:D|1" \
- $KEYRING $MODE
+  --makerOwnableID "$ASSET_MINT_2" --makerOwnableSplit "0.000000000000000001" --takerOwnableID "$ASSET_MINT_1" \
+  --immutableProperties "$ORDER_DEFINE_IMMUTABLE_2""stringValue" \
+  --immutableMetaProperties "$ORDER_DEFINE_IMMUTABLE_META_2" \
+  --mutableProperties "$ORDER_DEFINE_MUTABLE_2""1.01" \
+  --mutableMetaProperties "$ORDER_DEFINE_MUTABLE_META_2""123,takerID:I|,exchangeRate:D|1" \
+  $KEYRING $MODE
 
 sleep $SLEEP
 ORDER_MAKE_1_ID=$(echo $(assetClient q orders orders) | awk -v var="$ORDER_DEFINE_IMMUTABLE_META_1_ID" '{for(i=1;i<=NF;i++)if($i==var)print $(i-19)"*"$(i-16)"*"$(i-13)"*"$(i-10)"*"$(i-7)}')

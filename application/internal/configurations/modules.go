@@ -1,9 +1,4 @@
-/*
- Copyright [2019] - [2020], PERSISTENCE TECHNOLOGIES PTE. LTD. and the assetMantle contributors
- SPDX-License-Identifier: Apache-2.0
-*/
-
-package application
+package configurations
 
 import (
 	"github.com/CosmWasm/wasmd/x/wasm"
@@ -31,22 +26,9 @@ import (
 	"github.com/persistenceOne/persistenceSDK/modules/metas"
 	"github.com/persistenceOne/persistenceSDK/modules/orders"
 	"github.com/persistenceOne/persistenceSDK/modules/splits"
-	"github.com/persistenceOne/persistenceSDK/schema/applications/base"
 )
 
-var ModuleAccountPermissions = map[string][]string{
-	auth.FeeCollectorName:     nil,
-	distribution.ModuleName:   nil,
-	mint.ModuleName:           {supply.Minter},
-	staking.BondedPoolName:    {supply.Burner, supply.Staking},
-	staking.NotBondedPoolName: {supply.Burner, supply.Staking},
-	gov.ModuleName:            {supply.Burner},
-	splits.Prototype().Name(): nil,
-}
-var TokenReceiveAllowedModules = map[string]bool{
-	distribution.ModuleName: true,
-}
-var ModuleBasics = module.NewBasicManager(
+var ModuleBasicManager = module.NewBasicManager(
 	genutil.AppModuleBasic{},
 	auth.AppModuleBasic{},
 	bank.AppModuleBasic{},
@@ -70,4 +52,5 @@ var ModuleBasics = module.NewBasicManager(
 	orders.Prototype(),
 	splits.Prototype(),
 )
-var NewApplication = base.NewApplication()
+
+var EnabledWasmProposalTypeList = wasm.EnableAllProposals

@@ -60,11 +60,11 @@ func main() {
 
 	rootCommand.AddCommand(
 		rpc.StatusCommand(),
-		client.ConfigCmd(application.DefaultClientHome),
-		queryCommand(application.Codec),
-		transactionCommand(application.Codec),
+		client.ConfigCmd(application.Prototype.GetDefaultClientHome()),
+		queryCommand(application.Prototype.GetCodec()),
+		transactionCommand(application.Prototype.GetCodec()),
 		flags.LineBreak,
-		ServeCmd(application.Codec),
+		ServeCmd(application.Prototype.GetCodec()),
 		flags.LineBreak,
 		keys.Commands(),
 		flags.LineBreak,
@@ -72,7 +72,7 @@ func main() {
 		flags.NewCompletionCmd(rootCommand, true),
 	)
 
-	executor := cli.PrepareMainCmd(rootCommand, "HC", application.DefaultClientHome)
+	executor := cli.PrepareMainCmd(rootCommand, "HC", application.Prototype.GetDefaultClientHome())
 
 	err := executor.Execute()
 	if err != nil {
@@ -84,7 +84,7 @@ func main() {
 func registerRoutes(restServer *lcd.RestServer) {
 	client.RegisterRoutes(restServer.CliCtx, restServer.Mux)
 	authREST.RegisterTxRoutes(restServer.CliCtx, restServer.Mux)
-	application.ModuleBasics.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
+	application.Prototype.GetModuleBasicManager().RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
 	keysAdd.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
 	sign.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
 }
@@ -106,7 +106,7 @@ func queryCommand(codec *amino.Codec) *cobra.Command {
 		flags.LineBreak,
 	)
 
-	application.ModuleBasics.AddQueryCommands(queryCommand, codec)
+	application.Prototype.GetModuleBasicManager().AddQueryCommands(queryCommand, codec)
 
 	return queryCommand
 }
@@ -183,7 +183,7 @@ func transactionCommand(codec *amino.Codec) *cobra.Command {
 		flags.LineBreak,
 	)
 
-	application.ModuleBasics.AddTxCommands(transactionCommand, codec)
+	application.Prototype.GetModuleBasicManager().AddTxCommands(transactionCommand, codec)
 
 	var commandListToRemove []*cobra.Command
 

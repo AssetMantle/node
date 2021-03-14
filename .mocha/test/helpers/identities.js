@@ -11,10 +11,9 @@ function queryIdentity(id) {
     let options = {
         'method': 'GET',
         'url': config.ip + config.port + config.qIdentity,
-        'headers': {
-        }
+        'headers': {}
     };
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         request(options, async function (error, res) {
             if (error) throw new Error(error);
             let result = JSON.parse(res.body)

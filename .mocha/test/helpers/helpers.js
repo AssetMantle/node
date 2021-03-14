@@ -23,13 +23,13 @@ function FindInResponse(type, list, id) {
 
     let ordersData = {
         'classificationID': '',
-        'makerOwnableID':'',
-        'takerOwnableID':'',
-        'makerID':'',
+        'makerOwnableID': '',
+        'takerOwnableID': '',
+        'makerID': '',
         'hashID': ''
     }
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         switch (type) {
             case 'assets':
                 list.forEach(function (value) {

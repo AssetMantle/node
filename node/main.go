@@ -7,30 +7,26 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/CosmWasm/wasmd/x/wasm"
-	"github.com/cosmos/cosmos-sdk/client/debug"
-	"github.com/cosmos/cosmos-sdk/client/flags"
-	"github.com/cosmos/cosmos-sdk/version"
-	"github.com/cosmos/cosmos-sdk/x/auth"
-	"github.com/persistenceOne/assetMantle/application"
 	"io"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
+	"github.com/cosmos/cosmos-sdk/client/debug"
+	"github.com/cosmos/cosmos-sdk/client/flags"
+	"github.com/cosmos/cosmos-sdk/server"
+	"github.com/cosmos/cosmos-sdk/store"
+	sdkTypes "github.com/cosmos/cosmos-sdk/types"
+	"github.com/cosmos/cosmos-sdk/version"
+	"github.com/cosmos/cosmos-sdk/x/auth"
+	"github.com/cosmos/cosmos-sdk/x/staking"
+	"github.com/persistenceOne/assetMantle/application"
+	"github.com/persistenceOne/assetMantle/application/initialize"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-
 	tendermintABCITypes "github.com/tendermint/tendermint/abci/types"
 	"github.com/tendermint/tendermint/libs/cli"
 	"github.com/tendermint/tendermint/libs/log"
 	tendermintTypes "github.com/tendermint/tendermint/types"
 	tendermintDB "github.com/tendermint/tm-db"
-
-	"github.com/cosmos/cosmos-sdk/server"
-	"github.com/cosmos/cosmos-sdk/store"
-	sdkTypes "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/cosmos-sdk/x/staking"
-
-	"github.com/persistenceOne/assetMantle/application/initialize"
 )
 
 const flagInvariantsCheckPeriod = "invariants-check-period"
@@ -38,7 +34,6 @@ const flagInvariantsCheckPeriod = "invariants-check-period"
 var invariantsCheckPeriod uint
 
 func main() {
-
 	serverContext := server.NewDefaultContext()
 
 	configuration := sdkTypes.GetConfig()
@@ -57,43 +52,43 @@ func main() {
 
 	rootCommand.AddCommand(initialize.Command(
 		serverContext,
-		application.Codec,
-		application.ModuleBasics,
-		application.DefaultNodeHome,
+		application.Prototype.GetCodec(),
+		application.Prototype.GetModuleBasicManager(),
+		application.Prototype.GetDefaultNodeHome(),
 	))
 	rootCommand.AddCommand(initialize.CollectGenesisTransactionsCommand(
 		serverContext,
-		application.Codec,
+		application.Prototype.GetCodec(),
 		auth.GenesisAccountIterator{},
-		application.DefaultNodeHome,
+		application.Prototype.GetDefaultNodeHome(),
 	))
 	rootCommand.AddCommand(initialize.MigrateGenesisCommand(
 		serverContext,
-		application.Codec,
+		application.Prototype.GetCodec(),
 	))
 	rootCommand.AddCommand(initialize.GenesisTransactionCommand(
 		serverContext,
-		application.Codec,
-		application.ModuleBasics,
+		application.Prototype.GetCodec(),
+		application.Prototype.GetModuleBasicManager(),
 		staking.AppModuleBasic{},
 		auth.GenesisAccountIterator{},
-		application.DefaultNodeHome,
-		application.DefaultClientHome,
+		application.Prototype.GetDefaultNodeHome(),
+		application.Prototype.GetDefaultClientHome(),
 	))
 	rootCommand.AddCommand(initialize.ValidateGenesisCommand(
 		serverContext,
-		application.Codec,
-		application.ModuleBasics,
+		application.Prototype.GetCodec(),
+		application.Prototype.GetModuleBasicManager(),
 	))
 	rootCommand.AddCommand(initialize.AddGenesisAccountCommand(
 		serverContext,
-		application.Codec,
-		application.DefaultNodeHome,
-		application.DefaultClientHome,
+		application.Prototype.GetCodec(),
+		application.Prototype.GetDefaultNodeHome(),
+		application.Prototype.GetDefaultClientHome(),
 	))
 	rootCommand.AddCommand(flags.NewCompletionCmd(rootCommand, true))
 	rootCommand.AddCommand(initialize.ReplayTransactionsCommand())
-	rootCommand.AddCommand(debug.Cmd(application.Codec))
+	rootCommand.AddCommand(debug.Cmd(application.Prototype.GetCodec()))
 	rootCommand.AddCommand(version.Cmd)
 	rootCommand.PersistentFlags().UintVar(
 		&invariantsCheckPeriod,
@@ -117,16 +112,13 @@ func main() {
 		for _, h := range viper.GetIntSlice(server.FlagUnsafeSkipUpgrades) {
 			skipUpgradeHeights[int64(h)] = true
 		}
+
 		pruningOpts, err := server.GetPruningOptionsFromFlags()
 		if err != nil {
 			panic(err)
 		}
-		return application.NewApplication.Initialize(
-			application.Name,
-			application.Codec,
-			wasm.EnableAllProposals,
-			application.ModuleAccountPermissions,
-			application.TokenReceiveAllowedModules,
+
+		return application.Prototype.Initialize(
 			logger,
 			db,
 			traceStore,
@@ -150,14 +142,8 @@ func main() {
 		forZeroHeight bool,
 		jailWhiteList []string,
 	) (json.RawMessage, []tendermintTypes.GenesisValidator, error) {
-
 		if height != -1 {
-			genesisApplication := application.NewApplication.Initialize(
-				application.Name,
-				application.Codec,
-				wasm.EnableAllProposals,
-				application.ModuleAccountPermissions,
-				application.TokenReceiveAllowedModules,
+			genesisApplication := application.Prototype.Initialize(
 				logger,
 				db,
 				traceStore,
@@ -167,18 +153,15 @@ func main() {
 				"",
 			)
 			err := genesisApplication.LoadHeight(height)
+
 			if err != nil {
 				return nil, nil, err
 			}
+
 			return genesisApplication.ExportApplicationStateAndValidators(forZeroHeight, jailWhiteList)
 		}
-		//else
-		genesisApplication := application.NewApplication.Initialize(
-			application.Name,
-			application.Codec,
-			wasm.EnableAllProposals,
-			application.ModuleAccountPermissions,
-			application.TokenReceiveAllowedModules,
+
+		genesisApplication := application.Prototype.Initialize(
 			logger,
 			db,
 			traceStore,
@@ -187,20 +170,21 @@ func main() {
 			map[int64]bool{},
 			"",
 		)
-		return genesisApplication.ExportApplicationStateAndValidators(forZeroHeight, jailWhiteList)
 
+		return genesisApplication.ExportApplicationStateAndValidators(forZeroHeight, jailWhiteList)
 	}
 
 	server.AddCommands(
 		serverContext,
-		application.Codec,
+		application.Prototype.GetCodec(),
 		rootCommand,
 		appCreator,
 		appExporter,
 	)
 
-	executor := cli.PrepareBaseCmd(rootCommand, "CA", application.DefaultNodeHome)
+	executor := cli.PrepareBaseCmd(rootCommand, "CA", application.Prototype.GetDefaultNodeHome())
 	err := executor.Execute()
+
 	if err != nil {
 		panic(err)
 	}
