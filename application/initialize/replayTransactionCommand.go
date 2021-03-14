@@ -84,7 +84,7 @@ func replayTransactions(rootDir string) error {
 		return err
 	}
 
-	myapp := application.NewApplication(
+	myapp := application.Prototype.Initialize(
 		ctx.Logger,
 		appDB,
 		traceStoreWriter,

@@ -3,11 +3,6 @@
  SPDX-License-Identifier: Apache-2.0
 */
 
-package application
-
-import "os"
+package configurations
 
 const Name = "AssetMantle"
-
-var DefaultClientHome = os.ExpandEnv("$HOME/.assetClient")
-var DefaultNodeHome = os.ExpandEnv("$HOME/.assetNode")

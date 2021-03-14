@@ -56,43 +56,43 @@ func main() {
 
 	rootCommand.AddCommand(initialize.Command(
 		serverContext,
-		application.Codec,
-		application.ModuleBasics,
-		application.DefaultNodeHome,
+		application.Prototype.GetCodec(),
+		application.Prototype.GetModuleBasicManager(),
+		application.Prototype.GetDefaultNodeHome(),
 	))
 	rootCommand.AddCommand(initialize.CollectGenesisTransactionsCommand(
 		serverContext,
-		application.Codec,
+		application.Prototype.GetCodec(),
 		auth.GenesisAccountIterator{},
-		application.DefaultNodeHome,
+		application.Prototype.GetDefaultNodeHome(),
 	))
 	rootCommand.AddCommand(initialize.MigrateGenesisCommand(
 		serverContext,
-		application.Codec,
+		application.Prototype.GetCodec(),
 	))
 	rootCommand.AddCommand(initialize.GenesisTransactionCommand(
 		serverContext,
-		application.Codec,
-		application.ModuleBasics,
+		application.Prototype.GetCodec(),
+		application.Prototype.GetModuleBasicManager(),
 		staking.AppModuleBasic{},
 		auth.GenesisAccountIterator{},
-		application.DefaultNodeHome,
-		application.DefaultClientHome,
+		application.Prototype.GetDefaultNodeHome(),
+		application.Prototype.GetDefaultClientHome(),
 	))
 	rootCommand.AddCommand(initialize.ValidateGenesisCommand(
 		serverContext,
-		application.Codec,
-		application.ModuleBasics,
+		application.Prototype.GetCodec(),
+		application.Prototype.GetModuleBasicManager(),
 	))
 	rootCommand.AddCommand(initialize.AddGenesisAccountCommand(
 		serverContext,
-		application.Codec,
-		application.DefaultNodeHome,
-		application.DefaultClientHome,
+		application.Prototype.GetCodec(),
+		application.Prototype.GetDefaultNodeHome(),
+		application.Prototype.GetDefaultClientHome(),
 	))
 	rootCommand.AddCommand(flags.NewCompletionCmd(rootCommand, true))
 	rootCommand.AddCommand(initialize.ReplayTransactionsCommand())
-	rootCommand.AddCommand(debug.Cmd(application.Codec))
+	rootCommand.AddCommand(debug.Cmd(application.Prototype.GetCodec()))
 	rootCommand.AddCommand(version.Cmd)
 	rootCommand.PersistentFlags().UintVar(
 		&invalidCheckPeriod,
@@ -120,7 +120,7 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		return application.NewApplication(
+		return application.Prototype.Initialize(
 			logger,
 			db,
 			traceStore,
@@ -146,7 +146,7 @@ func main() {
 	) (json.RawMessage, []tendermintTypes.GenesisValidator, error) {
 
 		if height != -1 {
-			genesisApplication := application.NewApplication(
+			genesisApplication := application.Prototype.Initialize(
 				logger,
 				db,
 				traceStore,
@@ -162,7 +162,7 @@ func main() {
 			return genesisApplication.ExportApplicationStateAndValidators(forZeroHeight, jailWhiteList)
 		}
 		//else
-		genesisApplication := application.NewApplication(
+		genesisApplication := application.Prototype.Initialize(
 			logger,
 			db,
 			traceStore,
@@ -177,13 +177,13 @@ func main() {
 
 	server.AddCommands(
 		serverContext,
-		application.Codec,
+		application.Prototype.GetCodec(),
 		rootCommand,
 		appCreator,
 		appExporter,
 	)
 
-	executor := cli.PrepareBaseCmd(rootCommand, "CA", application.DefaultNodeHome)
+	executor := cli.PrepareBaseCmd(rootCommand, "CA", application.Prototype.GetDefaultNodeHome())
 	err := executor.Execute()
 	if err != nil {
 		panic(err)
