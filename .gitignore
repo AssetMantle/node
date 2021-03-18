@@ -3,4 +3,5 @@ client/__debug_bin/
 vendor/
 .vscode/
 .idea/
+.mocha/node_modules
 target/
