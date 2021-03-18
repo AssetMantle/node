@@ -5,7 +5,7 @@
         <working_directory value="$PROJECT_DIR$/"/>
         <go_parameters value="-i"/>
         <parameters
-                value="tx splits wrap -y --chain-id test --from test --fromID  test...F_XmPees-8d1CbVD465EvRGCHrY= --coins 1stake"/>
+                value="tx splits wrap -y --chain-id test --from test --fromID  test.phkuuT6NjKalXUWqoyg5MriGfuBHH7JuK4Tdh0C_Ge0=|tJ5bx7SKdhJ-_difFkAotMK0OLoKTNztqDWiJJlZU9Y= --coins 1stake"/>
         <kind value="FILE"/>
         <filePath value="$PROJECT_DIR$/client/main.go"/>
         <package value="github.com/persistenceOne/assetMantle"/>

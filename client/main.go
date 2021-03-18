@@ -14,7 +14,7 @@ import (
 	keysAdd "github.com/persistenceOne/persistenceSDK/utilities/rest/keys/add"
 	"github.com/persistenceOne/persistenceSDK/utilities/rest/queuing"
 	"github.com/persistenceOne/persistenceSDK/utilities/rest/queuing/rest"
-	"github.com/persistenceOne/persistenceSDK/utilities/rest/signTx"
+	"github.com/persistenceOne/persistenceSDK/utilities/rest/sign"
 	"os"
 	"path"
 	"strings"
@@ -60,11 +60,11 @@ func main() {
 
 	rootCommand.AddCommand(
 		rpc.StatusCommand(),
-		client.ConfigCmd(application.DefaultClientHome),
-		queryCommand(application.Codec),
-		transactionCommand(application.Codec),
+		client.ConfigCmd(application.Prototype.GetDefaultClientHome()),
+		queryCommand(application.Prototype.GetCodec()),
+		transactionCommand(application.Prototype.GetCodec()),
 		flags.LineBreak,
-		ServeCmd(application.Codec),
+		ServeCmd(application.Prototype.GetCodec()),
 		flags.LineBreak,
 		keys.Commands(),
 		flags.LineBreak,
@@ -72,7 +72,7 @@ func main() {
 		flags.NewCompletionCmd(rootCommand, true),
 	)
 
-	executor := cli.PrepareMainCmd(rootCommand, "HC", application.DefaultClientHome)
+	executor := cli.PrepareMainCmd(rootCommand, "HC", application.Prototype.GetDefaultClientHome())
 
 	err := executor.Execute()
 	if err != nil {
@@ -84,9 +84,9 @@ func main() {
 func registerRoutes(restServer *lcd.RestServer) {
 	client.RegisterRoutes(restServer.CliCtx, restServer.Mux)
 	authREST.RegisterTxRoutes(restServer.CliCtx, restServer.Mux)
-	application.ModuleBasics.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
+	application.Prototype.GetModuleBasicManager().RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
 	keysAdd.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
-	signTx.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
+	sign.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
 }
 
 func queryCommand(codec *amino.Codec) *cobra.Command {
@@ -106,7 +106,7 @@ func queryCommand(codec *amino.Codec) *cobra.Command {
 		flags.LineBreak,
 	)
 
-	application.ModuleBasics.AddQueryCommands(queryCommand, codec)
+	application.Prototype.GetModuleBasicManager().AddQueryCommands(queryCommand, codec)
 
 	return queryCommand
 }
@@ -125,20 +125,20 @@ func ServeCmd(codec *amino.Codec) *cobra.Command {
 			viper.Set(flags.FlagGenerateOnly, false)
 			rs := lcd.NewRestServer(codec)
 			viper.Set(flags.FlagGenerateOnly, generateOnly)
-			kafkaBool := viper.GetBool(flagKafka)
+			kafka := viper.GetBool(flagKafka)
 			var kafkaState queuing.KafkaState
 			corsBool := viper.GetBool(flags.FlagUnsafeCORS)
-			if kafkaBool == true {
+			if kafka {
 				kafkaPort := viper.GetString(kafkaPorts)
 				kafkaPort = strings.Trim(kafkaPort, "\" ")
 				kafkaPorts := strings.Split(kafkaPort, " ")
 				kafkaState = queuing.NewKafkaState(kafkaPorts)
-				base.KafkaBool = kafkaBool
+				base.KafkaBool = kafka
 				base.KafkaState = kafkaState
 				rs.Mux.HandleFunc("/response/{ticketID}", queuing.QueryDB(codec, kafkaState.KafkaDB)).Methods("GET")
 			}
 			registerRoutes(rs)
-			if kafkaBool == true {
+			if kafka {
 				go func() {
 					for {
 						rest.KafkaConsumerMessages(rs.CliCtx, kafkaState)
@@ -183,7 +183,7 @@ func transactionCommand(codec *amino.Codec) *cobra.Command {
 		flags.LineBreak,
 	)
 
-	application.ModuleBasics.AddTxCommands(transactionCommand, codec)
+	application.Prototype.GetModuleBasicManager().AddTxCommands(transactionCommand, codec)
 
 	var commandListToRemove []*cobra.Command
 
