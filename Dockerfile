@@ -12,11 +12,6 @@ RUN apt update && apt install -y $PACKAGES
 
 # Install Rust and wasm32 dependencies
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-RUN rustup default stable \
-    && rustup default stable \
-    && rustup update stable \
-    && rustup target list --installed \
-    && rustup target add wasm32-unknown-unknown
 
 # Create appuser
 ENV USER=appuser
@@ -36,5 +31,5 @@ COPY . .
 # Build client
 RUN make install
 
-# Run persistenceCore by default, omit entrypoint to ease using container with cli
+# Run assetClient by default, omit entrypoint to ease using container with cli
 CMD ["assetClient"]
