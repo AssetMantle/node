@@ -1,14 +1,11 @@
-make all
+.script/reset.sh
 
-rm -rf ~/.AssetMantle/Node
-rm -rf ~/.AssetMantle/Client
+source ./.script/environment.sh
 
-mkdir ~/.AssetMantle/Node
-mkdir ~/.AssetMantle/Client
-
-assetNode init --chain-id test test
-assetClient keys add test --recover <<<"y
-wage thunder live sense resemble foil apple course spin horse glass mansion midnight laundry acoustic rhythm loan scale talent push green direct brick please"
-assetNode add-genesis-account test 100000000000000stake
-assetNode gentx --name test --amount 1000000000stake
+assetNode init "$AM_NODE_NAME_1" --chain-id "$AM_CHAIN_ID"
+assetClient keys add "$AM_NAME_1" <<<"n" >/dev/null 2>&1 0>&1
+assetClient keys add "$AM_NAME_1" --recover <<<"y
+$AM_SEED_1"
+assetNode add-genesis-account "$AM_NAME_1" "$AM_GENESIS_BALANCE_1$AM_STAKE_DENOMINATION"
+assetNode gentx --name "$AM_NAME_1" --amount "$AM_GENESIS_STAKE_1$AM_STAKE_DENOMINATION"
 assetNode collect-gentxs

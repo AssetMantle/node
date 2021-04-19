@@ -4,4 +4,5 @@ vendor/
 .mocha/node_modules/
 .vscode/
 .idea/
+.mocha/node_modules
 target/
