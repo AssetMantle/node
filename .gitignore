@@ -6,3 +6,4 @@ vendor/
 .idea/
 .mocha/node_modules
 target/
+kafka_*
