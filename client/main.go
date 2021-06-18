@@ -7,13 +7,13 @@ package main
 
 import (
 	"fmt"
+	"github.com/cosmos/cosmos-sdk/codec"
+
 	//"github.com/CosmWasm/wasmd/app"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/persistenceOne/assetMantle/application"
-	"github.com/persistenceOne/persistenceSDK/schema/helpers/base"
 	keysAdd "github.com/persistenceOne/persistenceSDK/utilities/rest/keys/add"
 	"github.com/persistenceOne/persistenceSDK/utilities/rest/queuing"
-	"github.com/persistenceOne/persistenceSDK/utilities/rest/queuing/rest"
 	"github.com/persistenceOne/persistenceSDK/utilities/rest/sign"
 	"os"
 	"path"
@@ -35,7 +35,6 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/tendermint/go-amino"
 	"github.com/tendermint/tendermint/libs/cli"
 )
 
@@ -64,7 +63,7 @@ func main() {
 		queryCommand(application.Prototype.GetCodec()),
 		transactionCommand(application.Prototype.GetCodec()),
 		flags.LineBreak,
-		ServeCmd(application.Prototype.GetCodec()),
+		ServeCommand(application.Prototype.GetCodec()),
 		flags.LineBreak,
 		keys.Commands(),
 		flags.LineBreak,
@@ -89,7 +88,7 @@ func registerRoutes(restServer *lcd.RestServer) {
 	sign.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
 }
 
-func queryCommand(codec *amino.Codec) *cobra.Command {
+func queryCommand(codec *codec.Codec) *cobra.Command {
 	queryCommand := &cobra.Command{
 		Use:     "query",
 		Aliases: []string{"q"},
@@ -114,40 +113,33 @@ func queryCommand(codec *amino.Codec) *cobra.Command {
 // ServeCommand will start the application REST service as a blocking process. It
 // takes a codec to create a RestServer object and a function to register all
 // necessary routes.
-func ServeCmd(codec *amino.Codec) *cobra.Command {
-	flagKafka := "kafka"
-	kafkaPorts := "kafkaPort"
+func ServeCommand(codec *codec.Codec) *cobra.Command {
+	flagQueuing := "queuing"
+	flagKafkaNodes := "kafkaNodes"
 	cmd := &cobra.Command{
 		Use:   "rest-server",
 		Short: "Start LCD (light-client daemon), a local REST server",
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
-			generateOnly := viper.GetBool(flags.FlagGenerateOnly)
-			viper.Set(flags.FlagGenerateOnly, false)
-			rs := lcd.NewRestServer(codec)
-			viper.Set(flags.FlagGenerateOnly, generateOnly)
-			kafka := viper.GetBool(flagKafka)
-			var kafkaState queuing.KafkaState
-			corsBool := viper.GetBool(flags.FlagUnsafeCORS)
-			if kafka {
-				kafkaPort := viper.GetString(kafkaPorts)
-				kafkaPort = strings.Trim(kafkaPort, "\" ")
-				kafkaPorts := strings.Split(kafkaPort, " ")
-				kafkaState = queuing.NewKafkaState(kafkaPorts)
-				base.KafkaBool = kafka
-				base.KafkaState = kafkaState
-				rs.Mux.HandleFunc("/response/{ticketID}", queuing.QueryDB(codec, kafkaState.KafkaDB)).Methods("GET")
+			restServer := lcd.NewRestServer(codec)
+
+			if viper.GetBool(flagQueuing) {
+				queuing.KafkaState = *queuing.NewKafkaState(strings.Split( strings.Trim(viper.GetString(flagKafkaNodes), "\" "), " "))
+				restServer.Mux.HandleFunc("/response/{ticketID}", queuing.QueryDB(codec, queuing.KafkaState.KafkaDB)).Methods("GET")
 			}
-			registerRoutes(rs)
-			if kafka {
+
+			registerRoutes(restServer)
+
+			if queuing.KafkaState.IsEnabled {
 				go func() {
 					for {
-						rest.KafkaConsumerMessages(rs.CliCtx, kafkaState)
+						queuing.KafkaConsumerMessages(restServer.CliCtx, queuing.KafkaState)
 						time.Sleep(queuing.SleepRoutine)
 					}
 				}()
 			}
-			// Start the rest server and return error if one exists
-			err = rs.Start(
+
+			corsBool := viper.GetBool(flags.FlagUnsafeCORS)
+			err = restServer.Start(
 				viper.GetString(flags.FlagListenAddr),
 				viper.GetInt(flags.FlagMaxOpenConnections),
 				uint(viper.GetInt(flags.FlagRPCReadTimeout)),
@@ -157,8 +149,8 @@ func ServeCmd(codec *amino.Codec) *cobra.Command {
 			return err
 		},
 	}
-	cmd.Flags().Bool(flagKafka, false, "Whether have kafka running")
-	cmd.Flags().String(kafkaPorts, "localhost:9092", "Space separated addresses in quotes of the kafka listening node: example: --kafkaPort \"addr1 addr2\" ")
+	cmd.Flags().Bool(flagQueuing, false, "Enable kafka queuing and squashing of transactions")
+	cmd.Flags().String(flagKafkaNodes, "localhost:9092", "Space separated addresses in quotes of the kafka listening node: example: --kafkaPort \"addr1 addr2\" ")
 	cmd.Flags().String(flags.FlagKeyringBackend, flags.DefaultKeyringBackend, "Select keyring's backend (os|file|kwallet|pass|test)")
 	cmd.Flags().Bool(flags.FlagGenerateOnly, false, "Build an unsigned transaction and write it as response to rest (when enabled, the local Keybase is not accessible and the node operates offline)")
 	cmd.Flags().StringP(flags.FlagBroadcastMode, "b", flags.BroadcastSync, "Transaction broadcasting mode (sync|async|block)")
@@ -166,7 +158,7 @@ func ServeCmd(codec *amino.Codec) *cobra.Command {
 	return flags.RegisterRestServerFlags(cmd)
 }
 
-func transactionCommand(codec *amino.Codec) *cobra.Command {
+func transactionCommand(codec *codec.Codec) *cobra.Command {
 	transactionCommand := &cobra.Command{
 		Use:   "tx",
 		Short: "Transactions subcommands",
