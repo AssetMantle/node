@@ -123,7 +123,7 @@ func ServeCommand(codec *codec.Codec) *cobra.Command {
 			restServer := lcd.NewRestServer(codec)
 
 			if viper.GetBool(flagQueuing) {
-				queuing.KafkaState = *queuing.NewKafkaState(strings.Split( strings.Trim(viper.GetString(flagKafkaNodes), "\" "), " "))
+				queuing.KafkaState = *queuing.NewKafkaState(strings.Split(strings.Trim(viper.GetString(flagKafkaNodes), "\" "), " "))
 				restServer.Mux.HandleFunc("/response/{ticketID}", queuing.QueryDB(codec, queuing.KafkaState.KafkaDB)).Methods("GET")
 			}
 
