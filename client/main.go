@@ -114,16 +114,14 @@ func queryCommand(codec *codec.Codec) *cobra.Command {
 // takes a codec to create a RestServer object and a function to register all
 // necessary routes.
 func ServeCommand(codec *codec.Codec) *cobra.Command {
-	flagQueuing := "queuing"
-	flagKafkaNodes := "kafkaNodes"
 	cmd := &cobra.Command{
 		Use:   "rest-server",
 		Short: "Start LCD (light-client daemon), a local REST server",
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			restServer := lcd.NewRestServer(codec)
 
-			if viper.GetBool(flagQueuing) {
-				queuing.KafkaState = *queuing.NewKafkaState(strings.Split(strings.Trim(viper.GetString(flagKafkaNodes), "\" "), " "))
+			if viper.GetBool("queuing") {
+				queuing.KafkaState = *queuing.NewKafkaState(strings.Split(strings.Trim(viper.GetString("kafkaNodes"), "\" "), " "))
 				restServer.Mux.HandleFunc("/response/{ticketID}", queuing.QueryDB(codec, queuing.KafkaState.KafkaDB)).Methods("GET")
 			}
 
@@ -149,8 +147,8 @@ func ServeCommand(codec *codec.Codec) *cobra.Command {
 			return err
 		},
 	}
-	cmd.Flags().Bool(flagQueuing, false, "Enable kafka queuing and squashing of transactions")
-	cmd.Flags().String(flagKafkaNodes, "localhost:9092", "Space separated addresses in quotes of the kafka listening node: example: --kafkaPort \"addr1 addr2\" ")
+	cmd.Flags().Bool("queuing", false, "Enable kafka queuing and squashing of transactions")
+	cmd.Flags().String("kafkaNodes", "localhost:9092", "Space separated addresses in quotes of the kafka listening node: example: --kafkaPort \"addr1 addr2\" ")
 	cmd.Flags().String(flags.FlagKeyringBackend, flags.DefaultKeyringBackend, "Select keyring's backend (os|file|kwallet|pass|test)")
 	cmd.Flags().Bool(flags.FlagGenerateOnly, false, "Build an unsigned transaction and write it as response to rest (when enabled, the local Keybase is not accessible and the node operates offline)")
 	cmd.Flags().StringP(flags.FlagBroadcastMode, "b", flags.BroadcastSync, "Transaction broadcasting mode (sync|async|block)")
