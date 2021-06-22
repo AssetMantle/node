@@ -1,3 +1,5 @@
+#![allow(non_snake_case)]
+
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
@@ -109,13 +111,14 @@ pub fn handle<S: Storage, A: Api, Q: Querier>(
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct AssetMintRaw {
-    from: HumanAddr,
+    fromID: String,
+    toID: String,
     chainID: String,
-    maintainersID: String,
     classificationID: String,
-    properties: String,
-    lock: i64,
-    burn: i64,
+    immutableMetaProperties: String,
+    immutableProperties: String,
+    mutableMetaProperties: String,
+    mutableProperties: String,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
@@ -152,13 +155,14 @@ fn do_asset_mint<S: Storage, A: Api, Q: Querier>(
 
         // can add all the parameters as input params
         let mintMsg = AssetMintRaw {
-            from: deps.api.human_address(&env.message.sender)?,
+            fromID: deps.api.human_address(&env.message.sender)?.to_string(),
+            toID: "".to_owned(),
             chainID: "".to_owned(),
-            maintainersID: "".to_owned(),
             classificationID: "".to_owned(),
-            properties: properties,
-            lock: -1,
-            burn: -1,
+            immutableMetaProperties: "".to_owned(),
+            immutableProperties: "".to_owned(),
+            mutableMetaProperties: "".to_owned(),
+            mutableProperties: "".to_owned(),
         };
 
         let res = HandleResponse {
