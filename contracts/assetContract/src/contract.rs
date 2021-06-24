@@ -128,6 +128,7 @@ pub fn handle<S: Storage, A: Api, Q: Querier>(
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub struct AssetMintRaw {
+    from: HumanAddr,
     fromID: String,
     toID: String,
     classificationID: String,
@@ -172,7 +173,8 @@ fn do_asset_mint<S: Storage, A: Api, Q: Querier>(
 
         // can add all the parameters as input params
         let mintMsg = AssetMintRaw {
-            fromID: deps.api.human_address(&env.message.sender)?.to_string(),
+            from: deps.api.human_address(&env.message.sender)?,
+            fromID: "".to_owned(),
             toID: "".to_owned(),
             classificationID,
             immutableMetaProperties,
