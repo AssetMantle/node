@@ -67,6 +67,7 @@ pub struct State {
 #[serde(rename_all = "snake_case")]
 pub enum HandleMsg {
     AssetMint {
+        classificationID: String,
         immutableMetaProperties: String,
         immutableProperties: String,
         mutableMetaProperties: String,
@@ -107,6 +108,7 @@ pub fn handle<S: Storage, A: Api, Q: Querier>(
 ) -> StdResult<HandleResponse<PersistenceSDK>> {
     match msg {
         HandleMsg::AssetMint {
+            classificationID,
             immutableMetaProperties,
             immutableProperties,
             mutableMetaProperties,
@@ -114,6 +116,7 @@ pub fn handle<S: Storage, A: Api, Q: Querier>(
         } => do_asset_mint(
             deps,
             env,
+            classificationID,
             immutableMetaProperties,
             immutableProperties,
             mutableMetaProperties,
@@ -127,7 +130,6 @@ pub fn handle<S: Storage, A: Api, Q: Querier>(
 pub struct AssetMintRaw {
     fromID: String,
     toID: String,
-    chainID: String,
     classificationID: String,
     immutableMetaProperties: String,
     immutableProperties: String,
@@ -153,6 +155,7 @@ impl Into<CosmosMsg<PersistenceSDK>> for PersistenceSDK {
 fn do_asset_mint<S: Storage, A: Api, Q: Querier>(
     deps: &mut Extern<S, A, Q>,
     env: Env,
+    classificationID: String,
     immutableMetaProperties: String,
     immutableProperties: String,
     mutableMetaProperties: String,
@@ -171,8 +174,7 @@ fn do_asset_mint<S: Storage, A: Api, Q: Querier>(
         let mintMsg = AssetMintRaw {
             fromID: deps.api.human_address(&env.message.sender)?.to_string(),
             toID: "".to_owned(),
-            chainID: "".to_owned(),
-            classificationID: "".to_owned(),
+            classificationID,
             immutableMetaProperties,
             immutableProperties,
             mutableMetaProperties,
