@@ -31,7 +31,7 @@ const (
 	flagVestingAmt   = "vesting-amount"
 )
 
-// AddGenesisAccountCmd returns add-genesis-account cobra Command.
+// AddGenesisAccountCommand returns add-genesis-account cobra Command.
 func AddGenesisAccountCommand(context *server.Context, codec *codec.Codec, defaultNodeHome, defaultClientHome string) *cobra.Command {
 	command := &cobra.Command{
 		Use:   "add-genesis-account [address_or_key_name] [coin][,[coin]]",

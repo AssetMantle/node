@@ -1,4 +1,5 @@
 #![allow(non_snake_case)]
+
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
@@ -181,6 +182,7 @@ fn do_asset_mint<S: Storage, A: Api, Q: Querier>(
             immutableProperties,
             mutableMetaProperties,
             mutableProperties,
+
         };
 
         let res = HandleResponse {
