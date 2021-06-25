@@ -7,23 +7,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/cosmos/cosmos-sdk/codec"
-
-	//"github.com/CosmWasm/wasmd/app"
-	"github.com/cosmos/cosmos-sdk/client/flags"
-	"github.com/persistenceOne/assetMantle/application"
-	keysAdd "github.com/persistenceOne/persistenceSDK/utilities/rest/keys/add"
-	"github.com/persistenceOne/persistenceSDK/utilities/rest/queuing"
-	"github.com/persistenceOne/persistenceSDK/utilities/rest/sign"
-	"os"
-	"path"
-	"strings"
-	"time"
-
 	"github.com/cosmos/cosmos-sdk/client"
+	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/keys"
 	"github.com/cosmos/cosmos-sdk/client/lcd"
 	"github.com/cosmos/cosmos-sdk/client/rpc"
+	"github.com/cosmos/cosmos-sdk/codec"
 	sdkTypes "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/version"
 	"github.com/cosmos/cosmos-sdk/x/auth"
@@ -31,11 +20,16 @@ import (
 	authREST "github.com/cosmos/cosmos-sdk/x/auth/client/rest"
 	"github.com/cosmos/cosmos-sdk/x/bank"
 	bankCLI "github.com/cosmos/cosmos-sdk/x/bank/client/cli"
-
+	"github.com/persistenceOne/assetMantle/application"
+	xprtFlags "github.com/persistenceOne/persistenceSDK/constants/flags"
+	keysAdd "github.com/persistenceOne/persistenceSDK/utilities/rest/keys/add"
+	"github.com/persistenceOne/persistenceSDK/utilities/rest/queuing"
+	"github.com/persistenceOne/persistenceSDK/utilities/rest/sign"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-
 	"github.com/tendermint/tendermint/libs/cli"
+	"os"
+	"path"
 )
 
 func main() {
@@ -86,6 +80,7 @@ func registerRoutes(restServer *lcd.RestServer) {
 	application.Prototype.GetModuleBasicManager().RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
 	keysAdd.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
 	sign.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
+	queuing.RegisterRoutes(restServer.CliCtx, restServer.Mux)
 }
 
 func queryCommand(codec *codec.Codec) *cobra.Command {
@@ -119,36 +114,21 @@ func ServeCommand(codec *codec.Codec) *cobra.Command {
 		Short: "Start LCD (light-client daemon), a local REST server",
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			restServer := lcd.NewRestServer(codec)
-
-			if viper.GetBool("queuing") {
-				queuing.KafkaState = *queuing.NewKafkaState(strings.Split(strings.Trim(viper.GetString("kafkaNodes"), "\" "), " "))
-				restServer.Mux.HandleFunc("/response/{ticketID}", queuing.QueryDB(codec, queuing.KafkaState.KafkaDB)).Methods("GET")
-			}
-
 			registerRoutes(restServer)
 
-			if queuing.KafkaState.IsEnabled {
-				go func() {
-					for {
-						queuing.KafkaConsumerMessages(restServer.CliCtx, queuing.KafkaState)
-						time.Sleep(queuing.SleepRoutine)
-					}
-				}()
-			}
+			queuing.InitializeKafka(restServer.CliCtx)
 
-			corsBool := viper.GetBool(flags.FlagUnsafeCORS)
-			err = restServer.Start(
+			return restServer.Start(
 				viper.GetString(flags.FlagListenAddr),
 				viper.GetInt(flags.FlagMaxOpenConnections),
 				uint(viper.GetInt(flags.FlagRPCReadTimeout)),
 				uint(viper.GetInt(flags.FlagRPCWriteTimeout)),
-				corsBool,
+				viper.GetBool(flags.FlagUnsafeCORS),
 			)
-			return err
 		},
 	}
-	cmd.Flags().Bool("queuing", false, "Enable kafka queuing and squashing of transactions")
-	cmd.Flags().String("kafkaNodes", "localhost:9092", "Space separated addresses in quotes of the kafka listening node: example: --kafkaPort \"addr1 addr2\" ")
+	xprtFlags.Queuing.Register(cmd)
+	xprtFlags.KafkaNodes.Register(cmd)
 	cmd.Flags().String(flags.FlagKeyringBackend, flags.DefaultKeyringBackend, "Select keyring's backend (os|file|kwallet|pass|test)")
 	cmd.Flags().Bool(flags.FlagGenerateOnly, false, "Build an unsigned transaction and write it as response to rest (when enabled, the local Keybase is not accessible and the node operates offline)")
 	cmd.Flags().StringP(flags.FlagBroadcastMode, "b", flags.BroadcastSync, "Transaction broadcasting mode (sync|async|block)")
