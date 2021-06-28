@@ -30,6 +30,7 @@ import (
 	"github.com/tendermint/tendermint/libs/cli"
 	"os"
 	"path"
+	"strings"
 )
 
 func main() {
@@ -116,7 +117,7 @@ func ServeCommand(codec *codec.Codec) *cobra.Command {
 			restServer := lcd.NewRestServer(codec)
 			registerRoutes(restServer)
 
-			queuing.InitializeKafka(restServer.CliCtx)
+			queuing.InitializeKafka(strings.Split(strings.Trim(xprtFlags.KafkaNodes.ReadCLIValue().(string), "\" "), " "), restServer.CliCtx)
 
 			return restServer.Start(
 				viper.GetString(flags.FlagListenAddr),
