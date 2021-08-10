@@ -117,8 +117,9 @@ func ServeCommand(codec *codec.Codec) *cobra.Command {
 			restServer := lcd.NewRestServer(codec)
 			registerRoutes(restServer)
 
-			queuing.InitializeKafka(strings.Split(strings.Trim(xprtFlags.KafkaNodes.ReadCLIValue().(string), "\" "), " "), restServer.CliCtx)
-
+			if xprtFlags.Queuing.ReadCLIValue().(bool) {
+				queuing.InitializeKafka(strings.Split(strings.Trim(xprtFlags.KafkaNodes.ReadCLIValue().(string), "\" "), " "), restServer.CliCtx)
+			}
 			return restServer.Start(
 				viper.GetString(flags.FlagListenAddr),
 				viper.GetInt(flags.FlagMaxOpenConnections),
