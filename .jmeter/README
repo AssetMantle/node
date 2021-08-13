@@ -1,0 +1,21 @@
+
+Install Apache Jmeter
+ 
+   Details of the latest version can be found on the Java Apache
+   (http://jmeter.apache.org/)
+  
+Requirements
+ 
+   The following requirements exist for running Apache JMeter:
+   Java Interpreter:
+   A fully compliant Java 1.5 (or later) Runtime Environment is required.
+   
+Pre-requisite
+
+    In "User Defined Variables", user has to define the "path". So that when script is executed, Generated files will be stored in specified location.
+    then same files will be re-used throughtout the test execution.
+    
+Note:
+
+    For next test run, delete or clear all generated files from specified location.
+   
