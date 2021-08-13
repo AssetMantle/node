@@ -157,8 +157,23 @@
             <stringProp name="Argument.value">test</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="Path" elementType="Argument">
+            <stringProp name="Argument.name">Path</stringProp>
+            <stringProp name="Argument.value">E://</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
+      <hashTree/>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <collectionProp name="HeaderManager.headers"/>
+      </HeaderManager>
+      <hashTree/>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+      </CookieManager>
       <hashTree/>
       <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable - B1" enabled="true">
         <stringProp name="variableName">B1</stringProp>
@@ -220,8 +235,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">2</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -315,7 +330,7 @@ String path=FileServer.getFileServer().getBaseDir();
 
 var1= vars.get(&quot;main_accaddress&quot;);
 
-f = new FileOutputStream(&quot;C://Identity/Address.csv&quot;,true);
+f = new FileOutputStream(&quot;${Path}Address.csv&quot;,true);
 p = new PrintStream(f);
 
 this.interpreter.setOut(p);
@@ -820,26 +835,6 @@ f.close();</stringProp>
                 <stringProp name="Argument.value">1</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
-              <elementProp name="ORDER_CLASSIFICATION_IMMUTABLE_META_1" elementType="Argument">
-                <stringProp name="Argument.name">ORDER_CLASSIFICATION_IMMUTABLE_META_1</stringProp>
-                <stringProp name="Argument.value">order_classification_immutable_meta_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ORDER_CLASSIFICATION_IMMUTABLE_1" elementType="Argument">
-                <stringProp name="Argument.name">ORDER_CLASSIFICATION_IMMUTABLE_1</stringProp>
-                <stringProp name="Argument.value">order_classification_immutable_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ORDER_CLASSIFICATION_MUTABLE_META_1" elementType="Argument">
-                <stringProp name="Argument.name">ORDER_CLASSIFICATION_MUTABLE_META_1</stringProp>
-                <stringProp name="Argument.value">order_classification_mutable_meta_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ORDER_CLASSIFICATION_MUTABLE_1" elementType="Argument">
-                <stringProp name="Argument.name">ORDER_CLASSIFICATION_MUTABLE_1</stringProp>
-                <stringProp name="Argument.value">order_classification_mutable_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
               <elementProp name="ID_1" elementType="Argument">
                 <stringProp name="Argument.name">ID_1</stringProp>
                 <stringProp name="Argument.value">identity1</stringProp>
@@ -855,34 +850,9 @@ f.close();</stringProp>
                 <stringProp name="Argument.value">identity3</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
-              <elementProp name="ID_CLASSIFICATION_IMMUTABLE_META_1" elementType="Argument">
-                <stringProp name="Argument.name">ID_CLASSIFICATION_IMMUTABLE_META_1</stringProp>
-                <stringProp name="Argument.value">id_classification_immutable_meta_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ID_CLASSIFICATION_IMMUTABLE_1" elementType="Argument">
-                <stringProp name="Argument.name">ID_CLASSIFICATION_IMMUTABLE_1</stringProp>
-                <stringProp name="Argument.value">id_classification_immutable_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ID_CLASSIFICATION_MUTABLE_META_1" elementType="Argument">
-                <stringProp name="Argument.name">ID_CLASSIFICATION_MUTABLE_META_1</stringProp>
-                <stringProp name="Argument.value">id_classification_mutable_meta_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ID_CLASSIFICATION_MUTABLE_1" elementType="Argument">
-                <stringProp name="Argument.name">ID_CLASSIFICATION_MUTABLE_1</stringProp>
-                <stringProp name="Argument.value">id_classification_mutable_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
               <elementProp name="ID_4" elementType="Argument">
                 <stringProp name="Argument.name">ID_4</stringProp>
                 <stringProp name="Argument.value">identity4</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="testaddress1" elementType="Argument">
-                <stringProp name="Argument.name">testaddress1</stringProp>
-                <stringProp name="Argument.value">cosmos1pa7klcqjlfxr077myjf4wpfp0qwdy55tv3d3uw</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -903,7 +873,7 @@ f.close();</stringProp>
 &quot;type&quot;: &quot;/xprt/identities/nub/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;nubID&quot;:&quot;${__RandomString(6,abcdefghijklm,)}&quot;&#xd;
@@ -1090,7 +1060,7 @@ f.close();</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="script">import org.apache.jmeter.services.FileServer;
 {
-FileWriter fstream = new FileWriter(&quot;C://Identity/hash.csv&quot;,true);
+FileWriter fstream = new FileWriter(&quot;${Path}hash.csv&quot;,true);
 BufferedWriter out = new BufferedWriter(fstream);
  //out.write(System.getProperty(&quot;line.separator&quot;);
  Count = vars.get(&quot;extractedhashid&quot;);
@@ -1117,7 +1087,7 @@ BufferedWriter out = new BufferedWriter(fstream);
                 <stringProp name="parameters"></stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">def file = new File(&apos;C:/Identity/hash.csv&apos;)
+                <stringProp name="script">def file = new File(&apos;${Path}hash.csv&apos;)
 
 log.info(&quot;------Before-----&quot; + file.text);
 
@@ -1142,10 +1112,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/identities/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;${extractedclassificationid_1}|${__StringFromFile(C:/Identity/hash.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;${extractedclassificationid_1}|${__StringFromFile(${Path}hash.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;mutableTraits:S|${ID_1}${B1}&quot;,&#xd;
     &quot;immutableTraits&quot;:&quot;immutableTraits:S|&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;mutableMetaTraits:S|${ID_3}${B3}&quot;,&#xd;
@@ -1394,7 +1364,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="script">import org.apache.jmeter.services.FileServer;
 {
-FileWriter fstream = new FileWriter(&quot;C://Identity/ehash1.csv&quot;,true);
+FileWriter fstream = new FileWriter(&quot;${Path}ehash1.csv&quot;,true);
 BufferedWriter out = new BufferedWriter(fstream);
  //out.write(System.getProperty(&quot;line.separator&quot;);
  Count = vars.get(&quot;ehashid&quot;);
@@ -1421,7 +1391,7 @@ BufferedWriter out = new BufferedWriter(fstream);
                 <stringProp name="parameters"></stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">def file = new File(&apos;C:/Identity/ehash1.csv&apos;)
+                <stringProp name="script">def file = new File(&apos;${Path}ehash1.csv&apos;)
 
 log.info(&quot;------Before-----&quot; + file.text);
 
@@ -1446,12 +1416,12 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/identities/issue/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;to&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
-    &quot;fromID&quot;: &quot;${idclassificationid_1}|${__StringFromFile(C:/Identity/hash.csv,,,)}&quot;,&#xd;
-    &quot;classificationID&quot;: &quot;${echainid_1}.${__StringFromFile(C:/Identity/ehash1.csv,,,)}&quot;,&#xd;
+    &quot;to&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;${idclassificationid_1}|${__StringFromFile(${Path}hash.csv,,,)}&quot;,&#xd;
+    &quot;classificationID&quot;: &quot;${echainid_1}.${__StringFromFile(${Path}ehash1.csv,,,)}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;mutableTraits:S|${ID_1}${B1}&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;immutableTraits:S|${ID_2}${B2}&quot;,&#xd;
     &quot;mutableMetaProperties&quot;: &quot;mutableMetaTraits:S|${ID_3}${B3}&quot;,&#xd;
@@ -1614,7 +1584,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="script">import org.apache.jmeter.services.FileServer;
 {
-FileWriter fstream = new FileWriter(&quot;C://Identity/Assetidhashid1.csv&quot;,true);
+FileWriter fstream = new FileWriter(&quot;${Path}Assetidhashid1.csv&quot;,true);
 BufferedWriter out = new BufferedWriter(fstream);
  //out.write(System.getProperty(&quot;line.separator&quot;);
  Count = vars.get(&quot;split&quot;);
@@ -1641,7 +1611,7 @@ BufferedWriter out = new BufferedWriter(fstream);
                 <stringProp name="parameters"></stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">def file = new File(&apos;C:/Identity/Assetidhashid1.csv&apos;)
+                <stringProp name="script">def file = new File(&apos;${Path}Assetidhashid1.csv&apos;)
 
 log.info(&quot;------Before-----&quot; + file.text);
 
@@ -1667,7 +1637,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="script">import org.apache.jmeter.services.FileServer;
 {
-FileWriter fstream = new FileWriter(&quot;C://Identity/Assetidhashid.csv&quot;,true);
+FileWriter fstream = new FileWriter(&quot;${Path}Assetidhashid.csv&quot;,true);
 BufferedWriter out = new BufferedWriter(fstream);
  //out.write(System.getProperty(&quot;line.separator&quot;);
  Count = vars.get(&quot;idhashid&quot;);
@@ -1694,7 +1664,7 @@ BufferedWriter out = new BufferedWriter(fstream);
                 <stringProp name="parameters"></stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">def file = new File(&apos;C:/Identity/Assetidhashid.csv&apos;)
+                <stringProp name="script">def file = new File(&apos;${Path}Assetidhashid.csv&apos;)
 
 log.info(&quot;------Before-----&quot; + file.text);
 
@@ -1746,11 +1716,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/identities/provision/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;to&quot;: &quot;${testaddress}&quot;,&#xd;
-    &quot;identityID&quot;: &quot;${idclassificationid_1}|${__StringFromFile(C:/Identity/hash.csv,,,)}&quot;&#xd;
+    &quot;identityID&quot;: &quot;${idclassificationid_1}|${__StringFromFile(${Path}hash.csv,,,)}&quot;&#xd;
   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -1942,11 +1912,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/identities/unprovision/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;to&quot;: &quot;${testaddress}&quot;,&#xd;
-    &quot;identityID&quot;: &quot;${idclassificationid_1}|${__StringFromFile(C:/Identity/hash.csv,,,)}&quot;&#xd;
+    &quot;identityID&quot;: &quot;${idclassificationid_1}|${__StringFromFile(${Path}hash.csv,,,)}&quot;&#xd;
   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2142,11 +2112,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/identities/provision/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;to&quot;: &quot;${testaddress}&quot;,&#xd;
-    &quot;identityID&quot;: &quot;${idclassificationid_1}|${__StringFromFile(C:/Identity/hash.csv,,,)}&quot;&#xd;
+    &quot;identityID&quot;: &quot;${idclassificationid_1}|${__StringFromFile(${Path}hash.csv,,,)}&quot;&#xd;
   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2342,10 +2312,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/identities/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;${extractedclassificationid_1}|${__StringFromFile(C:/Identity/hash.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;${extractedclassificationid_1}|${__StringFromFile(${Path}hash.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;IDmutableTraits:S|${ID_1}${B1}&quot;,&#xd;
     &quot;immutableTraits&quot;:&quot;IDimmutableTraits:S|&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;IDmutableMetaTraits:S|${ID_3}${B3}&quot;,&#xd;
@@ -2594,7 +2564,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="script">import org.apache.jmeter.services.FileServer;
 {
-FileWriter fstream = new FileWriter(&quot;C://Identity/ehash2.csv&quot;,true);
+FileWriter fstream = new FileWriter(&quot;${Path}ehash2.csv&quot;,true);
 BufferedWriter out = new BufferedWriter(fstream);
  //out.write(System.getProperty(&quot;line.separator&quot;);
  Count = vars.get(&quot;ehashid&quot;);
@@ -2621,7 +2591,7 @@ BufferedWriter out = new BufferedWriter(fstream);
                 <stringProp name="parameters"></stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">def file = new File(&apos;C:/Identity/ehash2.csv&apos;)
+                <stringProp name="script">def file = new File(&apos;${Path}ehash2.csv&apos;)
 
 log.info(&quot;------Before-----&quot; + file.text);
 
@@ -2646,12 +2616,12 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/identities/issue/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;to&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
-    &quot;fromID&quot;: &quot;${idclassificationid_1}|${__StringFromFile(C:/Identity/hash.csv,,,)}&quot;,&#xd;
-    &quot;classificationID&quot;: &quot;${echainid_1}.${__StringFromFile(C:/Identity/ehash2.csv,,,)}&quot;,&#xd;
+    &quot;to&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;${idclassificationid_1}|${__StringFromFile(${Path}hash.csv,,,)}&quot;,&#xd;
+    &quot;classificationID&quot;: &quot;${echainid_1}.${__StringFromFile(${Path}ehash2.csv,,,)}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;IDmutableTraits:S|${ID_1}${B1}&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;IDimmutableTraits:S|${ID_2}${B2}&quot;,&#xd;
     &quot;mutableMetaProperties&quot;: &quot;IDmutableMetaTraits:S|${ID_3}${B3}&quot;,&#xd;
@@ -2854,10 +2824,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/identities/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;${extractedclassificationid_1}|${__StringFromFile(C:/Identity/hash.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;${extractedclassificationid_1}|${__StringFromFile(${Path}hash.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;IDmutableTraits_1:S|${ID_1}${B1}&quot;,&#xd;
     &quot;immutableTraits&quot;:&quot;IDimmutableTraits_1:S|&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;IDmutableMetaTraits_1:S|${ID_3}${B3}&quot;,&#xd;
@@ -3109,7 +3079,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="script">import org.apache.jmeter.services.FileServer;
 {
-FileWriter fstream = new FileWriter(&quot;C://Identity/ehash3.csv&quot;,true);
+FileWriter fstream = new FileWriter(&quot;${Path}ehash3.csv&quot;,true);
 BufferedWriter out = new BufferedWriter(fstream);
  //out.write(System.getProperty(&quot;line.separator&quot;);
  Count = vars.get(&quot;ehashid&quot;);
@@ -3136,7 +3106,7 @@ BufferedWriter out = new BufferedWriter(fstream);
                 <stringProp name="parameters"></stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">def file = new File(&apos;C:/Identity/ehash3.csv&apos;)
+                <stringProp name="script">def file = new File(&apos;${Path}ehash3.csv&apos;)
 
 log.info(&quot;------Before-----&quot; + file.text);
 
@@ -3161,12 +3131,12 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/identities/issue/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;to&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
-    &quot;fromID&quot;: &quot;${idclassificationid_1}|${__StringFromFile(C:/Identity/hash.csv,,,)}&quot;,&#xd;
-    &quot;classificationID&quot;: &quot;${echainid_1}.${__StringFromFile(C:/Identity/ehash3.csv,,,)}&quot;,&#xd;
+    &quot;to&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;${idclassificationid_1}|${__StringFromFile(${Path}hash.csv,,,)}&quot;,&#xd;
+    &quot;classificationID&quot;: &quot;${echainid_1}.${__StringFromFile(${Path}ehash3.csv,,,)}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;IDmutableTraits_1:S|${ID_1}${B1}&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;IDimmutableTraits_1:S|${ID_2}${B2}&quot;,&#xd;
     &quot;mutableMetaProperties&quot;: &quot;IDmutableMetaTraits_1:S|${ID_3}${B3}&quot;,&#xd;
@@ -3347,46 +3317,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
               <elementProp name="makerownablesplit" elementType="Argument">
                 <stringProp name="Argument.name">makerownablesplit</stringProp>
                 <stringProp name="Argument.value">1</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ORDER_CLASSIFICATION_IMMUTABLE_META_1" elementType="Argument">
-                <stringProp name="Argument.name">ORDER_CLASSIFICATION_IMMUTABLE_META_1</stringProp>
-                <stringProp name="Argument.value">order_classification_immutable_meta_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ORDER_CLASSIFICATION_IMMUTABLE_1" elementType="Argument">
-                <stringProp name="Argument.name">ORDER_CLASSIFICATION_IMMUTABLE_1</stringProp>
-                <stringProp name="Argument.value">order_classification_immutable_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ORDER_CLASSIFICATION_MUTABLE_META_1" elementType="Argument">
-                <stringProp name="Argument.name">ORDER_CLASSIFICATION_MUTABLE_META_1</stringProp>
-                <stringProp name="Argument.value">order_classification_mutable_meta_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ORDER_CLASSIFICATION_MUTABLE_1" elementType="Argument">
-                <stringProp name="Argument.name">ORDER_CLASSIFICATION_MUTABLE_1</stringProp>
-                <stringProp name="Argument.value">order_classification_mutable_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ID_CLASSIFICATION_IMMUTABLE_META_1" elementType="Argument">
-                <stringProp name="Argument.name">ID_CLASSIFICATION_IMMUTABLE_META_1</stringProp>
-                <stringProp name="Argument.value">id_classification_immutable_meta_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ID_CLASSIFICATION_IMMUTABLE_1" elementType="Argument">
-                <stringProp name="Argument.name">ID_CLASSIFICATION_IMMUTABLE_1</stringProp>
-                <stringProp name="Argument.value">id_classification_immutable_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ID_CLASSIFICATION_MUTABLE_META_1" elementType="Argument">
-                <stringProp name="Argument.name">ID_CLASSIFICATION_MUTABLE_META_1</stringProp>
-                <stringProp name="Argument.value">id_classification_mutable_meta_1${__RandomString(4,123456789,)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="ID_CLASSIFICATION_MUTABLE_1" elementType="Argument">
-                <stringProp name="Argument.name">ID_CLASSIFICATION_MUTABLE_1</stringProp>
-                <stringProp name="Argument.value">id_classification_mutable_1${__RandomString(4,123456789,)}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="ASSET_P4" elementType="Argument">
@@ -3603,10 +3533,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/assets/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ASSET_P1:S|${ASSET_P1}${B1},burn:H|1&quot;,&#xd;
     &quot;immutableTraits&quot;: &quot;ASSET_P2:S|${ASSET_P2}${B2}&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;ASSET_P3:S|${ASSET_P3}${B3}&quot;,&#xd;
@@ -3795,7 +3725,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="script">import org.apache.jmeter.services.FileServer;
 {
-FileWriter fstream = new FileWriter(&quot;C://Identity/mhash.csv&quot;,true);
+FileWriter fstream = new FileWriter(&quot;${Path}mhash.csv&quot;,true);
 BufferedWriter out = new BufferedWriter(fstream);
  //out.write(System.getProperty(&quot;line.separator&quot;);
  Count = vars.get(&quot;ehashid&quot;);
@@ -3822,7 +3752,7 @@ BufferedWriter out = new BufferedWriter(fstream);
                 <stringProp name="parameters"></stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">def file = new File(&apos;C:/Identity/mhash.csv&apos;)
+                <stringProp name="script">def file = new File(&apos;${Path}mhash.csv&apos;)
 
 log.info(&quot;------Before-----&quot; + file.text);
 
@@ -3847,11 +3777,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mint/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${echainid_1}.${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;ASSET_P1:S|${ASSET_P1}${B1},burn:H|1&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;ASSET_P2:S|${ASSET_P2}${B2}&quot;,&#xd;
@@ -4050,10 +3980,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
               </JSONPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET - query asset" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -4208,10 +4134,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mutate/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;assetID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;ASSET_P1:S|${ASSET_P1}${B1}&quot;,&#xd;
     &quot;mutableMetaProperties&quot;: &quot;ASSET_P3:S|${ASSET_P3}${B3}&quot;&#xd;
@@ -4399,10 +4325,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
               </JSONPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET - query Classification" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -4462,10 +4384,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
               <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
                 <boolProp name="resetInterpreter">false</boolProp>
                 <stringProp name="parameters"></stringProp>
@@ -4524,11 +4442,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mint/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${echainid_1}.${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;ASSET_P1:S|${ASSET_P1}${B1},burn:H|1&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;ASSET_P2:S|${ASSET_P2}${B2}&quot;,&#xd;
@@ -4734,10 +4652,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
               </JSONPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post - Define assets" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -4749,10 +4663,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/assets/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ASSETS_P5:S|${ASSET_P1}${B1},burn:H|1&quot;,&#xd;
     &quot;immutableTraits&quot;: &quot;ASSETS_P6:S|${ASSET_P2}${B2}&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;ASSETS_P7:S|${ASSET_P3}${B3}&quot;,&#xd;
@@ -4871,10 +4785,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET - query Classification" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -4992,11 +4902,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mint/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${echainid_1}.${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;ASSETS_P5:S|${ASSET_P1}${B1}A,burn:H|1&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;ASSETS_P6:S|${ASSET_P2}${B2}&quot;,&#xd;
@@ -5126,10 +5036,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySamplerProperties">true</boolProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
-              <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET - query asset" enabled="true">
@@ -5285,7 +5191,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/metas/reveal/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;metaFact&quot;: &quot;S|${ASSET_P1}${B1}A&quot;&#xd;
@@ -5396,10 +5302,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post - mutate asset non meta properties to meta properties" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -5411,10 +5313,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mutate/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;assetID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;ASSETS_P5:S|${ASSET_P1}${B1}A,burn:H|1&quot;,&#xd;
     &quot;mutableMetaProperties&quot;: &quot;ASSETS_P7:S|${ASSET_P3}${B3}C&quot;&#xd;
@@ -5542,10 +5444,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="mint asset with 22 properties" enabled="true">
@@ -5617,10 +5515,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
               </JSONPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post - Define assets" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -5632,10 +5526,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/assets/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ASSETP1:S|A,ASSETP11:S|B,ASSETP12:S|C,ASSETP13:S|D,ASSETP14:S|E,burn:H|1&quot;,&#xd;
     &quot;immutableTraits&quot;: &quot;ASSETP2:S|G,ASSETP21:S|H,ASSETP22:S|I,ASSETP23:S|J,ASSETP24:S|${ASSET_P2}${B2}&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;ASSETP3:S|L,ASSETP31:S|M,ASSETP32:S|N,ASSETP33:S|O,ASSETP34:S|P&quot;,&#xd;
@@ -5878,11 +5772,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mint/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${echainid_1}.${ehashid_1}&quot;,&#xd;
    &quot;mutableProperties&quot;: &quot;ASSETP1:S|A,ASSETP11:S|B,ASSETP12:S|C,ASSETP13:S|D,ASSETP14:S|E,burn:H|1&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;ASSETP2:S|G,ASSETP21:S|H,ASSETP22:S|I,ASSETP23:S|J,ASSETP24:S|${ASSET_P2}${B2}&quot;,&#xd;
@@ -6095,10 +5989,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/assets/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ASSET_A5:S|, burn:H|1&quot;,&#xd;
     &quot;immutableTraits&quot;: &quot;ASSET_A6:S|${ASSET_P2}${B2}&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;ASSET_A7:S|&quot;,&#xd;
@@ -6218,10 +6112,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET - query Classification" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -6339,11 +6229,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mint/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${echainid_1}.${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;ASSET_A5:S|${ASSET_P1}${B1}, burn:H|1&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;ASSET_A6:S|${ASSET_P2}${B2}&quot;,&#xd;
@@ -6466,10 +6356,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySamplerProperties">true</boolProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
-              <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET - query asset" enabled="true">
@@ -6625,10 +6511,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mutate/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;assetID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;:&quot;ASSET_A5:S|${ASSET_P1}${B1}ABC&quot;,&#xd;
     &quot;mutableMetaProperties&quot;:&quot;ASSET_A7:S|${ASSET_P3}${B3}123&quot;&#xd;
@@ -6744,10 +6630,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="add asset with more than 22 properties" enabled="true">
@@ -6832,10 +6714,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/assets/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;$test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;$test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;P1:S|A,P11:S|B,P12:S|C,P13:S|D,P14:S|E,P16:S|F,burn:H|1&quot;,&#xd;
     &quot;immutableTraits&quot;: &quot;P2:S|G,P21:S|H,P22:S|I,P23:S|J,P24:S|K&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;P3:S|L,P31:S|M,P32:S|N,P33:S|O,P34:S|P&quot;,&#xd;
@@ -6947,10 +6829,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySamplerProperties">true</boolProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
-              <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET - query Classification" enabled="true">
@@ -7069,11 +6947,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mint/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${echainid_1}.${ehashid_1}&quot;,&#xd;
    &quot;mutableProperties&quot;: &quot;P1:S|A,P11:S|B,P12:S|C,P13:S|D,P14:S|E,P14:S|F,burn:H|1&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;P2:S|G,P21:S|H,P22:S|I,P23:S|J,P24:S|K&quot;,&#xd;
@@ -7179,10 +7057,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySamplerProperties">true</boolProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
-              <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
               <hashTree/>
             </hashTree>
           </hashTree>
@@ -7364,10 +7238,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mutate/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;assetID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;ASSET_A5:S|A,ASSET_A5:S|B,ASSET_A5:S|C,ASSET_A5:S|D,ASSET_A5:S|E,ASSET_A5:S|F,ASSET_A5:S|G,ASSET_A5:S|H,ASSET_A5:S|I,ASSET_A5:S|J,ASSET_A5:S|K,ASSET_A5:S|L,ASSET_A5:S|M,ASSET_A5:S|N&quot;,&#xd;
     &quot;mutableMetaProperties&quot;: &quot;ASSET_A7:S|O,ASSET_A7:S|P,ASSET_A7:S|Q,ASSET_A7:S|R,ASSET_A7:S|S,ASSET_A7:S|T,ASSET_A7:S|U,ASSET_A7:S|V,ASSET_A7:S|W&quot;&#xd;
@@ -7466,10 +7340,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="burn asset" enabled="true">
@@ -7541,10 +7411,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
               </JSONPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET - query asset" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -7586,10 +7452,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
-              <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay}</stringProp>
-              </ConstantTimer>
               <hashTree/>
               <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
                 <boolProp name="resetInterpreter">false</boolProp>
@@ -7649,7 +7511,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/metas/reveal/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;metaFact&quot;: &quot;H|${meta}&quot;&#xd;
@@ -7771,10 +7633,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post - burn asset" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -7786,10 +7644,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/burn/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;assetID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -7893,10 +7751,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="make the receiver a maintainer and mutate the asset" enabled="true">
@@ -7979,10 +7833,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/assets/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;A_P5:S|${ASSET_P1}${B1},burn:H|1&quot;,&#xd;
     &quot;immutableTraits&quot;: &quot;A_P6:S|&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;A_P7:S|${ASSET_P3}${B2}&quot;,&#xd;
@@ -8102,10 +7956,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET - query Classification" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -8223,11 +8073,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mint/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${echainid_1}.${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;A_P5:S|${ASSET_P1}${B1}A,burn:H|1&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;A_P6:S|${ASSET_P2}${B2}B&quot;,&#xd;
@@ -8351,10 +8201,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySamplerProperties">true</boolProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
-              <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
               <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET - query asset" enabled="true">
@@ -8669,11 +8515,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/splits/send/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash2.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid1.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash2.csv,,,)}|${__StringFromFile(${Path}Assetidhashid1.csv,,,)}&quot;,&#xd;
     &quot;ownableID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;split&quot;: &quot;${makerownablesplit1}&quot;&#xd;
   }&#xd;
@@ -8794,10 +8640,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post - mutate asset " enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -8809,10 +8651,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mutate/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;assetID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;A_P5:S|${ASSET_P1}${B1}A,burn:H|1&quot;,&#xd;
     &quot;mutableMetaProperties&quot;: &quot;A_P7:S|${ASSET_P3}${B3}C&quot;&#xd;
@@ -8934,10 +8776,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post - Maintainer deputize" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -8949,11 +8787,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/maintainers/deputize/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash2.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid1.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash2.csv,,,)}|${__StringFromFile(${Path}Assetidhashid1.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${eclassificationID_1}&quot;,&#xd;
     &quot;maintainedTraits&quot;: &quot;A_P5:S|${ASSET_P1}${B1}A,burn:H|1,A_P7:S|&quot;,&#xd;
     &quot;addMaintainer&quot;:true,&#xd;
@@ -9084,10 +8922,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post - mutate asset " enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -9099,10 +8933,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mutate/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash2.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid1.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash2.csv,,,)}|${__StringFromFile(${Path}Assetidhashid1.csv,,,)}&quot;,&#xd;
     &quot;assetID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;A_P5:S|${ASSET_P1}${B1}A,burn:H|1&quot;,&#xd;
     &quot;mutableMetaProperties&quot;: &quot;A_P7:S|${ASSET_P3}${B3}C&quot;&#xd;
@@ -9224,10 +9058,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="mint asset with burn greater than forseeable block height" enabled="true">
@@ -9312,10 +9142,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/assets/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;AssetA:S|${ASSET_P1}${B1},burn:H|&quot;,&#xd;
     &quot;immutableTraits&quot;: &quot;AssetB:S|&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;AssetC:S|${ASSET_P3}${B3}&quot;,&#xd;
@@ -9435,10 +9265,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET - query Classification" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -9509,11 +9335,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mint/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${echainid_1}.${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;AssetA:S|${ASSET_P1}${B1},burn:H|${counter1}&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;AssetB:S|${ASSET_P2}${B2}&quot;,&#xd;
@@ -9683,7 +9509,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/metas/reveal/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;metaFact&quot;: &quot;H|${counter1}&quot;&#xd;
@@ -9809,10 +9635,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/burn/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;assetID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -9926,10 +9752,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post - mutate asset " enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -9941,10 +9763,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mutate/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;assetID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;AssetA:S|${ASSET_P1}${B1}A,burn:H|100&quot;,&#xd;
     &quot;mutableMetaProperties&quot;: &quot;AssetC:S|${ASSET_P3}${B3}C&quot;&#xd;
@@ -10066,10 +9888,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post - meta reveal" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -10081,7 +9899,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/metas/reveal/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;metaFact&quot;: &quot;H|100&quot;&#xd;
@@ -10197,10 +10015,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Post - burn asset" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
@@ -10212,10 +10026,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/burn/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;assetID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -10403,10 +10217,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/assets/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ASSETA1:S|,burn:H|1&quot;,&#xd;
     &quot;immutableTraits&quot;: &quot;ASSETA2:S|G&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;ASSETA3:S|L&quot;,&#xd;
@@ -10526,10 +10340,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
-              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET - query Classification" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -10600,11 +10410,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mint/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${echainid_1}.${ehashid_1}&quot;,&#xd;
    &quot;mutableProperties&quot;: &quot;ASSETA1:S|A,burn:H|1,ASSETA1:S|B,ASSETA1:S|C&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;ASSETA2:S|G&quot;,&#xd;
@@ -10734,10 +10544,6 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <boolProp name="displaySamplerProperties">true</boolProp>
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugPostProcessor>
-              <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-                <stringProp name="ConstantTimer.delay">${delay1}</stringProp>
-              </ConstantTimer>
               <hashTree/>
             </hashTree>
           </hashTree>
@@ -11269,11 +11075,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/splits/send/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash2.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid1.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash2.csv,,,)}|${__StringFromFile(${Path}Assetidhashid1.csv,,,)}&quot;,&#xd;
     &quot;ownableID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;split&quot;: &quot;${splitval}&quot;&#xd;
   }&#xd;
@@ -11480,10 +11286,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/splits/wrap/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;coins&quot;:&quot;100stake&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -11685,10 +11491,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/splits/unwrap/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;ownableID&quot;:&quot;${denom}&quot;,&#xd;
     &quot;split&quot;: &quot;0.000000000000000001&quot;&#xd;
   }&#xd;
@@ -11956,11 +11762,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/splits/send/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash2.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid1.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash2.csv,,,)}|${__StringFromFile(${Path}Assetidhashid1.csv,,,)}&quot;,&#xd;
     &quot;ownableID&quot;:&quot;${denom}&quot;,&#xd;
     &quot;split&quot;: &quot;${splitval}&quot;&#xd;
   }&#xd;
@@ -12214,10 +12020,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/assets/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ASSET_PA:S|${ASSET_P1}${B1}, burn:H|1&quot;,&#xd;
     &quot;immutableTraits&quot;: &quot;ASSET_PB:D|0.344&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;ASSET_PC:I|ID&quot;,&#xd;
@@ -12410,11 +12216,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mint/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${echainid_1}.${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;ASSET_PA:S|${ASSET_P1}${B1}A, burn:H|1&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;ASSET_PB:D|0.344&quot;,&#xd;
@@ -12610,7 +12416,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/metas/reveal/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;metaFact&quot;: &quot;S|${ASSET_P1}${B1}AA&quot;&#xd;
@@ -12781,7 +12587,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/metas/reveal/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;metaFact&quot;: &quot;I|134${meta}&quot;&#xd;
@@ -12956,7 +12762,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/metas/reveal/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;metaFact&quot;: &quot;S|${ASSET_P1}${B1}&quot;&#xd;
@@ -13131,7 +12937,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/metas/reveal/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;metaFact&quot;: &quot;D|0.34${points}&quot;&#xd;
@@ -13299,7 +13105,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/metas/reveal/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;metaFact&quot;: &quot;H|${Height}&quot;&#xd;
@@ -13470,7 +13276,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/metas/reveal/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
     &quot;metaFact&quot;: &quot;S|${ASSET_P1}${B1}&quot;&#xd;
@@ -13792,10 +13598,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/orders/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ORDER_MUTABLE2:S|${ORDER_CLASSIFICATION_MUTABLE_1}${B4}&quot;,&#xd;
     &quot;immutableTraits&quot;:&quot;ORDER_IMMUTABLE2:S|${ORDER_CLASSIFICATION_IMMUTABLE_1}${B2}&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;ORDER_MUTABLE_META2:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerOwnableSplit:D|${makerownablesplit},expiry:H|${expiry},makerSplit:D|${makerownablesplit},takerID:S|ID&quot;,&#xd;
@@ -13931,10 +13737,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/assets/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ASSET_P1:S|${ASSET_P1}${B1},burn:H|1&quot;,&#xd;
     &quot;immutableTraits&quot;: &quot;ASSET_P2:S|${ASSET_P2}${B2}&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;ASSET_P3:S|${ASSET_P3}${B3}&quot;,&#xd;
@@ -14171,11 +13977,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mint/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${echainid_1}.${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;ASSET_P1:S|${ASSET_P1}${B1},burn:H|1&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;ASSET_P2:S|${ASSET_P2}${B2}&quot;,&#xd;
@@ -14524,10 +14330,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/make/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${cchainid_1}.${chashid_1}&quot;,&#xd;
     &quot;makerOwnableID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;takerOwnableID&quot;: &quot;${takerownableid}&quot;,&#xd;
@@ -15040,10 +14846,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/take/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;takerOwnableSplit&quot;:&quot;0.00000000000000001&quot;,	&#xd;
     &quot;orderID&quot;:&quot;${aclassificationID_1}*${amakerownableid_1}*${atakerownableid_1}*${amakerid_1}*${ahashid_1}&quot;&#xd;
   }&#xd;
@@ -15257,10 +15063,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/orders/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ORDER_MUTABLE3:S|${ORDER_CLASSIFICATION_MUTABLE_1}${B4}&quot;,&#xd;
     &quot;immutableTraits&quot;:&quot;ORDER_IMMUTABLE3:S|${ORDER_CLASSIFICATION_IMMUTABLE_1}${B2}&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;ORDER_MUTABLE_META3:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerOwnableSplit:D|${makerownablesplit},expiry:H|${expiry},makerSplit:D|${makerownablesplit},takerID:S|ID&quot;,&#xd;
@@ -15396,10 +15202,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/assets/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ASSET_P1:S|${ASSET_P1}${B1},burn:H|1&quot;,&#xd;
     &quot;immutableTraits&quot;: &quot;ASSET_P2:S|${ASSET_P2}${B2}&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;ASSET_P3:S|${ASSET_P3}${B3}&quot;,&#xd;
@@ -15636,11 +15442,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mint/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${echainid_1}.${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;ASSET_P1:S|${ASSET_P1}${B1},burn:H|1&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;ASSET_P2:S|${ASSET_P2}${B2}&quot;,&#xd;
@@ -15930,10 +15736,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/make/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${cchainid_1}.${chashid_1}&quot;,&#xd;
     &quot;makerOwnableID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;takerOwnableID&quot;: &quot;${takerownableid}&quot;,&#xd;
@@ -16145,10 +15951,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/cancel/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;orderID&quot;:&quot;${aclassificationID_1}*${amakerownableid_1}*${atakerownableid_1}*${amakerid_1}*${ahashid_1}&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -16359,10 +16165,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/orders/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ORDER_COINS_MUTABLE1:S|${ORDER_CLASSIFICATION_MUTABLE_1}${B4}&quot;,&#xd;
     &quot;immutableTraits&quot;:&quot;ORDER_COINS_IMMUTABLE1:S|${ORDER_CLASSIFICATION_IMMUTABLE_1}${B2}&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;ORDER_COINS_MUTABLE_META1:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerOwnableSplit:D|${makerownablesplit},expiry:H|${expiry},makerSplit:D|${makerownablesplit},takerID:S|ID&quot;,&#xd;
@@ -16604,10 +16410,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/splits/wrap/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;coins&quot;:&quot;200stake&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -16737,10 +16543,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/make/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${cchainid_1}.${chashid_1}&quot;,&#xd;
     &quot;makerOwnableID&quot;:&quot;${makerownableid}&quot;,&#xd;
     &quot;takerOwnableID&quot;: &quot;${takerownableid}&quot;,&#xd;
@@ -17017,10 +16823,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/take/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;takerOwnableSplit&quot;:&quot;0.00000000000000001&quot;,&#xd;
     &quot;orderID&quot;:&quot;${aclassificationID_1}*${amakerownableid_1}*${atakerownableid_1}*${amakerid_1}*${ahashid_1}&quot;&#xd;
   }&#xd;
@@ -17232,10 +17038,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/orders/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ORDER_COINS_MUTABLE2:S|${ORDER_CLASSIFICATION_MUTABLE_1}${B4}&quot;,&#xd;
     &quot;immutableTraits&quot;:&quot;ORDER_COINS_IMMUTABLE2:S|${ORDER_CLASSIFICATION_IMMUTABLE_1}${B2}&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;ORDER_COINS_MUTABLE_META2:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerOwnableSplit:D|${makerownablesplit},expiry:H|${expiry},makerSplit:D|${makerownablesplit},takerID:S|ID&quot;,&#xd;
@@ -17472,10 +17278,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/make/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${cchainid_1}.${chashid_1}&quot;,&#xd;
     &quot;makerOwnableID&quot;:&quot;${makerownableid}&quot;,&#xd;
     &quot;takerOwnableID&quot;:&quot;${takerownableid}&quot;,&#xd;
@@ -17674,10 +17480,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/cancel/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;orderID&quot;:&quot;${aclassificationID_1}*${amakerownableid_1}*${atakerownableid_1}*${amakerid_1}*${ahashid_1}&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -17955,13 +17761,13 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/orders/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ORDERS_MUTABLE_1:S|${ORDER_CLASSIFICATION_MUTABLE_1}${B4}&quot;,&#xd;
     &quot;immutableTraits&quot;:&quot;ORDERS_IMMUTABLE_1:S|${ORDER_CLASSIFICATION_IMMUTABLE_1}${B2}&quot;,&#xd;
-    &quot;mutableMetaTraits&quot;: &quot;ORDERS_MUTABLE_META_1:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerOwnableSplit:D|${makerownablesplit},expiry:H|${expiry},makerSplit:D|${makerownablesplit},takerID:S|test.${__StringFromFile(C:/Identity/ehash2.csv,,,)}*${__StringFromFile(C:/Identity/mhash.csv,,,)}&quot;,&#xd;
+    &quot;mutableMetaTraits&quot;: &quot;ORDERS_MUTABLE_META_1:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerOwnableSplit:D|${makerownablesplit},expiry:H|${expiry},makerSplit:D|${makerownablesplit},takerID:S|test.${__StringFromFile(${Path}ehash2.csv,,,)}*${__StringFromFile(${Path}mhash.csv,,,)}&quot;,&#xd;
     &quot;immutableMetaTraits&quot;: &quot;ORDERS_IMMUTABLE_META_1${B5}:S|${ORDER_CLASSIFICATION_IMMUTABLE_META_1}${B1}&quot;&#xd;
   }&#xd;
 }&#xd;
@@ -18195,10 +18001,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/make/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${cchainid_1}.${chashid_1}&quot;,&#xd;
     &quot;makerOwnableID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;takerOwnableID&quot;: &quot;${takerownableid}&quot;,&#xd;
@@ -18206,7 +18012,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
     &quot;makerOwnableSplit&quot;:&quot;${makerownablesplit}&quot;,&#xd;
     &quot;mutableProperties&quot;:&quot;ORDERS_MUTABLE_1:S|${ORDER_CLASSIFICATION_MUTABLE_1}${B4}&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;ORDERS_IMMUTABLE_1:S|${ORDER_CLASSIFICATION_IMMUTABLE_1}${B2}&quot;,&#xd;
-    &quot;mutableMetaProperties&quot;:&quot;ORDERS_MUTABLE_META_1:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerSplit:D|${makerownablesplit},takerID:S|test.${__StringFromFile(C:/Identity/ehash2.csv,,,)}*${__StringFromFile(C:/Identity/mhash.csv,,,)}&quot;,&#xd;
+    &quot;mutableMetaProperties&quot;:&quot;ORDERS_MUTABLE_META_1:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerSplit:D|${makerownablesplit},takerID:S|test.${__StringFromFile(${Path}ehash2.csv,,,)}*${__StringFromFile(${Path}mhash.csv,,,)}&quot;,&#xd;
     &quot;immutableMetaProperties&quot;: &quot;ORDERS_IMMUTABLE_META_1${B5}:S|${ORDER_CLASSIFICATION_IMMUTABLE_META_1}${B1}&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -18411,10 +18217,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/cancel/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;orderID&quot;:&quot;${aclassificationID_1}*${amakerownableid_1}*${atakerownableid_1}*${amakerid_1}*${ahashid_1}&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -18860,10 +18666,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/make/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${cchainid_1}.${chashid_1}&quot;,&#xd;
     &quot;makerOwnableID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;takerOwnableID&quot;: &quot;${takerownableid}&quot;,&#xd;
@@ -18871,7 +18677,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
     &quot;makerOwnableSplit&quot;:&quot;${makerownablesplit}&quot;,&#xd;
     &quot;mutableProperties&quot;:&quot;ORDERS_MUTABLE_1:S|${ORDER_CLASSIFICATION_MUTABLE_1}${B4}&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;ORDERS_IMMUTABLE_1:S|${ORDER_CLASSIFICATION_IMMUTABLE_1}${B2}&quot;,&#xd;
-    &quot;mutableMetaProperties&quot;:&quot;ORDERS_MUTABLE_META_1:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerSplit:D|${makerownablesplit},takerID:S|test.${__StringFromFile(C:/Identity/ehash3.csv,,,)}*${__StringFromFile(C:/Identity/mhash.csv,,,)}&quot;,&#xd;
+    &quot;mutableMetaProperties&quot;:&quot;ORDERS_MUTABLE_META_1:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerSplit:D|${makerownablesplit},takerID:S|test.${__StringFromFile(${Path}ehash3.csv,,,)}*${__StringFromFile(${Path}mhash.csv,,,)}&quot;,&#xd;
     &quot;immutableMetaProperties&quot;: &quot;ORDERS_IMMUTABLE_META_1${B5}:S|${ORDER_CLASSIFICATION_IMMUTABLE_META_1}${B1}&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -19220,10 +19026,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/orders/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;ORDER_MUTABLE2:S|${ORDER_CLASSIFICATION_MUTABLE_1}${B4}&quot;,&#xd;
     &quot;immutableTraits&quot;:&quot;ORDER_IMMUTABLE2:S|${ORDER_CLASSIFICATION_IMMUTABLE_1}${B2}&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;ORDER_MUTABLE_META2:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerOwnableSplit:D|${makerownablesplit},expiry:H|${expiry},makerSplit:D|${makerownablesplit},takerID:S|&quot;,&#xd;
@@ -19455,7 +19261,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="script">import org.apache.jmeter.services.FileServer;
 {
-FileWriter fstream = new FileWriter(&quot;C://Identity/main1.csv&quot;,true);
+FileWriter fstream = new FileWriter(&quot;${Path}main1.csv&quot;,true);
 BufferedWriter out = new BufferedWriter(fstream);
  //out.write(System.getProperty(&quot;line.separator&quot;);
  Count = vars.get(&quot;chashid&quot;);
@@ -19482,7 +19288,7 @@ BufferedWriter out = new BufferedWriter(fstream);
                 <stringProp name="parameters"></stringProp>
                 <stringProp name="filename"></stringProp>
                 <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">def file = new File(&apos;C:/Identity/main1.csv&apos;)
+                <stringProp name="script">def file = new File(&apos;${Path}main1.csv&apos;)
 
 log.info(&quot;------Before-----&quot; + file.text);
 
@@ -19507,10 +19313,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/make/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${cchainid_1}.${chashid_1}&quot;,&#xd;
     &quot;makerOwnableID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;takerOwnableID&quot;: &quot;${takerownableid}&quot;,&#xd;
@@ -19518,7 +19324,7 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
     &quot;makerOwnableSplit&quot;:&quot;${makerownablesplit}&quot;,&#xd;
     &quot;mutableProperties&quot;:&quot;ORDER_MUTABLE2:S|${ORDER_CLASSIFICATION_MUTABLE_1}${B4}&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;ORDER_IMMUTABLE2:S|${ORDER_CLASSIFICATION_IMMUTABLE_1}${B2}&quot;,&#xd;
-    &quot;mutableMetaProperties&quot;:&quot;ORDER_MUTABLE_META2:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerSplit:D|${makerownablesplit},takerID:S|test.${__StringFromFile(C:/Identity/ehash3.csv,,,)}*${__StringFromFile(C:/Identity/mhash.csv,,,)}&quot;,&#xd;
+    &quot;mutableMetaProperties&quot;:&quot;ORDER_MUTABLE_META2:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerSplit:D|${makerownablesplit},takerID:S|test.${__StringFromFile(${Path}ehash3.csv,,,)}*${__StringFromFile(${Path}mhash.csv,,,)}&quot;,&#xd;
     &quot;immutableMetaProperties&quot;: &quot;ORDER_IMMUTABLE_META2${B6}:S|${ORDER_CLASSIFICATION_IMMUTABLE_META_1}${B1}&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -19857,10 +19663,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/assets/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;A_A5:S|${ASSET_P1}${B1},burn:H|1&quot;,&#xd;
     &quot;immutableTraits&quot;: &quot;A_A6:S|&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;A_A7:S|${ASSET_P3}${B3}&quot;,&#xd;
@@ -20050,11 +19856,11 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/assets/mint/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${echainid_1}.${ehashid_1}&quot;,&#xd;
     &quot;mutableProperties&quot;: &quot;A_A5:S|${ASSET_P1}${B1}A,burn:H|1&quot;,&#xd;
     &quot;immutableProperties&quot;: &quot;A_A6:S|${ASSET_P2}${B2}B&quot;,&#xd;
@@ -20239,10 +20045,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
 &quot;type&quot;: &quot;/xprt/orders/define/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;: &quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;: &quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;mutableTraits&quot;:&quot;MUTABLE3:S|${ORDER_CLASSIFICATION_MUTABLE_1}${B4}&quot;,&#xd;
     &quot;immutableTraits&quot;:&quot;IMMUTABLE3:S|${ORDER_CLASSIFICATION_IMMUTABLE_1}${B2}&quot;,&#xd;
     &quot;mutableMetaTraits&quot;: &quot;MUTABLE_META3:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3},exchangeRate:D|${exchangeRate},makerOwnableSplit:D|${makerownablesplit},expiry:H|${expiry},makerSplit:D|${makerownablesplit},takerSplit:D|,takerID:I|&quot;,&#xd;
@@ -20430,10 +20236,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/make/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;classificationID&quot;:&quot;${cchainid_1}.${chashid_1}&quot;,&#xd;
     &quot;makerOwnableID&quot;:&quot;${eclassificationID_1}|${ehashid_1}&quot;,&#xd;
     &quot;takerOwnableID&quot;: &quot;stake&quot;,&#xd;
@@ -20579,10 +20385,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/splits/wrap/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;coins&quot;:&quot;200stake&quot;&#xd;
   }&#xd;
 }</stringProp>
@@ -20780,10 +20586,10 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/orders/take/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
     &quot;takerOwnableSplit&quot;:&quot;0.0000000000000001&quot;,	&#xd;
     &quot;orderID&quot;:&quot;${aclassificationID_1}*${amakerownableid_1}*${atakerownableid_1}*${amakerid_1}*${ahashid_1}&quot;&#xd;
   }&#xd;
@@ -22019,12 +21825,12 @@ log.info(&quot;------After-----&quot; + file.text);</stringProp>
  &quot;type&quot;: &quot;/xprt/maintainers/deputize/request&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
-      &quot;from&quot;: &quot;${__StringFromFile(C:/Identity/Address.csv,,,)}&quot;,&#xd;
+      &quot;from&quot;: &quot;${__StringFromFile(${Path}Address.csv,,,)}&quot;,&#xd;
       &quot;chain_id&quot;: &quot;${chain_id}&quot;&#xd;
     },&#xd;
-    &quot;fromID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash1.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;toID&quot;:&quot;test.${__StringFromFile(C:/Identity/ehash2.csv,,,)}|${__StringFromFile(C:/Identity/Assetidhashid.csv,,,)}&quot;,&#xd;
-    &quot;classificationID&quot;:&quot;test.${__StringFromFile(C:/Identity/main1.csv,,,)}&quot;,&#xd;
+    &quot;fromID&quot;:&quot;test.${__StringFromFile(${Path}ehash1.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;toID&quot;:&quot;test.${__StringFromFile(${Path}ehash2.csv,,,)}|${__StringFromFile(${Path}Assetidhashid.csv,,,)}&quot;,&#xd;
+    &quot;classificationID&quot;:&quot;test.${__StringFromFile(${Path}main1.csv,,,)}&quot;,&#xd;
     &quot;maintainedTraits&quot;: &quot;ORDER_MUTABLE_META2:S|${ORDER_CLASSIFICATION_MUTABLE_META_1}${B3}&quot;,&#xd;
     &quot;addMaintainer&quot;:true,&#xd;
     &quot;removeMaintainer&quot;:false,&#xd;
