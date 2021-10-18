@@ -34,7 +34,7 @@ Content-Type: application/json
           "to_address": "{{ACCOUNT_1_ADDRESS}}",
           "amount": [
             {
-              "denom": "stake",
+              "denom": "xprt",
               "amount": "1000"
             }
           ]
@@ -47,7 +47,7 @@ Content-Type: application/json
           "to_address": "{{ACCOUNT_2_ADDRESS}}",
           "amount": [
             {
-              "denom": "stake",
+              "denom": "xprt",
               "amount": "1000"
             }
           ]
@@ -60,7 +60,7 @@ Content-Type: application/json
           "to_address": "{{ACCOUNT_3_ADDRESS}}",
           "amount": [
             {
-              "denom": "stake",
+              "denom": "xprt",
               "amount": "1000"
             }
           ]
@@ -73,7 +73,7 @@ Content-Type: application/json
           "to_address": "{{ACCOUNT_4_ADDRESS}}",
           "amount": [
             {
-              "denom": "stake",
+              "denom": "xprt",
               "amount": "1000"
             }
           ]

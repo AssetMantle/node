@@ -4,7 +4,7 @@ assetClient config chain-id test
 #set env variables
 NONCE="$RANDOM"
 SLEEP=6
-PASSWD="123123123"
+PASSWD="asdfghjkl;'"
 KEYRING="--keyring-backend os"
 MODE="-b sync"
 

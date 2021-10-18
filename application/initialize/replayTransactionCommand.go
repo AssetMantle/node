@@ -95,7 +95,7 @@ func replayTransactions(rootDir string) error {
 	)
 
 	// Genesis
-	var genDocPath = filepath.Join(configDir, "genesis.json")
+	var genDocPath = filepath.Join(configDir, "pCore_local_genesis.json")
 	genDoc, err := tm.GenesisDocFromFile(genDocPath)
 	if err != nil {
 		return err
