@@ -5,7 +5,7 @@ const (
 	AddrLen = 20
 
 	// Bech32MainPrefix Bech32PrefixAccAddr defines the Bech32 prefix of an account's address
-	Bech32MainPrefix = "persistence"
+	Bech32MainPrefix = "mantle"
 
 	// CoinType Atom in https://github.com/satoshilabs/slips/blob/master/slip-0044.md
 	CoinType = 750

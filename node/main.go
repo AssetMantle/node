@@ -38,7 +38,6 @@ var invalidCheckPeriod uint
 func main() {
 
 	serverContext := server.NewDefaultContext()
-
 	config := sdkTypes.GetConfig()
 	config.SetBech32PrefixForAccount(Bech32PrefixAccAddr, Bech32PrefixAccPub)
 	config.SetBech32PrefixForValidator(Bech32PrefixValAddr, Bech32PrefixValPub)
