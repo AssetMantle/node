@@ -24,7 +24,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/keys"
 	"github.com/cosmos/cosmos-sdk/client/lcd"
 	"github.com/cosmos/cosmos-sdk/client/rpc"
-	sdkTypes "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/version"
 	"github.com/cosmos/cosmos-sdk/x/auth"
 	authCLI "github.com/cosmos/cosmos-sdk/x/auth/client/cli"
@@ -42,11 +41,7 @@ import (
 func main() {
 	cobra.EnableCommandSorting = false
 
-	config := sdkTypes.GetConfig()
-	config.SetBech32PrefixForAccount(sdkTypes.Bech32PrefixAccAddr, sdkTypes.Bech32PrefixAccPub)
-	config.SetBech32PrefixForValidator(sdkTypes.Bech32PrefixValAddr, sdkTypes.Bech32PrefixValPub)
-	config.SetBech32PrefixForConsensusNode(sdkTypes.Bech32PrefixConsAddr, sdkTypes.Bech32PrefixConsPub)
-	config.Seal()
+	application.SetConfiguration()
 
 	rootCommand := &cobra.Command{
 		Use:   "client",

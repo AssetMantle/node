@@ -1,11 +1,25 @@
+#!/usr/bin/make -f
+
 export GO111MODULE=on
 
-VERSION := $(shell git branch | grep \* | cut -d ' ' -f2)
-COMMIT := $(shell git rev-parse --short HEAD)
+BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
+COMMIT := $(shell git log -1 --format='%H')
+
+# don't override user values
+ifeq (,$(VERSION))
+  VERSION := $(shell git describe --exact-match 2>/dev/null)
+  # if VERSION is empty, then populate it with branch's name and raw commit hash
+  ifeq (,$(VERSION))
+    VERSION := $(BRANCH)-$(COMMIT)
+  endif
+endif
 
 BUILD_TAGS := -s  -w \
-	-X github.com/persistenceOne/assetMantle/version.Version=${VERSION} \
-	-X github.com/persistenceOne/assetMantle/version.Commit=${COMMIT}
+	-X github.com/cosmos/cosmos-sdk/version.Name=assetMantle \
+    -X github.com/cosmos/cosmos-sdk/version.ServerName=assetNode \
+    -X github.com/cosmos/cosmos-sdk/version.ClientName=assetClient \
+    -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
+    -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT)
 
 BUILD_FLAGS += -ldflags "${BUILD_TAGS}"
 
