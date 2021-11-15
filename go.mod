@@ -4,6 +4,7 @@ go 1.16
 
 require (
 	github.com/cosmos/cosmos-sdk v0.39.3
+	github.com/golang/snappy v0.0.4 // indirect
 	github.com/otiai10/copy v1.1.1
 	github.com/persistenceOne/persistenceSDK v0.1.1
 	github.com/spf13/cobra v1.0.0
