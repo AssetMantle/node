@@ -30,7 +30,7 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 
-	application "github.com/AssetMantle/node/application"
+	"github.com/AssetMantle/node/application"
 	"github.com/AssetMantle/node/application/params"
 )
 

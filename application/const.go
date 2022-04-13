@@ -1,4 +1,4 @@
-package gaia
+package application
 
 const (
 	appName     = "GaiaApp"

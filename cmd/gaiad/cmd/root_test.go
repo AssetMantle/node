@@ -3,11 +3,11 @@ package cmd_test
 import (
 	"testing"
 
-	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
+	serverCmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
 	"github.com/stretchr/testify/require"
 
-	application "github.com/AssetMantle/node/application"
+	"github.com/AssetMantle/node/application"
 	"github.com/AssetMantle/node/cmd/gaiad/cmd"
 )
 
@@ -20,5 +20,5 @@ func TestRootCmdConfig(t *testing.T) {
 		"test",            // value
 	})
 
-	require.NoError(t, svrcmd.Execute(rootCmd, application.DefaultNodeHome))
+	require.NoError(t, serverCmd.Execute(rootCmd, application.DefaultNodeHome))
 }

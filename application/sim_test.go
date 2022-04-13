@@ -1,4 +1,4 @@
-package gaia_test
+package application_test
 
 import (
 	"encoding/json"
@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	application "github.com/AssetMantle/node/application"
+	"github.com/AssetMantle/node/application"
 
 	"github.com/stretchr/testify/require"
 	"github.com/tendermint/tendermint/libs/log"
@@ -54,7 +54,7 @@ func BenchmarkFullAppSimulation(b *testing.B) {
 		os.Stdout,
 		app.BaseApp,
 		simapp.AppStateFn(app.AppCodec(), app.SimulationManager()),
-		simulation2.RandomAccounts, // Replace with own random account function if using keys other than secp256k1
+		simulation2.RandomAccounts, // Replace with own random account function if using storeKeys other than secp256k1
 		simapp.SimulationOperations(app, app.AppCodec(), config),
 		app.ModuleAccountAddrs(),
 		config,
@@ -123,7 +123,7 @@ func TestAppStateDeterminism(t *testing.T) {
 				os.Stdout,
 				app.BaseApp,
 				simapp.AppStateFn(app.AppCodec(), app.SimulationManager()),
-				simulation2.RandomAccounts, // Replace with own random account function if using keys other than secp256k1
+				simulation2.RandomAccounts, // Replace with own random account function if using storeKeys other than secp256k1
 				simapp.SimulationOperations(app, app.AppCodec(), config),
 				app.ModuleAccountAddrs(),
 				config,
