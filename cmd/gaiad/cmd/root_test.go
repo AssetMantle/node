@@ -5,9 +5,10 @@ import (
 
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
-	app "github.com/cosmos/gaia/v7/app"
-	"github.com/cosmos/gaia/v7/cmd/gaiad/cmd"
 	"github.com/stretchr/testify/require"
+
+	application "github.com/AssetMantle/node/app"
+	"github.com/AssetMantle/node/cmd/gaiad/cmd"
 )
 
 func TestRootCmdConfig(t *testing.T) {
@@ -19,5 +20,5 @@ func TestRootCmdConfig(t *testing.T) {
 		"test",            // value
 	})
 
-	require.NoError(t, svrcmd.Execute(rootCmd, app.DefaultNodeHome))
+	require.NoError(t, svrcmd.Execute(rootCmd, application.DefaultNodeHome))
 }
