@@ -108,7 +108,7 @@ import (
 	routerkeeper "github.com/strangelove-ventures/packet-forward-middleware/v2/router/keeper"
 	routertypes "github.com/strangelove-ventures/packet-forward-middleware/v2/router/types"
 
-	applicationParameters "github.com/AssetMantle/node/app/params"
+	applicationParameters "github.com/AssetMantle/node/application/params"
 
 	// unnamed import of statik for swagger UI support
 	_ "github.com/cosmos/cosmos-sdk/client/docs/statik"
@@ -199,7 +199,7 @@ type GaiaApp struct { // nolint: golint
 	CrisisKeeper     crisiskeeper.Keeper
 	UpgradeKeeper    upgradekeeper.Keeper
 	ParamsKeeper     paramskeeper.Keeper
-	// IBC Keeper must be a pointer in the app, so we can SetRouter on it correctly
+	// IBC Keeper must be a pointer in the application, so we can SetRouter on it correctly
 	IBCKeeper       *ibckeeper.Keeper
 	ICAHostKeeper   icahostkeeper.Keeper
 	EvidenceKeeper  evidencekeeper.Keeper
@@ -730,7 +730,7 @@ func (app *GaiaApp) LoadHeight(height int64) error {
 	return app.LoadVersion(height)
 }
 
-// ModuleAccountAddrs returns all the app's module account addresses.
+// ModuleAccountAddrs returns all the application's module account addresses.
 func (app *GaiaApp) ModuleAccountAddrs() map[string]bool {
 	modAccAddrs := make(map[string]bool)
 	for acc := range maccPerms {
@@ -748,7 +748,7 @@ func (app *GaiaApp) LegacyAmino() *codec.LegacyAmino {
 	return app.legacyAmino
 }
 
-// AppCodec returns Gaia's app codec.
+// AppCodec returns Gaia's application codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.

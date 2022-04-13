@@ -6,14 +6,14 @@ import (
 	"os"
 	"testing"
 
-	application "github.com/AssetMantle/node/app"
+	application "github.com/AssetMantle/node/application"
 
 	"github.com/stretchr/testify/require"
 	"github.com/tendermint/tendermint/libs/log"
 	"github.com/tendermint/tendermint/libs/rand"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/AssetMantle/node/app/helpers"
+	"github.com/AssetMantle/node/application/helpers"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/simapp"
@@ -35,7 +35,11 @@ func BenchmarkFullAppSimulation(b *testing.B) {
 	}
 
 	defer func() {
-		db.Close()
+		err = db.Close()
+		if err != nil {
+			b.Fatal(err)
+		}
+
 		err = os.RemoveAll(dir)
 		if err != nil {
 			b.Fatal(err)

@@ -1,7 +1,7 @@
 package gaia
 
 import (
-	"github.com/AssetMantle/node/app/params"
+	"github.com/AssetMantle/node/application/params"
 
 	"github.com/cosmos/cosmos-sdk/std"
 )

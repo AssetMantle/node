@@ -30,8 +30,8 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 
-	application "github.com/AssetMantle/node/app"
-	"github.com/AssetMantle/node/app/params"
+	application "github.com/AssetMantle/node/application"
+	"github.com/AssetMantle/node/application/params"
 )
 
 // NewRootCmd creates a new root command for simd. It is called once in the

@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	application "github.com/AssetMantle/node/app"
+	application "github.com/AssetMantle/node/application"
 	"github.com/AssetMantle/node/cmd/gaiad/cmd"
 )
 

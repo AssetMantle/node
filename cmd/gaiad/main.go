@@ -6,7 +6,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/server"
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
-	app "github.com/AssetMantle/node/app"
+	app "github.com/AssetMantle/node/application"
 	"github.com/AssetMantle/node/cmd/gaiad/cmd"
 )
 
