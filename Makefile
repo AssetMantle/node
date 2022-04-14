@@ -15,10 +15,10 @@ endif
 PACKAGES_SIMTEST=$(shell go list ./... | grep '/simulation')
 LEDGER_ENABLED ?= true
 SDK_PACK := $(shell go list -m github.com/cosmos/cosmos-sdk | sed  's/ /\@/g')
-TM_VERSION := $(shell go list -m github.com/tendermint/tendermint | sed 's:.* ::') # grab everything after the space in "github.com/tendermint/tendermint v0.34.7"
+TM_VERSION := $(shell go list -m github.com/tendermint/tendermint | sed 's:.* ::')
 DOCKER := $(shell which docker)
 BUILDDIR ?= $(CURDIR)/build
-TEST_DOCKER_REPO=jackzampolin/gaiatest
+TEST_DOCKER_REPO=AssetMantle/node
 
 export GO111MODULE = on
 
@@ -61,8 +61,8 @@ build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
 
 # process linker flags
 
-ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=gaia \
-		  -X github.com/cosmos/cosmos-sdk/version.AppName=gaiad \
+ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=AssetMantle \
+		  -X github.com/cosmos/cosmos-sdk/version.AppName=mantleNode \
 		  -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
 		  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
 		  -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)" \
@@ -198,11 +198,12 @@ endif
 
 docker-build-debug:
 	@docker build -t cosmos/gaiad-e2e --build-arg IMG_TAG=debug -f e2e.Dockerfile .
+	@docker build -t AssetMantle/mantleNode-e2e --build-arg IMG_TAG=debug -f e2e.Dockerfile .
 
 # TODO: Push this to the Cosmos Dockerhub so we don't have to keep building it
 # in CI.
 docker-build-hermes:
-	@cd tests/e2e/docker; docker build -t cosmos/hermes-e2e:latest -f hermes.Dockerfile .
+	@cd tests/e2e/docker; docker build -t AssetMantle/hermes-e2e:latest -f hermes.Dockerfile .
 
 ###############################################################################
 ###                                Linting                                  ###
@@ -221,12 +222,12 @@ format:
 ###                                Localnet                                 ###
 ###############################################################################
 
-build-docker-gaiadnode:
+build-docker-node:
 	$(MAKE) -C networks/local
 
 # Run a 4-node testnet locally
 localnet-start: build-linux localnet-stop
-	@if ! [ -f build/node0/gaiad/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build:/gaiad:Z tendermint/gaiadnode testnet --v 4 -o . --starting-ip-address 192.168.10.2 --keyring-backend=test ; fi
+	@if ! [ -f build/node0/mantelNode/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build:/mantelNode:Z tendermint/mantelNode testnet --v 4 -o . --starting-ip-address 192.168.10.2 --keyring-backend=test ; fi
 	docker-compose up -d
 
 # Stop testnet
@@ -234,7 +235,7 @@ localnet-stop:
 	docker-compose down
 
 test-docker:
-	@docker build -f contrib/Dockerfile.test -t ${TEST_DOCKER_REPO}:$(shell git rev-parse --short HEAD) .
+	@docker build -f test.Dockerfile -t ${TEST_DOCKER_REPO}:$(shell git rev-parse --short HEAD) .
 	@docker tag ${TEST_DOCKER_REPO}:$(shell git rev-parse --short HEAD) ${TEST_DOCKER_REPO}:$(shell git rev-parse --abbrev-ref HEAD | sed 's#/#_#g')
 	@docker tag ${TEST_DOCKER_REPO}:$(shell git rev-parse --short HEAD) ${TEST_DOCKER_REPO}:latest
 
@@ -245,7 +246,7 @@ test-docker-push: test-docker
 
 .PHONY: all build-linux install format lint \
 	go-mod-cache draw-deps clean build \
-	setup-transactions setup-contract-tests-data start-gaia run-lcd-contract-tests contract-tests \
+	setup-transactions setup-contract-tests-data run-lcd-contract-tests contract-tests \
 	benchmark \
-	build-docker-gaiadnode localnet-start localnet-stop \
+	build-docker-node localnet-start localnet-stop \
 	docker-single-node docker-build-debug docker-build-hermes
