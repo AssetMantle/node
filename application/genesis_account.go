@@ -4,15 +4,15 @@ import (
 	"errors"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
+	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 )
 
-var _ authtypes.GenesisAccount = (*SimGenesisAccount)(nil)
+var _ authTypes.GenesisAccount = (*SimGenesisAccount)(nil)
 
 // SimGenesisAccount defines a type that implements the GenesisAccount interface
 // to be used for simulation accounts in the genesis state.
 type SimGenesisAccount struct {
-	*authtypes.BaseAccount
+	*authTypes.BaseAccount
 
 	// vesting account fields
 	OriginalVesting  sdk.Coins `json:"original_vesting" yaml:"original_vesting"`   // total vesting coins upon initialization
@@ -35,7 +35,7 @@ func (sga SimGenesisAccount) Validate() error {
 	}
 
 	if sga.ModuleName != "" {
-		ma := authtypes.ModuleAccount{
+		ma := authTypes.ModuleAccount{
 			BaseAccount: sga.BaseAccount, Name: sga.ModuleName, Permissions: sga.ModulePermissions,
 		}
 		if err := ma.Validate(); err != nil {

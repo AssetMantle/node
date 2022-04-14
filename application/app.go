@@ -608,7 +608,7 @@ func NewGaiaApp(
 				SignModeHandler: encodingConfig.TxConfig.SignModeHandler(),
 				SigGasConsumer:  ante.DefaultSigVerificationGasConsumer,
 			},
-			IBCkeeper: app.IBCKeeper,
+			IBCKeeper: app.IBCKeeper,
 		},
 	)
 	if err != nil {
@@ -636,10 +636,10 @@ func NewGaiaApp(
 					authzMsgRevoke,
 					bankMsgSend,
 					bankMsgMultiSend,
-					distrMsgSetWithdrawAddr,
-					distrMsgWithdrawValidatorCommission,
-					distrMsgFundCommunityPool,
-					distrMsgWithdrawDelegatorReward,
+					distributionMsgSetWithdrawAddr,
+					distributionMsgWithdrawValidatorCommission,
+					distributionMsgFundCommunityPool,
+					distributionMsgWithdrawDelegatorReward,
 					feegrantMsgGrantAllowance,
 					feegrantMsgRevokeAllowance,
 					govMsgVoteWeighted,

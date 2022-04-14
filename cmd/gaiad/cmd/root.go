@@ -14,19 +14,19 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/keys"
 	"github.com/cosmos/cosmos-sdk/client/rpc"
 	"github.com/cosmos/cosmos-sdk/server"
-	serverconfig "github.com/cosmos/cosmos-sdk/server/config"
-	servertypes "github.com/cosmos/cosmos-sdk/server/types"
+	serverConfig "github.com/cosmos/cosmos-sdk/server/config"
+	serverTypes "github.com/cosmos/cosmos-sdk/server/types"
 	"github.com/cosmos/cosmos-sdk/snapshots"
 	"github.com/cosmos/cosmos-sdk/store"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	authcmd "github.com/cosmos/cosmos-sdk/x/auth/client/cli"
+	authCLI "github.com/cosmos/cosmos-sdk/x/auth/client/cli"
 	"github.com/cosmos/cosmos-sdk/x/auth/types"
-	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
+	bankTypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/cosmos/cosmos-sdk/x/crisis"
-	genutilcli "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
+	genutilCLI "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
-	tmcli "github.com/tendermint/tendermint/libs/cli"
+	tendermintCLI "github.com/tendermint/tendermint/libs/cli"
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 
@@ -34,9 +34,9 @@ import (
 	"github.com/AssetMantle/node/application/params"
 )
 
-// NewRootCmd creates a new root command for simd. It is called once in the
+// NewRootCommand creates a new root command for simd. It is called once in the
 // main function.
-func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
+func NewRootCommand() (*cobra.Command, params.EncodingConfig) {
 	encodingConfig := application.MakeEncodingConfig()
 	initClientCtx := client.Context{}.
 		WithCodec(encodingConfig.Marshaler).
@@ -49,7 +49,7 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		WithViper("")
 
 	rootCmd := &cobra.Command{
-		Use:   "gaiad",
+		Use:   "mantleNode",
 		Short: "Stargate Cosmos Hub App",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			initClientCtx, err := client.ReadPersistentCommandFlags(initClientCtx, cmd.Flags())
@@ -79,17 +79,17 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 func initAppConfig() (string, interface{}) {
 
 	type CustomAppConfig struct {
-		serverconfig.Config
+		serverConfig.Config
 	}
 
 	// Allow overrides to the SDK default server config
-	srvCfg := serverconfig.DefaultConfig()
+	srvCfg := serverConfig.DefaultConfig()
 	srvCfg.StateSync.SnapshotInterval = 1000
 	srvCfg.StateSync.SnapshotKeepRecent = 10
 
 	GaiaAppCfg := CustomAppConfig{Config: *srvCfg}
 
-	GaiaAppTemplate := serverconfig.DefaultConfigTemplate
+	GaiaAppTemplate := serverConfig.DefaultConfigTemplate
 
 	return GaiaAppTemplate, GaiaAppCfg
 }
@@ -100,13 +100,13 @@ func initRootCmd(rootCmd *cobra.Command, encodingConfig params.EncodingConfig) {
 	cfg.Seal()
 
 	rootCmd.AddCommand(
-		genutilcli.InitCmd(application.ModuleBasics, application.DefaultNodeHome),
-		genutilcli.CollectGenTxsCmd(banktypes.GenesisBalancesIterator{}, application.DefaultNodeHome),
-		genutilcli.GenTxCmd(application.ModuleBasics, encodingConfig.TxConfig, banktypes.GenesisBalancesIterator{}, application.DefaultNodeHome),
-		genutilcli.ValidateGenesisCmd(application.ModuleBasics),
+		genutilCLI.InitCmd(application.ModuleBasics, application.DefaultNodeHome),
+		genutilCLI.CollectGenTxsCmd(bankTypes.GenesisBalancesIterator{}, application.DefaultNodeHome),
+		genutilCLI.GenTxCmd(application.ModuleBasics, encodingConfig.TxConfig, bankTypes.GenesisBalancesIterator{}, application.DefaultNodeHome),
+		genutilCLI.ValidateGenesisCmd(application.ModuleBasics),
 		AddGenesisAccountCmd(application.DefaultNodeHome),
-		tmcli.NewCompletionCmd(rootCmd, true),
-		testnetCmd(application.ModuleBasics, banktypes.GenesisBalancesIterator{}),
+		tendermintCLI.NewCompletionCmd(rootCmd, true),
+		testnetCmd(application.ModuleBasics, bankTypes.GenesisBalancesIterator{}),
 		debug.Cmd(),
 		config.Cmd(),
 	)
@@ -140,11 +140,11 @@ func queryCommand() *cobra.Command {
 	}
 
 	cmd.AddCommand(
-		authcmd.GetAccountCmd(),
+		authCLI.GetAccountCmd(),
 		rpc.ValidatorCommand(),
 		rpc.BlockCommand(),
-		authcmd.QueryTxsByEventsCmd(),
-		authcmd.QueryTxCmd(),
+		authCLI.QueryTxsByEventsCmd(),
+		authCLI.QueryTxCmd(),
 	)
 
 	application.ModuleBasics.AddQueryCommands(cmd)
@@ -163,15 +163,15 @@ func txCommand() *cobra.Command {
 	}
 
 	cmd.AddCommand(
-		authcmd.GetSignCommand(),
-		authcmd.GetSignBatchCommand(),
-		authcmd.GetMultiSignCommand(),
-		authcmd.GetMultiSignBatchCmd(),
-		authcmd.GetValidateSignaturesCommand(),
+		authCLI.GetSignCommand(),
+		authCLI.GetSignBatchCommand(),
+		authCLI.GetMultiSignCommand(),
+		authCLI.GetMultiSignBatchCmd(),
+		authCLI.GetValidateSignaturesCommand(),
 		flags.LineBreak,
-		authcmd.GetBroadcastCommand(),
-		authcmd.GetEncodeCommand(),
-		authcmd.GetDecodeCommand(),
+		authCLI.GetBroadcastCommand(),
+		authCLI.GetEncodeCommand(),
+		authCLI.GetDecodeCommand(),
 	)
 
 	application.ModuleBasics.AddTxCommands(cmd)
@@ -188,8 +188,8 @@ func (ac appCreator) newApp(
 	logger log.Logger,
 	db dbm.DB,
 	traceStore io.Writer,
-	appOpts servertypes.AppOptions,
-) servertypes.Application {
+	appOpts serverTypes.AppOptions,
+) serverTypes.Application {
 
 	var cache sdk.MultiStorePersistentCache
 
@@ -244,12 +244,12 @@ func (ac appCreator) appExport(
 	height int64,
 	forZeroHeight bool,
 	jailAllowedAddrs []string,
-	appOpts servertypes.AppOptions,
-) (servertypes.ExportedApp, error) {
+	appOpts serverTypes.AppOptions,
+) (serverTypes.ExportedApp, error) {
 
 	homePath, ok := appOpts.Get(flags.FlagHome).(string)
 	if !ok || homePath == "" {
-		return servertypes.ExportedApp{}, errors.New("application home is not set")
+		return serverTypes.ExportedApp{}, errors.New("application home is not set")
 	}
 
 	var loadLatest bool
@@ -271,7 +271,7 @@ func (ac appCreator) appExport(
 
 	if height != -1 {
 		if err := gaiaApp.LoadHeight(height); err != nil {
-			return servertypes.ExportedApp{}, err
+			return serverTypes.ExportedApp{}, err
 		}
 	}
 

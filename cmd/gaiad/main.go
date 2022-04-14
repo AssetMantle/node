@@ -4,16 +4,16 @@ import (
 	"os"
 
 	"github.com/cosmos/cosmos-sdk/server"
-	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
+	serverCmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
-	app "github.com/AssetMantle/node/application"
-	"github.com/AssetMantle/node/cmd/gaiad/cmd"
+	"github.com/AssetMantle/node/application"
+	command "github.com/AssetMantle/node/cmd/gaiad/cmd"
 )
 
 func main() {
-	rootCmd, _ := cmd.NewRootCmd()
+	rootCmd, _ := command.NewRootCommand()
 
-	if err := svrcmd.Execute(rootCmd, app.DefaultNodeHome); err != nil {
+	if err := serverCmd.Execute(rootCmd, application.DefaultNodeHome); err != nil {
 		switch e := err.(type) {
 		case server.ErrorCode:
 			os.Exit(e.Code)

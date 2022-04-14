@@ -6,18 +6,17 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/spf13/cobra"
-
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/crypto/keyring"
 	"github.com/cosmos/cosmos-sdk/server"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
-	authvesting "github.com/cosmos/cosmos-sdk/x/auth/vesting/types"
-	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
+	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
+	authVestingTypes "github.com/cosmos/cosmos-sdk/x/auth/vesting/types"
+	bankTypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/cosmos/cosmos-sdk/x/genutil"
-	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
+	genutilTypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
+	"github.com/spf13/cobra"
 )
 
 const (
@@ -90,13 +89,13 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 			}
 
 			// create concrete account type based on input parameters
-			var genAccount authtypes.GenesisAccount
+			var genAccount authTypes.GenesisAccount
 
-			balances := banktypes.Balance{Address: addr.String(), Coins: coins.Sort()}
-			baseAccount := authtypes.NewBaseAccount(addr, nil, 0, 0)
+			balances := bankTypes.Balance{Address: addr.String(), Coins: coins.Sort()}
+			baseAccount := authTypes.NewBaseAccount(addr, nil, 0, 0)
 
 			if !vestingAmt.IsZero() {
-				baseVestingAccount := authvesting.NewBaseVestingAccount(baseAccount, vestingAmt.Sort(), vestingEnd)
+				baseVestingAccount := authVestingTypes.NewBaseVestingAccount(baseAccount, vestingAmt.Sort(), vestingEnd)
 
 				if (balances.Coins.IsZero() && !baseVestingAccount.OriginalVesting.IsZero()) ||
 					baseVestingAccount.OriginalVesting.IsAnyGT(balances.Coins) {
@@ -105,10 +104,10 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 
 				switch {
 				case vestingStart != 0 && vestingEnd != 0:
-					genAccount = authvesting.NewContinuousVestingAccountRaw(baseVestingAccount, vestingStart)
+					genAccount = authVestingTypes.NewContinuousVestingAccountRaw(baseVestingAccount, vestingStart)
 
 				case vestingEnd != 0:
-					genAccount = authvesting.NewDelayedVestingAccountRaw(baseVestingAccount)
+					genAccount = authVestingTypes.NewDelayedVestingAccountRaw(baseVestingAccount)
 
 				default:
 					return errors.New("invalid vesting parameters; must supply start and end time or end time")
@@ -122,14 +121,14 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 			}
 
 			genFile := config.GenesisFile()
-			appState, genDoc, err := genutiltypes.GenesisStateFromGenFile(genFile)
+			appState, genDoc, err := genutilTypes.GenesisStateFromGenFile(genFile)
 			if err != nil {
 				return fmt.Errorf("failed to unmarshal genesis state: %w", err)
 			}
 
-			authGenState := authtypes.GetGenesisStateFromAppState(clientCtx.Codec, appState)
+			authGenState := authTypes.GetGenesisStateFromAppState(clientCtx.Codec, appState)
 
-			accs, err := authtypes.UnpackAccounts(authGenState.Accounts)
+			accs, err := authTypes.UnpackAccounts(authGenState.Accounts)
 			if err != nil {
 				return fmt.Errorf("failed to get accounts from any: %w", err)
 			}
@@ -141,9 +140,9 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 			// Add the new account to the set of genesis accounts and sanitize the
 			// accounts afterwards.
 			accs = append(accs, genAccount)
-			accs = authtypes.SanitizeGenesisAccounts(accs)
+			accs = authTypes.SanitizeGenesisAccounts(accs)
 
-			genAccs, err := authtypes.PackAccounts(accs)
+			genAccs, err := authTypes.PackAccounts(accs)
 			if err != nil {
 				return fmt.Errorf("failed to convert accounts into any's: %w", err)
 			}
@@ -154,11 +153,11 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 				return fmt.Errorf("failed to marshal auth genesis state: %w", err)
 			}
 
-			appState[authtypes.ModuleName] = authGenStateBz
+			appState[authTypes.ModuleName] = authGenStateBz
 
-			bankGenState := banktypes.GetGenesisStateFromAppState(clientCtx.Codec, appState)
+			bankGenState := bankTypes.GetGenesisStateFromAppState(clientCtx.Codec, appState)
 			bankGenState.Balances = append(bankGenState.Balances, balances)
-			bankGenState.Balances = banktypes.SanitizeGenesisBalances(bankGenState.Balances)
+			bankGenState.Balances = bankTypes.SanitizeGenesisBalances(bankGenState.Balances)
 			bankGenState.Supply = bankGenState.Supply.Add(balances.Coins...)
 
 			bankGenStateBz, err := clientCtx.Codec.MarshalJSON(bankGenState)
@@ -166,7 +165,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 				return fmt.Errorf("failed to marshal bank genesis state: %w", err)
 			}
 
-			appState[banktypes.ModuleName] = bankGenStateBz
+			appState[bankTypes.ModuleName] = bankGenStateBz
 
 			appStateJSON, err := json.Marshal(appState)
 			if err != nil {
@@ -179,7 +178,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 	}
 
 	cmd.Flags().String(flags.FlagHome, defaultNodeHome, "The application home directory")
-	cmd.Flags().String(flags.FlagKeyringBackend, flags.DefaultKeyringBackend, "Select keyring's backend (os|file|kwallet|pass|test)")
+	cmd.Flags().String(flags.FlagKeyringBackend, flags.DefaultKeyringBackend, "Select keyring backend (os|file|kwallet|pass|test)")
 	cmd.Flags().String(flagVestingAmt, "", "amount of coins for vesting accounts")
 	cmd.Flags().Int64(flagVestingStart, 0, "schedule start time (unix epoch) for vesting accounts")
 	cmd.Flags().Int64(flagVestingEnd, 0, "schedule end time (unix epoch) for vesting accounts")
