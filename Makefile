@@ -86,7 +86,7 @@ endif
 #$(info $$BUILD_FLAGS is [$(BUILD_FLAGS)])
 
 # The below include contains the tools target.
-include contrib/devtools/Makefile
+include tools.mk
 
 ###############################################################################
 ###                              Documentation                              ###
@@ -168,7 +168,7 @@ sync-docs:
 ###                           Tests & Simulation                            ###
 ###############################################################################
 
-include sims.mk
+include simulation.mk
 
 PACKAGES_UNIT=$(shell go list ./... | grep -v -e '/tests/e2e')
 PACKAGES_E2E=$(shell go list ./... | grep '/e2e')

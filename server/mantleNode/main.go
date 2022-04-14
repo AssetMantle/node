@@ -7,7 +7,7 @@ import (
 	serverCmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
 	"github.com/AssetMantle/node/application"
-	"github.com/AssetMantle/node/server/commands"
+	"github.com/AssetMantle/node/server/mantleNode/commands"
 )
 
 func main() {
