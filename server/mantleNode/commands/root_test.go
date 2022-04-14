@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/AssetMantle/node/application"
-	"github.com/AssetMantle/node/server/commands"
+	"github.com/AssetMantle/node/server/mantleNode/commands"
 )
 
 func TestRootCmdConfig(t *testing.T) {

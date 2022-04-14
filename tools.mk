@@ -59,9 +59,6 @@ endif
 
 all: tools
 
-tools:
-	@echo ""
-
 protoc:
 	@echo "Installing protoc compiler..."
 	@(cd /tmp; \
