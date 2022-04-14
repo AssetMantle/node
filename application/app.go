@@ -224,7 +224,7 @@ func init() {
 		stdLog.Println("Failed to get home dir %2", err)
 	}
 
-	DefaultNodeHome = filepath.Join(userHomeDir, ".gaia")
+	DefaultNodeHome = filepath.Join(userHomeDir, ".mantleNode")
 }
 
 // NewGaiaApp returns a reference to an initialized Gaia.

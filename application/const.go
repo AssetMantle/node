@@ -1,7 +1,7 @@
 package application
 
 const (
-	appName     = "GaiaApp"
+	appName     = "mantleNode"
 	upgradeName = "v7-Theta"
 
 	authzMsgExec                               = "/cosmos.authz.v1beta1.MsgExec"
