@@ -1,4 +1,4 @@
-package cmd_test
+package commands_test
 
 import (
 	"testing"
@@ -8,14 +8,14 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/AssetMantle/node/application"
-	"github.com/AssetMantle/node/cmd/gaiad/cmd"
+	"github.com/AssetMantle/node/server/commands"
 )
 
 func TestRootCmdConfig(t *testing.T) {
 
-	rootCmd, _ := cmd.NewRootCommand()
+	rootCmd, _ := commands.NewRootCommand()
 	rootCmd.SetArgs([]string{
-		"config",          // Test the config cmd
+		"config",          // Test the config command
 		"keyring-backend", // key
 		"test",            // value
 	})

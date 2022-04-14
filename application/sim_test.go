@@ -18,7 +18,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/simapp"
 	"github.com/cosmos/cosmos-sdk/store"
-	simulation2 "github.com/cosmos/cosmos-sdk/types/simulation"
+	simulationTypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
 )
 
@@ -54,7 +54,7 @@ func BenchmarkFullAppSimulation(b *testing.B) {
 		os.Stdout,
 		app.BaseApp,
 		simapp.AppStateFn(app.AppCodec(), app.SimulationManager()),
-		simulation2.RandomAccounts, // Replace with own random account function if using storeKeys other than secp256k1
+		simulationTypes.RandomAccounts, // Replace with own random account function if using storeKeys other than secp256k1
 		simapp.SimulationOperations(app, app.AppCodec(), config),
 		app.ModuleAccountAddrs(),
 		config,
@@ -123,7 +123,7 @@ func TestAppStateDeterminism(t *testing.T) {
 				os.Stdout,
 				app.BaseApp,
 				simapp.AppStateFn(app.AppCodec(), app.SimulationManager()),
-				simulation2.RandomAccounts, // Replace with own random account function if using storeKeys other than secp256k1
+				simulationTypes.RandomAccounts, // Replace with own random account function if using storeKeys other than secp256k1
 				simapp.SimulationOperations(app, app.AppCodec(), config),
 				app.ModuleAccountAddrs(),
 				config,

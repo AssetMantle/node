@@ -1,4 +1,4 @@
-package cmd
+package commands
 
 import (
 	"errors"
@@ -50,7 +50,7 @@ func NewRootCommand() (*cobra.Command, params.EncodingConfig) {
 
 	rootCmd := &cobra.Command{
 		Use:   "mantleNode",
-		Short: "Stargate Cosmos Hub App",
+		Short: "AssetMantle Blockchain Node Application",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			initClientCtx, err := client.ReadPersistentCommandFlags(initClientCtx, cmd.Flags())
 			if err != nil {
@@ -104,7 +104,7 @@ func initRootCmd(rootCmd *cobra.Command, encodingConfig params.EncodingConfig) {
 		genutilCLI.CollectGenTxsCmd(bankTypes.GenesisBalancesIterator{}, application.DefaultNodeHome),
 		genutilCLI.GenTxCmd(application.ModuleBasics, encodingConfig.TxConfig, bankTypes.GenesisBalancesIterator{}, application.DefaultNodeHome),
 		genutilCLI.ValidateGenesisCmd(application.ModuleBasics),
-		AddGenesisAccountCmd(application.DefaultNodeHome),
+		AddGenesisAccountCommand(application.DefaultNodeHome),
 		tendermintCLI.NewCompletionCmd(rootCmd, true),
 		testnetCmd(application.ModuleBasics, bankTypes.GenesisBalancesIterator{}),
 		debug.Cmd(),

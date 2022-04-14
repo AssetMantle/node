@@ -1,4 +1,4 @@
-package cmd
+package commands
 
 import (
 	"bufio"
@@ -40,7 +40,7 @@ var (
 	flagStartingIPAddress = "starting-ip-address"
 )
 
-// get cmd to initialize all files for tendermint testnet and application
+// get command to initialize all files for tendermint testnet and application
 func testnetCmd(mbm module.BasicManager, genBalIterator bankTypes.GenesisBalancesIterator) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "testnet",

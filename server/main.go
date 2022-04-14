@@ -7,11 +7,11 @@ import (
 	serverCmd "github.com/cosmos/cosmos-sdk/server/cmd"
 
 	"github.com/AssetMantle/node/application"
-	command "github.com/AssetMantle/node/cmd/gaiad/cmd"
+	"github.com/AssetMantle/node/server/commands"
 )
 
 func main() {
-	rootCmd, _ := command.NewRootCommand()
+	rootCmd, _ := commands.NewRootCommand()
 
 	if err := serverCmd.Execute(rootCmd, application.DefaultNodeHome); err != nil {
 		switch e := err.(type) {
