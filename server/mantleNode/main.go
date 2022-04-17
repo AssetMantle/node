@@ -14,7 +14,7 @@ import (
 func main() {
 	config := sdkTypes.GetConfig()
 	config.SetBech32PrefixForAccount("mantle", "mantlepub")
-	config.SetBech32PrefixForValidator("mantlevaloper", "mantlevaloper")
+	config.SetBech32PrefixForValidator("mantlevaloper", "mantlevaloperpub")
 	config.SetBech32PrefixForConsensusNode("mantlevalcons", "mantlevalconspub")
 	config.Seal()
 
