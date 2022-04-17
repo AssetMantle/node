@@ -47,7 +47,7 @@ ifeq ($(LEDGER_ENABLED),true)
   endif
 endif
 
-ifeq (cleveldb,$(findstring cleveldb,$(GAIA_BUILD_OPTIONS)))
+ifeq (cleveldb,$(findstring cleveldb,$(APP_BUILD_OPTIONS)))
   build_tags += gcc cleveldb
 endif
 build_tags += $(BUILD_TAGS)
@@ -67,10 +67,10 @@ ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=AssetMantle \
 		  -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)" \
 			-X github.com/tendermint/tendermint/version.TMCoreSemVer=$(TM_VERSION)
 
-ifeq (cleveldb,$(findstring cleveldb,$(GAIA_BUILD_OPTIONS)))
+ifeq (cleveldb,$(findstring cleveldb,$(APP_BUILD_OPTIONS)))
   ldflags += -X github.com/cosmos/cosmos-sdk/types.DBBackend=cleveldb
 endif
-ifeq (,$(findstring nostrip,$(GAIA_BUILD_OPTIONS)))
+ifeq (,$(findstring nostrip,$(APP_BUILD_OPTIONS)))
   ldflags += -w -s
 endif
 ldflags += $(LDFLAGS)
@@ -78,7 +78,7 @@ ldflags := $(strip $(ldflags))
 
 BUILD_FLAGS := -tags "$(build_tags)" -ldflags '$(ldflags)'
 # check for nostrip option
-ifeq (,$(findstring nostrip,$(GAIA_BUILD_OPTIONS)))
+ifeq (,$(findstring nostrip,$(APP_BUILD_OPTIONS)))
   BUILD_FLAGS += -trimpath
 endif
 
@@ -122,9 +122,9 @@ lint:
 	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" | xargs gofmt -d -s
 
 format:
-	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/lcd/statik/statik.go" | xargs gofmt -w -s
-	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/lcd/statik/statik.go" | xargs misspell -w
-	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*" -not -path "./client/lcd/statik/statik.go" | xargs goimports -w -local github.com/cosmos/cosmos-sdk
+	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*"  | xargs gofmt -w -s
+	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*"  | xargs misspell -w
+	find . -name '*.go' -type f -not -path "./vendor*" -not -path "*.git*"  | xargs goimports -w -local github.com/cosmos/cosmos-sdk
 
 .PHONY: all build-linux install format lint \
 	go-mod-cache clean build

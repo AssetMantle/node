@@ -50,7 +50,7 @@ func NewRootCommand() (*cobra.Command, params.EncodingConfig) {
 
 	rootCmd := &cobra.Command{
 		Use:   "mantleNode",
-		Short: "AssetMantle Blockchain Node Application",
+		Short: "AssetMantle Blockchain Node App",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			initClientCtx, err := client.ReadPersistentCommandFlags(initClientCtx, cmd.Flags())
 			if err != nil {
@@ -66,8 +66,9 @@ func NewRootCommand() (*cobra.Command, params.EncodingConfig) {
 				return err
 			}
 
-			customTemplate, customGaiaConfig := initAppConfig()
-			return server.InterceptConfigsPreRunHandler(cmd, customTemplate, customGaiaConfig)
+			customTemplate, customConfig := initAppConfig()
+
+			return server.InterceptConfigsPreRunHandler(cmd, customTemplate, customConfig)
 		},
 	}
 
@@ -87,11 +88,11 @@ func initAppConfig() (string, interface{}) {
 	srvCfg.StateSync.SnapshotInterval = 1000
 	srvCfg.StateSync.SnapshotKeepRecent = 10
 
-	GaiaAppCfg := CustomAppConfig{Config: *srvCfg}
+	AppCfg := CustomAppConfig{Config: *srvCfg}
 
-	GaiaAppTemplate := serverConfig.DefaultConfigTemplate
+	defaultConfigTemplate := serverConfig.DefaultConfigTemplate
 
-	return GaiaAppTemplate, GaiaAppCfg
+	return defaultConfigTemplate, AppCfg
 }
 
 func initRootCmd(rootCmd *cobra.Command, encodingConfig params.EncodingConfig) {
@@ -217,7 +218,7 @@ func (ac appCreator) newApp(
 		panic(err)
 	}
 
-	return application.NewGaiaApp(
+	return application.NewApp(
 		logger, db, traceStore, true, skipUpgradeHeights,
 		cast.ToString(appOpts.Get(flags.FlagHome)),
 		cast.ToUint(appOpts.Get(server.FlagInvCheckPeriod)),
@@ -257,7 +258,7 @@ func (ac appCreator) appExport(
 		loadLatest = true
 	}
 
-	gaiaApp := application.NewGaiaApp(
+	app := application.NewApp(
 		logger,
 		db,
 		traceStore,
@@ -270,10 +271,10 @@ func (ac appCreator) appExport(
 	)
 
 	if height != -1 {
-		if err := gaiaApp.LoadHeight(height); err != nil {
+		if err := app.LoadHeight(height); err != nil {
 			return serverTypes.ExportedApp{}, err
 		}
 	}
 
-	return gaiaApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
+	return app.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
 }

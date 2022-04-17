@@ -4,13 +4,11 @@ import (
 	"fmt"
 	"io"
 	stdLog "log"
-	"net/http"
 	"os"
 	"path/filepath"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
-	_ "github.com/cosmos/cosmos-sdk/client/docs/statik"
 	"github.com/cosmos/cosmos-sdk/client/grpc/tmservice"
 	"github.com/cosmos/cosmos-sdk/client/rpc"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -93,8 +91,6 @@ import (
 	portTypes "github.com/cosmos/ibc-go/v3/modules/core/05-port/types"
 	ibcHost "github.com/cosmos/ibc-go/v3/modules/core/24-host"
 	ibcKeeper "github.com/cosmos/ibc-go/v3/modules/core/keeper"
-	"github.com/gorilla/mux"
-	"github.com/rakyll/statik/fs"
 	"github.com/spf13/cast"
 	"github.com/strangelove-ventures/packet-forward-middleware/v2/router"
 	routerKeeper "github.com/strangelove-ventures/packet-forward-middleware/v2/router/keeper"
@@ -109,7 +105,7 @@ import (
 )
 
 var (
-	// DefaultNodeHome default home directories for the application daemon
+	// DefaultNodeHome default home directories for the application daemon.
 	DefaultNodeHome string
 
 	// ModuleBasics defines the module BasicManager is in charge of setting up basic,
@@ -158,14 +154,14 @@ var (
 )
 
 var (
-	_ simapp.App              = (*GaiaApp)(nil)
-	_ serverTypes.Application = (*GaiaApp)(nil)
+	_ simapp.App              = (*App)(nil)
+	_ serverTypes.Application = (*App)(nil)
 )
 
-// GaiaApp extends an ABCI application, but with most of its parameters exported.
+// App extends an ABCI application, but with most of its parameters exported.
 // They are exported for convenience in creating helper functions, as object
 // capabilities aren't needed for testing.
-type GaiaApp struct { // nolint: golint
+type App struct { // nolint: golint
 	*baseapp.BaseApp
 	legacyAmino       *codec.LegacyAmino
 	appCodec          codec.Codec
@@ -221,8 +217,8 @@ func init() {
 	DefaultNodeHome = filepath.Join(userHomeDir, ".mantleNode")
 }
 
-// NewGaiaApp returns a reference to an initialized Gaia.
-func NewGaiaApp(
+// NewApp returns a reference to an initialized application.
+func NewApp(
 	logger log.Logger,
 	db dbm.DB, traceStore io.Writer,
 	loadLatest bool,
@@ -232,8 +228,7 @@ func NewGaiaApp(
 	encodingConfig applicationParameters.EncodingConfig,
 	appOpts serverTypes.AppOptions,
 	baseAppOptions ...func(*baseapp.BaseApp),
-) *GaiaApp {
-
+) *App {
 	appCodec := encodingConfig.Marshaler
 	legacyAmino := encodingConfig.Amino
 	interfaceRegistry := encodingConfig.InterfaceRegistry
@@ -253,7 +248,7 @@ func NewGaiaApp(
 	transientStoreKeys := sdk.NewTransientStoreKeys(paramsTypes.TStoreKey)
 	memoryStoreKeys := sdk.NewMemoryStoreKeys(capabilityTypes.MemStoreKey)
 
-	app := &GaiaApp{
+	app := &App{
 		BaseApp:            bApp,
 		legacyAmino:        legacyAmino,
 		appCodec:           appCodec,
@@ -674,20 +669,20 @@ func NewGaiaApp(
 }
 
 // Name returns the name of the App
-func (app *GaiaApp) Name() string { return app.BaseApp.Name() }
+func (app *App) Name() string { return app.BaseApp.Name() }
 
 // BeginBlocker application updates every begin block
-func (app *GaiaApp) BeginBlocker(ctx sdk.Context, req abciTypes.RequestBeginBlock) abciTypes.ResponseBeginBlock {
+func (app *App) BeginBlocker(ctx sdk.Context, req abciTypes.RequestBeginBlock) abciTypes.ResponseBeginBlock {
 	return app.mm.BeginBlock(ctx, req)
 }
 
 // EndBlocker application updates every end block
-func (app *GaiaApp) EndBlocker(ctx sdk.Context, req abciTypes.RequestEndBlock) abciTypes.ResponseEndBlock {
+func (app *App) EndBlocker(ctx sdk.Context, req abciTypes.RequestEndBlock) abciTypes.ResponseEndBlock {
 	return app.mm.EndBlock(ctx, req)
 }
 
 // InitChainer application update at chain initialization
-func (app *GaiaApp) InitChainer(ctx sdk.Context, req abciTypes.RequestInitChain) abciTypes.ResponseInitChain {
+func (app *App) InitChainer(ctx sdk.Context, req abciTypes.RequestInitChain) abciTypes.ResponseInitChain {
 	var genesisState GenesisState
 	if err := tendermintJSON.Unmarshal(req.AppStateBytes, &genesisState); err != nil {
 		panic(err)
@@ -699,12 +694,12 @@ func (app *GaiaApp) InitChainer(ctx sdk.Context, req abciTypes.RequestInitChain)
 }
 
 // LoadHeight loads a particular height
-func (app *GaiaApp) LoadHeight(height int64) error {
+func (app *App) LoadHeight(height int64) error {
 	return app.LoadVersion(height)
 }
 
 // ModuleAccountAddrs returns all the application's module account addresses.
-func (app *GaiaApp) ModuleAccountAddrs() map[string]bool {
+func (app *App) ModuleAccountAddrs() map[string]bool {
 	modAccAddrs := make(map[string]bool)
 	for acc := range moduleAccountPermissions {
 		modAccAddrs[authTypes.NewModuleAddress(acc).String()] = true
@@ -713,64 +708,64 @@ func (app *GaiaApp) ModuleAccountAddrs() map[string]bool {
 	return modAccAddrs
 }
 
-// LegacyAmino returns GaiaApp's amino codec.
+// LegacyAmino returns App's amino codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *GaiaApp) LegacyAmino() *codec.LegacyAmino {
+func (app *App) LegacyAmino() *codec.LegacyAmino {
 	return app.legacyAmino
 }
 
-// AppCodec returns Gaia's application codec.
+// AppCodec returns application codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
-func (app *GaiaApp) AppCodec() codec.Codec {
+func (app *App) AppCodec() codec.Codec {
 	return app.appCodec
 }
 
-// InterfaceRegistry returns Gaia's InterfaceRegistry
-func (app *GaiaApp) InterfaceRegistry() types.InterfaceRegistry {
+// InterfaceRegistry returns InterfaceRegistry
+func (app *App) InterfaceRegistry() types.InterfaceRegistry {
 	return app.interfaceRegistry
 }
 
 // GetKey returns the KVStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *GaiaApp) GetKey(storeKey string) *sdk.KVStoreKey {
+func (app *App) GetKey(storeKey string) *sdk.KVStoreKey {
 	return app.storeKeys[storeKey]
 }
 
 // GetTKey returns the TransientStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *GaiaApp) GetTKey(storeKey string) *sdk.TransientStoreKey {
+func (app *App) GetTKey(storeKey string) *sdk.TransientStoreKey {
 	return app.transientStoreKeys[storeKey]
 }
 
 // GetMemKey returns the MemStoreKey for the provided mem key.
 //
 // NOTE: This is solely used for testing purposes.
-func (app *GaiaApp) GetMemKey(storeKey string) *sdk.MemoryStoreKey {
+func (app *App) GetMemKey(storeKey string) *sdk.MemoryStoreKey {
 	return app.memoryStoreKeys[storeKey]
 }
 
 // GetSubspace returns a param subspace for a given module name.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (app *GaiaApp) GetSubspace(moduleName string) paramsTypes.Subspace {
+func (app *App) GetSubspace(moduleName string) paramsTypes.Subspace {
 	subspace, _ := app.ParamsKeeper.GetSubspace(moduleName)
 	return subspace
 }
 
 // SimulationManager implements the SimulationApp interface
-func (app *GaiaApp) SimulationManager() *module.SimulationManager {
+func (app *App) SimulationManager() *module.SimulationManager {
 	return app.sm
 }
 
 // RegisterAPIRoutes registers all application module routes with the provided
 // API server.
-func (app *GaiaApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig) {
+func (app *App) RegisterAPIRoutes(apiSvr *api.Server, _ config.APIConfig) {
 	clientCtx := apiSvr.ClientCtx
 	rpc.RegisterRoutes(clientCtx, apiSvr.Router)
 	// Register legacy tx routes.
@@ -784,31 +779,16 @@ func (app *GaiaApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APICo
 	ModuleBasics.RegisterRESTRoutes(clientCtx, apiSvr.Router)
 	ModuleBasics.RegisterGRPCGatewayRoutes(clientCtx, apiSvr.GRPCGatewayRouter)
 
-	// register swagger API from root so that other applications can override easily
-	if apiConfig.Swagger {
-		RegisterSwaggerAPI(apiSvr.Router)
-	}
 }
 
-// RegisterTxService implements the Application.RegisterTxService method.
-func (app *GaiaApp) RegisterTxService(clientCtx client.Context) {
+// RegisterTxService implements the App.RegisterTxService method.
+func (app *App) RegisterTxService(clientCtx client.Context) {
 	authTx.RegisterTxService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.BaseApp.Simulate, app.interfaceRegistry)
 }
 
-// RegisterTendermintService implements the Application.RegisterTendermintService method.
-func (app *GaiaApp) RegisterTendermintService(clientCtx client.Context) {
+// RegisterTendermintService implements the App.RegisterTendermintService method.
+func (app *App) RegisterTendermintService(clientCtx client.Context) {
 	tmservice.RegisterTendermintService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.interfaceRegistry)
-}
-
-// RegisterSwaggerAPI registers swagger route with API Server
-func RegisterSwaggerAPI(rtr *mux.Router) {
-	statikFS, err := fs.New()
-	if err != nil {
-		panic(err)
-	}
-
-	staticServer := http.FileServer(statikFS)
-	rtr.PathPrefix("/swagger/").Handler(http.StripPrefix("/swagger/", staticServer))
 }
 
 // initParamsKeeper init params keeper and its subspaces
