@@ -1,3 +1,6 @@
+<!-- Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors -->
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="assets burn" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="assets">
     <module name="assetMantle" />
@@ -6,7 +9,7 @@
     <parameters value="tx assets burn -y --chain-id=test-chain-1 --from=test --fromID=test.cGn3HMW8M3t5gMDv-wXa9sseHnA=|cXbKF6hGMB0ei8unCEjb1z_s8r4= --assetID=test.2T141SVYvYOF3nT_sylhNLoYG2w=|uhFRF8Enx5N5jzGL05J_FHVxVzk=" />
     <kind value="FILE" />
     <filePath value="$PROJECT_DIR$/client/main.go" />
-    <package value="github.com/persistenceOne/assetMantle" />
+    <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
     <method v="2" />
   </configuration>

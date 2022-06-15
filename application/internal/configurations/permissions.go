@@ -1,13 +1,16 @@
+// Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
+// SPDX-License-Identifier: Apache-2.0
+
 package configurations
 
 import (
+	"github.com/AssetMantle/modules/modules/splits"
 	"github.com/cosmos/cosmos-sdk/x/auth"
 	"github.com/cosmos/cosmos-sdk/x/distribution"
 	"github.com/cosmos/cosmos-sdk/x/gov"
 	"github.com/cosmos/cosmos-sdk/x/mint"
 	"github.com/cosmos/cosmos-sdk/x/staking"
 	"github.com/cosmos/cosmos-sdk/x/supply"
-	"github.com/persistenceOne/persistenceSDK/modules/splits"
 )
 
 var ModuleAccountPermissions = map[string][]string{

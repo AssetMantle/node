@@ -1,3 +1,6 @@
+# Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
+# SPDX-License-Identifier: Apache-2.0
+
 export AM_CHAIN_ID="test-chain-1"
 export AM_STAKE_DENOMINATION="stake"
 

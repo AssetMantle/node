@@ -1,3 +1,6 @@
+// Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
+// SPDX-License-Identifier: Apache-2.0
+
 "use strict";
 const config = require('../config.json');
 const helper = require('../helpers/helpers');
