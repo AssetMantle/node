@@ -1,3 +1,6 @@
+<!-- Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors -->
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="orders  take" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="orders">
     <module name="assetMantle" />
@@ -6,7 +9,7 @@
     <parameters value="tx orders take -y --chain-id=test-chain-1 --from=test --orderID=" />
     <kind value="FILE" />
     <filePath value="$PROJECT_DIR$/client/main.go" />
-    <package value="github.com/persistenceOne/assetMantle" />
+    <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
     <method v="2" />
   </configuration>

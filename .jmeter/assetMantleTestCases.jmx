@@ -760,7 +760,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/identities/github.com/persistenceOne/persistenceSDK/modules/identities/internal/transactions/nub/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/identities/github.com/AssetMantle/modules/modules/identities/internal/transactions/nub/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -960,7 +960,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/identities/github.com/persistenceOne/persistenceSDK/modules/identities/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/identities/github.com/AssetMantle/modules/modules/identities/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -1219,7 +1219,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/identities/github.com/persistenceOne/persistenceSDK/modules/identities/internal/transactions/issue/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/identities/github.com/AssetMantle/modules/modules/identities/internal/transactions/issue/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -1426,7 +1426,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/identities/github.com/persistenceOne/persistenceSDK/modules/identities/internal/transactions/provision/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/identities/github.com/AssetMantle/modules/modules/identities/internal/transactions/provision/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -1626,7 +1626,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/identities/github.com/persistenceOne/persistenceSDK/modules/identities/internal/transactions/unprovision/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/identities/github.com/AssetMantle/modules/modules/identities/internal/transactions/unprovision/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -1822,7 +1822,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/identities/github.com/persistenceOne/persistenceSDK/modules/identities/internal/transactions/provision/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/identities/github.com/AssetMantle/modules/modules/identities/internal/transactions/provision/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -2022,7 +2022,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/identities/github.com/persistenceOne/persistenceSDK/modules/identities/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/identities/github.com/AssetMantle/modules/modules/identities/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -2281,7 +2281,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/identities/github.com/persistenceOne/persistenceSDK/modules/identities/internal/transactions/issue/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/identities/github.com/AssetMantle/modules/modules/identities/internal/transactions/issue/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -2488,7 +2488,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/identities/github.com/persistenceOne/persistenceSDK/modules/identities/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/identities/github.com/AssetMantle/modules/modules/identities/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -2747,7 +2747,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/identities/github.com/persistenceOne/persistenceSDK/modules/identities/internal/transactions/issue/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/identities/github.com/AssetMantle/modules/modules/identities/internal/transactions/issue/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -3115,7 +3115,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -3308,7 +3308,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -3562,7 +3562,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -3821,7 +3821,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -4038,7 +4038,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -4231,7 +4231,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -4413,7 +4413,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/metas/github.com/persistenceOne/persistenceSDK/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/metas/github.com/AssetMantle/modules/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -4479,7 +4479,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -4686,7 +4686,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -4879,7 +4879,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -5096,7 +5096,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -5289,7 +5289,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -5470,7 +5470,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -5671,7 +5671,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -5799,7 +5799,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -6036,7 +6036,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -6264,7 +6264,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/metas/github.com/persistenceOne/persistenceSDK/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/metas/github.com/AssetMantle/modules/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -6395,7 +6395,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/burn/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/burn/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -6584,7 +6584,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -6777,7 +6777,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -7026,7 +7026,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/splits/github.com/persistenceOne/persistenceSDK/modules/splits/internal/transactions/send/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/splits/github.com/AssetMantle/modules/modules/splits/internal/transactions/send/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${from}&quot;,&#xd;
@@ -7160,7 +7160,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -7294,7 +7294,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/maintainers/github.com/persistenceOne/persistenceSDK/modules/maintainers/internal/transactions/deputize/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/maintainers/github.com/AssetMantle/modules/modules/maintainers/internal/transactions/deputize/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -7438,7 +7438,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -7645,7 +7645,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -7838,7 +7838,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -8019,7 +8019,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/metas/github.com/persistenceOne/persistenceSDK/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/metas/github.com/AssetMantle/modules/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -8085,7 +8085,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/burn/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/burn/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -8211,7 +8211,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -8345,7 +8345,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/metas/github.com/persistenceOne/persistenceSDK/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/metas/github.com/AssetMantle/modules/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -8470,7 +8470,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/burn/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/burn/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -8659,7 +8659,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -8852,7 +8852,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -9195,7 +9195,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/splits/github.com/persistenceOne/persistenceSDK/modules/splits/internal/transactions/send/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/splits/github.com/AssetMantle/modules/modules/splits/internal/transactions/send/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${from}&quot;,&#xd;
@@ -9446,7 +9446,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/splits/github.com/persistenceOne/persistenceSDK/modules/splits/internal/transactions/unwrap/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/splits/github.com/AssetMantle/modules/modules/splits/internal/transactions/unwrap/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${from}&quot;,&#xd;
@@ -9652,7 +9652,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/splits/github.com/persistenceOne/persistenceSDK/modules/splits/internal/transactions/wrap/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/splits/github.com/AssetMantle/modules/modules/splits/internal/transactions/wrap/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${from}&quot;,&#xd;
@@ -9968,7 +9968,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/splits/github.com/persistenceOne/persistenceSDK/modules/splits/internal/transactions/send/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/splits/github.com/AssetMantle/modules/modules/splits/internal/transactions/send/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${from}&quot;,&#xd;
@@ -10220,7 +10220,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -10420,7 +10420,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -10618,7 +10618,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/metas/github.com/persistenceOne/persistenceSDK/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/metas/github.com/AssetMantle/modules/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -10798,7 +10798,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/metas/github.com/persistenceOne/persistenceSDK/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/metas/github.com/AssetMantle/modules/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -10978,7 +10978,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/metas/github.com/persistenceOne/persistenceSDK/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/metas/github.com/AssetMantle/modules/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -11158,7 +11158,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/metas/github.com/persistenceOne/persistenceSDK/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/metas/github.com/AssetMantle/modules/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -11338,7 +11338,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/metas/github.com/persistenceOne/persistenceSDK/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/metas/github.com/AssetMantle/modules/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -11518,7 +11518,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/metas/github.com/persistenceOne/persistenceSDK/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/metas/github.com/AssetMantle/modules/modules/metas/internal/transactions/reveal/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -11869,7 +11869,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -12067,7 +12067,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -12352,7 +12352,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/take/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/take/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -12565,7 +12565,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -12872,7 +12872,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/cancel/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/cancel/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -13084,7 +13084,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -13282,7 +13282,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/splits/github.com/persistenceOne/persistenceSDK/modules/splits/internal/transactions/wrap/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/splits/github.com/AssetMantle/modules/modules/splits/internal/transactions/wrap/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -13356,7 +13356,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -13641,7 +13641,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/take/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/take/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -13854,7 +13854,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -14096,7 +14096,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -14301,7 +14301,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/cancel/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/cancel/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -14580,7 +14580,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -14815,7 +14815,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -15274,7 +15274,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -15628,7 +15628,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -15863,7 +15863,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -16217,7 +16217,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -16410,7 +16410,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -16592,7 +16592,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -16827,7 +16827,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -17181,7 +17181,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -17374,7 +17374,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/assets/github.com/persistenceOne/persistenceSDK/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/assets/github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -17556,7 +17556,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-&quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
+&quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${testAccountAddress}&quot;,&#xd;
@@ -17747,7 +17747,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/orders/github.com/persistenceOne/persistenceSDK/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;
@@ -18096,7 +18096,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
- &quot;type&quot;: &quot;/xprt/maintainers/github.com/persistenceOne/persistenceSDK/modules/maintainers/internal/transactions/deputize/transactionRequest&quot;,&#xd;
+ &quot;type&quot;: &quot;/xprt/maintainers/github.com/AssetMantle/modules/modules/maintainers/internal/transactions/deputize/transactionRequest&quot;,&#xd;
  &quot;value&quot;: {&#xd;
     &quot;baseReq&quot;: {&#xd;
       &quot;from&quot;: &quot;${afrom}&quot;,&#xd;

@@ -1,12 +1,18 @@
-/*
- Copyright [2019] - [2020], PERSISTENCE TECHNOLOGIES PTE. LTD. and the assetMantle contributors
- SPDX-License-Identifier: Apache-2.0
-*/
+// Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
+// SPDX-License-Identifier: Apache-2.0
 
 package main
 
 import (
 	"fmt"
+	"os"
+	"path"
+	"strings"
+
+	"github.com/AssetMantle/modules/schema/helpers/constants"
+	keysAdd "github.com/AssetMantle/modules/utilities/rest/keys/add"
+	"github.com/AssetMantle/modules/utilities/rest/queuing"
+	"github.com/AssetMantle/modules/utilities/rest/sign"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/keys"
@@ -20,17 +26,11 @@ import (
 	authREST "github.com/cosmos/cosmos-sdk/x/auth/client/rest"
 	"github.com/cosmos/cosmos-sdk/x/bank"
 	bankCLI "github.com/cosmos/cosmos-sdk/x/bank/client/cli"
-	"github.com/persistenceOne/assetMantle/application"
-	xprtFlags "github.com/persistenceOne/persistenceSDK/constants/flags"
-	keysAdd "github.com/persistenceOne/persistenceSDK/utilities/rest/keys/add"
-	"github.com/persistenceOne/persistenceSDK/utilities/rest/queuing"
-	"github.com/persistenceOne/persistenceSDK/utilities/rest/sign"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"github.com/tendermint/tendermint/libs/cli"
-	"os"
-	"path"
-	"strings"
+
+	"github.com/AssetMantle/node/application"
 )
 
 func main() {
@@ -117,8 +117,8 @@ func ServeCommand(codec *codec.Codec) *cobra.Command {
 			restServer := lcd.NewRestServer(codec)
 			registerRoutes(restServer)
 
-			if xprtFlags.Queuing.ReadCLIValue().(bool) {
-				queuing.InitializeKafka(strings.Split(strings.Trim(xprtFlags.KafkaNodes.ReadCLIValue().(string), "\" "), " "), restServer.CliCtx)
+			if constants.Queuing.ReadCLIValue().(bool) {
+				queuing.InitializeKafka(strings.Split(strings.Trim(constants.KafkaNodes.ReadCLIValue().(string), "\" "), " "), restServer.CliCtx)
 			}
 			return restServer.Start(
 				viper.GetString(flags.FlagListenAddr),
@@ -129,8 +129,8 @@ func ServeCommand(codec *codec.Codec) *cobra.Command {
 			)
 		},
 	}
-	xprtFlags.Queuing.Register(cmd)
-	xprtFlags.KafkaNodes.Register(cmd)
+	constants.Queuing.Register(cmd)
+	constants.KafkaNodes.Register(cmd)
 	cmd.Flags().String(flags.FlagKeyringBackend, flags.DefaultKeyringBackend, "Select keyring's backend (os|file|kwallet|pass|test)")
 	cmd.Flags().Bool(flags.FlagGenerateOnly, false, "Build an unsigned transaction and write it as response to rest (when enabled, the local Keybase is not accessible and the node operates offline)")
 	cmd.Flags().StringP(flags.FlagBroadcastMode, "b", flags.BroadcastSync, "Transaction broadcasting mode (sync|async|block)")

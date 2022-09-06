@@ -1,3 +1,6 @@
+# Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
+# SPDX-License-Identifier: Apache-2.0
+
 # genesis account / chain -id is test, commands to store, instantiate, execute a contract. this eg- hackatom, github.com/CosmWasm/cosmwasm/contracts/hackatom
 
 assetClient tx wasm store /PATH_TO_WASM_COMTRACT/_.wasm --from test --gas 900000 -y --chain-id test

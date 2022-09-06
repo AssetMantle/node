@@ -1,7 +1,5 @@
-/*
- Copyright [2019] - [2020], PERSISTENCE TECHNOLOGIES PTE. LTD. and the assetMantle contributors
- SPDX-License-Identifier: Apache-2.0
-*/
+// Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
+// SPDX-License-Identifier: Apache-2.0
 
 package main
 
@@ -18,8 +16,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/version"
 	"github.com/cosmos/cosmos-sdk/x/auth"
 	"github.com/cosmos/cosmos-sdk/x/staking"
-	"github.com/persistenceOne/assetMantle/application"
-	"github.com/persistenceOne/assetMantle/application/initialize"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	tendermintABCITypes "github.com/tendermint/tendermint/abci/types"
@@ -27,6 +23,9 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	tendermintTypes "github.com/tendermint/tendermint/types"
 	tendermintDB "github.com/tendermint/tm-db"
+
+	"github.com/AssetMantle/node/application"
+	"github.com/AssetMantle/node/application/initialize"
 )
 
 const flagInvariantsCheckPeriod = "invariants-check-period"

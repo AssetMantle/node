@@ -1,3 +1,6 @@
+// Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
+// SPDX-License-Identifier: Apache-2.0
+
 //During the test the env variable is set to test
 process.env.NODE_ENV = 'test';
 let chai = require('chai');

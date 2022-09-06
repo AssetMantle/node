@@ -1,7 +1,5 @@
-/*
- Copyright [2019] - [2020], PERSISTENCE TECHNOLOGIES PTE. LTD. and the assetMantle contributors
- SPDX-License-Identifier: Apache-2.0
-*/
+// Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
+// SPDX-License-Identifier: Apache-2.0
 
 package initialize
 
@@ -16,7 +14,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/server"
 	sdkTypes "github.com/cosmos/cosmos-sdk/types"
 	"github.com/otiai10/copy"
-	"github.com/persistenceOne/assetMantle/application"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	tendermintABCITypes "github.com/tendermint/tendermint/abci/types"
@@ -25,6 +22,8 @@ import (
 	tendermintState "github.com/tendermint/tendermint/state"
 	tendermintStore "github.com/tendermint/tendermint/store"
 	tendermintTypes "github.com/tendermint/tendermint/types"
+
+	"github.com/AssetMantle/node/application"
 )
 
 func ReplayTransactionsCommand() *cobra.Command {
