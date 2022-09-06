@@ -1,6 +1,12 @@
 #!/bin/bash
 
-cd kafka_2.12-2.5.0
+# Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
+# SPDX-License-Identifier: Apache-2.0
+
+KAFKA_VERSION=2.8.0
+KAFKA_FOLDER=kafka_2.13-"$KAFKA_VERSION"
+
+cd "$KAFKA_FOLDER"
 
 bin/zookeeper-server-start.sh config/zookeeper.properties &
 

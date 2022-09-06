@@ -1,41 +1,36 @@
-/*
- Copyright [2019] - [2020], PERSISTENCE TECHNOLOGIES PTE. LTD. and the assetMantle contributors
- SPDX-License-Identifier: Apache-2.0
-*/
+// Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
+// SPDX-License-Identifier: Apache-2.0
 
 package main
 
 import (
 	"fmt"
-	//"github.com/CosmWasm/wasmd/app"
-	"github.com/cosmos/cosmos-sdk/client/flags"
-	"github.com/persistenceOne/assetMantle/application"
-	"github.com/persistenceOne/persistenceSDK/schema/helpers/base"
-	keysAdd "github.com/persistenceOne/persistenceSDK/utilities/rest/keys/add"
-	"github.com/persistenceOne/persistenceSDK/utilities/rest/queuing"
-	"github.com/persistenceOne/persistenceSDK/utilities/rest/queuing/rest"
-	"github.com/persistenceOne/persistenceSDK/utilities/rest/signTx"
 	"os"
 	"path"
 	"strings"
-	"time"
 
+	"github.com/AssetMantle/modules/schema/helpers/constants"
+	keysAdd "github.com/AssetMantle/modules/utilities/rest/keys/add"
+	"github.com/AssetMantle/modules/utilities/rest/queuing"
+	"github.com/AssetMantle/modules/utilities/rest/sign"
 	"github.com/cosmos/cosmos-sdk/client"
+	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/keys"
 	"github.com/cosmos/cosmos-sdk/client/lcd"
 	"github.com/cosmos/cosmos-sdk/client/rpc"
+	"github.com/cosmos/cosmos-sdk/codec"
+	sdkTypes "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/version"
 	"github.com/cosmos/cosmos-sdk/x/auth"
 	authCLI "github.com/cosmos/cosmos-sdk/x/auth/client/cli"
 	authREST "github.com/cosmos/cosmos-sdk/x/auth/client/rest"
 	"github.com/cosmos/cosmos-sdk/x/bank"
 	bankCLI "github.com/cosmos/cosmos-sdk/x/bank/client/cli"
-
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-
-	"github.com/tendermint/go-amino"
 	"github.com/tendermint/tendermint/libs/cli"
+
+	"github.com/AssetMantle/node/application"
 )
 
 func main() {
@@ -55,11 +50,11 @@ func main() {
 
 	rootCommand.AddCommand(
 		rpc.StatusCommand(),
-		client.ConfigCmd(application.DefaultClientHome),
-		queryCommand(application.Codec),
-		transactionCommand(application.Codec),
+		client.ConfigCmd(application.Prototype.GetDefaultClientHome()),
+		queryCommand(application.Prototype.GetCodec()),
+		transactionCommand(application.Prototype.GetCodec()),
 		flags.LineBreak,
-		ServeCmd(application.Codec),
+		ServeCommand(application.Prototype.GetCodec()),
 		flags.LineBreak,
 		keys.Commands(),
 		flags.LineBreak,
@@ -67,7 +62,7 @@ func main() {
 		flags.NewCompletionCmd(rootCommand, true),
 	)
 
-	executor := cli.PrepareMainCmd(rootCommand, "HC", application.DefaultClientHome)
+	executor := cli.PrepareMainCmd(rootCommand, "HC", application.Prototype.GetDefaultClientHome())
 
 	err := executor.Execute()
 	if err != nil {
@@ -79,12 +74,13 @@ func main() {
 func registerRoutes(restServer *lcd.RestServer) {
 	client.RegisterRoutes(restServer.CliCtx, restServer.Mux)
 	authREST.RegisterTxRoutes(restServer.CliCtx, restServer.Mux)
-	application.ModuleBasics.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
+	application.Prototype.GetModuleBasicManager().RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
 	keysAdd.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
-	signTx.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
+	sign.RegisterRESTRoutes(restServer.CliCtx, restServer.Mux)
+	queuing.RegisterRoutes(restServer.CliCtx, restServer.Mux)
 }
 
-func queryCommand(codec *amino.Codec) *cobra.Command {
+func queryCommand(codec *codec.Codec) *cobra.Command {
 	queryCommand := &cobra.Command{
 		Use:     "query",
 		Aliases: []string{"q"},
@@ -101,7 +97,7 @@ func queryCommand(codec *amino.Codec) *cobra.Command {
 		flags.LineBreak,
 	)
 
-	application.ModuleBasics.AddQueryCommands(queryCommand, codec)
+	application.Prototype.GetModuleBasicManager().AddQueryCommands(queryCommand, codec)
 
 	return queryCommand
 }
@@ -109,51 +105,28 @@ func queryCommand(codec *amino.Codec) *cobra.Command {
 // ServeCommand will start the application REST service as a blocking process. It
 // takes a codec to create a RestServer object and a function to register all
 // necessary routes.
-func ServeCmd(codec *amino.Codec) *cobra.Command {
-	flagKafka := "kafka"
-	kafkaPorts := "kafkaPort"
+func ServeCommand(codec *codec.Codec) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "rest-server",
 		Short: "Start LCD (light-client daemon), a local REST server",
 		RunE: func(cmd *cobra.Command, args []string) (err error) {
-			generateOnly := viper.GetBool(flags.FlagGenerateOnly)
-			viper.Set(flags.FlagGenerateOnly, false)
-			rs := lcd.NewRestServer(codec)
-			viper.Set(flags.FlagGenerateOnly, generateOnly)
-			kafkaBool := viper.GetBool(flagKafka)
-			var kafkaState queuing.KafkaState
-			corsBool := viper.GetBool(flags.FlagUnsafeCORS)
-			if kafkaBool == true {
-				kafkaPort := viper.GetString(kafkaPorts)
-				kafkaPort = strings.Trim(kafkaPort, "\" ")
-				kafkaPorts := strings.Split(kafkaPort, " ")
-				kafkaState = queuing.NewKafkaState(kafkaPorts)
-				base.KafkaBool = kafkaBool
-				base.KafkaState = kafkaState
-				rs.Mux.HandleFunc("/response/{ticketID}", queuing.QueryDB(codec, kafkaState.KafkaDB)).Methods("GET")
+			restServer := lcd.NewRestServer(codec)
+			registerRoutes(restServer)
+
+			if constants.Queuing.ReadCLIValue().(bool) {
+				queuing.InitializeKafka(strings.Split(strings.Trim(constants.KafkaNodes.ReadCLIValue().(string), "\" "), " "), restServer.CliCtx)
 			}
-			registerRoutes(rs)
-			if kafkaBool == true {
-				go func() {
-					for {
-						rest.KafkaConsumerMessages(rs.CliCtx, kafkaState)
-						time.Sleep(queuing.SleepRoutine)
-					}
-				}()
-			}
-			// Start the rest server and return error if one exists
-			err = rs.Start(
+			return restServer.Start(
 				viper.GetString(flags.FlagListenAddr),
 				viper.GetInt(flags.FlagMaxOpenConnections),
 				uint(viper.GetInt(flags.FlagRPCReadTimeout)),
 				uint(viper.GetInt(flags.FlagRPCWriteTimeout)),
-				corsBool,
+				viper.GetBool(flags.FlagUnsafeCORS),
 			)
-			return err
 		},
 	}
-	cmd.Flags().Bool(flagKafka, false, "Whether have kafka running")
-	cmd.Flags().String(kafkaPorts, "localhost:9092", "Space separated addresses in quotes of the kafka listening node: example: --kafkaPort \"addr1 addr2\" ")
+	constants.Queuing.Register(cmd)
+	constants.KafkaNodes.Register(cmd)
 	cmd.Flags().String(flags.FlagKeyringBackend, flags.DefaultKeyringBackend, "Select keyring's backend (os|file|kwallet|pass|test)")
 	cmd.Flags().Bool(flags.FlagGenerateOnly, false, "Build an unsigned transaction and write it as response to rest (when enabled, the local Keybase is not accessible and the node operates offline)")
 	cmd.Flags().StringP(flags.FlagBroadcastMode, "b", flags.BroadcastSync, "Transaction broadcasting mode (sync|async|block)")
@@ -161,7 +134,7 @@ func ServeCmd(codec *amino.Codec) *cobra.Command {
 	return flags.RegisterRestServerFlags(cmd)
 }
 
-func transactionCommand(codec *amino.Codec) *cobra.Command {
+func transactionCommand(codec *codec.Codec) *cobra.Command {
 	transactionCommand := &cobra.Command{
 		Use:   "tx",
 		Short: "Transactions subcommands",
@@ -178,7 +151,7 @@ func transactionCommand(codec *amino.Codec) *cobra.Command {
 		flags.LineBreak,
 	)
 
-	application.ModuleBasics.AddTxCommands(transactionCommand, codec)
+	application.Prototype.GetModuleBasicManager().AddTxCommands(transactionCommand, codec)
 
 	var commandListToRemove []*cobra.Command
 
