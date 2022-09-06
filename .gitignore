@@ -1,6 +1,11 @@
-node/__debug_bin/
+# arranged alphabetically
+
+build/
 client/__debug_bin/
+node/__debug_bin/
 vendor/
-.vscode/
+
+# hidden folders
 .idea/
-target/
+.mocha/node_modules/
+.vscode/

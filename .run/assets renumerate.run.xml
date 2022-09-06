@@ -1,0 +1,16 @@
+<!-- Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors -->
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="assets renumerate" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="assets">
+    <module name="assetMantle" />
+    <working_directory value="$PROJECT_DIR$" />
+    <go_parameters value="-i" />
+    <parameters value="tx assets renumerate -y --chain-id=test-chian-1 --from=test --fromID=test.phkuuT6NjKalXUWqoyg5MriGfuBHH7JuK4Tdh0C_Ge0=|tJ5bx7SKdhJ-_difFkAotMK0OLoKTNztqDWiJJlZU9Y= --assetID=test.HY-fAOmdBU9SJB-nq7-7uwXPSwpLyjQJJj9RfM6Hi6s=|zpFuGPDz9i2bkvtVCIRTxAC_9QfMI0_vwXIvsBiEupk=" />
+    <kind value="FILE" />
+    <filePath value="$PROJECT_DIR$/client/main.go" />
+    <package value="github.com/AssetMantle/node" />
+    <directory value="$PROJECT_DIR$" />
+    <method v="2" />
+  </configuration>
+</component>
