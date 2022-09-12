@@ -13,7 +13,7 @@ const (
 	Name             = "AssetMantle"
 	Bech32MainPrefix = "mantle"
 
-	CoinType           = 18
+	CoinType           = 118
 	FullFundraiserPath = "44'/118'/0'/0/0"
 
 	Bech32PrefixAccAddr  = Bech32MainPrefix
