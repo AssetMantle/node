@@ -3,4 +3,21 @@
 
 package configurations
 
-const Name = "AssetMantle"
+import (
+	sdkTypes "github.com/cosmos/cosmos-sdk/types"
+)
+
+const (
+	Name             = "AssetMantle"
+	Bech32MainPrefix = "mantle"
+
+	CoinType           = 118
+	FullFundraiserPath = "44'/118'/0'/0/0"
+
+	Bech32PrefixAccAddr  = Bech32MainPrefix
+	Bech32PrefixAccPub   = Bech32MainPrefix + sdkTypes.PrefixPublic
+	Bech32PrefixValAddr  = Bech32MainPrefix + sdkTypes.PrefixValidator + sdkTypes.PrefixOperator
+	Bech32PrefixValPub   = Bech32MainPrefix + sdkTypes.PrefixValidator + sdkTypes.PrefixOperator + sdkTypes.PrefixPublic
+	Bech32PrefixConsAddr = Bech32MainPrefix + sdkTypes.PrefixValidator + sdkTypes.PrefixConsensus
+	Bech32PrefixConsPub  = Bech32MainPrefix + sdkTypes.PrefixValidator + sdkTypes.PrefixConsensus + sdkTypes.PrefixPublic
+)
