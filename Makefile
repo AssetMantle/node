@@ -22,7 +22,7 @@ GOBIN = $(shell go env GOPATH)/bin
 # Docker variables
 DOCKER := $(shell which docker)
 
-DOCKER_IMAGE_NAME = persistenceone/assetmantle
+DOCKER_IMAGE_NAME = assetmantle/node
 DOCKER_TAG_NAME = latest
 DOCKER_CONTAINER_NAME = assetmantle-container
 DOCKER_CMD ?= "/bin/sh"
@@ -56,12 +56,12 @@ verify:
 
 # Commands for running docker
 #
-# Run persistenceCore on docker
+# Run node on docker
 # Example Usage:
-# 	make docker-build   ## Builds persistenceCore binary in 2 stages, 1st builder 2nd Runner
-# 						   Final image only has the compiled persistenceCore binary
+# 	make docker-build   ## Builds node binary in 2 stages, 1st builder 2nd Runner
+# 						   Final image only has the compiled node binary
 # 	make docker-interactive   ## Will start an shell session into the docker container
-# 								 Access to persistenceCore binary here
+# 								 Access to node binary here
 # 		NOTE: To be used for testing only, since the container will be removed after stopping
 # 	make docker-run DOCKER_CMD=sleep 10000000 DOCKER_OPTS=-d   ## Will run the container in the background
 # 		NOTE: Recommeded to use docker commands directly for long running processes

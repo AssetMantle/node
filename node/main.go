@@ -41,7 +41,7 @@ func main() {
 
 	rootCommand := &cobra.Command{
 		Use:               "assetNode",
-		Short:             "Persistence Hub Node Daemon (server)",
+		Short:             "AssetMantle Node Daemon (server)",
 		PersistentPreRunE: server.PersistentPreRunEFn(serverContext),
 	}
 

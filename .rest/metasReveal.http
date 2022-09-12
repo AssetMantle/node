@@ -8,7 +8,7 @@ Content-Type: application/json
       "from": "{{ACCOUNT_1_ADDRESS}}",
       "chain_id": "{{CHAIN_ID}}"
     },
-    "metaFact":"S|PERSISTENCE_NUB_ID"
+    "metaFact":"S|NUB_ID"
   }
 }
 

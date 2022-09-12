@@ -1,17 +1,13 @@
-<!-- Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors -->
-<!-- SPDX-License-Identifier: Apache-2.0 -->
-
 <component name="ProjectRunConfigurationManager">
-    <configuration default="false" name="keys list" type="GoApplicationRunConfiguration" factoryName="Go Application"
-                   folderName="keys">
-        <module name="assetMantle"/>
-        <working_directory value="$PROJECT_DIR$"/>
-        <go_parameters value="-i"/>
-        <parameters value="keys list"/>
-        <kind value="FILE"/>
-        <filePath value="$PROJECT_DIR$/client/main.go"/>
-        <package value="github.com/AssetMantle/node"/>
-        <directory value="$PROJECT_DIR$"/>
-        <method v="2"/>
-    </configuration>
+  <configuration default="false" name="keys list" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="keys">
+    <module name="node" />
+    <working_directory value="$PROJECT_DIR$" />
+    <go_parameters value="-i" />
+    <parameters value="keys list" />
+    <kind value="FILE" />
+    <package value="github.com/AssetMantle/node" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$/client/main.go" />
+    <method v="2" />
+  </configuration>
 </component>

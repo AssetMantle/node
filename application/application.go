@@ -1,11 +1,16 @@
-/*
- Copyright [2019] - [2020], PERSISTENCE TECHNOLOGIES PTE. LTD. and the assetMantle contributors
- SPDX-License-Identifier: Apache-2.0
-*/
+// Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
+// SPDX-License-Identifier: Apache-2.0
 
 package application
 
 import (
+	"github.com/AssetMantle/modules/modules/assets"
+	"github.com/AssetMantle/modules/modules/classifications"
+	"github.com/AssetMantle/modules/modules/identities"
+	"github.com/AssetMantle/modules/modules/maintainers"
+	"github.com/AssetMantle/modules/modules/metas"
+	"github.com/AssetMantle/modules/modules/orders"
+	"github.com/AssetMantle/modules/modules/splits"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/auth"
 	"github.com/cosmos/cosmos-sdk/x/bank"
@@ -22,14 +27,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/supply"
 	"github.com/cosmos/cosmos-sdk/x/upgrade"
 	upgradeClient "github.com/cosmos/cosmos-sdk/x/upgrade/client"
-	"github.com/persistenceOne/persistenceSDK/modules/assets"
-	"github.com/persistenceOne/persistenceSDK/modules/classifications"
-	"github.com/persistenceOne/persistenceSDK/modules/identities"
-	"github.com/persistenceOne/persistenceSDK/modules/maintainers"
-	"github.com/persistenceOne/persistenceSDK/modules/metas"
-	"github.com/persistenceOne/persistenceSDK/modules/orders"
-	"github.com/persistenceOne/persistenceSDK/modules/splits"
-	"github.com/persistenceOne/persistenceSDK/schema/applications/base"
 )
 
 var moduleAccountPermissions = map[string][]string{
@@ -39,7 +36,7 @@ var moduleAccountPermissions = map[string][]string{
 	staking.BondedPoolName:    {supply.Burner, supply.Staking},
 	staking.NotBondedPoolName: {supply.Burner, supply.Staking},
 	gov.ModuleName:            {supply.Burner},
-	splits.Module.Name():      nil,
+	splits.Prototype().Name(): nil,
 }
 var tokenReceiveAllowedModules = map[string]bool{
 	distribution.ModuleName: true,
@@ -59,17 +56,11 @@ var ModuleBasics = module.NewBasicManager(
 	upgrade.AppModuleBasic{},
 	evidence.AppModuleBasic{},
 
-	assets.Module,
-	classifications.Module,
-	identities.Module,
-	maintainers.Module,
-	metas.Module,
-	orders.Module,
-	splits.Module,
-)
-var NewApplication = base.Prototype(
-	Name,
-	Codec,
-	moduleAccountPermissions,
-	tokenReceiveAllowedModules,
+	assets.Prototype(),
+	classifications.Prototype(),
+	identities.Prototype(),
+	maintainers.Prototype(),
+	metas.Prototype(),
+	orders.Prototype(),
+	splits.Prototype(),
 )

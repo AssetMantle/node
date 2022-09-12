@@ -13,8 +13,8 @@
     "enableTimeouts": false
   },
   "keywords": [],
-  "author": "PersistenceOne",
-  "license": "PersistenceOne",
+  "author": "AssetMantle",
+  "license": "AssetMantle",
   "devDependencies": {
     "have": "^0.4.0",
     "mocha": "^7.2.0",

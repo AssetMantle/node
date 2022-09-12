@@ -106,7 +106,7 @@ pub fn handle<S: Storage, A: Api, Q: Querier>(
     deps: &mut Extern<S, A, Q>,
     env: Env,
     msg: HandleMsg,
-) -> StdResult<HandleResponse<PersistenceSDK>> {
+) -> StdResult<HandleResponse<Modules>> {
     match msg {
         HandleMsg::AssetMint {
             classificationID,
@@ -141,15 +141,15 @@ pub struct AssetMintRaw {
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub struct PersistenceSDK {
+pub struct Modules {
     msgtype: String,
     raw: AssetMintRaw,
 }
 
 // {"mint":{"msgtype":"assets/mint","raw":""}}
 // this is a helper to be able to return these as CosmosMsg easier
-impl Into<CosmosMsg<PersistenceSDK>> for PersistenceSDK {
-    fn into(self) -> CosmosMsg<PersistenceSDK> {
+impl Into<CosmosMsg<Modules>> for Modules {
+    fn into(self) -> CosmosMsg<Modules> {
         CosmosMsg::Custom(self)
     }
 }
@@ -162,7 +162,7 @@ fn do_asset_mint<S: Storage, A: Api, Q: Querier>(
     immutableProperties: String,
     mutableMetaProperties: String,
     mutableProperties: String,
-) -> StdResult<HandleResponse<PersistenceSDK>> {
+) -> StdResult<HandleResponse<Modules>> {
     let data = deps
         .storage
         .get(CONFIG_KEY)
@@ -187,7 +187,7 @@ fn do_asset_mint<S: Storage, A: Api, Q: Querier>(
 
         let res = HandleResponse {
             log: vec![log("action", "asset_mint"), log("destination", &from_addr)],
-            messages: vec![PersistenceSDK {
+            messages: vec![Modules {
                 msgtype: "assets/mint".to_string(),
                 raw: mintMsg,
             }

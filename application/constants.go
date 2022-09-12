@@ -1,21 +1,20 @@
-/*
- Copyright [2019] - [2020], PERSISTENCE TECHNOLOGIES PTE. LTD. and the assetMantle contributors
- SPDX-License-Identifier: Apache-2.0
-*/
+// Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
+// SPDX-License-Identifier: Apache-2.0
 
 package application
 
 import (
-	sdkTypes "github.com/cosmos/cosmos-sdk/types"
 	"os"
+
+	sdkTypes "github.com/cosmos/cosmos-sdk/types"
 )
 
 const (
 	Name             = "AssetMantle"
 	Bech32MainPrefix = "mantle"
 
-	CoinType           = 750
-	FullFundraiserPath = "44'/750'/0'/0/0"
+	CoinType           = 18
+	FullFundraiserPath = "44'/118'/0'/0/0"
 
 	Bech32PrefixAccAddr  = Bech32MainPrefix
 	Bech32PrefixAccPub   = Bech32MainPrefix + sdkTypes.PrefixPublic

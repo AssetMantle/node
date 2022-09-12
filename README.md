@@ -3,12 +3,12 @@
 Application implementing the minimum clique of AssetMantle modules enabling interNFT definition, issuance, ownership
 transfer and decentralized exchange.
 
-[![LoC](https://tokei.rs/b1/github/persistenceOne/assetMantle)](https://github.com/persistenceOne/assetMantle)
+[![LoC](https://tokei.rs/b1/github/AssetMantle/node)](https://github.com/AssetMantle/node)
 
 ## Talk to us!
-*   [Twitter](https://twitter.com/PersistenceOne)
-*   [Telegram](https://t.me/PersistenceOneChat)
-*   [Discord](https://discord.com/channels/796174129077813248)
+*   [Twitter](https://twitter.com/AssetMantle)
+*   [Telegram](https://t.me/AssetMantleChat)
+*   [Discord](https://discord.gg/B6NzVbbRWc)
 
 ## Hardware Requirements
 * **Minimal**
@@ -37,7 +37,7 @@ transfer and decentralized exchange.
 
 * Clone git repository
 ```shell
-git clone https://github.com/persistenceOne/assetMantle.git
+git clone https://github.com/AssetMantle/node.git
 ```
 * Checkout release tag
 ```shell
