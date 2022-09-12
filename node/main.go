@@ -35,11 +35,7 @@ var invariantsCheckPeriod uint
 func main() {
 	serverContext := server.NewDefaultContext()
 
-	configuration := sdkTypes.GetConfig()
-	configuration.SetBech32PrefixForAccount(sdkTypes.Bech32PrefixAccAddr, sdkTypes.Bech32PrefixAccPub)
-	configuration.SetBech32PrefixForValidator(sdkTypes.Bech32PrefixValAddr, sdkTypes.Bech32PrefixValPub)
-	configuration.SetBech32PrefixForConsensusNode(sdkTypes.Bech32PrefixConsAddr, sdkTypes.Bech32PrefixConsPub)
-	configuration.Seal()
+	application.SetConfiguration()
 
 	cobra.EnableCommandSorting = false
 

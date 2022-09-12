@@ -1,3 +1,5 @@
+#!/usr/bin/make -f
+
 export GO111MODULE=on
 
 VERSION := $(shell echo $(shell git describe --tags) | sed 's/^v//')
