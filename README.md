@@ -2,7 +2,6 @@
   <h1>Node</h1>
 
 ![GitHub Workflow Status](https://github.com/assetmantle/node/actions/workflows/test.yml/badge.svg)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=AssetMantle_modules&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=AssetMantle_modules)
 [![Go Report Card](https://goreportcard.com/badge/github.com/assetmantle/node)](https://goreportcard.com/report/github.com/assetmantle/node)
 [![License: Apache-2.0](https://img.shields.io/github/license/assetmantle/node.svg)](https://github.com/assetmantle/node/blob/main/LICENSE)
 [![Lines Of Code](https://img.shields.io/tokei/lines/github/assetmantle/node)](https://github.com/assetmantle/node)
@@ -146,5 +145,5 @@ If you want to contribute to AssetMantle Modules, please read the instructions i
         <h3 style="margin:-5px 10px 5px;">Contributors</h3>
         <hr align="left" width="20%">
     </div>
-    <img src="https://contrib.rocks/image?repo=assetmantle/node&columns=80" style="width:700;"/>
+    <img src="https://contrib.rocks/image?repo=assetmantle/node&columns=80" width="50%" height="50%"/>
 </div>
