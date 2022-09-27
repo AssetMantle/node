@@ -96,7 +96,7 @@ docker-clean-image:
 docker-compose: docker-build
 	${DOCKER} compose up -d
 
-docker-compose-noit: docker-build
+docker-compose-it: docker-build
 	${DOCKER} compose up
 
 docker-compose-clean:
