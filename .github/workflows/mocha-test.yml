@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: 18
 
-      - name: 'Cache node_modules'
+      - name: cache npm
         uses: actions/cache@v2
         with:
           path: ~/.npm
@@ -37,12 +37,14 @@ jobs:
 
       - run: make docker-compose
 
-      - run: |
+      - name: mocha test
+        run: |
           cd .tests/mocha
-          npm -i
+          npm i
           npm run test:report
 
       - run: make docker-compose-clean || true
+        if: ${{ always() }}
 
       - uses: actions/upload-artifact@v3
         with:

@@ -26,12 +26,14 @@ jobs:
 
       - run: make docker-compose
 
-      - uses: rbhadti94/apache-jmeter-action@v0.5.0
+      - name: jmeter test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
           testFilePath: .jmeter/assetMantleTestCases.jmx
           outputReportsFolder: reports/
 
       - run: make docker-compose-clean || true
+        if: ${{ always() }}
 
       - uses: actions/upload-artifact@v3
         with:
