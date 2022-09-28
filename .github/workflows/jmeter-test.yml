@@ -1,4 +1,4 @@
-name: Test
+name: Jmeter
 
 on:
   workflow_dispatch:

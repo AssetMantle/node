@@ -6,8 +6,6 @@ services:
     container_name: node
     network_mode: host
     build: .
-    ports:
-      - 26657:26657
     entrypoint: bash
     command:
       - -cex
@@ -26,10 +24,9 @@ services:
     container_name: client
     network_mode: host
     build: .
-    ports:
-      - 1317:1317
     command:
       - rest-server
+      - --keyring-backend=test
       - --node=tcp://node:26657
       - --laddr=tcp://0.0.0.0:1317
       - --trust-node

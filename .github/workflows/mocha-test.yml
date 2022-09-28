@@ -1,0 +1,50 @@
+name: Mocha
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 18
+
+      - name: 'Cache node_modules'
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-v18-
+          restore-keys: |
+            ${{ runner.os }}-node-v18-
+
+      - uses: docker/setup-buildx-action@v2
+        with: {install: true}
+
+      - uses: docker/build-push-action@v3
+        with:
+          tags: assetmantle/node:edge
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha
+
+      - run: make docker-compose
+
+      - run: |
+          cd .tests/mocha
+          npm -i
+          npm run test:report
+
+      - run: make docker-compose-clean || true
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-report
+          path: .tests/mocha/mochawesome/
