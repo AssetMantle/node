@@ -117,6 +117,7 @@ assetNode version
 Start node and client
 
 ```shell
+make enable-docker-buildx
 # port 26657 and 1317 are exposed
 make docker-compose
 ```
