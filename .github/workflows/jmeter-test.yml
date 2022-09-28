@@ -8,8 +8,8 @@ on:
     branches: [ master ]
 
 jobs:
-  test:
-    name: Test
+  jmeter-test:
+    name: jmeter-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
