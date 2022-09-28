@@ -110,7 +110,7 @@ killall assetNode
 assetNode version
 ```
 
-## Containeirzed environment
+## Containeirzed environment (Development)
 
 > Make sure you have latest docker version, Docker for mac can be [slow](https://twitter.com/pratikbin/status/1570722135571861504). Recommend using linux
 

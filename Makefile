@@ -93,10 +93,10 @@ docker-clean-container:
 docker-clean-image:
 	-${DOCKER} rmi ${DOCKER_IMAGE_NAME}:${DOCKER_TAG_NAME}
 
-docker-compose: docker-build
+docker-compose:
 	${DOCKER} compose up -d
 
-docker-compose-it: docker-build
+docker-compose-it:
 	${DOCKER} compose up
 
 docker-compose-clean:
