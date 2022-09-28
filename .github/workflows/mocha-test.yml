@@ -39,7 +39,7 @@ jobs:
 
       - name: mocha test
         run: |
-          cd .tests/mocha
+          cd .mocha
           npm i
           npm run test:report
 
@@ -48,5 +48,5 @@ jobs:
 
       - uses: actions/upload-artifact@v3
         with:
-          name: jmeter-report
-          path: .tests/mocha/mochawesome/
+          name: mocha-report
+          path: .mocha/mocha-report/
