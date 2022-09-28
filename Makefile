@@ -71,10 +71,10 @@ enable-docker-buildx:
 	@${DOCKER} buildx install
 	@${DOCKER} buildx use default
 
-docker-build: enable-docker-buildx
+docker-build:
 	${DOCKER} build -t ${DOCKER_IMAGE_NAME}:${DOCKER_TAG_NAME} .
 
-docker-build-no-cache: enable-docker-buildx
+docker-build-no-cache:
 	${DOCKER} build -t ${DOCKER_IMAGE_NAME}:${DOCKER_TAG_NAME} . --no-cache
 
 docker-build-push: docker-build
