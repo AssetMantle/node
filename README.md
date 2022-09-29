@@ -110,14 +110,13 @@ killall assetNode
 assetNode version
 ```
 
-## Containeirzed environment (Development)
+## Containeirzed environment
 
 > Make sure you have latest docker version, Docker for mac can be [slow](https://twitter.com/pratikbin/status/1570722135571861504). Recommend using linux
 
 Start node and client
 
 ```shell
-make enable-docker-buildx
 # port 26657 and 1317 are exposed
 make docker-compose
 ```
@@ -137,7 +136,7 @@ If you want to contribute to AssetMantle Modules, please read the instructions i
 [![Discord](https://dcbadge.vercel.app/api/server/8tSZ2NPSnS)](https://discord.gg/8tSZ2NPSnS)
 [![Twitter](https://img.shields.io/twitter/follow/AssetMantle?color=blue&label=Twitter&style=for-the-badge&cacheSeconds=3600&logo=twitter)](https://twitter.com/AssetMantle)
 [![Reddit](https://img.shields.io/reddit/subreddit-subscribers/AssetMantle?style=for-the-badge&cacheSeconds=3600&logo=reddit&label=Reddit%20r/assetmantle&logoColor=white)](https://www.reddit.com/r/AssetMantle/)
-[![Twitter](https://img.shields.io/youtube/channel/subscribers/UCQkov-0kol99KGMxyXc-a6Q?label=YouTube&cacheSeconds=3600&logoColor=red&style=for-the-badge&logo=YouTube)](https://twitter.com/AssetMantle)
+[![YouTube](https://img.shields.io/youtube/channel/subscribers/UCQkov-0kol99KGMxyXc-a6Q?label=YouTube&cacheSeconds=3600&logoColor=red&style=for-the-badge&logo=YouTube)](https://www.youtube.com/channel/UCQkov-0kol99KGMxyXc-a6Q/videos)
 
 </div>
 
@@ -146,5 +145,5 @@ If you want to contribute to AssetMantle Modules, please read the instructions i
         <h3 style="margin:-5px 10px 5px;">Contributors</h3>
         <hr align="left" width="20%">
     </div>
-    <img src="https://contrib.rocks/image?repo=assetmantle/node&columns=80" width="50%" height="50%"/>
+    <img src="https://contrib.rocks/image?repo=assetmantle/node&columns=80" width="70%" height="70%"/>
 </div>
