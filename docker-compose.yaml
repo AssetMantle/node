@@ -4,8 +4,9 @@ services:
   node:
     image: assetmantle/node:edge
     container_name: node
-    network_mode: host
     build: .
+    ports:
+      - 26657:26657
     entrypoint: bash
     command:
       - -cex
@@ -22,7 +23,8 @@ services:
   client:
     image: assetmantle/node:edge
     container_name: client
-    network_mode: host
+    ports:
+      - 1317:1317
     build: .
     command:
       - rest-server
