@@ -21,8 +21,7 @@ body:
       description: "Be clear and concise while describing the steps to ensure that it can be reproduced and potentially fixed"
       placeholder: |
         1. Your assetNode version -
-        2. assetClient keys add [key_name](add the key name)- 
-        3. See error
+        2. assetClient keys add [key_name](add the key name)-
   - type: textarea
     attributes:
       label: Expected behavior.
