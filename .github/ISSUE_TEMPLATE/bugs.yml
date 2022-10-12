@@ -2,8 +2,7 @@ name: bugReport🐛
 description: Create a report to help us improve
 title: "Bug🐛: "
 labels: [bug]
-blank_issues_enabled: true
-required: true
+
 
 body:
   - type: markdown

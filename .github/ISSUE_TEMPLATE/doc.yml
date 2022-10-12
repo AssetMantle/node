@@ -2,9 +2,6 @@ name: documentationUpdate📄
 description: Suggest how we can improve our documentation
 title: "Documentation📄: "
 labels: [documentation]
-blank_issues_enabled: true
-required: true
-
 
 body:
   - type: markdown
