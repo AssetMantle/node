@@ -3,7 +3,7 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="query classifications classifications --chain-id=test-chain1-1 --classificationID=test.rwEgm9vevcdsXo_wJtGBm7K1tgae_ldiEvCCd2J0qF8=" />
+    <parameters value="query classifications classifications --chain-id=test-chain1-1 --classificationID=test-chain-1.6f8P3S9PXe5uW2oFB1E9Ijm15XylA4RNs8KenslplpQ=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />

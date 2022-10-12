@@ -3,7 +3,7 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="tx splits unwrap -y --chain-id=test-chain-1 --from=test --fromID=test.cGn3HMW8M3t5gMDv-wXa9sseHnA=|cXbKF6hGMB0ei8unCEjb1z_s8r4= --ownableID=stake --split=1" />
+    <parameters value="tx splits unwrap -y --chain-id=test-chain-1 --from=test --fromID=test-chain-1.--7XBJqQl-Lx2HSmK61GOQgkWEvcG1wocS5SyGk3ZOM=|tJ5bx7SKdhJ-_difFkAotMK0OLoKTNztqDWiJJlZU9Y= --ownableID=stake --value=1" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />

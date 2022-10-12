@@ -3,7 +3,7 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="tx orders make -y --chain-id=test-chain-1test --from=test" />
+    <parameters value="tx orders make -y --chain-id=test-chain-1 --from=test --fromID=test-chain-1.--7XBJqQl-Lx2HSmK61GOQgkWEvcG1wocS5SyGk3ZOM=|tJ5bx7SKdhJ-_difFkAotMK0OLoKTNztqDWiJJlZU9Y= --classificationID=test-chain-1.um6JIwJvdoiGuBDcYLvNtsDWjXy2lCasIfZMMvEgbMA= --makerOwnableID=test-chain-1.6f8P3S9PXe5uW2oFB1E9Ijm15XylA4RNs8KenslplpQ=|zpFuGPDz9i2bkvtVCIRTxAC_9QfMI0_vwXIvsBiEupk= --takerOwnableID=stake --makerOwnableSplit=1 --takerOwnableSplit=1 --expiresIn=2000 --immutableMetaProperties=E:S|e --immutableProperties=F:S|f --mutableMetaProperties=G:S|g --mutableProperties=H:S|h" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />

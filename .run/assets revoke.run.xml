@@ -3,7 +3,7 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$" />
     <go_parameters value="-i" />
-    <parameters value="tx assets revoke -y --chain-id=test-chain-1 --from=test --fromID=test.DQOPDJEuwVDfdq1xpAN3BpXuHmUC8_g-LtRufFa-mCY=|tJ5bx7SKdhJ-_difFkAotMK0OLoKTNztqDWiJJlZU9Y= --toID=test.DQOPDJEuwVDfdq1xpAN3BpXuHmUC8_g-LtRufFa-mCY=|tJ5bx7SKdhJ-_difFkAotMK0OLoKTNztqDWiJJlZU9Y= --classificationID=test.rwEgm9vevcdsXo_wJtGBm7K1tgae_ldiEvCCd2J0qF8=" />
+    <parameters value="tx assets revoke -y --chain-id=test-chain-1 --from=test --fromID=test-chain-1.--7XBJqQl-Lx2HSmK61GOQgkWEvcG1wocS5SyGk3ZOM=|tJ5bx7SKdhJ-_difFkAotMK0OLoKTNztqDWiJJlZU9Y= --toID=test-chain-1.NHJ6mkBCUi7N3FaSz3GfvEdVnEEvdbT6xaVm6RObI34=|zpFuGPDz9i2bkvtVCIRTxAC_9QfMI0_vwXIvsBiEupk= --classificationID=test-chain-1.TetycLTgbc8NoNDM67TPGeYO2IDkZyxYBw-yOd70RWs=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$" />
