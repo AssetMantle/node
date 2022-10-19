@@ -1,4 +1,5 @@
-FROM golang:1.14-buster
+# syntax=docker/dockerfile:latest
+FROM golang:1.14-buster as build
 
 # Set up dependencies
 ENV PACKAGES curl make git
@@ -13,23 +14,17 @@ RUN apt update && apt install -y $PACKAGES
 # Install Rust and wasm32 dependencies
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-# Create appuser
-ENV USER=appuser
-ENV UID=10001
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "/app" \
-    --shell "/sbin/nologin" \
-    --uid "${UID}" \
-    "${USER}"
-USER 10001
-
 # Add source files
-COPY . .
+RUN --mount=type=bind,source=.,rw \
+  go mod download
 
-# Build client
-RUN make install
+# Build
+RUN --mount=type=bind,source=.,rw \
+  --mount=type=cache,target=/root/.cache \
+  make install
 
-# Run assetClient by default, omit entrypoint to ease using container with cli
-CMD ["assetClient"]
+FROM ubuntu
+COPY --from=build '/go/pkg/mod/github.com/!cosm!wasm/go-cosmwasm@v0.10.0/api/libgo_cosmwasm.so' /lib/x86_64-linux-gnu/libgo_cosmwasm.so
+COPY --from=build /go/bin/assetClient /usr/bin/assetClient
+COPY --from=build /go/bin/assetNode /usr/bin/assetNode
+ENTRYPOINT ["assetClient"]

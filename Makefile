@@ -7,14 +7,14 @@ COMMIT := $(shell git rev-parse --short HEAD)
 
 build_tags = netgo
 build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
-ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=assetMantle \
+ldflags = -w -s -X github.com/cosmos/cosmos-sdk/version.Name=assetMantle \
 		  -X github.com/cosmos/cosmos-sdk/version.ServerName=assetNode \
 		  -X github.com/cosmos/cosmos-sdk/version.ClientName=assetClient \
 		  -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
 		  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
 		  -X github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep) \
 
-BUILD_FLAGS += -ldflags "${ldflags}"
+BUILD_FLAGS += -ldflags "${ldflags}" -trimpath
 
 # Go environment variables
 GOBIN = $(shell go env GOPATH)/bin
@@ -23,7 +23,7 @@ GOBIN = $(shell go env GOPATH)/bin
 DOCKER := $(shell which docker)
 
 DOCKER_IMAGE_NAME = assetmantle/node
-DOCKER_TAG_NAME = latest
+DOCKER_TAG_NAME = edge
 DOCKER_CONTAINER_NAME = assetmantle-container
 DOCKER_CMD ?= "/bin/sh"
 
@@ -67,6 +67,10 @@ verify:
 # 		NOTE: Recommeded to use docker commands directly for long running processes
 # 	make docker-clean  # Will clean up the running container, as well as delete the image
 # 						 after one is done testing
+enable-docker-buildx:
+	@${DOCKER} buildx install
+	@${DOCKER} buildx use default
+
 docker-build:
 	${DOCKER} build -t ${DOCKER_IMAGE_NAME}:${DOCKER_TAG_NAME} .
 
@@ -76,10 +80,10 @@ docker-build-no-cache:
 docker-build-push: docker-build
 	${DOCKER} push ${DOCKER_IMAGE_NAME}:${DOCKER_TAG_NAME}
 
-docker-run:
+docker-run: docker-build
 	${DOCKER} run ${DOCKER_OPTS} --name=${DOCKER_CONTAINER_NAME} ${DOCKER_IMAGE_NAME}:${DOCKER_TAG_NAME} ${DOCKER_CMD}
 
-docker-interactive:
+docker-interactive: docker-build
 	${MAKE} docker-run DOCKER_CMD=/bin/sh DOCKER_OPTS="--rm -it"
 
 docker-clean-container:
@@ -89,4 +93,13 @@ docker-clean-container:
 docker-clean-image:
 	-${DOCKER} rmi ${DOCKER_IMAGE_NAME}:${DOCKER_TAG_NAME}
 
-docker-clean: docker-clean-container docker-clean-image
+docker-compose:
+	${DOCKER} compose up -d
+
+docker-compose-it:
+	${DOCKER} compose up
+
+docker-compose-clean:
+	-${DOCKER} compose down -t0 -v
+
+docker-clean: docker-compose-clean docker-clean-container docker-clean-image
