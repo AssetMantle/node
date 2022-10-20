@@ -1,0 +1,7 @@
+contact_links:
+  - name: Help and support
+    url: https://github.com/AssetMantle/Hacktoberfest-2022#community-support
+    about: Reach out to us on our discord channel or GitHub discussions.
+  - name: Dedicated support
+    url: mailto:hello@assetmantle.one
+    about: Write to us if you'd like dedicated support using AssetMantle
