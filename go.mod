@@ -3,7 +3,7 @@ module github.com/AssetMantle/node
 go 1.17
 
 require (
-	github.com/cosmos/cosmos-sdk v0.45.1
+	github.com/cosmos/cosmos-sdk v0.45.9
 	github.com/cosmos/ibc-go/v3 v3.0.0
 	github.com/spf13/cast v1.4.1
 	github.com/spf13/cobra v1.3.0
@@ -120,6 +120,7 @@ require (
 )
 
 replace (
+	github.com/confio/ics23/go => github.com/cosmos/cosmos-sdk/ics23/go v0.8.0
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 	github.com/tecbot/gorocksdb => github.com/cosmos/gorocksdb v1.2.0
 	google.golang.org/grpc => google.golang.org/grpc v1.33.2
