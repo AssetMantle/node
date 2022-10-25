@@ -1,0 +1,41 @@
+name: Jmeter
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  jmeter-test:
+    name: jmeter-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: docker/setup-buildx-action@v2
+        with: {install: true}
+
+      - uses: docker/build-push-action@v3
+        with:
+          tags: assetmantle/node:edge
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha
+
+      - run: make docker-compose
+
+      - name: jmeter test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: .jmeter/assetMantleTestCases.jmx
+          outputReportsFolder: reports/
+
+      - run: make docker-compose-clean || true
+        if: ${{ always() }}
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-report
+          path: reports/
