@@ -3,7 +3,7 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="query assets assets --chain-id=test-chain-1 --assetID=test.rwEgm9vevcdsXo_wJtGBm7K1tgae_ldiEvCCd2J0qF8=|zpFuGPDz9i2bkvtVCIRTxAC_9QfMI0_vwXIvsBiEupk=" />
+    <parameters value="query assets assets --chain-id=test-chain-1 --assetID=test-chain-1.6f8P3S9PXe5uW2oFB1E9Ijm15XylA4RNs8KenslplpQ=|zpFuGPDz9i2bkvtVCIRTxAC_9QfMI0_vwXIvsBiEupk=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />

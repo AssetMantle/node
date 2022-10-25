@@ -3,4 +3,8 @@
 
 package configurations
 
-const Name = "AssetMantle"
+const (
+	Name                = "AssetMantle"
+	Bech32PrefixAccAddr = "mantle"
+	CoinType            = 118
+)

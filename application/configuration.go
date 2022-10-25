@@ -3,14 +3,20 @@
 
 package application
 
-import sdkTypes "github.com/cosmos/cosmos-sdk/types"
+import (
+	"strconv"
+
+	sdkTypes "github.com/cosmos/cosmos-sdk/types"
+
+	"github.com/AssetMantle/node/application/internal/configurations"
+)
 
 func SetConfiguration() {
 	configuration := sdkTypes.GetConfig()
-	configuration.SetBech32PrefixForAccount(Bech32PrefixAccAddr, Bech32PrefixAccPub)
-	configuration.SetBech32PrefixForValidator(Bech32PrefixValAddr, Bech32PrefixValPub)
-	configuration.SetBech32PrefixForConsensusNode(Bech32PrefixConsAddr, Bech32PrefixConsPub)
-	configuration.SetCoinType(CoinType)
-	configuration.SetFullFundraiserPath(FullFundraiserPath)
+	configuration.SetBech32PrefixForAccount(configurations.Bech32PrefixAccAddr, configurations.Bech32PrefixAccAddr+sdkTypes.PrefixPublic)
+	configuration.SetBech32PrefixForValidator(configurations.Bech32PrefixAccAddr+sdkTypes.PrefixValidator+sdkTypes.PrefixOperator, configurations.Bech32PrefixAccAddr+sdkTypes.PrefixValidator+sdkTypes.PrefixOperator+sdkTypes.PrefixPublic)
+	configuration.SetBech32PrefixForConsensusNode(configurations.Bech32PrefixAccAddr+sdkTypes.PrefixValidator+sdkTypes.PrefixConsensus, configurations.Bech32PrefixAccAddr+sdkTypes.PrefixValidator+sdkTypes.PrefixConsensus+sdkTypes.PrefixPublic)
+	configuration.SetCoinType(configurations.CoinType)
+	configuration.SetFullFundraiserPath("44'/" + strconv.Itoa(configurations.CoinType) + "'/0'/0/0")
 	configuration.Seal()
 }
