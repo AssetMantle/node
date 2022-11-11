@@ -1,0 +1,27 @@
+name: Curl
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  curl-test:
+    name: curl-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docker/setup-buildx-actionv@v2
+        with: {install: true}
+      - uses: docker/build-push-action@v3
+        with:
+          tags: assetmantle/node:edge
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha
+      - run: make docker-compose
+      - run: home/runner/work/node/node/.tests/curl/tx.bash
+      - run: make docker-compose-clean || true
+        if: ${{ always() }}
