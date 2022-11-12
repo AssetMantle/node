@@ -1,0 +1,16 @@
+[Unit]
+Description=AssetMantle
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Restart=on-failure
+RestartSec=3
+MemoryDenyWriteExecute=yes
+LimitNOFILE=65535
+ExecStart=/root/go/bin/assetNode start --home=/root/.AssetMantle/Node/
+#StandardOutput=file:/var/log/mantle-node/mantle.log
+#StandardError=file:/var/log/mantle-node/mantle_error.log
+
+[Install]
+WantedBy=multi-user.target
