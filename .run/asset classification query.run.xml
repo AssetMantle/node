@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="classifications query" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="classifications">
+  <configuration default="false" name="asset classification query" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="classifications">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="query classifications classifications --chain-id=test-chain1-1 --classificationID=test-chain-1.6f8P3S9PXe5uW2oFB1E9Ijm15XylA4RNs8KenslplpQ=" />
+    <parameters value="query classifications classifications --chain-id=test-chain1-1 --classificationID=xuyPBH-VaAtiY-crFwTDPjoQU56Cx28AcVHbte4K4NY=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />

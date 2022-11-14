@@ -3,7 +3,7 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="tx identities issue -y --chain-id=test-chain-1 --from=test --fromID=test-chain-1.--7XBJqQl-Lx2HSmK61GOQgkWEvcG1wocS5SyGk3ZOM=|tJ5bx7SKdhJ-_difFkAotMK0OLoKTNztqDWiJJlZU9Y= --to=mantle1pkkayn066msg6kn33wnl5srhdt3tnu2vuet86j --classificationID=test-chain-1.NHJ6mkBCUi7N3FaSz3GfvEdVnEEvdbT6xaVm6RObI34= --immutableMetaProperties=A:S|a --immutableProperties=B:S|b --mutableMetaProperties=C:S|c --mutableProperties=D:S|d" />
+    <parameters value="tx identities issue -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --to=mantle1pkkayn066msg6kn33wnl5srhdt3tnu2vuet86j --classificationID=qt24iLAgD4h9V0_ST1-OKn8kpILZQ5BONEc9ILhnq5k= --immutableMetaProperties=A:S|a --immutableProperties=B:S|b --mutableMetaProperties=C:S|c --mutableProperties=D:S|d" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
