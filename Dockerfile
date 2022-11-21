@@ -9,18 +9,21 @@ ENV PATH=/root/.cargo/bin:$PATH
 WORKDIR /usr/local/app
 
 # Install minimum necessary dependencies
-RUN apt update && apt install -y $PACKAGES
+RUN --mount=type=cache,target=/var/cache/apt \
+  apt update && apt install -y $PACKAGES
 
 # Install Rust and wasm32 dependencies
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Add source files
 RUN --mount=type=bind,source=.,rw \
+  --mount=type=cache,target=/go/pkg/mod \
   go mod download
 
 # Build
 RUN --mount=type=bind,source=.,rw \
   --mount=type=cache,target=/root/.cache \
+  --mount=type=cache,target=/go/pkg/mod \
   make install
 
 FROM ubuntu
