@@ -26,14 +26,6 @@ jobs:
             type=raw,value=edge-{{sha}}-{{date 'X'}}
             type=raw,value=edge
 
-      - name: Build
-        uses: docker/build-push-action@v3
-        with:
-          tags: ${{ steps.meta-main-branch.outputs.tags }}
-          load: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
       - name: Login to docker registry
         uses: docker/login-action@v1
         if: ${{ github.ref_type == 'branch' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') }}
@@ -41,11 +33,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Push edge image
+      - name: Build and Push
         uses: docker/build-push-action@v3
-        if: ${{ github.ref_type == 'branch' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') }}
         with:
           tags: ${{ steps.meta-main-branch.outputs.tags }}
-          push: true
+          push: ${{ github.ref_type == 'branch' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
