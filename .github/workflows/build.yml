@@ -2,30 +2,44 @@ name: Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, main ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, main ]
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/cache@v3
+      - name: Prepare tags
+        id: meta-main-branch
+        uses: docker/metadata-action@v3
         with:
-          path: |
-            ~/.cache/go-build
-            ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.mod') }}
-          restore-keys: |
-            ${{ runner.os }}-go-
+          images: |
+            assetmantle/node
+          tags: |
+            type=raw,value=edge-{{sha}}-{{date 'X'}}
+            type=raw,value=edge
 
-      - uses: actions/setup-go@v2
+      - name: Build
+        uses: docker/build-push-action@v3
         with:
-          go-version: 1.14
+          tags: ${{ steps.meta-main-branch.outputs.tags }}
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
-      - uses: actions/checkout@v2
+      - name: Login to docker registry
+        uses: docker/login-action@v1
+        if: ${{ github.ref_type == 'branch' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') }}
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - run: make verify
-
-      - run: make build
+      - uses: docker/build-push-action@v3
+        if: ${{ github.ref_type == 'branch' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') }}
+        with:
+          tags: ${{ steps.meta-main-branch.outputs.tags }}
+          push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

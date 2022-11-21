@@ -19,11 +19,6 @@ services:
         assetNode start \
           --pruning=nothing \
           --rpc.laddr=tcp://0.0.0.0:26657
-    # healthcheck:
-    #   test: ["CMD-SHELL", "mantleNode", "status", "--node=http://127.0.0.1:26657"]
-    #   interval: 10s
-    #   timeout: 5s
-    #   retries: 5
 
   client:
     image: assetmantle/node:edge

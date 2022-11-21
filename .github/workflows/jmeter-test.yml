@@ -17,28 +17,14 @@ jobs:
       - uses: docker/setup-buildx-action@v2
         with: {install: true}
 
-      - name: Prepare staging release ragas
-        id: meta-branch
-        uses: docker/metadata-action@v3
-        if: ${{ github.ref_type == 'branch' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') }}
-        with:
-          images: |
-            assetmantle/node
-          tags: |
-            type=raw,value=edge-{{sha}}-{{date 'X'}}
-            type=raw,value=edge
-
       - uses: docker/build-push-action@v3
         with:
-          tags: ${{ steps.meta-branch.outputs.tags }}
+          tags: assetmantle/node:edge
           load: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - run: |
-          make docker-compose
-          sleep 10
-          docker ps -a
+      - run: make docker-compose
 
       - name: jmeter test
         uses: rbhadti94/apache-jmeter-action@v0.5.0
