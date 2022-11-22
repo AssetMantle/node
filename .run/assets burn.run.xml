@@ -3,7 +3,7 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="tx assets burn -y --chain-id=test-chain-1 --from=test --fromID=test-chain-1.--7XBJqQl-Lx2HSmK61GOQgkWEvcG1wocS5SyGk3ZOM=|tJ5bx7SKdhJ-_difFkAotMK0OLoKTNztqDWiJJlZU9Y= --assetID=test-chain-1.6f8P3S9PXe5uW2oFB1E9Ijm15XylA4RNs8KenslplpQ=|zpFuGPDz9i2bkvtVCIRTxAC_9QfMI0_vwXIvsBiEupk=" />
+    <parameters value="tx assets burn -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --assetID=mbil64D0TJZScClVWQLe8JlrmtqkTO6pMul9zfLFlBE=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />

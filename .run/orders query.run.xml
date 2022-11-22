@@ -3,7 +3,7 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="query orders orders --chain-id=test-chain-1 --orderID=test-chain-1.um6JIwJvdoiGuBDcYLvNtsDWjXy2lCasIfZMMvEgbMA=*test-chain-1.6f8P3S9PXe5uW2oFB1E9Ijm15XylA4RNs8KenslplpQ=|zpFuGPDz9i2bkvtVCIRTxAC_9QfMI0_vwXIvsBiEupk=*stake*1000000000000000000.000000000000000000*117*test-chain-1.--7XBJqQl-Lx2HSmK61GOQgkWEvcG1wocS5SyGk3ZOM=|tJ5bx7SKdhJ-_difFkAotMK0OLoKTNztqDWiJJlZU9Y=*cZUWUHKm1F34zQELLbiZgQ_DwTNMUvhqv8asX7XxgYk=" />
+    <parameters value="query orders orders --chain-id=test-chain-1 --orderID=$Prompt$" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />

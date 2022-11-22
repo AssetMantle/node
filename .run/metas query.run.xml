@@ -3,7 +3,7 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="query metas metas --chain-id=test-chain-1 --metaID=tESsBmE_yNY3lb6a0L6vVQEZNqw=" />
+    <parameters value="query metas metas --chain-id=test-chain-1 --dataID=S.PiPoFgA5WUoziU9lZOGxNIu9egCI1CxKy3PurtWcAJ0=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
