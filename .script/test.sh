@@ -1,10 +1,13 @@
 # Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
 # SPDX-License-Identifier: Apache-2.0
 
-.script/shutdown.sh
-sleep 4
-.script/setup.sh
-blockMode="-b block"
-.script/startup.sh "$blockMode"
-cd .mocha || exit
-npm run test:awesome
+set -x
+
+source environment.sh
+
+bash shutdown.sh
+sleep 5
+bash setup.sh
+bash startup.sh
+
+set +x
