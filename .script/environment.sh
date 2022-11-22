@@ -1,8 +1,6 @@
 # Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
 # SPDX-License-Identifier: Apache-2.0
 
-set -x
-
 export SLEEP="7"
 export AM_CHAIN="test-chain-1"
 export AM_DENOM="stake"
@@ -15,4 +13,3 @@ export KEYRING="--keyring-backend test"
 
 export PATH=$PATH:build
 
-set +x

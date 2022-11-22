@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 set -x
-source environment.sh
+source ./.scripts/environment.sh
 
 NONCE="$RANDOM"
 SLEEP="7"
