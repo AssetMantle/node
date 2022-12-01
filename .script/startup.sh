@@ -3,7 +3,7 @@
 
 set -x
 
-source ./environment.sh
+source ./.script/environment.sh
 
 assetNode start >~/.AssetMantle/Node/log &
 sleep 10

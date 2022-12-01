@@ -3,11 +3,11 @@
 
 set -x
 
-source environment.sh
+source ./.script/environment.sh
 
-bash shutdown.sh
+bash ./.script/shutdown.sh
 sleep 5
-bash setup.sh
-bash startup.sh
+bash ./.script/setup.sh
+bash ./.script/startup.sh
 
 set +x
