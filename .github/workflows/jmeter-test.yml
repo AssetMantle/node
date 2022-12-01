@@ -22,7 +22,7 @@ jobs:
           tags: assetmantle/node:edge
           load: true
           cache-from: type=gha
-          cache-to: type=gha
+          cache-to: type=gha,mode=max
 
       - run: make docker-compose
 

@@ -22,10 +22,12 @@ services:
 
   client:
     image: assetmantle/node:edge
+    depends_on: [node]
     container_name: client
+    build: .
     ports:
       - 1317:1317
-    build: .
+    entrypoint: assetClient
     command:
       - rest-server
       - --keyring-backend=test
