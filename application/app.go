@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/AssetMantle/modules/modules/metas"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/grpc/tmservice"
@@ -256,7 +257,7 @@ func NewGaiaApp(
 		minttypes.StoreKey, distrtypes.StoreKey, slashingtypes.StoreKey,
 		govtypes.StoreKey, paramstypes.StoreKey, ibchost.StoreKey, upgradetypes.StoreKey,
 		evidencetypes.StoreKey, ibctransfertypes.StoreKey,
-		capabilitytypes.StoreKey, feegrant.StoreKey, authzkeeper.StoreKey, routertypes.StoreKey, icahosttypes.StoreKey,
+		capabilitytypes.StoreKey, feegrant.StoreKey, authzkeeper.StoreKey, routertypes.StoreKey, icahosttypes.StoreKey, metas.Prototype().Name(),
 	)
 	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
@@ -444,6 +445,10 @@ func NewGaiaApp(
 
 	skipGenesisInvariants := cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))
 
+	metasModule := metas.Prototype().Initialize(
+		keys[metas.Prototype().Name()],
+		app.GetSubspace(metas.Prototype().Name()),
+	)
 	// NOTE: Any module instantiated in the module manager that is later modified
 	// must be passed by reference here.
 	app.mm = module.NewManager(
@@ -472,6 +477,7 @@ func NewGaiaApp(
 		transferModule,
 		icaModule,
 		routerModule,
+		metasModule,
 	)
 
 	// During begin block slashing happens after distr.BeginBlocker so that
@@ -502,6 +508,7 @@ func NewGaiaApp(
 		feegrant.ModuleName,
 		paramstypes.ModuleName,
 		vestingtypes.ModuleName,
+		metas.Prototype().Name(),
 	)
 	app.mm.SetOrderEndBlockers(
 		crisistypes.ModuleName,
@@ -525,6 +532,7 @@ func NewGaiaApp(
 		paramstypes.ModuleName,
 		upgradetypes.ModuleName,
 		vestingtypes.ModuleName,
+		metas.Prototype().Name(),
 	)
 
 	// NOTE: The genutils module must occur after staking so that pools are
@@ -554,6 +562,8 @@ func NewGaiaApp(
 		paramstypes.ModuleName,
 		upgradetypes.ModuleName,
 		vestingtypes.ModuleName,
+
+		metas.Prototype().Name(),
 	)
 
 	app.mm.RegisterInvariants(&app.CrisisKeeper)
@@ -581,6 +591,7 @@ func NewGaiaApp(
 		evidence.NewAppModule(app.EvidenceKeeper),
 		ibc.NewAppModule(app.IBCKeeper),
 		transferModule,
+		metas.Prototype(),
 	)
 
 	app.sm.RegisterStoreDecoders()
@@ -842,6 +853,7 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	paramsKeeper.Subspace(ibchost.ModuleName)
 	paramsKeeper.Subspace(routertypes.ModuleName).WithKeyTable(routertypes.ParamKeyTable())
 	paramsKeeper.Subspace(icahosttypes.SubModuleName)
+	paramsKeeper.Subspace(metas.Prototype().Name())
 
 	return paramsKeeper
 }
