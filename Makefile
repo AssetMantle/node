@@ -33,19 +33,15 @@ all: verify build
 
 install:
 ifeq (${OS},Windows_NT)
-	go build -mod=readonly ${BUILD_FLAGS} -o ${GOBIN}/assetClient.exe ./client
 	go build -mod=readonly ${BUILD_FLAGS} -o ${GOBIN}/assetNode.exe ./node
 else
-	go build -mod=readonly ${BUILD_FLAGS} -o ${GOBIN}/assetClient ./client
 	go build -mod=readonly ${BUILD_FLAGS} -o ${GOBIN}/assetNode ./node
 endif
 
 build:
 ifeq (${OS},Windows_NT)
-	go build  ${BUILD_FLAGS} -o build/assetClient.exe ./client
 	go build  ${BUILD_FLAGS} -o build/assetNode.exe ./node
 else
-	go build  ${BUILD_FLAGS} -o build/assetClient ./client
 	go build  ${BUILD_FLAGS} -o build/assetNode ./node
 endif
 

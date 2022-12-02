@@ -4,24 +4,22 @@
 package configurations
 
 import (
-	"github.com/AssetMantle/modules/modules/splits"
-	"github.com/cosmos/cosmos-sdk/x/auth"
-	"github.com/cosmos/cosmos-sdk/x/distribution"
-	"github.com/cosmos/cosmos-sdk/x/gov"
-	"github.com/cosmos/cosmos-sdk/x/mint"
-	"github.com/cosmos/cosmos-sdk/x/staking"
-	"github.com/cosmos/cosmos-sdk/x/supply"
+	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
+	distributionTypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
+	govTypes "github.com/cosmos/cosmos-sdk/x/gov/types"
+	mintTypes "github.com/cosmos/cosmos-sdk/x/mint/types"
+	stakingTypes "github.com/cosmos/cosmos-sdk/x/staking/types"
+	icaTypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/types"
+	ibcTransferTypes "github.com/cosmos/ibc-go/v3/modules/apps/transfer/types"
 )
 
 var ModuleAccountPermissions = map[string][]string{
-	auth.FeeCollectorName:     nil,
-	distribution.ModuleName:   nil,
-	mint.ModuleName:           {supply.Minter},
-	staking.BondedPoolName:    {supply.Burner, supply.Staking},
-	staking.NotBondedPoolName: {supply.Burner, supply.Staking},
-	gov.ModuleName:            {supply.Burner},
-	splits.Prototype().Name(): nil,
-}
-var TokenReceiveAllowedModules = map[string]bool{
-	distribution.ModuleName: true,
+	authTypes.FeeCollectorName:     nil,
+	distributionTypes.ModuleName:   nil,
+	icaTypes.ModuleName:            nil,
+	mintTypes.ModuleName:           {authTypes.Minter},
+	stakingTypes.BondedPoolName:    {authTypes.Burner, authTypes.Staking},
+	stakingTypes.NotBondedPoolName: {authTypes.Burner, authTypes.Staking},
+	govTypes.ModuleName:            {authTypes.Burner},
+	ibcTransferTypes.ModuleName:    {authTypes.Minter, authTypes.Burner},
 }

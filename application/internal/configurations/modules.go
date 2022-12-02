@@ -4,13 +4,7 @@
 package configurations
 
 import (
-	"github.com/AssetMantle/modules/modules/assets"
-	"github.com/AssetMantle/modules/modules/classifications"
-	"github.com/AssetMantle/modules/modules/identities"
-	"github.com/AssetMantle/modules/modules/maintainers"
 	"github.com/AssetMantle/modules/modules/metas"
-	"github.com/AssetMantle/modules/modules/orders"
-	"github.com/AssetMantle/modules/modules/splits"
 	"github.com/CosmWasm/wasmd/x/wasm"
 	wasmClient "github.com/CosmWasm/wasmd/x/wasm/client"
 	"github.com/cosmos/cosmos-sdk/types/module"
@@ -18,6 +12,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/bank"
 	"github.com/cosmos/cosmos-sdk/x/crisis"
 	"github.com/cosmos/cosmos-sdk/x/distribution"
+	distributionClient "github.com/cosmos/cosmos-sdk/x/distribution/client"
 	"github.com/cosmos/cosmos-sdk/x/evidence"
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	"github.com/cosmos/cosmos-sdk/x/gov"
@@ -26,9 +21,9 @@ import (
 	paramsClient "github.com/cosmos/cosmos-sdk/x/params/client"
 	"github.com/cosmos/cosmos-sdk/x/slashing"
 	"github.com/cosmos/cosmos-sdk/x/staking"
-	"github.com/cosmos/cosmos-sdk/x/supply"
 	"github.com/cosmos/cosmos-sdk/x/upgrade"
 	upgradeClient "github.com/cosmos/cosmos-sdk/x/upgrade/client"
+	ibcClientClient "github.com/cosmos/ibc-go/v3/modules/core/02-client/client"
 )
 
 var ModuleBasicManager = module.NewBasicManager(
@@ -38,22 +33,15 @@ var ModuleBasicManager = module.NewBasicManager(
 	staking.AppModuleBasic{},
 	mint.AppModuleBasic{},
 	distribution.AppModuleBasic{},
-	gov.NewAppModuleBasic(append(wasmClient.ProposalHandlers, paramsClient.ProposalHandler, distribution.ProposalHandler, upgradeClient.ProposalHandler)...),
+	gov.NewAppModuleBasic(append(wasmClient.ProposalHandlers, paramsClient.ProposalHandler, distributionClient.ProposalHandler, upgradeClient.ProposalHandler, upgradeClient.CancelProposalHandler, ibcClientClient.UpdateClientProposalHandler, ibcClientClient.UpgradeProposalHandler)...),
 	params.AppModuleBasic{},
 	crisis.AppModuleBasic{},
 	wasm.AppModuleBasic{},
 	slashing.AppModuleBasic{},
-	supply.AppModuleBasic{},
 	upgrade.AppModuleBasic{},
 	evidence.AppModuleBasic{},
 
-	assets.Prototype(),
-	classifications.Prototype(),
-	identities.Prototype(),
-	maintainers.Prototype(),
 	metas.Prototype(),
-	orders.Prototype(),
-	splits.Prototype(),
 )
 
 var EnabledWasmProposalTypeList = wasm.EnableAllProposals
