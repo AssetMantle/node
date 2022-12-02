@@ -59,7 +59,7 @@ make all
 
 ### Generate keys
 
-`assetClient keys add [key_name]`
+`mantleNode keys add [key_name]`
 
 or
 
@@ -71,43 +71,43 @@ or
 * Initialize node
 
 ```shell
-assetNode init [NODE_NAME]
+mantleNode init [NODE_NAME]
 ```
 
-* Replace `${HOME}/.assetNode/config/genesis.json` with the genesis file of the chain.
-* Add `persistent_peers` or `seeds` in `${HOME}/.assetNode/config/config.toml`
+* Replace `${HOME}/.mantleNode/config/genesis.json` with the genesis file of the chain.
+* Add `persistent_peers` or `seeds` in `${HOME}/.mantleNode/config/config.toml`
 * Start node
 
 ```shell
-assetNode start
+mantleNode start
 ```
 
 ### Initialize a new chain and start node
 
-* Initialize: `assetNode init [node_name] --chain-id [chain_name]`
-* Add key for genesis account `assetClient keys add [genesis_key_name]`
-* Add genesis account `assetNode add-genesis-account [genesis_key_name] 10000000000000000000stake`
-* Create a validator at genesis `assetNode gentx --name [genesis_key_name] --amount 10000000stake`
-* Collect genesis transactions `assetNode collect-gentxs`
-* Start node `assetNode start`
-* To start api server `assetClient rest-server`
+* Initialize: `mantleNode init [node_name] --chain-id [chain_name]`
+* Add key for genesis account `mantleNode keys add [genesis_key_name]`
+* Add genesis account `mantleNode add-genesis-account [genesis_key_name] 10000000000000000000stake`
+* Create a validator at genesis `mantleNode gentx --name [genesis_key_name] --amount 10000000stake`
+* Collect genesis transactions `mantleNode collect-gentxs`
+* Start node `mantleNode start`
+* To start api server `mantleNode rest-server`
 
 ### Reset chain
 
 ```shell
-rm -rf ~/.assetNode
+rm -rf ~/.mantleNode
 ```
 
 ### Shutdown node
 
 ```shell
-killall assetNode
+killall mantleNode
 ```
 
 ### Check version
 
 ```shell
-assetNode version
+mantleNode version
 ```
 
 ## Containeirzed environment

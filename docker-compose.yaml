@@ -11,12 +11,12 @@ services:
     command:
       - -cex
       - |
-        assetNode init test --chain-id load-test-1
-        assetClient keys add test --keyring-backend test
-        assetNode add-genesis-account test 10000000000000000000000stake --keyring-backend test
-        assetNode gentx --name test --amount 1000000000stake --keyring-backend test
-        assetNode collect-gentxs
-        assetNode start \
+        mantleNode init test --chain-id load-test-1
+        mantleNode keys add test --keyring-backend test
+        mantleNode add-genesis-account test 10000000000000000000000stake --keyring-backend test
+        mantleNode gentx --name test --amount 1000000000stake --keyring-backend test
+        mantleNode collect-gentxs
+        mantleNode start \
           --pruning=nothing \
           --rpc.laddr=tcp://0.0.0.0:26657
 

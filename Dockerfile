@@ -25,6 +25,6 @@ RUN --mount=type=bind,source=.,rw \
 
 FROM ubuntu
 COPY --from=build '/go/pkg/mod/github.com/!cosm!wasm/go-cosmwasm@v0.10.0/api/libgo_cosmwasm.so' /lib/x86_64-linux-gnu/libgo_cosmwasm.so
-COPY --from=build /go/bin/assetClient /usr/bin/assetClient
-COPY --from=build /go/bin/assetNode /usr/bin/assetNode
-ENTRYPOINT ["assetClient"]
+COPY --from=build /go/bin/mantleNode /usr/bin/mantleNode
+COPY --from=build /go/bin/mantleNode /usr/bin/mantleNode
+ENTRYPOINT ["mantleNode"]
