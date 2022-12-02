@@ -150,6 +150,8 @@ var (
 		liquidity.AppModuleBasic{},
 		router.AppModuleBasic{},
 		ica.AppModuleBasic{},
+
+		metas.Prototype(),
 	)
 
 	// module account permissions
