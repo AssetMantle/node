@@ -6,8 +6,13 @@
 rm -rf ~/.AssetMantle/Node
 rm -rf ~/.AssetMantle/Client
 
+<<<<<<< HEAD
 mkdir -p ~/.AssetMantle/Node
 mkdir -p ~/.AssetMantle/Client
 
 sleep 10
 
+=======
+mkdir ~/.AssetMantle/Node
+mkdir ~/.AssetMantle/Client
+>>>>>>> parent of b1a33d3 (tests: add shell script)
