@@ -6,8 +6,5 @@
 rm -rf ~/.AssetMantle/Node
 rm -rf ~/.AssetMantle/Client
 
-mkdir -p ~/.AssetMantle/Node
-mkdir -p ~/.AssetMantle/Client
-
-sleep 10
-
+mkdir ~/.AssetMantle/Node
+mkdir ~/.AssetMantle/Client
