@@ -83,6 +83,8 @@ func initAppConfig() (string, interface{}) {
 	srvCfg := serverconfig.DefaultConfig()
 	srvCfg.StateSync.SnapshotInterval = 1000
 	srvCfg.StateSync.SnapshotKeepRecent = 10
+	srvCfg.API.Enable = true
+	srvCfg.API.Swagger = true
 
 	return CustomConfigTemplate, CustomAppConfig{
 		Config: *srvCfg,
