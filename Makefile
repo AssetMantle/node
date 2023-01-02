@@ -33,20 +33,16 @@ all: verify build
 
 install:
 ifeq (${OS},Windows_NT)
-	go build -mod=readonly ${BUILD_FLAGS} -o ${GOBIN}/assetClient.exe ./client
-	go build -mod=readonly ${BUILD_FLAGS} -o ${GOBIN}/assetNode.exe ./node
+	go build -mod=readonly ${BUILD_FLAGS} -o ${GOBIN}/mantleNode.exe ./node
 else
-	go build -mod=readonly ${BUILD_FLAGS} -o ${GOBIN}/assetClient ./client
-	go build -mod=readonly ${BUILD_FLAGS} -o ${GOBIN}/assetNode ./node
+	go build -mod=readonly ${BUILD_FLAGS} -o ${GOBIN}/mantleNode ./node
 endif
 
 build:
 ifeq (${OS},Windows_NT)
-	go build  ${BUILD_FLAGS} -o build/assetClient.exe ./client
-	go build  ${BUILD_FLAGS} -o build/assetNode.exe ./node
+	go build  ${BUILD_FLAGS} -o build/mantleNode.exe ./node
 else
-	go build  ${BUILD_FLAGS} -o build/assetClient ./client
-	go build  ${BUILD_FLAGS} -o build/assetNode ./node
+	go build  ${BUILD_FLAGS} -o build/mantleNode ./node
 endif
 
 verify:
