@@ -3,11 +3,11 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="query classifications classifications --chain-id=test-chain1-1 --classificationID=xuyPBH-VaAtiY-crFwTDPjoQU56Cx28AcVHbte4K4NY=" />
+    <parameters value="query classifications classifications --chain-id=test-chain1-1 --classificationID=qxz8FE2h_qwj7D5eOim2uSICrwJu5J84uK0ywYsz0KU=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
-    <filePath value="$PROJECT_DIR$/client/main.go" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
     <method v="2" />
   </configuration>
 </component>
