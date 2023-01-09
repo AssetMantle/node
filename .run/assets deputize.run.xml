@@ -3,11 +3,11 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$" />
     <go_parameters value="-i" />
-    <parameters value="tx assets deputize -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --toID=RMwY6OWO3HK1WZH7BZ7Unx2_QC0J26h7IZPN_5w4OXk= --classificationID=xuyPBH-VaAtiY-crFwTDPjoQU56Cx28AcVHbte4K4NY= --maintainedProperties=supply:D| --canMintAsset=false --canBurnAsset=true --canRenumerateAsset=false --canAddMaintainer=true --canRemoveMaintainer=true --canMutateMaintainer=true" />
+    <parameters value="tx assets deputize -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --toID=_5O8O4FnQvP0EkEa-xPwfNOAjOt-GZehqh6jXdvXATc= --classificationID=qxz8FE2h_qwj7D5eOim2uSICrwJu5J84uK0ywYsz0KU= --maintainedProperties=supply:D| --canMintAsset=false --canBurnAsset=true --canRenumerateAsset=false --canAddMaintainer=true --canRemoveMaintainer=true --canMutateMaintainer=true" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$" />
-    <filePath value="$PROJECT_DIR$/client/main.go" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
     <method v="2" />
   </configuration>
 </component>

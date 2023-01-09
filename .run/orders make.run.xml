@@ -3,11 +3,11 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="tx orders make -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --classificationID=oUx2N1bbQEmEiPC60ZzTnpPdTbB8qwWG47BurK2Eo5I= --takerID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --makerOwnableID=mbil64D0TJZScClVWQLe8JlrmtqkTO6pMul9zfLFlBE= --takerOwnableID=stake --makerOwnableSplit=1 --takerOwnableSplit=1 --expiresIn=20 --immutableMetaProperties=E:S|e --immutableProperties=F:S|f --mutableMetaProperties=G:S|g --mutableProperties=H:S|h" />
+    <parameters value="tx orders make -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --classificationID=3SkngSNAUEvJP5-eEvWSYmzNUScXVC1Q2W_iA0uE_AE= --takerID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --makerOwnableID=xU-FWneisdM8sz0WH2bb0j3O1tm4fWzp8W6ZiHCWLAA= --takerOwnableID=stake --makerOwnableSplit=1 --takerOwnableSplit=1 --expiresIn=20 --immutableMetaProperties=E:S|e --immutableProperties=F:S|f --mutableMetaProperties=G:S|g --mutableProperties=H:S|h" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
-    <filePath value="$PROJECT_DIR$/client/main.go" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
     <method v="2" />
   </configuration>
 </component>
