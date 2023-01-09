@@ -3,7 +3,7 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$" />
     <go_parameters value="-i" />
-    <parameters value="query splits ownables --chain-id=test-chain-1 --ownableID=tQKCIWhe2O5PePa9Qn0epVDV8cSlohjO8qTrX6foDs8=" />
+    <parameters value="query splits ownables --chain-id=test-chain-1 --ownableID=mbil64D0TJZScClVWQLe8JlrmtqkTO6pMul9zfLFlBE=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$" />
