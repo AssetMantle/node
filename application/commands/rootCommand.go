@@ -13,6 +13,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/pruning"
 	"github.com/cosmos/cosmos-sdk/client/rpc"
 	"github.com/cosmos/cosmos-sdk/server"
+	serverConfig "github.com/cosmos/cosmos-sdk/server/config"
 	"github.com/cosmos/cosmos-sdk/version"
 	"github.com/cosmos/cosmos-sdk/x/auth/client/cli"
 	"github.com/cosmos/cosmos-sdk/x/auth/types"
@@ -55,7 +56,13 @@ func RootCommand() (*cobra.Command, helpers.Codec) {
 				return err
 			}
 
-			return server.InterceptConfigsPreRunHandler(cmd, "", nil)
+			ServerConfig := serverConfig.DefaultConfig()
+			ServerConfig.StateSync.SnapshotInterval = 1000
+			ServerConfig.StateSync.SnapshotKeepRecent = 10
+			ServerConfig.API.Enable = true
+			ServerConfig.API.Swagger = true
+
+			return server.InterceptConfigsPreRunHandler(cmd, serverConfig.DefaultConfigTemplate, &ServerConfig)
 		},
 	}
 

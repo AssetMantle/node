@@ -3,11 +3,11 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="tx assets mutate -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --assetID=mbil64D0TJZScClVWQLe8JlrmtqkTO6pMul9zfLFlBE= --mutableMetaProperties=supply:D|1000" />
+    <parameters value="tx assets mutate -y --chain-id=test-chain-1 --from=test --fromID=_5O8O4FnQvP0EkEa-xPwfNOAjOt-GZehqh6jXdvXATc= --assetID=xU-FWneisdM8sz0WH2bb0j3O1tm4fWzp8W6ZiHCWLAA= --mutableMetaProperties=supply:D|1000" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
-    <filePath value="$PROJECT_DIR$/client/main.go" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
     <method v="2" />
   </configuration>
 </component>

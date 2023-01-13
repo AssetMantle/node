@@ -1,4 +1,4 @@
-GET http://{{ASSET_MANTLE_CLIENT_HOST}}:{{ASSET_MANTLE_CLIENT_PORT}}/identities/identities/test.XTJ0wkxGAeMlEqfw3Dx9oR6ZlIE=|IWlaJpSQCEHboqlKYYyzLK_Sq2k=
+GET http://{{ASSET_MANTLE_CLIENT_HOST}}:{{ASSET_MANTLE_CLIENT_PORT}}/identities/identities/Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=
 Accept: application/json
 
 > {%

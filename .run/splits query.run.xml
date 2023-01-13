@@ -3,11 +3,11 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="query splits splits --chain-id=test-chain-1 --splitID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=.mbil64D0TJZScClVWQLe8JlrmtqkTO6pMul9zfLFlBE=" />
+    <parameters value="query splits splits --chain-id=test-chain-1 --splitID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=.tQKCIWhe2O5PePa9Qn0epVDV8cSlohjO8qTrX6foDs8=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
-    <filePath value="$PROJECT_DIR$/client/main.go" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
     <method v="2" />
   </configuration>
 </component>

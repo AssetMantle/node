@@ -3,7 +3,7 @@
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
     <go_parameters value="-i" />
-    <parameters value="query identities identities --chain-id=test-chain-1 --identityID=_5O8O4FnQvP0EkEa-xPwfNOAjOt-GZehqh6jXdvXATc=" />
+    <parameters value="query identities identities --chain-id=test-chain-1 --identityID=RMwY6OWO3HK1WZH7BZ7Unx2_QC0J26h7IZPN_5w4OXk=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
