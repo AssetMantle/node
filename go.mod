@@ -3,15 +3,12 @@ module github.com/AssetMantle/node
 go 1.14
 
 require (
-	github.com/AssetMantle/modules v0.4.
+	github.com/AssetMantle/modules v0.4.0
 	github.com/CosmWasm/wasmd v0.29.2
 	github.com/cosmos/cosmos-sdk v0.45.9
 	github.com/cosmos/ibc-go/v3 v3.3.0
-	github.com/otiai10/copy v1.6.0
 	github.com/spf13/cobra v1.5.0
-	github.com/spf13/viper v1.13.0
 	github.com/tendermint/tendermint v0.34.21
-	github.com/tendermint/tm-db v0.6.7
 )
 
 replace (
