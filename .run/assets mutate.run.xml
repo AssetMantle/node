@@ -2,7 +2,6 @@
   <configuration default="false" name="assets mutate" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="assets">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <go_parameters value="-i" />
     <parameters value="tx assets mutate -y --chain-id=test-chain-1 --from=test --fromID=_5O8O4FnQvP0EkEa-xPwfNOAjOt-GZehqh6jXdvXATc= --assetID=xU-FWneisdM8sz0WH2bb0j3O1tm4fWzp8W6ZiHCWLAA= --mutableMetaProperties=supply:D|1000" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />

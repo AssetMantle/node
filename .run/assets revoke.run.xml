@@ -2,7 +2,6 @@
   <configuration default="false" name="assets revoke" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="assets">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$" />
-    <go_parameters value="-i" />
     <parameters value="tx assets revoke -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --toID=_5O8O4FnQvP0EkEa-xPwfNOAjOt-GZehqh6jXdvXATc= --classificationID=qxz8FE2h_qwj7D5eOim2uSICrwJu5J84uK0ywYsz0KU=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />

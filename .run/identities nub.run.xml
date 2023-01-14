@@ -2,7 +2,6 @@
   <configuration default="false" name="identities nub" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="identities">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <go_parameters value="-i" />
     <parameters value="tx identities nub -y --chain-id=test-chain-1 --from=test --nubID=deepanshutr" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />

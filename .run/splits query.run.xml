@@ -2,7 +2,6 @@
   <configuration default="false" name="splits query" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="splits">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <go_parameters value="-i" />
     <parameters value="query splits splits --chain-id=test-chain-1 --splitID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=.tQKCIWhe2O5PePa9Qn0epVDV8cSlohjO8qTrX6foDs8=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />

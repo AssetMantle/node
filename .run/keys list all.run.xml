@@ -2,7 +2,6 @@
   <configuration default="false" name="keys list all" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="keys">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$" />
-    <go_parameters value="-i" />
     <parameters value="keys list" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
