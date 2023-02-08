@@ -10,4 +10,4 @@ export AM_SEED_1="wage thunder live sense resemble foil apple course spin horse 
 export AM_GENESIS_BALANCE_1="100000000000000"
 export AM_GENESIS_STAKE_1="1000000000"
 
-export PATH=$PATH:build
+export PATH=build:$PATH

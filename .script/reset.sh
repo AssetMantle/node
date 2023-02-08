@@ -3,8 +3,7 @@
 
 .script/build.sh
 
-rm -rf ~/.AssetMantle/Node
-rm -rf ~/.AssetMantle/Client
+rm -rf ~/.mantleNode
 
-mkdir ~/.AssetMantle/Node
-mkdir ~/.AssetMantle/Client
+
+mkdir ~/.mantleNode
