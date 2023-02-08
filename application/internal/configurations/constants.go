@@ -4,7 +4,8 @@
 package configurations
 
 const (
-	Name                = "AssetMantle"
-	Bech32PrefixAccAddr = "mantle"
-	CoinType            = 118
+	Name         = "mantleNode"
+	bech32Prefix = "mantle"
+	coinType     = 118
+	purpose      = 44
 )

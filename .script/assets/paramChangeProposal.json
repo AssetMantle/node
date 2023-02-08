@@ -1,0 +1,17 @@
+{
+  "title": "title",
+  "description": "description",
+  "changes": [
+    {
+      "subspace": "assets",
+      "key": "dummyD",
+      "value": {
+        "type": "github.com/AssetMantle/modules/schema/data/base/DecData",
+        "value": {
+          "value": "0.000000000000000001"
+        }
+      }
+    }
+  ],
+  "deposit": "1000stake"
+}

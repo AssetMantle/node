@@ -2,12 +2,11 @@
   <configuration default="false" name="identities define" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="identities">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <go_parameters value="-i" />
     <parameters value="tx identities define -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --immutableMetaProperties=A:S|a --immutableProperties=B:S| --mutableMetaProperties=C:S| --mutableProperties=D:S|" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
-    <filePath value="$PROJECT_DIR$/client/main.go" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
     <method v="2" />
   </configuration>
 </component>

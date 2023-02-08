@@ -2,12 +2,11 @@
   <configuration default="false" name="splits query supply" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="splits">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$" />
-    <go_parameters value="-i" />
     <parameters value="query splits ownables --chain-id=test-chain-1 --ownableID=mbil64D0TJZScClVWQLe8JlrmtqkTO6pMul9zfLFlBE=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$" />
-    <filePath value="$PROJECT_DIR$/client/main.go" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
     <method v="2" />
   </configuration>
 </component>
