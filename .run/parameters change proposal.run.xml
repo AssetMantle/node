@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-    <configuration default="false" name="orders  take" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="parameters">
+    <configuration default="false" name="parameters change" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="parameters">
         <module name="node" />
         <working_directory value="$PROJECT_DIR$/" />
         <parameters value="tx gov submit-proposal param-change $Prompt$ --from=test" />
