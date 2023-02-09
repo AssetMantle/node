@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="orders  take" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="parameters">
+        <module name="node" />
+        <working_directory value="$PROJECT_DIR$/" />
+        <parameters value="tx gov submit-proposal param-change $Prompt$ --from=test" />
+        <kind value="FILE" />
+        <package value="github.com/AssetMantle/node" />
+        <directory value="$PROJECT_DIR$/" />
+        <filePath value="$PROJECT_DIR$/node/main.go" />
+        <method v="2" />
+    </configuration>
+</component>
