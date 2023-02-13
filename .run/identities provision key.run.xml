@@ -2,7 +2,6 @@
   <configuration default="false" name="identities provision key" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="identities">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <go_parameters value="-i" />
     <parameters value="tx identities provision -y --chain-id=test-chain-1 --from=test --to=mantle1m7z5kx67kk3tkupef4qudrxv8xpekfhwzws348 --identityID=_5O8O4FnQvP0EkEa-xPwfNOAjOt-GZehqh6jXdvXATc=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />

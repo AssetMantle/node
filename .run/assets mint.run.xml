@@ -2,7 +2,6 @@
   <configuration default="false" name="assets mint" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="assets">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <go_parameters value="-i" />
     <parameters value="tx assets mint -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --toID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --classificationID=xuyPBH-VaAtiY-crFwTDPjoQU56Cx28AcVHbte4K4NY= --immutableMetaProperties=A:S|a --immutableProperties=B:S|b --mutableMetaProperties=C:S|c,supply:D|100 --mutableProperties=D:S|d" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />

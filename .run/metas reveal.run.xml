@@ -2,7 +2,6 @@
   <configuration default="false" name="metas reveal" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="metas">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <go_parameters value="-i" />
     <parameters value="tx metas reveal -y --chain-id=test-chain-1 --from=test --data=S|b" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />

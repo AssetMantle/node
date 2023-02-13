@@ -2,7 +2,6 @@
   <configuration default="false" name="genesis gentx" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="genesis">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <go_parameters value="-i" />
     <parameters value="gentx test 1000000000stake --chain-id test-chain-1" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
