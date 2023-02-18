@@ -2,7 +2,7 @@
   <configuration default="false" name="assets burn" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="assets">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <parameters value="tx assets burn -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --assetID=xU-FWneisdM8sz0WH2bb0j3O1tm4fWzp8W6ZiHCWLAA=" />
+    <parameters value="tx assets burn -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --assetID=wDxT-bkH-HF7e7k0Cvs7X50yectUeq28ZiemCd6tyDw=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
