@@ -12,7 +12,6 @@ import (
 var Prototype = base.NewApplication(
 	configurations.Name,
 	configurations.ModuleBasicManager,
-	configurations.EnabledWasmProposalTypeList,
 	configurations.ModuleAccountPermissions,
 	configurations.TokenReceiveAllowedModules,
 )

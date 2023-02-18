@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.3">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Performance Test" enabled="true">
       <stringProp name="TestPlan.comments">Light performance test for mantle modules</stringProp>
@@ -178,7 +178,7 @@
             </BeanShellAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) POST - sign send" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) GET - Faucet" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -220,12 +220,12 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${IP}</stringProp>
-            <stringProp name="HTTPSampler.port">${PORT}</stringProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">3001</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/sign</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <stringProp name="HTTPSampler.path">/faucet/${ADDR_01}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -245,7 +245,7 @@
               <intProp name="Assertion.test_type">8</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) status: sign send" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) status: sign send" enabled="false">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="3716">tx</stringProp>
               </collectionProp>
@@ -277,8 +277,14 @@
               <stringProp name="ConstantTimer.delay">${SHORT}</stringProp>
             </ConstantTimer>
             <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="1) extract: broadcast signed" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">SEND_TXHASH_01</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..message</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) POST - broadcast signed" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) POST - broadcast signed" enabled="false">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -478,7 +484,7 @@
             </BeanShellAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2) POST - sign send" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2) GET - Faucet" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -520,12 +526,12 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${IP}</stringProp>
-            <stringProp name="HTTPSampler.port">${PORT}</stringProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">3001</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/sign</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <stringProp name="HTTPSampler.path">/faucet/${ADDR_02}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -545,7 +551,7 @@
               <intProp name="Assertion.test_type">8</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="2) status: sign send" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="2) status: sign send" enabled="false">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="3716">tx</stringProp>
               </collectionProp>
@@ -577,8 +583,14 @@
               <stringProp name="ConstantTimer.delay">${SHORT}</stringProp>
             </ConstantTimer>
             <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="2) extract: broadcast signed" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">SEND_TXHASH_02</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..message</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2) POST - broadcast signed" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2) POST - broadcast signed" enabled="false">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -926,7 +938,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ID_DEFINE_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ID_DEFINE_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1044,7 +1056,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ID_ISSUE_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ID_ISSUE_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1185,7 +1197,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ASSETS_DEFINE_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ASSETS_DEFINE_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1303,7 +1315,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ASSETS_MINT_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ASSETS_MINT_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1416,7 +1428,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ASSETS_BURN_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ASSETS_BURN_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1534,7 +1546,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ASSETS_REMINT_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ASSETS_REMINT_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1655,7 +1667,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ASSETS_DEPUTIZE_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ASSETS_DEPUTIZE_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1770,7 +1782,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ASSETS_MUTATE_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ASSETS_MUTATE_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1908,7 +1920,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${SPLITS_WRAP_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${SPLITS_WRAP_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2049,7 +2061,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ORDERS_DEFINE_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ORDERS_DEFINE_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2172,7 +2184,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ORDERS_MAKE_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ORDERS_MAKE_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>

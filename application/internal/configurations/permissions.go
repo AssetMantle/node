@@ -4,6 +4,7 @@
 package configurations
 
 import (
+	"github.com/AssetMantle/modules/modules/classifications"
 	"github.com/AssetMantle/modules/modules/splits"
 	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	distributionTypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
@@ -15,15 +16,16 @@ import (
 )
 
 var ModuleAccountPermissions = map[string][]string{
-	authTypes.FeeCollectorName:     nil,
-	distributionTypes.ModuleName:   nil,
-	icaTypes.ModuleName:            nil,
-	mintTypes.ModuleName:           {authTypes.Minter},
-	stakingTypes.BondedPoolName:    {authTypes.Burner, authTypes.Staking},
-	stakingTypes.NotBondedPoolName: {authTypes.Burner, authTypes.Staking},
-	govTypes.ModuleName:            {authTypes.Burner},
-	ibcTransferTypes.ModuleName:    {authTypes.Minter, authTypes.Burner},
-	splits.Prototype().Name():      nil,
+	authTypes.FeeCollectorName:         nil,
+	distributionTypes.ModuleName:       nil,
+	icaTypes.ModuleName:                nil,
+	mintTypes.ModuleName:               {authTypes.Minter},
+	stakingTypes.BondedPoolName:        {authTypes.Burner, authTypes.Staking},
+	stakingTypes.NotBondedPoolName:     {authTypes.Burner, authTypes.Staking},
+	govTypes.ModuleName:                {authTypes.Burner},
+	ibcTransferTypes.ModuleName:        {authTypes.Minter, authTypes.Burner},
+	splits.Prototype().Name():          nil,
+	classifications.Prototype().Name(): nil,
 }
 var TokenReceiveAllowedModules = map[string]bool{
 	distributionTypes.ModuleName: true,
