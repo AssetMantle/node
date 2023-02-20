@@ -3,11 +3,16 @@ module github.com/AssetMantle/node
 go 1.14
 
 require (
-	github.com/AssetMantle/modules v0.4.0
+	bou.ke/monkey v1.0.1 // indirect
+	github.com/AssetMantle/modules v0.3.2-0.20230218125924-c102a7ced63b
+	github.com/CosmWasm/go-cosmwasm v0.10.0 // indirect
 	github.com/CosmWasm/wasmd v0.29.2
+	github.com/bartekn/go-bip39 v0.0.0-20171116152956-a05967ea095d // indirect
 	github.com/cosmos/cosmos-sdk v0.45.9
 	github.com/cosmos/ibc-go/v3 v3.3.0
 	github.com/spf13/cobra v1.5.0
+	github.com/swaggo/http-swagger v1.3.3 // indirect
+	github.com/tendermint/iavl v0.14.3 // indirect
 	github.com/tendermint/tendermint v0.34.21
 )
 
