@@ -50,7 +50,7 @@
           </elementProp>
           <elementProp name="COINS" elementType="Argument">
             <stringProp name="Argument.name">COINS</stringProp>
-            <stringProp name="Argument.value">10</stringProp>
+            <stringProp name="Argument.value">100</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="DENOM" elementType="Argument">
@@ -2944,6 +2944,205 @@
               <hashTree/>
             </hashTree>
           </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) assets mint non renumerated" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) POST - assets mint non renumerated" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+   &quot;value&quot;:{&#xd;
+      &quot;baseReq&quot;:{&#xd;
+         &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
+         &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
+      },&#xd;
+      &quot;fromID&quot;:&quot;Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=&quot;,&#xd;
+      &quot;toID&quot;:&quot;Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=&quot;,&#xd;
+      &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
+      &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;B:S|Non-Renumerated&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+   }&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${IP}</stringProp>
+              <stringProp name="HTTPSampler.port">${PORT}</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/assets/mint</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) code: assets remint" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) status: assets remint" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-859968110">txhash</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="1) extract: assets remint" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">ASSETS_REMINT_TXHASH_01</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$..txhash</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) GET - query assets remint" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${IP}</stringProp>
+              <stringProp name="HTTPSampler.port">${PORT}</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ASSETS_REMINT_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) code: query assets remint" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) status: query assets remint" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1281977283">failed</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">6</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="1) delay: query assets remint" enabled="true">
+                <stringProp name="ConstantTimer.delay">${LONG}</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) assets query assetID - no renumerated" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) POST - docs request" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/idGetters/docs/request&quot;,&#xd;
+   &quot;value&quot;:{&#xd;
+      &quot;baseReq&quot;:{&#xd;
+         &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
+         &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
+      },&#xd;
+      &quot;fromID&quot;:&quot;Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=&quot;,&#xd;
+      &quot;toID&quot;:&quot;Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=&quot;,&#xd;
+      &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
+      &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;B:S|Non-Renumerated&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+   }&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${IP}</stringProp>
+              <stringProp name="HTTPSampler.port">${PORT}</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/get/document/assetID</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) code: docs request" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) status: docs request" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="1) extract: ASSET ID" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">ASSET_ID_NON_RENUMERATED</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$..ID</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="1) setvar: assetID" enabled="true">
+                <stringProp name="BeanShellAssertion.query">${__setProperty(ASSET_ID_NON_RENUMERATED, ${ASSET_ID_NON_RENUMERATED})};</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
         </hashTree>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="splits module" enabled="true">
@@ -3306,6 +3505,119 @@
               </ResponseAssertion>
               <hashTree/>
               <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="1) delay: query splits unwrap" enabled="true">
+                <stringProp name="ConstantTimer.delay">${LONG}</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) splits wrap" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) POST - splits wrap" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">{&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/splits/internal/transactions/wrap/transactionRequest&quot;,&#xd;
+   &quot;value&quot;:{&#xd;
+      &quot;baseReq&quot;:{&#xd;
+         &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
+         &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
+      },&#xd;
+      &quot;fromID&quot;:&quot;Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=&quot;,&#xd;
+      &quot;coins&quot;:&quot;${COINS}${DENOM}&quot;&#xd;
+   }&#xd;
+}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${IP}</stringProp>
+              <stringProp name="HTTPSampler.port">${PORT}</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/splits/wrap</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) code: splits wrap" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) status: splits wrap" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-859968110">txhash</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="1) extract: splits wrap" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">SPLITS_WRAP_TXHASH_01</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$..txhash</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) GET - query splits wrap" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${IP}</stringProp>
+              <stringProp name="HTTPSampler.port">${PORT}</stringProp>
+              <stringProp name="HTTPSampler.protocol">http</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${SPLITS_WRAP_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) code: query splits wrap" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">8</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) status: query splits wrap" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1281977283">failed</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">6</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="1) delay: query splits wrap" enabled="true">
                 <stringProp name="ConstantTimer.delay">${LONG}</stringProp>
               </ConstantTimer>
               <hashTree/>
@@ -3874,7 +4186,7 @@
       &quot;fromID&quot;:&quot;Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=&quot;,&#xd;
       &quot;takerID&quot;:&quot;Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;makerOwnableID&quot;:&quot;${__property(ASSET_ID)}&quot;,&#xd;
+      &quot;makerOwnableID&quot;:&quot;${__property(ASSET_ID_NON_RENUMERATED)}&quot;,&#xd;
       &quot;takerOwnableID&quot;:&quot;${DENOM}&quot;,&#xd;
       &quot;expiresIn&quot;:&quot;2000&quot;,&#xd;
       &quot;makerOwnableSplit&quot;:&quot;1&quot;,&#xd;
@@ -4003,7 +4315,7 @@
      &quot;fromID&quot;:&quot;Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=&quot;,&#xd;
       &quot;takerID&quot;:&quot;Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;makerOwnableID&quot;:&quot;${__property(ASSET_ID)}&quot;,&#xd;
+      &quot;makerOwnableID&quot;:&quot;${__property(ASSET_ID_NON_RENUMERATED)}&quot;,&#xd;
       &quot;takerOwnableID&quot;:&quot;${DENOM}&quot;,&#xd;
       &quot;expiresIn&quot;:&quot;2000&quot;,&#xd;
       &quot;makerOwnableSplit&quot;:&quot;1&quot;,&#xd;
