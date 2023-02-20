@@ -4,9 +4,9 @@ go 1.14
 
 require (
 	bou.ke/monkey v1.0.1 // indirect
-	github.com/AssetMantle/modules v0.3.2-0.20230220095230-a3113319a8e7
+	github.com/AssetMantle/modules v0.3.2-0.20230220095921-efdf481b47e1
 	github.com/CosmWasm/go-cosmwasm v0.10.0 // indirect
-    github.com/CosmWasm/wasmd v0.29.2
+	github.com/CosmWasm/wasmd v0.29.2
 	github.com/bartekn/go-bip39 v0.0.0-20171116152956-a05967ea095d // indirect
 	github.com/cosmos/cosmos-sdk v0.45.9
 	github.com/cosmos/ibc-go/v3 v3.3.0
