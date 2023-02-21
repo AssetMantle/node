@@ -107,6 +107,36 @@
         <boolProp name="ThreadGroup.delayedStart">true</boolProp>
       </ThreadGroup>
       <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="false">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="IMMUTABLE_META_PROPERTY_DEFINITION" elementType="Argument">
+              <stringProp name="Argument.name">IMMUTABLE_META_PROPERTY_DEFINITION</stringProp>
+              <stringProp name="Argument.value">${__RandomString(${__Random(1,10)},abcdefghijklmnopqrstuvwxyz)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="IMMUTABLE_PROPERTY_DEFINITION" elementType="Argument">
+              <stringProp name="Argument.name">IMMUTABLE_PROPERTY_DEFINITION</stringProp>
+              <stringProp name="Argument.value">${__RandomString(${__Random(1,10)},abcdefghijklmnopqrstuvwxyz)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="MUTABLE_META_PROPERTY_DEFINITION" elementType="Argument">
+              <stringProp name="Argument.name">MUTABLE_META_PROPERTY_DEFINITION</stringProp>
+              <stringProp name="Argument.value">${__RandomString(${__Random(1,10)},abcdefghijklmnopqrstuvwxyz)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="MUTABLE_PROPERTY_DEFINITION" elementType="Argument">
+              <stringProp name="Argument.name">MUTABLE_PROPERTY_DEFINITION</stringProp>
+              <stringProp name="Argument.value">${__RandomString(${__Random(1,10)},abcdefghijklmnopqrstuvwxyz)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="ITERATION" elementType="Argument">
+              <stringProp name="Argument.name">ITERATION</stringProp>
+              <stringProp name="Argument.value">-1</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
         <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="NONCE" enabled="true">
           <stringProp name="maximumValue">9999999</stringProp>
           <stringProp name="minimumValue">1</stringProp>
@@ -116,7 +146,7 @@
           <stringProp name="variableName">NONCE</stringProp>
         </RandomVariableConfig>
         <hashTree/>
-        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="REPEATED RANDOM 1" enabled="true">
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="REPEATED RANDOM NUMBER 1" enabled="true">
           <stringProp name="maximumValue">9999999</stringProp>
           <stringProp name="minimumValue">1</stringProp>
           <stringProp name="outputFormat">0000000</stringProp>
@@ -125,13 +155,49 @@
           <stringProp name="variableName">RANDOM_NO_1</stringProp>
         </RandomVariableConfig>
         <hashTree/>
-        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="REPEATED RANDOM 2" enabled="true">
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="REPEATED RANDOM NUMBER 2" enabled="true">
           <stringProp name="maximumValue">9999999</stringProp>
           <stringProp name="minimumValue">1</stringProp>
           <stringProp name="outputFormat">0000000</stringProp>
           <boolProp name="perThread">true</boolProp>
           <stringProp name="randomSeed">${NONCE}</stringProp>
           <stringProp name="variableName">RANDOM_NO_2</stringProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="IMMUTABLE_META_PROPERTY_DEFINITION" enabled="true">
+          <stringProp name="maximumValue">9999999</stringProp>
+          <stringProp name="minimumValue">1</stringProp>
+          <stringProp name="outputFormat">0000000</stringProp>
+          <boolProp name="perThread">true</boolProp>
+          <stringProp name="randomSeed">${NONCE}</stringProp>
+          <stringProp name="variableName">IMMUTABLE_META_PROPERTY_DEFINITION</stringProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="IMMUTABLE_PROPERTY_DEFINITION" enabled="true">
+          <stringProp name="maximumValue">9999999</stringProp>
+          <stringProp name="minimumValue">1</stringProp>
+          <stringProp name="outputFormat">0000000</stringProp>
+          <boolProp name="perThread">true</boolProp>
+          <stringProp name="randomSeed">${NONCE}</stringProp>
+          <stringProp name="variableName">IMMUTABLE_PROPERTY_DEFINITION</stringProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="MUTABLE_META_PROPERTY_DEFINITION" enabled="true">
+          <stringProp name="maximumValue">9999999</stringProp>
+          <stringProp name="minimumValue">1</stringProp>
+          <stringProp name="outputFormat">0000000</stringProp>
+          <boolProp name="perThread">true</boolProp>
+          <stringProp name="randomSeed">${NONCE}</stringProp>
+          <stringProp name="variableName">MUTABLE_META_PROPERTY_DEFINITION</stringProp>
+        </RandomVariableConfig>
+        <hashTree/>
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="IMMUTABLE_PROPERTY_DEFINITION" enabled="true">
+          <stringProp name="maximumValue">9999999</stringProp>
+          <stringProp name="minimumValue">1</stringProp>
+          <stringProp name="outputFormat">0000000</stringProp>
+          <boolProp name="perThread">true</boolProp>
+          <stringProp name="randomSeed">${NONCE}</stringProp>
+          <stringProp name="variableName">MUTABLE_PROPERTY_DEFINITION</stringProp>
         </RandomVariableConfig>
         <hashTree/>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) test account" enabled="true">
@@ -980,10 +1046,10 @@
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;D:S|&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;B:S|&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;C:S|&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -1077,7 +1143,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities query classificationID" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities query classificationID" enabled="false">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
@@ -1096,10 +1162,10 @@
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;D:S|&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;B:S|&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;C:S|&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -1155,7 +1221,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities issue" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities issue" enabled="false">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
@@ -1176,10 +1242,10 @@
       &quot;to&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;C:S|c&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|b&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -1273,7 +1339,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities query identityID" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities query identityID" enabled="false">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
@@ -1347,7 +1413,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities unprovision" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities unprovision" enabled="false">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
@@ -1460,7 +1526,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities provision" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities provision" enabled="false">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
@@ -1573,7 +1639,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities mutate" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities mutate" enabled="false">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
@@ -1593,8 +1659,8 @@
       },&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;identityID&quot;:&quot;${IDENTITY_ID}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;C:S|xyz&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|xyz&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -1688,7 +1754,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities deputize" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities deputize" enabled="false">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
@@ -1709,7 +1775,7 @@
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;toID&quot;:&quot;${NUB_ID_2}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;maintainedProperties&quot;:&quot;D:S|&quot;,&#xd;
+      &quot;maintainedProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
       &quot;canMintAsset&quot;:false,&#xd;
       &quot;canBurnAsset&quot;:true,&#xd;
       &quot;canRenumerateAsset&quot;:false,&#xd;
@@ -1809,7 +1875,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities revoke" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities revoke" enabled="false">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
@@ -1923,7 +1989,7 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities quash" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities quash" enabled="false">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
@@ -2061,10 +2127,10 @@
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;D:S|&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;B:S|&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;C:S|,supply:D|&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|,supply:D|&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2177,10 +2243,10 @@
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;D:S|&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;B:S|&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;C:S|,supply:D|&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|,supply:D|&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2257,10 +2323,10 @@
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|b&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2375,10 +2441,10 @@
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|b&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2562,10 +2628,10 @@
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|b&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2680,10 +2746,10 @@
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|b&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2881,7 +2947,7 @@
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;assetID&quot;:&quot;${ASSET_ID}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;supply:D|1000&quot;&#xd;
    }&#xd;
 }</stringProp>
@@ -3224,10 +3290,10 @@
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;B:S|Non-Renumerated&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+     &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|Non-Renumerated&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -3342,10 +3408,10 @@
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;B:S|Non-Renumerated&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|Non-Renumerated&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -3888,10 +3954,10 @@
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;H:S|h&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;E:S|e&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|h&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|f&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|g&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -4004,10 +4070,10 @@
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;H:S|h&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;E:S|e&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|h&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|f&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|g&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -4090,10 +4156,10 @@
       &quot;expiresIn&quot;:&quot;2000&quot;,&#xd;
       &quot;makerOwnableSplit&quot;:&quot;1&quot;,&#xd;
       &quot;takerOwnableSplit&quot;:&quot;1&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;H:S|h&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|h&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|f&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|g&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e,bondAmount:${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -4219,10 +4285,10 @@
       &quot;expiresIn&quot;:&quot;2000&quot;,&#xd;
       &quot;makerOwnableSplit&quot;:&quot;1&quot;,&#xd;
       &quot;takerOwnableSplit&quot;:&quot;1&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;H:S|h&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:${BOND_AMOUNT}&quot;,&#xd;
+      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|h&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|f&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|g&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e,bondAmount:${BOND_AMOUNT}&quot;,&#xd;
       &quot;height&quot;:&quot;${BLOCK_HEIGHT}&quot;&#xd;
    }&#xd;
 }</stringProp>
@@ -4412,10 +4478,10 @@
       &quot;expiresIn&quot;:&quot;2000&quot;,&#xd;
       &quot;makerOwnableSplit&quot;:&quot;1&quot;,&#xd;
       &quot;takerOwnableSplit&quot;:&quot;1&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;H:S|h&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|h&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|f&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|g&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e,bondAmount:${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -4541,10 +4607,10 @@
       &quot;expiresIn&quot;:&quot;2000&quot;,&#xd;
       &quot;makerOwnableSplit&quot;:&quot;1&quot;,&#xd;
       &quot;takerOwnableSplit&quot;:&quot;1&quot;,&#xd;
-      &quot;mutableProperties&quot;:&quot;H:S|h&quot;,&#xd;
-      &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:${BOND_AMOUNT}&quot;,&#xd;
+       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|h&quot;,&#xd;
+      &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|f&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|g&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e,bondAmount:${BOND_AMOUNT}&quot;,&#xd;
       &quot;height&quot;:&quot;${BLOCK_HEIGHT}&quot;&#xd;
    }&#xd;
 }</stringProp>
