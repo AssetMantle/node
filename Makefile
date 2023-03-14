@@ -6,15 +6,22 @@ VERSION := $(shell echo $(shell git describe --tags) | sed 's/^v//')
 COMMIT := $(shell git rev-parse --short HEAD)
 
 build_tags = netgo
+build_tags += $(BUILD_TAGS)
+build_tags := $(strip $(build_tags))
+whitespace :=
+whitespace := $(whitespace) $(whitespace)
+comma := ,
 build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
-ldflags = -w -s -X github.com/cosmos/cosmos-sdk/version.Name=assetMantle \
-		  -X github.com/cosmos/cosmos-sdk/version.ServerName=assetNode \
-		  -X github.com/cosmos/cosmos-sdk/version.ClientName=assetClient \
+ldflags = -w -s -X github.com/cosmos/cosmos-sdk/version.Name=mantleNode \
+		  -X github.com/cosmos/cosmos-sdk/version.AppName=mantleNode \
 		  -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
 		  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
 		  -X github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep) \
 
-BUILD_FLAGS += -ldflags "${ldflags}" -trimpath
+ldflags += $(LDFLAGS)
+ldflags := $(strip $(ldflags))
+
+BUILD_FLAGS += -tags "$(build_tags)" -ldflags "${ldflags}" -trimpath
 
 # Go environment variables
 GOBIN = $(shell go env GOPATH)/bin

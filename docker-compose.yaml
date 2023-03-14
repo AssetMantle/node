@@ -1,36 +1,23 @@
 ---
 version: "3"
+volumes: { chain-data: {} }
 services:
   node:
     image: assetmantle/node:edge
-    container_name: node
+    container_name: mantleNode
     build: .
-    ports:
-      - 26657:26657
-    entrypoint: bash
+    volumes: [chain-data:/root/.mantleNode]
+    entrypoint: sh
     command:
       - -cex
       - |
-        assetNode init test --chain-id load-test-1
-        assetClient keys add test --keyring-backend test
-        assetNode add-genesis-account test 10000000000000000000000stake --keyring-backend test
-        assetNode gentx --name test --amount 1000000000stake --keyring-backend test
-        assetNode collect-gentxs
-        assetNode start \
-          --pruning=nothing \
-          --rpc.laddr=tcp://0.0.0.0:26657
-
-  client:
-    image: assetmantle/node:edge
-    depends_on: [node]
-    container_name: client
-    build: .
-    ports:
-      - 1317:1317
-    entrypoint: assetClient
-    command:
-      - rest-server
-      - --keyring-backend=test
-      - --node=tcp://node:26657
-      - --laddr=tcp://0.0.0.0:1317
-      - --trust-node
+        if [[ ! -f ~/.mantleNode/config/config.toml ]]; then
+          mantleNode init test --chain-id load-test-1
+          mantleNode keys add test --keyring-backend test
+          mantleNode add-genesis-account test 10000000000000000000000stake --keyring-backend test
+          mantleNode gentx test 1000000000stake --keyring-backend test --chain-id load-test-1
+          mantleNode collect-gentxs
+        fi
+        mantleNode start \
+          --rpc.laddr=tcp://0.0.0.0:26657 &
+        sleep 99999
