@@ -3,6 +3,7 @@
 
 export AM_CHAIN_ID="test-chain-1"
 export AM_STAKE_DENOMINATION="stake"
+export AM_KEYRING_BACKEND="test"
 
 export AM_NAME_1="test"
 export AM_NODE_NAME_1="test-node"
