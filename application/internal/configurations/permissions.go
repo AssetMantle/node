@@ -25,7 +25,7 @@ var ModuleAccountPermissions = map[string][]string{
 	govTypes.ModuleName:                {authTypes.Burner},
 	ibcTransferTypes.ModuleName:        {authTypes.Minter, authTypes.Burner},
 	splits.Prototype().Name():          nil,
-	classifications.Prototype().Name(): nil,
+	classifications.Prototype().Name(): {authTypes.Burner},
 }
 var TokenReceiveAllowedModules = map[string]bool{
 	distributionTypes.ModuleName: true,
