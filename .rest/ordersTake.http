@@ -2,7 +2,7 @@ POST http://{{ASSET_MANTLE_CLIENT_HOST}}:{{ASSET_MANTLE_CLIENT_PORT}}/orders/tak
 Content-Type: application/json
 
 {
- "type": "/xprt/orders/github.com/AssetMantle/modules/modules/orders/internal/transactions/take/transactionRequest",
+ "type": "github.com/AssetMantle/modules/x/orders/internal/transactions/take/transactionRequest",
  "value": {
     "baseReq": {
       "from": "{{ACCOUNT_1_ADDRESS}}",

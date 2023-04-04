@@ -4,8 +4,8 @@
 package configurations
 
 import (
-	"github.com/AssetMantle/modules/modules/classifications"
-	"github.com/AssetMantle/modules/modules/splits"
+	"github.com/AssetMantle/modules/x/classifications"
+	"github.com/AssetMantle/modules/x/splits"
 	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	distributionTypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 	govTypes "github.com/cosmos/cosmos-sdk/x/gov/types"

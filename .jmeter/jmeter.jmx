@@ -601,7 +601,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/identities/internal/transactions/nub/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/nub/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -794,7 +794,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/identities/internal/transactions/nub/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/nub/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_02)}&quot;,&#xd;
@@ -987,7 +987,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/identities/internal/transactions/define/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/define/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -1181,7 +1181,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/identities/internal/transactions/issue/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/issue/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -1373,7 +1373,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/identities/internal/transactions/unprovision/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/unprovision/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -1486,7 +1486,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/identities/internal/transactions/provision/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/provision/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -1599,7 +1599,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/identities/internal/transactions/mutate/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/mutate/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -1714,7 +1714,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/identities/internal/transactions/deputize/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/deputize/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -1835,7 +1835,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/identities/internal/transactions/revoke/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/revoke/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -1949,7 +1949,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/identities/internal/transactions/quash/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/quash/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -2087,7 +2087,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -2281,7 +2281,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -2473,7 +2473,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/assets/internal/transactions/burn/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/burn/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -2586,7 +2586,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -2785,7 +2785,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/assets/internal/transactions/deputize/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/deputize/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -2906,7 +2906,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -3021,7 +3021,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/assets/internal/transactions/renumerate/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/renumerate/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -3134,7 +3134,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/assets/internal/transactions/revoke/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/revoke/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -3248,7 +3248,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -3472,7 +3472,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/splits/internal/transactions/send/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/internal/transactions/send/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -3587,7 +3587,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/splits/internal/transactions/wrap/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/internal/transactions/wrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -3700,7 +3700,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/splits/internal/transactions/unwrap/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/internal/transactions/unwrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -3814,7 +3814,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/splits/internal/transactions/wrap/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/internal/transactions/wrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -3952,7 +3952,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -4147,7 +4147,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -4356,7 +4356,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/orders/internal/transactions/cancel/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/cancel/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -4469,7 +4469,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -4678,7 +4678,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/modules/orders/internal/transactions/take/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/take/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
