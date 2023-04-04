@@ -4,13 +4,13 @@
 package configurations
 
 import (
-	"github.com/AssetMantle/modules/modules/assets"
-	"github.com/AssetMantle/modules/modules/classifications"
-	"github.com/AssetMantle/modules/modules/identities"
-	"github.com/AssetMantle/modules/modules/maintainers"
-	"github.com/AssetMantle/modules/modules/metas"
-	"github.com/AssetMantle/modules/modules/orders"
-	"github.com/AssetMantle/modules/modules/splits"
+	"github.com/AssetMantle/modules/x/assets"
+	"github.com/AssetMantle/modules/x/classifications"
+	"github.com/AssetMantle/modules/x/identities"
+	"github.com/AssetMantle/modules/x/maintainers"
+	"github.com/AssetMantle/modules/x/metas"
+	"github.com/AssetMantle/modules/x/orders"
+	"github.com/AssetMantle/modules/x/splits"
 	"github.com/CosmWasm/wasmd/x/wasm"
 	wasmClient "github.com/CosmWasm/wasmd/x/wasm/client"
 	"github.com/cosmos/cosmos-sdk/types/module"

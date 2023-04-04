@@ -4,9 +4,8 @@
 package application
 
 import (
-	"github.com/AssetMantle/modules/schema/applications/base"
-
 	"github.com/AssetMantle/node/application/internal/configurations"
+	"github.com/AssetMantle/node/application/types/applications/base"
 )
 
 var Prototype = base.NewApplication(

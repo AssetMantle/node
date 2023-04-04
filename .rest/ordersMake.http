@@ -1,8 +1,8 @@
-POST http://{{ASSET_MANTLE_CLIENT_HOST}}:{{ASSET_MANTLE_CLIENT_PORT}}/xprt/orders/make
+POST http://{{ASSET_MANTLE_CLIENT_HOST}}:{{ASSET_MANTLE_CLIENT_PORT}}/orders/make
 Content-Type: application/json
 
 {
- "type": "/xprt/orders/make/request",
+ "type": "orders/make/request",
  "value": {
     "baseReq": {
       "from": "{{ACCOUNT_1_ADDRESS}}",
