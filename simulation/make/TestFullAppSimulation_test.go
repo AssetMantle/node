@@ -5,6 +5,7 @@ package make
 
 import (
 	"github.com/AssetMantle/node/application"
+	simulationTypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"os"
 	"testing"
 
@@ -35,7 +36,7 @@ func TestFullAppSimulation(t *testing.T) {
 		os.Stdout,
 		simulationApplication.GetBaseApp(),
 		simapp.AppStateFn(simulationApplication.GetAppCodec(), simulationApplication.SimulationManager()),
-		nil,
+		simulationTypes.RandomAccounts,
 		simapp.SimulationOperations(simulationApplication, simulationApplication.GetAppCodec(), config),
 		simulationApplication.ModuleAccountAddrs(),
 		config,

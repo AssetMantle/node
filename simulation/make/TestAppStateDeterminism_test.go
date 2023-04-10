@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/AssetMantle/node/application"
+	simulationTypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"math/rand"
 	"os"
 	"testing"
@@ -62,7 +63,7 @@ func TestAppStateDeterminism(t *testing.T) {
 				os.Stdout,
 				simulationApplication.GetBaseApp(),
 				simapp.AppStateFn(simulationApplication.GetAppCodec(), simulationApplication.SimulationManager()),
-				nil,
+				simulationTypes.RandomAccounts,
 				simapp.SimulationOperations(simulationApplication, simulationApplication.GetAppCodec(), config),
 				simulationApplication.ModuleAccountAddrs(),
 				config,

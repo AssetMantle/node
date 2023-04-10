@@ -8,6 +8,7 @@ import (
 	"github.com/AssetMantle/node/application"
 	"github.com/AssetMantle/node/application/types/applications/base"
 	"github.com/cosmos/cosmos-sdk/simapp"
+	simulationTypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
 	"github.com/stretchr/testify/require"
 	abci "github.com/tendermint/tendermint/abci/types"
@@ -81,7 +82,7 @@ func TestAppSimulationAfterImport(t *testing.T) {
 		os.Stdout,
 		newSimulationApplication.GetBaseApp(),
 		simapp.AppStateFn(simulationApplication.GetAppCodec(), simulationApplication.SimulationManager()),
-		nil,
+		simulationTypes.RandomAccounts,
 		simapp.SimulationOperations(newSimulationApplication, newSimulationApplication.GetAppCodec(), config),
 		newSimulationApplication.ModuleAccountAddrs(),
 		config,

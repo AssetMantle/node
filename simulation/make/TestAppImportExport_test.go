@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"github.com/AssetMantle/node/application"
 	"github.com/AssetMantle/node/application/types/applications/base"
+	simulationTypes "github.com/cosmos/cosmos-sdk/types/simulation"
 
 	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	distributionTypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
@@ -77,7 +78,7 @@ func TestAppImportExport(t *testing.T) {
 		os.Stdout,
 		simulationApplication.GetBaseApp(),
 		simapp.AppStateFn(simulationApplication.GetAppCodec(), simulationApplication.SimulationManager()),
-		nil,
+		simulationTypes.RandomAccounts,
 		simapp.SimulationOperations(simulationApplication, simulationApplication.GetAppCodec(), config),
 		simulationApplication.ModuleAccountAddrs(),
 		config,
