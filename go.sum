@@ -43,6 +43,7 @@ github.com/99designs/keyring v1.2.1 h1:tYLp1ULvO7i3fI5vE21ReQuj99QFSs7lGm0xWyJo8
 github.com/99designs/keyring v1.2.1/go.mod h1:fc+wB5KTk9wQ9sDx0kFXB3A0MaeGHM9AwRStKOQ5vOA=
 github.com/AssetMantle/modules v0.3.2-0.20230404134943-b28bb80f8b05 h1:hJv/0Cq3S+HXWt7B+io5wundLSofM8bNQFcQKSrIBN0=
 github.com/AssetMantle/modules v0.3.2-0.20230404134943-b28bb80f8b05/go.mod h1:a9OX18PVwiRs5C2vobDQEQpk+D2d6psX7QjyqrLcFE4=
+github.com/AssetMantle/schema v0.0.0-20230404134542-c68b500a7161 h1:sUotw6HcU7nnlnbTLktI5q/a5ZruqxM944ozLc+73hE=
 github.com/AssetMantle/schema v0.0.0-20230404134542-c68b500a7161/go.mod h1:papv3r4uZMf4hn7+SkTXAf3yjZHpL9nWN/HFw+gLNyI=
 github.com/Azure/azure-pipeline-go v0.2.1/go.mod h1:UGSo8XybXnIGZ3epmeBw7Jdz+HiUVpqIlpz/HKHylF4=
 github.com/Azure/azure-pipeline-go v0.2.2/go.mod h1:4rQ/NZncSvGqNkkOsNpOU1tgoNuIlp9AfUH5G1tvCHc=

@@ -5,6 +5,7 @@ package base
 
 import (
 	"encoding/json"
+	simulationMake "github.com/AssetMantle/node/application/types/applications/constants"
 	"io"
 	"log"
 	"net/http"
@@ -84,7 +85,6 @@ import (
 	dbm "github.com/tendermint/tm-db"
 
 	"github.com/AssetMantle/node/application/types/applications"
-	simulationMake "github.com/AssetMantle/node/simulation/make"
 )
 
 type GenesisState map[string]json.RawMessage
@@ -153,6 +153,10 @@ func (app *SimulationApplication) ExportAppStateAndValidators(forZeroHeight bool
 
 func (app *SimulationApplication) GetBaseApp() *baseapp.BaseApp {
 	return app.BaseApp
+}
+
+func (app *SimulationApplication) GetModuleManager() *module.Manager {
+	return app.moduleManager
 }
 
 func (app *SimulationApplication) GetCrisisKeeper() crisisKeeper.Keeper {

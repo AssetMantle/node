@@ -4,12 +4,13 @@
 package make
 
 import (
+	"github.com/AssetMantle/node/application"
 	"os"
 	"testing"
 
-	"github.com/CosmWasm/wasmd/x/wasm"
 	"github.com/cosmos/cosmos-sdk/simapp"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
+
 	"github.com/stretchr/testify/require"
 
 	"github.com/AssetMantle/node/application/types/applications/base"
@@ -24,19 +25,21 @@ func TestFullAppSimulation(t *testing.T) {
 
 	require.NoError(t, err, "simulation setup failed")
 
-	prototype := base.NewSimulationApplication(applicationName, moduleBasicManager, wasm.EnableAllProposals, moduleAccountPermissions, tokenReceiveAllowedModules).(*base.SimulationApplication)
-	simulationApplication := prototype.InitializeSimulationApplication(logger, db, nil, true, simapp.FlagPeriodValue, map[int64]bool{}, prototype.GetDefaultNodeHome(), fauxMerkleModeOpt).(*base.SimulationApplication)
+	simulationApplication := base.NewSimulationApplication(logger, db, nil, true, map[int64]bool{}, application.Prototype.GetDefaultNodeHome(), 0, simapp.MakeTestEncodingConfig(), simapp.EmptyAppOptions{}, fauxMerkleModeOpt).(*base.SimulationApplication)
 
-	require.Equal(t, "SimulationApplication", simulationApplication.Name())
+	require.Equal(t, "Simulation", simulationApplication.Name())
 
 	// run randomized simulation
 	_, simParams, simErr := simulation.SimulateFromSeed(
 		t,
 		os.Stdout,
 		simulationApplication.GetBaseApp(),
-		simapp.AppStateFn(simulationApplication.Codec(), simulationApplication.SimulationManager()),
-		simapp.SimulationOperations(simulationApplication, simulationApplication.Codec(), config),
-		simulationApplication.ModuleAccountAddresses(), config,
+		simapp.AppStateFn(simulationApplication.GetAppCodec(), simulationApplication.SimulationManager()),
+		nil,
+		simapp.SimulationOperations(simulationApplication, simulationApplication.GetAppCodec(), config),
+		simulationApplication.ModuleAccountAddrs(),
+		config,
+		simulationApplication.GetAppCodec(),
 	)
 
 	// export state and simParams before the simulation error is checked
