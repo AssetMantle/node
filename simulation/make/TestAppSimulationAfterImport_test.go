@@ -5,16 +5,15 @@ package make
 
 import (
 	"fmt"
-	"os"
-	"testing"
-
-	"github.com/CosmWasm/wasmd/x/wasm"
+	"github.com/AssetMantle/node/application"
+	"github.com/AssetMantle/node/application/types/applications/base"
 	"github.com/cosmos/cosmos-sdk/simapp"
+	simulationTypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
 	"github.com/stretchr/testify/require"
 	abci "github.com/tendermint/tendermint/abci/types"
-
-	"github.com/AssetMantle/node/application/types/applications/base"
+	"os"
+	"testing"
 )
 
 func TestAppSimulationAfterImport(t *testing.T) {
@@ -27,15 +26,21 @@ func TestAppSimulationAfterImport(t *testing.T) {
 
 	require.NoError(t, err, "simulation setup failed")
 
-	prototype := base.NewSimulationApplication(applicationName, moduleBasicManager, wasm.EnableAllProposals, moduleAccountPermissions, tokenReceiveAllowedModules).(*base.SimulationApplication)
-	simulationApplication := prototype.InitializeSimulationApplication(logger, db, nil, true, simapp.FlagPeriodValue, map[int64]bool{}, prototype.GetDefaultNodeHome(), fauxMerkleModeOpt).(*base.SimulationApplication)
+	simulationApplication := base.NewSimulationApplication(logger, db, nil, true, map[int64]bool{}, application.Prototype.GetDefaultNodeHome(), 0, simapp.MakeTestEncodingConfig(), simapp.EmptyAppOptions{}, fauxMerkleModeOpt).(*base.SimulationApplication)
+
 	require.Equal(t, "SimulationApplication", simulationApplication.Name())
 
 	// Run randomized simulation
 	stopEarly, simParams, simErr := simulation.SimulateFromSeed(
-		t, os.Stdout, simulationApplication.GetBaseApp(), simapp.AppStateFn(simulationApplication.Codec(), simulationApplication.SimulationManager()),
-		simapp.SimulationOperations(simulationApplication, simulationApplication.Codec(), config),
-		simulationApplication.ModuleAccountAddresses(), config,
+		t,
+		os.Stdout,
+		simulationApplication.GetBaseApp(),
+		simapp.AppStateFn(simulationApplication.GetAppCodec(), simulationApplication.SimulationManager()),
+		nil,
+		simapp.SimulationOperations(simulationApplication, simulationApplication.GetAppCodec(), config),
+		simulationApplication.ModuleAccountAddrs(),
+		config,
+		simulationApplication.GetAppCodec(),
 	)
 
 	// export state and simParams before the simulation error is checked
@@ -54,7 +59,7 @@ func TestAppSimulationAfterImport(t *testing.T) {
 
 	fmt.Printf("exporting genesis...\n")
 
-	appState, _, err := simulationApplication.ExportAppStateAndValidators(true, []string{})
+	appState, err := simulationApplication.ExportAppStateAndValidators(true, []string{})
 	require.NoError(t, err)
 
 	fmt.Printf("importing genesis...\n")
@@ -64,17 +69,24 @@ func TestAppSimulationAfterImport(t *testing.T) {
 
 	require.NoError(t, err, "simulation setup failed")
 
-	newSimulationApplication := prototype.Initialize(logger, newDB, nil, true, simapp.FlagPeriodValue, map[int64]bool{}, prototype.GetDefaultNodeHome(), fauxMerkleModeOpt).(*base.SimulationApplication)
+	newSimulationApplication := base.NewSimulationApplication(logger, newDB, nil, true, map[int64]bool{}, application.Prototype.GetDefaultNodeHome(), 0, simapp.MakeTestEncodingConfig(), simapp.EmptyAppOptions{}, fauxMerkleModeOpt).(*base.SimulationApplication)
+
 	require.Equal(t, "SimulationApplication", newSimulationApplication.Name())
 
 	newSimulationApplication.InitChain(abci.RequestInitChain{
-		AppStateBytes: appState,
+		AppStateBytes: appState.AppState,
 	})
 
 	_, _, err = simulation.SimulateFromSeed(
-		t, os.Stdout, newSimulationApplication.GetBaseApp(), simapp.AppStateFn(simulationApplication.Codec(), simulationApplication.SimulationManager()),
-		simapp.SimulationOperations(newSimulationApplication, newSimulationApplication.Codec(), config),
-		newSimulationApplication.ModuleAccountAddresses(), config,
+		t,
+		os.Stdout,
+		newSimulationApplication.GetBaseApp(),
+		simapp.AppStateFn(simulationApplication.GetAppCodec(), simulationApplication.SimulationManager()),
+		simulationTypes.RandomAccounts,
+		simapp.SimulationOperations(newSimulationApplication, newSimulationApplication.GetAppCodec(), config),
+		newSimulationApplication.ModuleAccountAddrs(),
+		config,
+		simulationApplication.GetAppCodec(),
 	)
 	require.NoError(t, err)
 }

@@ -5,6 +5,7 @@ package make
 
 import (
 	"fmt"
+	"github.com/AssetMantle/node/application/types/applications/constants"
 	"os"
 	"testing"
 
@@ -25,7 +26,7 @@ func BenchmarkInvariants(b *testing.B) {
 
 	config.AllInvariants = false
 
-	simulationApplication := base.NewSimulationApplication(logger, db, nil, true, map[int64]bool{}, DefaultNodeHome, simapp.FlagPeriodValue, simapp.MakeTestEncodingConfig(), simapp.EmptyAppOptions{}, interBlockCacheOpt())
+	simulationApplication := base.NewSimulationApplication(logger, db, nil, true, map[int64]bool{}, constants.DefaultNodeHome, simapp.FlagPeriodValue, simapp.MakeTestEncodingConfig(), simapp.EmptyAppOptions{}, interBlockCacheOpt())
 
 	// run randomized simulation
 	_, simParams, simErr := simulation.SimulateFromSeed(
