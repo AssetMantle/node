@@ -15,7 +15,7 @@ import (
 	tendermintLog "github.com/tendermint/tendermint/libs/log"
 	tendermintDB "github.com/tendermint/tm-db"
 
-	"github.com/AssetMantle/schema/x/helpers"
+	"github.com/AssetMantle/modules/helpers"
 )
 
 type Application interface {

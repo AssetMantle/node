@@ -102,6 +102,8 @@ import (
 	protoTendermintTypes "github.com/tendermint/tendermint/proto/tendermint/types"
 	tendermintDB "github.com/tendermint/tm-db"
 
+	"github.com/AssetMantle/modules/helpers"
+	"github.com/AssetMantle/modules/helpers/base"
 	utilitiesRest "github.com/AssetMantle/modules/utilities/rest"
 	documentIDGetters "github.com/AssetMantle/modules/utilities/rest/idGetters/docs"
 	"github.com/AssetMantle/modules/x/assets"
@@ -127,8 +129,6 @@ import (
 	splitsMint "github.com/AssetMantle/modules/x/splits/auxiliaries/mint"
 	"github.com/AssetMantle/modules/x/splits/auxiliaries/renumerate"
 	"github.com/AssetMantle/modules/x/splits/auxiliaries/transfer"
-	"github.com/AssetMantle/schema/x/helpers"
-	"github.com/AssetMantle/schema/x/helpers/base"
 
 	"github.com/AssetMantle/node/application/types/applications"
 	"github.com/AssetMantle/node/application/types/applications/constants"
