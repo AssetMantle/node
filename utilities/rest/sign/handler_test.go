@@ -25,7 +25,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/AssetMantle/modules/utilities/test/schema/helpers/base"
-	"github.com/AssetMantle/schema/x"
+	"github.com/AssetMantle/schema/go"
 )
 
 func TestHandler(t *testing.T) {

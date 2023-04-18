@@ -13,9 +13,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/bank"
 	"github.com/stretchr/testify/require"
 
+	"github.com/AssetMantle/modules/utilities/random"
+	"github.com/AssetMantle/schema/go"
 	codecUtilities "github.com/AssetMantle/schema/utilities/codec"
-	"github.com/AssetMantle/schema/utilities/random"
-	"github.com/AssetMantle/schema/x"
 )
 
 type testMessage struct {

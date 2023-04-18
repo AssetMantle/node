@@ -12,9 +12,9 @@ import (
 	"github.com/stretchr/testify/require"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/AssetMantle/schema/utilities/random"
-	"github.com/AssetMantle/schema/x"
-	baseIDs "github.com/AssetMantle/schema/x/ids/base"
+	"github.com/AssetMantle/modules/utilities/random"
+	"github.com/AssetMantle/schema/go"
+	baseIDs "github.com/AssetMantle/schema/go/ids/base"
 )
 
 func Test_Kafka_DB(t *testing.T) {

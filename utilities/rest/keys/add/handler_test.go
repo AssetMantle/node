@@ -20,7 +20,7 @@ import (
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/require"
 
-	"github.com/AssetMantle/schema/x"
+	"github.com/AssetMantle/schema/go"
 )
 
 func TestHandler(t *testing.T) {

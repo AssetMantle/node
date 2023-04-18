@@ -8,15 +8,15 @@ import (
 	sdkTypes "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/rest"
 
-	"github.com/AssetMantle/schema/x/data"
-	baseData "github.com/AssetMantle/schema/x/data/base"
-	baseIDs "github.com/AssetMantle/schema/x/ids/base"
-	"github.com/AssetMantle/schema/x/properties"
-	baseProperties "github.com/AssetMantle/schema/x/properties/base"
-	"github.com/AssetMantle/schema/x/properties/constants"
-	propertiesUtilities "github.com/AssetMantle/schema/x/properties/utilities"
-	"github.com/AssetMantle/schema/x/qualified/base"
-	baseTypes "github.com/AssetMantle/schema/x/types/base"
+	"github.com/AssetMantle/schema/go/data"
+	baseData "github.com/AssetMantle/schema/go/data/base"
+	baseIDs "github.com/AssetMantle/schema/go/ids/base"
+	"github.com/AssetMantle/schema/go/properties"
+	baseProperties "github.com/AssetMantle/schema/go/properties/base"
+	"github.com/AssetMantle/schema/go/properties/constants"
+	propertiesUtilities "github.com/AssetMantle/schema/go/properties/utilities"
+	"github.com/AssetMantle/schema/go/qualified/base"
+	baseTypes "github.com/AssetMantle/schema/go/types/base"
 )
 
 func orderIDHandler(context client.Context) http.HandlerFunc {
