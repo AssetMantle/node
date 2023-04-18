@@ -11,12 +11,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/std"
 	"github.com/stretchr/testify/require"
 
-	"github.com/AssetMantle/schema/x"
+	"github.com/AssetMantle/schema/go"
 )
 
 func TestKafkaTopicConsumer(t *testing.T) {
 	testConsumers := []string{"testConsumers"}
-
 	var legacyAmino = codec.NewLegacyAmino()
 
 	x.RegisterLegacyAminoCodec(legacyAmino)

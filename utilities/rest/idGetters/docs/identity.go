@@ -6,15 +6,15 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/types/rest"
 
-	"github.com/AssetMantle/schema/x/data"
-	baseData "github.com/AssetMantle/schema/x/data/base"
-	errorConstants "github.com/AssetMantle/schema/x/errors/constants"
-	baseIDs "github.com/AssetMantle/schema/x/ids/base"
-	baseLists "github.com/AssetMantle/schema/x/lists/base"
-	"github.com/AssetMantle/schema/x/properties"
-	baseProperties "github.com/AssetMantle/schema/x/properties/base"
-	"github.com/AssetMantle/schema/x/properties/constants"
-	"github.com/AssetMantle/schema/x/qualified/base"
+	"github.com/AssetMantle/schema/go/data"
+	baseData "github.com/AssetMantle/schema/go/data/base"
+	errorConstants "github.com/AssetMantle/schema/go/errors/constants"
+	baseIDs "github.com/AssetMantle/schema/go/ids/base"
+	baseLists "github.com/AssetMantle/schema/go/lists/base"
+	"github.com/AssetMantle/schema/go/properties"
+	baseProperties "github.com/AssetMantle/schema/go/properties/base"
+	"github.com/AssetMantle/schema/go/properties/constants"
+	"github.com/AssetMantle/schema/go/qualified/base"
 )
 
 func nubIDHandler(context client.Context) http.HandlerFunc {

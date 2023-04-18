@@ -8,17 +8,17 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/gorilla/mux"
 
+	baseData "github.com/AssetMantle/schema/go/data/base"
+	"github.com/AssetMantle/schema/go/ids"
+	baseIDs "github.com/AssetMantle/schema/go/ids/base"
+	"github.com/AssetMantle/schema/go/lists"
+	"github.com/AssetMantle/schema/go/lists/utilities"
+	baseProperties "github.com/AssetMantle/schema/go/properties/base"
+	"github.com/AssetMantle/schema/go/properties/constants"
+	propertiesUtilities "github.com/AssetMantle/schema/go/properties/utilities"
+	"github.com/AssetMantle/schema/go/qualified"
+	"github.com/AssetMantle/schema/go/qualified/base"
 	codecUtilities "github.com/AssetMantle/schema/utilities/codec"
-	baseData "github.com/AssetMantle/schema/x/data/base"
-	"github.com/AssetMantle/schema/x/ids"
-	baseIDs "github.com/AssetMantle/schema/x/ids/base"
-	"github.com/AssetMantle/schema/x/lists"
-	"github.com/AssetMantle/schema/x/lists/utilities"
-	baseProperties "github.com/AssetMantle/schema/x/properties/base"
-	"github.com/AssetMantle/schema/x/properties/constants"
-	propertiesUtilities "github.com/AssetMantle/schema/x/properties/utilities"
-	"github.com/AssetMantle/schema/x/qualified"
-	"github.com/AssetMantle/schema/x/qualified/base"
 )
 
 func RegisterLegacyAminoCodec(legacyAmino *codec.LegacyAmino) {

@@ -10,7 +10,7 @@ import (
 	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	"github.com/stretchr/testify/require"
 
-	errorConstants "github.com/AssetMantle/schema/x/errors/constants"
+	errorConstants "github.com/AssetMantle/schema/go/errors/constants"
 )
 
 func Test_SignTx_Response(t *testing.T) {
