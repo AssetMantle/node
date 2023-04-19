@@ -5,7 +5,42 @@ package base
 
 import (
 	"encoding/json"
+	"github.com/AssetMantle/modules/helpers"
+	"github.com/AssetMantle/modules/helpers/base"
+	"github.com/AssetMantle/modules/x/assets"
+	"github.com/AssetMantle/modules/x/classifications"
+	"github.com/AssetMantle/modules/x/classifications/auxiliaries/bond"
+	"github.com/AssetMantle/modules/x/classifications/auxiliaries/burn"
+	"github.com/AssetMantle/modules/x/classifications/auxiliaries/conform"
+	"github.com/AssetMantle/modules/x/classifications/auxiliaries/define"
+	"github.com/AssetMantle/modules/x/classifications/auxiliaries/member"
+	"github.com/AssetMantle/modules/x/classifications/auxiliaries/unbond"
+	"github.com/AssetMantle/modules/x/identities"
+	"github.com/AssetMantle/modules/x/identities/auxiliaries/authenticate"
+	"github.com/AssetMantle/modules/x/maintainers"
+	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/deputize"
+	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/maintain"
+	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/revoke"
+	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/super"
+	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/verify"
+	"github.com/AssetMantle/modules/x/metas"
+	"github.com/AssetMantle/modules/x/metas/auxiliaries/supplement"
+	"github.com/AssetMantle/modules/x/orders"
+	"github.com/AssetMantle/modules/x/splits"
+	splitsMint "github.com/AssetMantle/modules/x/splits/auxiliaries/mint"
+	"github.com/AssetMantle/modules/x/splits/auxiliaries/renumerate"
+	"github.com/AssetMantle/modules/x/splits/auxiliaries/transfer"
+	"github.com/AssetMantle/node/application/internal/configurations"
 	simulationMake "github.com/AssetMantle/node/application/types/applications/constants"
+	ica "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts"
+	icaHostKeeper "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/host/keeper"
+	icaHostTypes "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts/host/types"
+	ibcTransfer "github.com/cosmos/ibc-go/v3/modules/apps/transfer"
+	ibcTransferKeeper "github.com/cosmos/ibc-go/v3/modules/apps/transfer/keeper"
+	ibcTransferTypes "github.com/cosmos/ibc-go/v3/modules/apps/transfer/types"
+	ibc "github.com/cosmos/ibc-go/v3/modules/core"
+	ibcHost "github.com/cosmos/ibc-go/v3/modules/core/24-host"
+	ibcKeeper "github.com/cosmos/ibc-go/v3/modules/core/keeper"
 	"io"
 	"log"
 	"net/http"
@@ -96,7 +131,7 @@ func NewDefaultGenesisState(cdc codec.JSONCodec) GenesisState {
 type SimulationApplication struct {
 	*baseapp.BaseApp
 	legacyAmino       *codec.LegacyAmino
-	appCodec          codec.Codec
+	appCodec          helpers.Codec
 	interfaceRegistry types.InterfaceRegistry
 
 	invCheckPeriod uint
@@ -317,7 +352,7 @@ func (app *SimulationApplication) LegacyAmino() *codec.LegacyAmino {
 	return app.legacyAmino
 }
 
-func (app *SimulationApplication) GetAppCodec() codec.Codec {
+func (app *SimulationApplication) GetAppCodec() helpers.Codec {
 	return app.appCodec
 }
 
@@ -385,11 +420,12 @@ func GetModuleAccountPermissions() map[string][]string {
 	}
 	return dupMaccPerms
 }
+
 func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writer, loadLatest bool, skipUpgradeHeights map[int64]bool,
 	homePath string, invCheckPeriod uint, encodingConfig simAppParams.EncodingConfig,
 	appOpts serverTypes.AppOptions, baseAppOptions ...func(*baseapp.BaseApp),
 ) applications.SimulationApplication {
-	appCodec := encodingConfig.Marshaler
+	appCodec := base.CodecPrototype().Initialize(configurations.ModuleBasicManager)
 	legacyAmino := encodingConfig.Amino
 	interfaceRegistry := encodingConfig.InterfaceRegistry
 
@@ -399,11 +435,30 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 	bApp.SetInterfaceRegistry(interfaceRegistry)
 
 	keys := sdkTypes.NewKVStoreKeys(
-		authTypes.StoreKey, bankTypes.StoreKey, stakingTypes.StoreKey,
-		mintTypes.StoreKey, distributionTypes.StoreKey, slashingTypes.StoreKey,
-		govTypes.StoreKey, paramsTypes.StoreKey, upgradeTypes.StoreKey, feegrant.StoreKey,
-		evidenceTypes.StoreKey, capabilityTypes.StoreKey,
+		authTypes.StoreKey,
+		bankTypes.StoreKey,
+		stakingTypes.StoreKey,
+		mintTypes.StoreKey,
+		distributionTypes.StoreKey,
+		slashingTypes.StoreKey,
+		govTypes.StoreKey,
+		paramsTypes.StoreKey,
+		ibcHost.StoreKey,
+		upgradeTypes.StoreKey,
+		evidenceTypes.StoreKey,
+		ibcTransferTypes.StoreKey,
+		capabilityTypes.StoreKey,
+		feegrant.StoreKey,
 		authzKeeper.StoreKey,
+		icaHostTypes.StoreKey,
+
+		assets.Prototype().Name(),
+		classifications.Prototype().Name(),
+		identities.Prototype().Name(),
+		maintainers.Prototype().Name(),
+		metas.Prototype().Name(),
+		orders.Prototype().Name(),
+		splits.Prototype().Name(),
 	)
 	tkeys := sdkTypes.NewTransientStoreKeys(paramsTypes.TStoreKey)
 	memKeys := sdkTypes.NewMemoryStoreKeys(capabilityTypes.MemStoreKey, "testingkey")
@@ -460,6 +515,15 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 		stakingTypes.NewMultiStakingHooks(app.DistributionKeeper.Hooks(), app.SlashingKeeper.Hooks()),
 	)
 
+	IBCKeeper := ibcKeeper.NewKeeper(
+		application.GetCodec(),
+		application.keys[ibcHost.StoreKey],
+		ParamsKeeper.Subspace(ibcHost.ModuleName),
+		application.stakingKeeper,
+		UpgradeKeeper,
+		scopedIBCKeeper,
+	)
+
 	app.AuthzKeeper = authzKeeper.NewKeeper(keys[authzKeeper.StoreKey], appCodec, app.BaseApp.MsgServiceRouter())
 
 	govRouter := govTypes.NewRouter()
@@ -476,33 +540,137 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 		govTypes.NewMultiGovHooks(),
 	)
 
+	IBCTransferKeeper := ibcTransferKeeper.NewKeeper(
+		application.GetCodec(),
+		application.keys[ibcTransferTypes.StoreKey],
+		ParamsKeeper.Subspace(ibcTransferTypes.ModuleName),
+		IBCKeeper.ChannelKeeper,
+		IBCKeeper.ChannelKeeper,
+		&IBCKeeper.PortKeeper,
+		AccountKeeper,
+		BankKeeper,
+		scopedTransferKeeper,
+	)
+
+	ICAHostKeeper := icaHostKeeper.NewKeeper(
+		application.GetCodec(),
+		application.keys[icaHostTypes.StoreKey],
+		ParamsKeeper.Subspace(icaHostTypes.SubModuleName),
+		IBCKeeper.ChannelKeeper,
+		&IBCKeeper.PortKeeper,
+		AccountKeeper,
+		scopedICAHostKeeper,
+		application.MsgServiceRouter(),
+	)
+
 	evidenceKeeper := evidenceKeeper.NewKeeper(
 		appCodec, keys[evidenceTypes.StoreKey], &app.StakingKeeper, app.SlashingKeeper,
 	)
 	app.EvidenceKeeper = *evidenceKeeper
 
+	metasModule := metas.Prototype().Initialize(
+		keys[metas.Prototype().Name()],
+		app.ParamsKeeper.Subspace(metas.Prototype().Name()),
+	)
+
+	classificationsModule := classifications.Prototype().Initialize(
+		keys[classifications.Prototype().Name()],
+		app.ParamsKeeper.Subspace(classifications.Prototype().Name()),
+		app.BankKeeper,
+		app.StakingKeeper,
+	)
+
+	maintainersModule := maintainers.Prototype().Initialize(
+		keys[metas.Prototype().Name()],
+		app.ParamsKeeper.Subspace(maintainers.Prototype().Name()),
+		classificationsModule.GetAuxiliary(member.Auxiliary.GetName()),
+	)
+	identitiesModule := identities.Prototype().Initialize(
+		keys[identities.Prototype().Name()],
+		app.ParamsKeeper.Subspace(identities.Prototype().Name()),
+		classificationsModule.GetAuxiliary(bond.Auxiliary.GetName()),
+		classificationsModule.GetAuxiliary(conform.Auxiliary.GetName()),
+		classificationsModule.GetAuxiliary(define.Auxiliary.GetName()),
+		classificationsModule.GetAuxiliary(member.Auxiliary.GetName()),
+		classificationsModule.GetAuxiliary(unbond.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(deputize.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(maintain.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(revoke.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(verify.Auxiliary.GetName()),
+		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
+	)
+	splitsModule := splits.Prototype().Initialize(
+		keys[splits.Prototype().Name()],
+		app.ParamsKeeper.Subspace(splits.Prototype().Name()),
+		app.BankKeeper,
+		identitiesModule.GetAuxiliary(authenticate.Auxiliary.GetName()),
+	)
+	assetsModule := assets.Prototype().Initialize(
+		keys[assets.Prototype().Name()],
+		app.ParamsKeeper.Subspace(assets.Prototype().Name()),
+		identitiesModule.GetAuxiliary(authenticate.Auxiliary.GetName()),
+		classificationsModule.GetAuxiliary(conform.Auxiliary.GetName()),
+		classificationsModule.GetAuxiliary(define.Auxiliary.GetName()),
+		classificationsModule.GetAuxiliary(bond.Auxiliary.GetName()),
+		classificationsModule.GetAuxiliary(unbond.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(deputize.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(maintain.Auxiliary.GetName()),
+		splitsModule.GetAuxiliary(renumerate.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(revoke.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
+		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
+		splitsModule.GetAuxiliary(splitsMint.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(verify.Auxiliary.GetName()),
+	)
+	ordersModule := orders.Prototype().Initialize(
+		keys[orders.Prototype().Name()],
+		app.ParamsKeeper.Subspace(orders.Prototype().Name()),
+		identitiesModule.GetAuxiliary(authenticate.Auxiliary.GetName()),
+		classificationsModule.GetAuxiliary(bond.Auxiliary.GetName()),
+		classificationsModule.GetAuxiliary(burn.Auxiliary.GetName()),
+		classificationsModule.GetAuxiliary(unbond.Auxiliary.GetName()),
+		classificationsModule.GetAuxiliary(conform.Auxiliary.GetName()),
+		classificationsModule.GetAuxiliary(define.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(deputize.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(maintain.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(revoke.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
+		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
+		splitsModule.GetAuxiliary(transfer.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(verify.Auxiliary.GetName()),
+	)
+
 	skipGenesisInvariants := cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))
 
 	app.moduleManager = module.NewManager(
-		genutil.NewAppModule(
-			app.AccountKeeper, app.StakingKeeper, app.BaseApp.DeliverTx,
-			encodingConfig.TxConfig,
-		),
-		auth.NewAppModule(appCodec, app.AccountKeeper, authSimulation.RandomGenesisAccounts),
+		genutil.NewAppModule(app.AccountKeeper, app.StakingKeeper, app.BaseApp.DeliverTx, app.GetAppCodec()),
+		auth.NewAppModule(app.GetAppCodec(), app.AccountKeeper, nil),
 		vesting.NewAppModule(app.AccountKeeper, app.BankKeeper),
-		bank.NewAppModule(appCodec, app.BankKeeper, app.AccountKeeper),
-		capability.NewAppModule(appCodec, *app.CapabilityKeeper),
-		crisis.NewAppModule(&app.CrisisKeeper, skipGenesisInvariants),
-		feeGrantModule.NewAppModule(appCodec, app.AccountKeeper, app.BankKeeper, app.FeeGrantKeeper, app.interfaceRegistry),
-		gov.NewAppModule(appCodec, app.GovKeeper, app.AccountKeeper, app.BankKeeper),
-		mint.NewAppModule(appCodec, app.MintKeeper, app.AccountKeeper),
-		slashing.NewAppModule(appCodec, app.SlashingKeeper, app.AccountKeeper, app.BankKeeper, app.StakingKeeper),
-		distribution.NewAppModule(appCodec, app.DistributionKeeper, app.AccountKeeper, app.BankKeeper, app.StakingKeeper),
-		staking.NewAppModule(appCodec, app.StakingKeeper, app.AccountKeeper, app.BankKeeper),
+		bank.NewAppModule(app.GetAppCodec(), app.BankKeeper, app.AccountKeeper),
+		capability.NewAppModule(app.GetAppCodec(), *app.CapabilityKeeper),
+		crisis.NewAppModule(&app.CrisisKeeper, cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))),
+		gov.NewAppModule(app.GetAppCodec(), app.GovKeeper, app.AccountKeeper, app.BankKeeper),
+		mint.NewAppModule(app.GetAppCodec(), app.MintKeeper, app.AccountKeeper),
+		slashing.NewAppModule(app.GetAppCodec(), app.SlashingKeeper, app.AccountKeeper, app.BankKeeper, app.StakingKeeper),
+		distribution.NewAppModule(app.GetAppCodec(), app.DistributionKeeper, app.AccountKeeper, app.BankKeeper, app.StakingKeeper),
+		staking.NewAppModule(app.GetAppCodec(), app.StakingKeeper, app.AccountKeeper, app.BankKeeper),
 		upgrade.NewAppModule(app.UpgradeKeeper),
 		evidence.NewAppModule(app.EvidenceKeeper),
+		feeGrantModule.NewAppModule(app.GetAppCodec(), app.AccountKeeper, app.BankKeeper, app.FeeGrantKeeper, app.GetAppCodec().InterfaceRegistry()),
+		authzModule.NewAppModule(app.GetAppCodec(), app.AuthzKeeper, app.AccountKeeper, app.BankKeeper, app.GetAppCodec().InterfaceRegistry()),
+		ibc.NewAppModule(IBCKeeper),
 		params.NewAppModule(app.ParamsKeeper),
-		authzModule.NewAppModule(appCodec, app.AuthzKeeper, app.AccountKeeper, app.BankKeeper, app.interfaceRegistry),
+		ibcTransfer.NewAppModule(IBCTransferKeeper),
+		ica.NewAppModule(nil, &ICAHostKeeper),
+
+		assetsModule,
+		classificationsModule,
+		identitiesModule,
+		maintainersModule,
+		metasModule,
+		ordersModule,
+		splitsModule,
 	)
 
 	app.moduleManager.SetOrderBeginBlockers(
@@ -573,7 +741,6 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 
 	return app
 }
-
 func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino, key, tkey sdkTypes.StoreKey) paramsKeeper.Keeper {
 	parametersKeeper := paramsKeeper.NewKeeper(appCodec, legacyAmino, key, tkey)
 
