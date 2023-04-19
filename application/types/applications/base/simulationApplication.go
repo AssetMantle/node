@@ -482,6 +482,9 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 	bApp.SetParamStore(app.ParamsKeeper.Subspace(baseapp.Paramspace).WithKeyTable(paramsKeeper.ConsensusParamsKeyTable()))
 
 	app.CapabilityKeeper = capabilityKeeper.NewKeeper(appCodec, keys[capabilityTypes.StoreKey], memKeys[capabilityTypes.MemStoreKey])
+	scopedIBCKeeper := app.CapabilityKeeper.ScopeToModule(ibcHost.ModuleName)
+	scopedTransferKeeper := app.CapabilityKeeper.ScopeToModule(ibcTransferTypes.ModuleName)
+	scopedICAHostKeeper := app.CapabilityKeeper.ScopeToModule(icaHostTypes.SubModuleName)
 	app.CapabilityKeeper.Seal()
 
 	app.AccountKeeper = authKeeper.NewAccountKeeper(
@@ -516,11 +519,11 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 	)
 
 	IBCKeeper := ibcKeeper.NewKeeper(
-		application.GetCodec(),
-		application.keys[ibcHost.StoreKey],
-		ParamsKeeper.Subspace(ibcHost.ModuleName),
-		application.stakingKeeper,
-		UpgradeKeeper,
+		app.GetAppCodec(),
+		keys[ibcHost.StoreKey],
+		app.ParamsKeeper.Subspace(ibcHost.ModuleName),
+		app.StakingKeeper,
+		app.UpgradeKeeper,
 		scopedIBCKeeper,
 	)
 
@@ -541,26 +544,26 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 	)
 
 	IBCTransferKeeper := ibcTransferKeeper.NewKeeper(
-		application.GetCodec(),
-		application.keys[ibcTransferTypes.StoreKey],
-		ParamsKeeper.Subspace(ibcTransferTypes.ModuleName),
+		app.GetAppCodec(),
+		keys[ibcTransferTypes.StoreKey],
+		app.ParamsKeeper.Subspace(ibcTransferTypes.ModuleName),
 		IBCKeeper.ChannelKeeper,
 		IBCKeeper.ChannelKeeper,
 		&IBCKeeper.PortKeeper,
-		AccountKeeper,
-		BankKeeper,
+		app.AccountKeeper,
+		app.BankKeeper,
 		scopedTransferKeeper,
 	)
 
 	ICAHostKeeper := icaHostKeeper.NewKeeper(
-		application.GetCodec(),
-		application.keys[icaHostTypes.StoreKey],
-		ParamsKeeper.Subspace(icaHostTypes.SubModuleName),
+		app.GetAppCodec(),
+		keys[icaHostTypes.StoreKey],
+		app.ParamsKeeper.Subspace(icaHostTypes.SubModuleName),
 		IBCKeeper.ChannelKeeper,
 		&IBCKeeper.PortKeeper,
-		AccountKeeper,
+		app.AccountKeeper,
 		scopedICAHostKeeper,
-		application.MsgServiceRouter(),
+		app.MsgServiceRouter(),
 	)
 
 	evidenceKeeper := evidenceKeeper.NewKeeper(
@@ -641,7 +644,7 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 		maintainersModule.GetAuxiliary(verify.Auxiliary.GetName()),
 	)
 
-	skipGenesisInvariants := cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))
+	//skipGenesisInvariants := cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))
 
 	app.moduleManager = module.NewManager(
 		genutil.NewAppModule(app.AccountKeeper, app.StakingKeeper, app.BaseApp.DeliverTx, app.GetAppCodec()),
