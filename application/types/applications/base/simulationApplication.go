@@ -131,7 +131,7 @@ func NewDefaultGenesisState(cdc codec.JSONCodec) GenesisState {
 
 type SimulationApplication struct {
 	*baseapp.BaseApp
-	legacyAmino       *codec.LegacyAmino
+	//legacyAmino       *codec.LegacyAmino
 	appCodec          helpers.Codec
 	interfaceRegistry types.InterfaceRegistry
 
@@ -350,7 +350,7 @@ func (app *SimulationApplication) ModuleAccountAddrs() map[string]bool {
 }
 
 func (app *SimulationApplication) LegacyAmino() *codec.LegacyAmino {
-	return app.legacyAmino
+	return nil
 }
 
 func (app *SimulationApplication) GetAppCodec() helpers.Codec {
@@ -468,8 +468,8 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 	}
 
 	app := &SimulationApplication{
-		BaseApp:           bApp,
-		legacyAmino:       appCodec.GetLegacyAmino(),
+		BaseApp: bApp,
+		//legacyAmino:       appCodec.GetLegacyAmino(),
 		appCodec:          appCodec,
 		interfaceRegistry: interfaceRegistry,
 		invCheckPeriod:    invCheckPeriod,
