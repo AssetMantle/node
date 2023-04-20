@@ -3,8 +3,8 @@ module github.com/AssetMantle/node
 go 1.18
 
 require (
-	github.com/AssetMantle/modules v0.3.2-0.20230418111949-5a7788d2e498
-	github.com/AssetMantle/schema v0.0.0-20230418111025-483ab1397b0e
+	github.com/AssetMantle/modules v0.3.2-0.20230420142944-e46d793a5952
+	github.com/AssetMantle/schema/go v0.0.0-20230420130303-79c49e9c51b4
 	github.com/CosmWasm/wasmd v0.29.2
 	github.com/Shopify/sarama v1.19.0
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d
@@ -32,7 +32,7 @@ require (
 	github.com/armon/go-metrics v0.4.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/bgentry/speakeasy v0.1.0 // indirect
-	github.com/btcsuite/btcd v0.22.1 // indirect
+	github.com/btcsuite/btcd v0.22.3 // indirect
 	github.com/cespare/xxhash v1.1.0 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/coinbase/rosetta-sdk-go v0.7.0 // indirect
@@ -124,7 +124,7 @@ require (
 	golang.org/x/net v0.0.0-20220906165146-f3363e06e74c // indirect
 	golang.org/x/sys v0.0.0-20220907062415-87db552b00fd // indirect
 	golang.org/x/term v0.0.0-20220722155259-a9ba230a4035 // indirect
-	golang.org/x/text v0.3.7 // indirect
+	golang.org/x/text v0.3.8 // indirect
 	google.golang.org/genproto v0.0.0-20220725144611-272f38e5d71b // indirect
 	google.golang.org/grpc v1.50.1 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
