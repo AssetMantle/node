@@ -4,6 +4,7 @@
 package queuing
 
 import (
+	"github.com/AssetMantle/schema/go/utilities"
 	"testing"
 
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -15,7 +16,6 @@ import (
 
 	"github.com/AssetMantle/modules/utilities/random"
 	"github.com/AssetMantle/schema/go"
-	codecUtilities "github.com/AssetMantle/schema/utilities/codec"
 )
 
 type testMessage struct {
@@ -38,7 +38,7 @@ func (message testMessage) GetSigners() []sdkTypes.AccAddress {
 	return []sdkTypes.AccAddress{fromAccAddress}
 }
 func (testMessage) RegisterLegacyAminoCodec(legacyAmino *codec.LegacyAmino) {
-	codecUtilities.RegisterModuleConcrete(legacyAmino, testMessage{})
+	utilities.RegisterModuleConcrete(legacyAmino, testMessage{})
 }
 
 func Test_Kafka(t *testing.T) {

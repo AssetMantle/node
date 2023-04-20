@@ -1,28 +1,26 @@
 package docs
 
 import (
-	"net/http"
-
-	"github.com/cosmos/cosmos-sdk/client"
-	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/cosmos/cosmos-sdk/types/rest"
-	"github.com/gorilla/mux"
-
 	baseData "github.com/AssetMantle/schema/go/data/base"
 	"github.com/AssetMantle/schema/go/ids"
 	baseIDs "github.com/AssetMantle/schema/go/ids/base"
 	"github.com/AssetMantle/schema/go/lists"
-	"github.com/AssetMantle/schema/go/lists/utilities"
+	listUtilities "github.com/AssetMantle/schema/go/lists/utilities"
 	baseProperties "github.com/AssetMantle/schema/go/properties/base"
 	"github.com/AssetMantle/schema/go/properties/constants"
 	propertiesUtilities "github.com/AssetMantle/schema/go/properties/utilities"
 	"github.com/AssetMantle/schema/go/qualified"
 	"github.com/AssetMantle/schema/go/qualified/base"
-	codecUtilities "github.com/AssetMantle/schema/utilities/codec"
+	"github.com/AssetMantle/schema/go/utilities"
+	"github.com/cosmos/cosmos-sdk/client"
+	"github.com/cosmos/cosmos-sdk/codec"
+	"github.com/cosmos/cosmos-sdk/types/rest"
+	"github.com/gorilla/mux"
+	"net/http"
 )
 
 func RegisterLegacyAminoCodec(legacyAmino *codec.LegacyAmino) {
-	codecUtilities.RegisterModuleConcrete(legacyAmino, request{})
+	utilities.RegisterModuleConcrete(legacyAmino, request{})
 }
 
 func GetTotalWeight(immutables qualified.Immutables, mutables qualified.Mutables) int64 {
@@ -54,15 +52,15 @@ func Read(context client.Context, responseWriter http.ResponseWriter, httpReques
 
 	req := transactionRequest.(request)
 
-	immutableMetaProperties, _ := utilities.ReadMetaPropertyList(req.ImmutableMetaProperties)
+	immutableMetaProperties, _ := listUtilities.ReadMetaPropertyList(req.ImmutableMetaProperties)
 
-	immutableProperties, _ := utilities.ReadMetaPropertyList(req.ImmutableProperties)
+	immutableProperties, _ := listUtilities.ReadMetaPropertyList(req.ImmutableProperties)
 
 	immutableProperties = immutableProperties.ScrubData()
 
-	mutableMetaProperties, _ := utilities.ReadMetaPropertyList(req.MutableMetaProperties)
+	mutableMetaProperties, _ := listUtilities.ReadMetaPropertyList(req.MutableMetaProperties)
 
-	mutableProperties, _ := utilities.ReadMetaPropertyList(req.MutableProperties)
+	mutableProperties, _ := listUtilities.ReadMetaPropertyList(req.MutableProperties)
 
 	mutableProperties = mutableProperties.ScrubData()
 
