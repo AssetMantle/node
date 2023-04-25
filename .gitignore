@@ -9,3 +9,6 @@ vendor/
 .idea/
 .mocha/node_modules/
 .vscode/
+
+# log files
+jmeter.log
