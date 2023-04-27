@@ -8,6 +8,7 @@ import (
 	simulationTypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"os"
 	"testing"
+	"time"
 
 	"github.com/cosmos/cosmos-sdk/simapp"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
@@ -18,12 +19,15 @@ import (
 )
 
 func TestFullAppSimulation(t *testing.T) {
+	simapp.FlagEnabledValue = true
+	simapp.FlagCommitValue = true
+	simapp.FlagSeedValue = time.Now().UnixNano()
+
 	config, db, _, logger, skip, closeFn, err := setupRun(t, "leveldb-app-sim", "Simulation")
 	defer closeFn()
 	if skip {
 		t.Skip("skipping application simulation")
 	}
-
 	require.NoError(t, err, "simulation setup failed")
 
 	simulationApplication := base.NewSimulationApplication(logger, db, nil, true, map[int64]bool{}, application.Prototype.GetDefaultNodeHome(), 0, simapp.MakeTestEncodingConfig(), simapp.EmptyAppOptions{}, fauxMerkleModeOpt).(*base.SimulationApplication)
