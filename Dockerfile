@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:latest
-FROM golang:1.18-alpine3.17 as build
+FROM golang:1.19-alpine3.17 as build
 WORKDIR /go/node
 SHELL [ "/bin/sh", "-cex" ]
 RUN --mount=type=cache,target=/var/cache/apk/ \
