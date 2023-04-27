@@ -15,25 +15,25 @@ transfer and decentralized exchange.
 ## Hardware Requirements
 
 * **Minimal**
-  * 1 GB RAM
-  * 50 GB HDD
-  * 1.4 GHz CPU
+  * 2vCPU
+  * 4GB RAM
+  * 200GB SSD
 * **Recommended**
-  * 2 GB RAM
-  * 100 GB HDD
-  * 2.0 GHz x2 CPU
+  * 4vCPU
+  * 8GB RAM
+  * 500GB SSD
 
 > NOTE: SSDs have limited TBW before non-catastrophic data errors. Running a full node requires a TB+ writes per day, causing rapid deterioration of SSDs over HDDs of comparable quality.
 
 ## Operating System
 
-* Linux/Windows/MacOS(x86)
+* Linux/MacOS(x86)
 * **Recommended**
 * Linux(x86_64)
 
 ## Installation Steps
 
->Prerequisite: go1.14+ required. [ref](https://golang.org/doc/install)
+>Prerequisite: go1.18+ required. [ref](https://golang.org/doc/install)
 >Prerequisite: git. [ref](https://github.com/git/git)
 >Optional requirement: GNU make. [ref](https://www.gnu.org/software/make/manual/html_node/index.html)
 
@@ -41,74 +41,45 @@ transfer and decentralized exchange.
 
 ```shell
 git clone https://github.com/AssetMantle/node.git
-```
-
-* Checkout release tag
-
-```shell
-git fetch --tags
 git checkout [vX.X.X]
-```
-
-* Install
-
-```shell
 cd assetMantle
 make all
 ```
 
 ### Generate keys
 
-`assetClient keys add [key_name]`
+`mantleNode keys add [key_name]`
 
 or
 
-`assetMantle keys add [key_name] --recover` to regenerate keys with your [BIP39](https://github.com/bitcoin/bips/tree/master/bip-0039) mnemonic
+`mantleNode keys add [key_name] --recover` to regenerate keys with your [BIP39](https://github.com/bitcoin/bips/tree/master/bip-0039) mnemonic
 
 ### Connect to a chain and start node
 
-* [Install](#installation-steps) assetMantle application
+* [Install](#installation-steps) mantleNode application
 * Initialize node
 
 ```shell
-assetNode init [NODE_NAME]
+mantleNode init [NODE_NAME]
 ```
 
-* Replace `${HOME}/.assetNode/config/genesis.json` with the genesis file of the chain.
-* Add `persistent_peers` or `seeds` in `${HOME}/.assetNode/config/config.toml`
+* Replace `${HOME}/.mantleNode/config/genesis.json` with the genesis file of the chain.
+* Add `persistent_peers` or `seeds` in `${HOME}/.mantleNode/config/config.toml`
 * Start node
 
 ```shell
-assetNode start
+mantleNode start
 ```
 
 ### Initialize a new chain and start node
 
-* Initialize: `assetNode init [node_name] --chain-id [chain_name]`
-* Add key for genesis account `assetClient keys add [genesis_key_name]`
-* Add genesis account `assetNode add-genesis-account [genesis_key_name] 10000000000000000000stake`
-* Create a validator at genesis `assetNode gentx --name [genesis_key_name] --amount 10000000stake`
-* Collect genesis transactions `assetNode collect-gentxs`
-* Start node `assetNode start`
-* To start api server `assetClient rest-server`
-
-### Reset chain
-
-```shell
-rm -rf ~/.assetNode
-```
-
-### Shutdown node
-
-```shell
-killall assetNode
-```
-
-### Check version
-
-```shell
-assetNode version
-```
+* Initialize: `mantleNode init [node_name] --chain-id [chain_name]`
+* Add key for genesis account `mantleNode keys add [genesis_key_name]`
+* Add genesis account `mantleNode add-genesis-account [genesis_key_name] 10000000000000000000stake`
+* Create a validator at genesis `mantleNode gentx --name [genesis_key_name] --amount 10000000stake`
+* Collect genesis transactions `mantleNode collect-gentxs`
+* Start node `mantleNode start`
+* To start api server open 1317 port form `app.toml`
 
 ## Containeirzed environment
 
