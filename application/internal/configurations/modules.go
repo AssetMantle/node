@@ -33,10 +33,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/staking"
 	"github.com/cosmos/cosmos-sdk/x/upgrade"
 	upgradeClient "github.com/cosmos/cosmos-sdk/x/upgrade/client"
-	ica "github.com/cosmos/ibc-go/v3/modules/apps/27-interchain-accounts"
-	"github.com/cosmos/ibc-go/v3/modules/apps/transfer"
-	ibc "github.com/cosmos/ibc-go/v3/modules/core"
-	ibcClientClient "github.com/cosmos/ibc-go/v3/modules/core/02-client/client"
+	ica "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts"
+	"github.com/cosmos/ibc-go/v4/modules/apps/transfer"
+	ibc "github.com/cosmos/ibc-go/v4/modules/core"
+	ibcClientClient "github.com/cosmos/ibc-go/v4/modules/core/02-client/client"
 )
 
 var ModuleBasicManager = module.NewBasicManager(
