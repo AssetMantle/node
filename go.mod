@@ -3,12 +3,13 @@ module github.com/AssetMantle/node
 go 1.19
 
 require (
-	github.com/AssetMantle/modules v0.3.2-0.20230427103343-9f1f3f511516
+	github.com/AssetMantle/modules v0.3.2-0.20230427114627-9052f7361857
 	github.com/AssetMantle/schema/go v0.0.0-20230427091828-87127acf74a0
 	github.com/CosmWasm/wasmd v0.30.0
 	github.com/Shopify/sarama v1.19.0
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d
 	github.com/cosmos/cosmos-sdk v0.45.14
+	github.com/cosmos/go-bip39 v1.0.0
 	github.com/cosmos/ibc-go/v4 v4.2.0
 	github.com/gorilla/mux v1.8.0
 	github.com/pkg/errors v0.9.1
@@ -21,10 +22,6 @@ require (
 	github.com/tendermint/tendermint v0.34.26
 	github.com/tendermint/tm-db v0.6.7
 )
-
-replace github.com/AssetMantle/modules => ../modules
-
-replace github.com/AssetMantle/schema/go => ../schema/go
 
 require (
 	cosmossdk.io/api v0.2.6 // indirect
@@ -54,7 +51,6 @@ require (
 	github.com/cosmos/btcutil v1.0.4 // indirect
 	github.com/cosmos/cosmos-db v0.0.0-20221226095112-f3c38ecb5e32 // indirect
 	github.com/cosmos/cosmos-proto v1.0.0-beta.1 // indirect
-	github.com/cosmos/go-bip39 v1.0.0 // indirect
 	github.com/cosmos/gogoproto v1.4.3 // indirect
 	github.com/cosmos/gorocksdb v1.2.0 // indirect
 	github.com/cosmos/iavl v0.19.5 // indirect
