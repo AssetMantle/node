@@ -4,9 +4,9 @@
 package applications
 
 import (
+	"github.com/AssetMantle/modules/helpers"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
-	"github.com/cosmos/cosmos-sdk/codec"
 	codecTypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/server/api"
 	"github.com/cosmos/cosmos-sdk/server/config"
@@ -21,7 +21,7 @@ type SimulationApplication interface {
 	simapp.App
 
 	GetBaseApp() *baseapp.BaseApp
-	GetAppCodec() codec.Codec
+	GetAppCodec() helpers.Codec
 	InterfaceRegistry() codecTypes.InterfaceRegistry
 	GetKey(storeKey string) *sdkTypes.KVStoreKey
 	GetTKey(storeKey string) *sdkTypes.TransientStoreKey

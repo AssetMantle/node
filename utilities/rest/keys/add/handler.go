@@ -5,6 +5,7 @@ package add
 
 import (
 	"fmt"
+	"github.com/cosmos/go-bip39"
 	"net/http"
 	"strings"
 
