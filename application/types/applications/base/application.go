@@ -634,7 +634,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	)
 
 	maintainersModule := maintainers.Prototype().Initialize(
-		application.keys[metas.Prototype().Name()],
+		application.keys[maintainers.Prototype().Name()],
 		ParamsKeeper.Subspace(maintainers.Prototype().Name()),
 		classificationsModule.GetAuxiliary(member.Auxiliary.GetName()),
 	)
