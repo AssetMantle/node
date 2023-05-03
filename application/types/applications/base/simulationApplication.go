@@ -588,7 +588,7 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 	)
 
 	maintainersModule := maintainers.Prototype().Initialize(
-		keys[metas.Prototype().Name()],
+		keys[maintainers.Prototype().Name()],
 		app.ParamsKeeper.Subspace(maintainers.Prototype().Name()),
 		classificationsModule.GetAuxiliary(member.Auxiliary.GetName()),
 	)
