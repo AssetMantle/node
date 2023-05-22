@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/AssetMantle/schema/go"
+	schemaCodec "github.com/AssetMantle/schema/go/codec"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -28,7 +28,7 @@ import (
 
 func TestHandler(t *testing.T) {
 	Codec := codec.NewLegacyAmino()
-	x.RegisterLegacyAminoCodec(Codec)
+	schemaCodec.RegisterLegacyAminoCodec(Codec)
 	std.RegisterLegacyAminoCodec(Codec)
 	Codec.RegisterConcrete(request{}, "request", nil)
 	Codec.RegisterConcrete(response{}, "response", nil)

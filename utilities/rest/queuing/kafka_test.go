@@ -4,9 +4,9 @@
 package queuing
 
 import (
-	"github.com/AssetMantle/schema/go/utilities"
 	"testing"
 
+	schemaCodec "github.com/AssetMantle/schema/go/codec"
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/std"
 	sdkTypes "github.com/cosmos/cosmos-sdk/types"
@@ -15,7 +15,6 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/AssetMantle/modules/utilities/random"
-	"github.com/AssetMantle/schema/go"
 )
 
 type testMessage struct {
@@ -38,12 +37,12 @@ func (message testMessage) GetSigners() []sdkTypes.AccAddress {
 	return []sdkTypes.AccAddress{fromAccAddress}
 }
 func (testMessage) RegisterLegacyAminoCodec(legacyAmino *codec.LegacyAmino) {
-	utilities.RegisterModuleConcrete(legacyAmino, testMessage{})
+	schemaCodec.RegisterModuleConcrete(legacyAmino, testMessage{})
 }
 
 func Test_Kafka(t *testing.T) {
 	var legacyAmino = codec.NewLegacyAmino()
-	x.RegisterLegacyAminoCodec(legacyAmino)
+	schemaCodec.RegisterLegacyAminoCodec(legacyAmino)
 	std.RegisterLegacyAminoCodec(legacyAmino)
 
 	fromAddress := "cosmos1pkkayn066msg6kn33wnl5srhdt3tnu2vzasz9c"

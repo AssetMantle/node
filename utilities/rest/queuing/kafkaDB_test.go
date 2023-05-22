@@ -6,6 +6,7 @@ package queuing
 import (
 	"testing"
 
+	schemaCodec "github.com/AssetMantle/schema/go/codec"
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdkTypes "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/x/auth/vesting"
@@ -13,14 +14,13 @@ import (
 	dbm "github.com/tendermint/tm-db"
 
 	"github.com/AssetMantle/modules/utilities/random"
-	"github.com/AssetMantle/schema/go"
 	baseIDs "github.com/AssetMantle/schema/go/ids/base"
 )
 
 func Test_Kafka_DB(t *testing.T) {
 	require.Panics(t, func() {
 		var legacyAmino = codec.NewLegacyAmino()
-		x.RegisterLegacyAminoCodec(legacyAmino)
+		schemaCodec.RegisterLegacyAminoCodec(legacyAmino)
 		sdkTypes.RegisterCodec(legacyAmino)
 		codec.RegisterCrypto(legacyAmino)
 		codec.RegisterEvidences(legacyAmino)

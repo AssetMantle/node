@@ -1,33 +1,37 @@
 package docs
 
 import (
+	"net/http"
+
+	"github.com/AssetMantle/schema/go/codec/utilities"
 	baseData "github.com/AssetMantle/schema/go/data/base"
 	"github.com/AssetMantle/schema/go/ids"
 	baseIDs "github.com/AssetMantle/schema/go/ids/base"
 	"github.com/AssetMantle/schema/go/lists"
+	baseLists "github.com/AssetMantle/schema/go/lists/base"
 	listUtilities "github.com/AssetMantle/schema/go/lists/utilities"
 	baseProperties "github.com/AssetMantle/schema/go/properties/base"
 	"github.com/AssetMantle/schema/go/properties/constants"
-	propertiesUtilities "github.com/AssetMantle/schema/go/properties/utilities"
 	"github.com/AssetMantle/schema/go/qualified"
 	"github.com/AssetMantle/schema/go/qualified/base"
-	"github.com/AssetMantle/schema/go/utilities"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/codec"
+	"github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/gorilla/mux"
-	"net/http"
 )
 
 func RegisterLegacyAminoCodec(legacyAmino *codec.LegacyAmino) {
 	utilities.RegisterModuleConcrete(legacyAmino, request{})
 }
 
-func GetTotalWeight(immutables qualified.Immutables, mutables qualified.Mutables) int64 {
-	totalWeight := int64(0)
-	for _, property := range append(immutables.GetImmutablePropertyList().GetList(), mutables.GetMutablePropertyList().GetList()...) {
-		totalWeight += property.Get().GetBondWeight()
+func GetTotalWeight(immutables qualified.Immutables, mutables qualified.Mutables) types.Int {
+	totalWeight := types.ZeroInt()
+
+	for _, property := range append(immutables.GetImmutablePropertyList().Get(), mutables.GetMutablePropertyList().Get()...) {
+		totalWeight = totalWeight.Add(property.Get().GetBondWeight())
 	}
+
 	return totalWeight
 }
 
@@ -69,16 +73,16 @@ func Read(context client.Context, responseWriter http.ResponseWriter, httpReques
 }
 
 func Process(immutableMetaProperties, immutableProperties, mutableMetaProperties, mutableProperties lists.PropertyList, addAuth bool, addBond bool) (qualified.Immutables, qualified.Mutables) {
-	immutables := base.NewImmutables(immutableMetaProperties.Add(propertiesUtilities.AnyPropertyListToPropertyList(immutableProperties.GetList()...)...))
+	immutables := base.NewImmutables(immutableMetaProperties.Add(baseLists.AnyPropertiesToProperties(immutableProperties.Get()...)...))
 	var Mutables qualified.Mutables
 	if addAuth {
-		Mutables = base.NewMutables(mutableMetaProperties.Add(propertiesUtilities.AnyPropertyListToPropertyList(mutableProperties.Add(constants.AuthenticationProperty.ToAnyProperty()).GetList()...)...))
+		Mutables = base.NewMutables(mutableMetaProperties.Add(baseLists.AnyPropertiesToProperties(mutableProperties.Add(constants.AuthenticationProperty.ToAnyProperty()).Get()...)...))
 	} else {
-		Mutables = base.NewMutables(mutableMetaProperties.Add(propertiesUtilities.AnyPropertyListToPropertyList(mutableProperties.GetList()...)...))
+		Mutables = base.NewMutables(mutableMetaProperties.Add(baseLists.AnyPropertiesToProperties(mutableProperties.Get()...)...))
 	}
 	var Immutables qualified.Immutables
 	if addBond {
-		Immutables = base.NewImmutables(immutables.GetImmutablePropertyList().Add(baseProperties.NewMetaProperty(constants.BondAmountProperty.GetKey(), baseData.NewNumberData(GetTotalWeight(immutables, Mutables)*baseData.NewNumberData(1).Get()))))
+		Immutables = base.NewImmutables(immutables.GetImmutablePropertyList().Add(baseProperties.NewMetaProperty(constants.BondAmountProperty.GetKey(), baseData.NewNumberData(GetTotalWeight(immutables, Mutables)))))
 	} else {
 		Immutables = immutables
 	}

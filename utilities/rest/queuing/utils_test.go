@@ -11,8 +11,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/std"
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/stretchr/testify/require"
-
-	"github.com/AssetMantle/schema/go"
 )
 
 func Test_Rest_Utils(t *testing.T) {
@@ -29,7 +27,7 @@ func Test_Rest_Utils(t *testing.T) {
 	require.Equal(t, nil, error3)
 
 	var legacyAmino = codec.NewLegacyAmino()
-	x.RegisterLegacyAminoCodec(legacyAmino)
+	schemaCodec.RegisterLegacyAminoCodec(legacyAmino)
 	std.RegisterLegacyAminoCodec(legacyAmino)
 	legacyAmino.Seal()
 

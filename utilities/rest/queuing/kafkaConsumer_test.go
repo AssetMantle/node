@@ -6,19 +6,18 @@ package queuing
 import (
 	"testing"
 
+	schemaCodec "github.com/AssetMantle/schema/go/codec"
 	"github.com/Shopify/sarama"
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/std"
 	"github.com/stretchr/testify/require"
-
-	"github.com/AssetMantle/schema/go"
 )
 
 func TestKafkaTopicConsumer(t *testing.T) {
 	testConsumers := []string{"testConsumers"}
 	var legacyAmino = codec.NewLegacyAmino()
 
-	x.RegisterLegacyAminoCodec(legacyAmino)
+	schemaCodec.RegisterLegacyAminoCodec(legacyAmino)
 	std.RegisterLegacyAminoCodec(legacyAmino)
 
 	require.Panics(t, func() {
