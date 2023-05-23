@@ -2,7 +2,7 @@
   <configuration default="false" name="orders make" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="orders">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <parameters value="tx orders make -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --classificationID=V9Yy7_DYsqUEwiOh5JclDg3zWyX_Ejqiqmye4NtdT14= --takerID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --makerOwnableID=WYLntIn5fj6x6U6eqbjYs34jqfdzz8MegqFufiJrH-g= --takerOwnableID=stake --makerOwnableSplit=1 --takerOwnableSplit=1 --expiresIn=44010 --immutableMetaProperties=E:S|e,bondAmount:N|1312 --immutableProperties=F:S|f --mutableMetaProperties=G:S|g --mutableProperties=H:S|h" />
+    <parameters value="tx orders make -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --classificationID=Cl0NM9w9Jt4TacwYuqF_ayMunRUNYpxFI1vkEESSu9c= --takerID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --makerOwnableID=92_tYKoin5fxrIhq4trkdrvWeIGp-BMO0q1vSxXBs3g= --takerOwnableID=stake --makerOwnableSplit=1 --takerOwnableSplit=1 --expiresIn=44010 --immutableMetaProperties=E:S|e,bondAmount:N|1312 --immutableProperties=F:S|f --mutableMetaProperties=G:S|g --mutableProperties=H:S|h" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
