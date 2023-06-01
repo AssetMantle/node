@@ -310,7 +310,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">localhost</stringProp>
-            <stringProp name="HTTPSampler.port">3001</stringProp>
+            <stringProp name="HTTPSampler.port">1317</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">/faucet/${ADDR_01}</stringProp>
@@ -334,85 +334,7 @@
               <intProp name="Assertion.test_type">8</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) status: sign send" enabled="false">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="3716">tx</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="1) extract: pub key type" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">KEY_TYPE_01</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$..result.tx.signatures[0].pub_key.type</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="1) extract: pub key value" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">KEY_VALUE_01</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$..result.tx.signatures[0].pub_key.value</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="1) extract: signature" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">SIGNATURE_01</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.result.tx.signatures[0].signature</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="1) delay: signed send" enabled="true">
-              <stringProp name="ConstantTimer.delay">${SHORT}</stringProp>
-            </ConstantTimer>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="1) extract: broadcast signed" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">SEND_TXHASH_01</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$..message</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) GET - query broadcast signed" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${IP}</stringProp>
-            <stringProp name="HTTPSampler.port">${PORT}</stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">cosmos/tx/v1beta1/txs/${SEND_TXHASH_01}</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) code: query broadcast signed" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49586">200</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) status: query broadcast signed" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1281977283">failed</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">6</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="1) delay: broadcast signed" enabled="true">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">${LONG}</stringProp>
             </ConstantTimer>
             <hashTree/>
@@ -528,7 +450,7 @@
               </collectionProp>
             </elementProp>
             <stringProp name="HTTPSampler.domain">localhost</stringProp>
-            <stringProp name="HTTPSampler.port">3001</stringProp>
+            <stringProp name="HTTPSampler.port">1317</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">/faucet/${ADDR_02}</stringProp>
@@ -552,85 +474,7 @@
               <intProp name="Assertion.test_type">8</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="2) status: sign send" enabled="false">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="3716">tx</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="2) extract: pub key type" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">KEY_TYPE_02</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$..result.tx.signatures[0].pub_key.type</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="2) extract: pub key value" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">KEY_VALUE_02</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$..result.tx.signatures[0].pub_key.value</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="2) extract: signature" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">SIGNATURE_02</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.result.tx.signatures[0].signature</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="2) delay: signed send" enabled="true">
-              <stringProp name="ConstantTimer.delay">${SHORT}</stringProp>
-            </ConstantTimer>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="2) extract: broadcast signed" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">SEND_TXHASH_02</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$..message</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2) GET - query broadcast signed" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${IP}</stringProp>
-            <stringProp name="HTTPSampler.port">${PORT}</stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${SEND_TXHASH_02}</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="2) code: query broadcast signed" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="49586">200</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">8</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="2) status: query broadcast signed" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1281977283">failed</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">6</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="2) delay: broadcast signed" enabled="true">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">${LONG}</stringProp>
             </ConstantTimer>
             <hashTree/>
@@ -1245,7 +1089,7 @@
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -1363,7 +1207,7 @@
       &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2129,7 +1973,7 @@
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|,supply:D|&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|,supply:N|&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a&quot;&#xd;
    }&#xd;
 }</stringProp>
@@ -2245,7 +2089,7 @@
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|,supply:D|&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|,supply:N|&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a&quot;&#xd;
    }&#xd;
 }</stringProp>
@@ -2325,8 +2169,8 @@
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|b&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,   bondAmount   :   ${BOND_AMOUNT}   &quot;&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:N|100&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2444,7 +2288,7 @@
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a, bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a, bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2630,8 +2474,8 @@
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|b&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:N|100&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2749,7 +2593,7 @@
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2827,7 +2671,7 @@
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_2)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;maintainedProperties&quot;:&quot;supply:D|&quot;,&#xd;
+      &quot;maintainedProperties&quot;:&quot;supply:N|&quot;,&#xd;
       &quot;canMintAsset&quot;:false,&#xd;
       &quot;canBurnAsset&quot;:true,&#xd;
       &quot;canRenumerateAsset&quot;:false,&#xd;
@@ -3293,7 +3137,7 @@
      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|Non-Renumerated&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -3411,7 +3255,7 @@
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|Non-Renumerated&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -3495,7 +3339,7 @@
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_2)}&quot;,&#xd;
       &quot;ownableID&quot;:&quot;${__property(ASSET_ID)}&quot;,&#xd;
-	 &quot;value&quot;:&quot;0.000000000000000001&quot;&#xd;
+	 &quot;value&quot;:&quot;1&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -4159,7 +4003,7 @@
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|h&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|f&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e,bondAmount:${BOND_AMOUNT},creationHeight:H|1234&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e,bondAmount:N|${BOND_AMOUNT},creationHeight:H|1234&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -4288,7 +4132,7 @@
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|h&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|f&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e,bondAmount:${BOND_AMOUNT}&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e,bondAmount:N|${BOND_AMOUNT}&quot;,&#xd;
       &quot;height&quot;:&quot;${BLOCK_HEIGHT}&quot;&#xd;
    }&#xd;
 }</stringProp>
@@ -4481,7 +4325,7 @@
        &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|h&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|f&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -4610,7 +4454,7 @@
        &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|h&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|f&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e,bondAmount:${BOND_AMOUNT}&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|e,bondAmount:N|${BOND_AMOUNT}&quot;,&#xd;
       &quot;height&quot;:&quot;${BLOCK_HEIGHT}&quot;&#xd;
    }&#xd;
 }</stringProp>
