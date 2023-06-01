@@ -2,7 +2,7 @@
   <configuration default="false" name="asset classification query" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="classifications">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <parameters value="query classifications classifications --chain-id=test-chain1-1 --classificationID=AO-VBJAxFfmeT-Kzto-sZX7LT6NLLxD7j_ZpypB4Da4=" />
+    <parameters value="query classifications classifications --chain-id=test-chain-1 --classificationID=AO-VBJAxFfmeT-Kzto-sZX7LT6NLLxD7j_ZpypB4Da4=" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />

@@ -1193,7 +1193,7 @@
       &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -1311,7 +1311,7 @@
       &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2293,7 +2293,7 @@
       &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2411,7 +2411,7 @@
       &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2598,7 +2598,7 @@
       &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -2716,7 +2716,7 @@
       &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -3260,7 +3260,7 @@
       &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;B:S|Non-Renumerated&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -3378,7 +3378,7 @@
       &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;B:S|Non-Renumerated&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -4164,7 +4164,7 @@
       &quot;mutableProperties&quot;:&quot;H:S|h&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -4293,7 +4293,7 @@
       &quot;mutableProperties&quot;:&quot;H:S|h&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:${BOND_AMOUNT}&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:N|${BOND_AMOUNT}&quot;,&#xd;
       &quot;height&quot;:&quot;${BLOCK_HEIGHT}&quot;&#xd;
    }&#xd;
 }</stringProp>
@@ -4486,7 +4486,7 @@
       &quot;mutableProperties&quot;:&quot;H:S|h&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -4615,7 +4615,7 @@
       &quot;mutableProperties&quot;:&quot;H:S|h&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:${BOND_AMOUNT}&quot;,&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:N|${BOND_AMOUNT}&quot;,&#xd;
       &quot;height&quot;:&quot;${BLOCK_HEIGHT}&quot;&#xd;
    }&#xd;
 }</stringProp>
