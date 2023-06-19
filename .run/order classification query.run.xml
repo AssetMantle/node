@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="order classification query" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="classifications">
+    <module name="node" />
+    <working_directory value="$PROJECT_DIR$/" />
+    <parameters value="query classifications classifications --chain-id=test-chain1-1 --classificationID=V9Yy7_DYsqUEwiOh5JclDg3zWyX_Ejqiqmye4NtdT14=" />
+    <kind value="FILE" />
+    <package value="github.com/AssetMantle/node" />
+    <directory value="$PROJECT_DIR$/" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
+    <method v="2" />
+  </configuration>
+</component>

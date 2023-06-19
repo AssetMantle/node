@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="orders  define" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="orders">
+    <module name="node" />
+    <working_directory value="$PROJECT_DIR$/" />
+    <parameters value="tx orders define -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --immutableMetaProperties=E:S|e --immutableProperties=F:S| --mutableMetaProperties=G:S| --mutableProperties=H:S|" />
+    <kind value="FILE" />
+    <package value="github.com/AssetMantle/node" />
+    <directory value="$PROJECT_DIR$/" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
+    <method v="2" />
+  </configuration>
+</component>

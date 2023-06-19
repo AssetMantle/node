@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="identities revoke" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="identities">
+    <module name="node" />
+    <working_directory value="$PROJECT_DIR$/" />
+    <parameters value="tx identities revoke -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --toID=_5O8O4FnQvP0EkEa-xPwfNOAjOt-GZehqh6jXdvXATc= --classificationID=eEc9dxkANLtNFLGlSHC-ZGPVfLynQRtnYQ3ObPR9W7M=" />
+    <kind value="FILE" />
+    <package value="github.com/AssetMantle/node" />
+    <directory value="$PROJECT_DIR$/" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
+    <method v="2" />
+  </configuration>
+</component>

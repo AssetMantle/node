@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="orders  deputize" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="orders">
+    <module name="node" />
+    <working_directory value="$PROJECT_DIR$/" />
+    <parameters value="tx orders deputize -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --toID=RMwY6OWO3HK1WZH7BZ7Unx2_QC0J26h7IZPN_5w4OXk= --classificationID=oUx2N1bbQEmEiPC60ZzTnpPdTbB8qwWG47BurK2Eo5I= --maintainedProperties=G:S| --canAddMaintainer=true --canMutateMaintainer=true --canRemoveMaintainer=true" />
+    <kind value="FILE" />
+    <package value="github.com/AssetMantle/node" />
+    <directory value="$PROJECT_DIR$/" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
+    <method v="2" />
+  </configuration>
+</component>

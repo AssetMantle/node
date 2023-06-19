@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="orders modify" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="orders">
+    <module name="node" />
+    <working_directory value="$PROJECT_DIR$/" />
+    <parameters value="tx orders modify -y --chain-id=test-chain-1 --from=test --fromID=RMwY6OWO3HK1WZH7BZ7Unx2_QC0J26h7IZPN_5w4OXk= --orderID=$Prompt$ --makerOwnableSplit=2 --takerOwnableSplit=2 --expiresIn=40 --mutableMetaProperties=G:S|g1 --mutableProperties=H:S|h1" />
+    <kind value="FILE" />
+    <package value="github.com/AssetMantle/node" />
+    <directory value="$PROJECT_DIR$/" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
+    <method v="2" />
+  </configuration>
+</component>

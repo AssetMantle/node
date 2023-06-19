@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="orders immediate" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="orders">
+    <module name="node" />
+    <working_directory value="$PROJECT_DIR$/" />
+    <parameters value="tx orders immediate -y --chain-id=test-chain-1 --from=test --fromID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --classificationID=oUx2N1bbQEmEiPC60ZzTnpPdTbB8qwWG47BurK2Eo5I= --takerID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA= --takerOwnableID=rdjTj_6XZSL9jAAY0xmqPMp8-2ir4XDBqsVTNs6LUqM= --makerOwnableID=stake --makerOwnableSplit=1 --takerOwnableSplit=1 --expiresIn=20 --immutableMetaProperties=E:S|e --immutableProperties=F:S|f --mutableMetaProperties=G:S|g --mutableProperties=H:S|h" />
+    <kind value="FILE" />
+    <package value="github.com/AssetMantle/node" />
+    <directory value="$PROJECT_DIR$/" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
+    <method v="2" />
+  </configuration>
+</component>
