@@ -119,11 +119,11 @@ import (
 	"github.com/AssetMantle/modules/x/identities"
 	"github.com/AssetMantle/modules/x/identities/auxiliaries/authenticate"
 	"github.com/AssetMantle/modules/x/maintainers"
+	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/authorize"
 	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/deputize"
 	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/maintain"
 	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/revoke"
 	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/super"
-	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/verify"
 	"github.com/AssetMantle/modules/x/metas"
 	"github.com/AssetMantle/modules/x/metas/auxiliaries/supplement"
 	"github.com/AssetMantle/modules/x/orders"
@@ -660,7 +660,7 @@ func (wasmApplication wasmApplication) Initialize(logger tendermintLog.Logger, d
 		maintainersModule.GetAuxiliary(maintain.Auxiliary.GetName()),
 		maintainersModule.GetAuxiliary(revoke.Auxiliary.GetName()),
 		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(verify.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
 		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
 	)
 	splitsModule := splits.Prototype().Initialize(
@@ -684,7 +684,7 @@ func (wasmApplication wasmApplication) Initialize(logger tendermintLog.Logger, d
 		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
 		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
 		splitsModule.GetAuxiliary(splitsMint.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(verify.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
 	)
 	ordersModule := orders.Prototype().Initialize(
 		wasmApplication.keys[orders.Prototype().Name()],
@@ -698,7 +698,7 @@ func (wasmApplication wasmApplication) Initialize(logger tendermintLog.Logger, d
 		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
 		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
 		splitsModule.GetAuxiliary(transfer.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(verify.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
 	)
 
 	wasmApplication.moduleManager = module.NewManager(
