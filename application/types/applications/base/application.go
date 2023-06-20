@@ -12,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/authorize"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
@@ -121,7 +122,6 @@ import (
 	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/maintain"
 	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/revoke"
 	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/super"
-	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/verify"
 	"github.com/AssetMantle/modules/x/metas"
 	"github.com/AssetMantle/modules/x/metas/auxiliaries/supplement"
 	"github.com/AssetMantle/modules/x/orders"
@@ -617,10 +617,6 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		application.slashingKeeper,
 	)
 
-	// ******************************
-	// WASM Module Boilerplate Code
-	// ******************************
-
 	metasModule := metas.Prototype().Initialize(
 		application.keys[metas.Prototype().Name()],
 		ParamsKeeper.Subspace(metas.Prototype().Name()),
@@ -650,7 +646,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		maintainersModule.GetAuxiliary(maintain.Auxiliary.GetName()),
 		maintainersModule.GetAuxiliary(revoke.Auxiliary.GetName()),
 		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(verify.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
 		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
 	)
 	splitsModule := splits.Prototype().Initialize(
@@ -674,7 +670,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
 		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
 		splitsModule.GetAuxiliary(splitsMint.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(verify.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
 	)
 	ordersModule := orders.Prototype().Initialize(
 		application.keys[orders.Prototype().Name()],
@@ -691,7 +687,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
 		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
 		splitsModule.GetAuxiliary(transfer.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(verify.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
 	)
 
 	application.moduleManager = module.NewManager(

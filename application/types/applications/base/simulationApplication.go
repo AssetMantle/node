@@ -5,6 +5,10 @@ package base
 
 import (
 	"encoding/json"
+	"io"
+	"log"
+	"net/http"
+
 	"github.com/AssetMantle/modules/helpers"
 	"github.com/AssetMantle/modules/helpers/base"
 	"github.com/AssetMantle/modules/x/assets"
@@ -18,11 +22,11 @@ import (
 	"github.com/AssetMantle/modules/x/identities"
 	"github.com/AssetMantle/modules/x/identities/auxiliaries/authenticate"
 	"github.com/AssetMantle/modules/x/maintainers"
+	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/authorize"
 	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/deputize"
 	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/maintain"
 	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/revoke"
 	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/super"
-	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/verify"
 	"github.com/AssetMantle/modules/x/metas"
 	"github.com/AssetMantle/modules/x/metas/auxiliaries/supplement"
 	"github.com/AssetMantle/modules/x/orders"
@@ -30,8 +34,6 @@ import (
 	splitsMint "github.com/AssetMantle/modules/x/splits/auxiliaries/mint"
 	"github.com/AssetMantle/modules/x/splits/auxiliaries/renumerate"
 	"github.com/AssetMantle/modules/x/splits/auxiliaries/transfer"
-	"github.com/AssetMantle/node/application/internal/configurations"
-	simulationMake "github.com/AssetMantle/node/application/types/applications/constants"
 	ica "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts"
 	icaHostKeeper "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host/keeper"
 	icaHostTypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host/types"
@@ -42,9 +44,9 @@ import (
 	ibc "github.com/cosmos/ibc-go/v4/modules/core"
 	ibcHost "github.com/cosmos/ibc-go/v4/modules/core/24-host"
 	ibcKeeper "github.com/cosmos/ibc-go/v4/modules/core/keeper"
-	"io"
-	"log"
-	"net/http"
+
+	"github.com/AssetMantle/node/application/internal/configurations"
+	simulationMake "github.com/AssetMantle/node/application/types/applications/constants"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
@@ -131,7 +133,7 @@ func NewDefaultGenesisState(cdc codec.JSONCodec) GenesisState {
 
 type SimulationApplication struct {
 	*baseapp.BaseApp
-	//legacyAmino       *codec.LegacyAmino
+	// legacyAmino       *codec.LegacyAmino
 	appCodec          helpers.Codec
 	interfaceRegistry types.InterfaceRegistry
 
@@ -469,7 +471,7 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 
 	app := &SimulationApplication{
 		BaseApp: bApp,
-		//legacyAmino:       appCodec.GetLegacyAmino(),
+		// legacyAmino:       appCodec.GetLegacyAmino(),
 		appCodec:          appCodec,
 		interfaceRegistry: interfaceRegistry,
 		invCheckPeriod:    invCheckPeriod,
@@ -604,7 +606,7 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 		maintainersModule.GetAuxiliary(maintain.Auxiliary.GetName()),
 		maintainersModule.GetAuxiliary(revoke.Auxiliary.GetName()),
 		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(verify.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
 		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
 	)
 	splitsModule := splits.Prototype().Initialize(
@@ -628,7 +630,7 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
 		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
 		splitsModule.GetAuxiliary(splitsMint.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(verify.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
 	)
 	ordersModule := orders.Prototype().Initialize(
 		keys[orders.Prototype().Name()],
@@ -645,10 +647,10 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
 		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
 		splitsModule.GetAuxiliary(transfer.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(verify.Auxiliary.GetName()),
+		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
 	)
 
-	//skipGenesisInvariants := cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))
+	// skipGenesisInvariants := cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))
 
 	app.moduleManager = module.NewManager(
 		genutil.NewAppModule(app.AccountKeeper, app.StakingKeeper, app.BaseApp.DeliverTx, app.GetAppCodec()),

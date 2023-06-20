@@ -3,7 +3,7 @@ module github.com/AssetMantle/node
 go 1.19
 
 require (
-	github.com/AssetMantle/modules v0.3.2-0.20230601143317-a49bf2321a63
+	github.com/AssetMantle/modules v0.3.2-0.20230620095700-d4768e36b277
 	github.com/CosmWasm/wasmd v0.30.0
 	github.com/cosmos/cosmos-sdk v0.45.14
 	github.com/cosmos/ibc-go/v4 v4.2.0
@@ -24,7 +24,7 @@ require (
 	filippo.io/edwards25519 v1.0.0-beta.2 // indirect
 	github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4 // indirect
 	github.com/99designs/keyring v1.2.1 // indirect
-	github.com/AssetMantle/schema/go v0.0.0-20230601141237-1619bb29e4b7 // indirect
+	github.com/AssetMantle/schema/go v0.0.0-20230620095350-a1db580cf02d // indirect
 	github.com/ChainSafe/go-schnorrkel v0.0.0-20200405005733-88cbf1b4c40d // indirect
 	github.com/CosmWasm/wasmvm v1.1.1 // indirect
 	github.com/DataDog/zstd v1.4.5 // indirect

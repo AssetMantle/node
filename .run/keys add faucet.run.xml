@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="keys add faucet" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="keys">
+    <module name="node" />
+    <working_directory value="$PROJECT_DIR$" />
+    <parameters value="keys add faucet --recover" />
+    <kind value="FILE" />
+    <package value="github.com/AssetMantle/node" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
+    <method v="2" />
+  </configuration>
+</component>
