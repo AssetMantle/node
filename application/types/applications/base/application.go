@@ -617,10 +617,6 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		application.slashingKeeper,
 	)
 
-	// ******************************
-	// WASM Module Boilerplate Code
-	// ******************************
-
 	metasModule := metas.Prototype().Initialize(
 		application.keys[metas.Prototype().Name()],
 		ParamsKeeper.Subspace(metas.Prototype().Name()),
