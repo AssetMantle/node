@@ -107,7 +107,7 @@ import (
 
 	"github.com/AssetMantle/modules/helpers"
 	"github.com/AssetMantle/modules/helpers/base"
-	documentIDGetters "github.com/AssetMantle/modules/utilities/rest/idGetters/docs"
+	documentIDGetters "github.com/AssetMantle/modules/utilities/rest/id_getters/docs"
 	"github.com/AssetMantle/modules/x/assets"
 	"github.com/AssetMantle/modules/x/classifications"
 	"github.com/AssetMantle/modules/x/classifications/auxiliaries/bond"
