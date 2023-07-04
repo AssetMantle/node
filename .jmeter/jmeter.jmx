@@ -713,7 +713,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/idGetters/docs/request&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -906,7 +906,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/idGetters/docs/request&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_02)}&quot;,&#xd;
@@ -1103,7 +1103,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/idGetters/docs/request&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -1299,7 +1299,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/idGetters/docs/request&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -2203,7 +2203,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/idGetters/docs/request&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -2399,7 +2399,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/idGetters/docs/request&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -2704,7 +2704,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/idGetters/docs/request&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -3366,7 +3366,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/idGetters/docs/request&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -4068,7 +4068,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/idGetters/docs/request&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -4276,7 +4276,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/idGetters/docs/request&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -4598,7 +4598,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/idGetters/docs/request&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;

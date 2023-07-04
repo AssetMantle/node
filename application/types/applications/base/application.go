@@ -105,8 +105,7 @@ import (
 
 	"github.com/AssetMantle/modules/helpers"
 	"github.com/AssetMantle/modules/helpers/base"
-	utilitiesRest "github.com/AssetMantle/modules/utilities/rest"
-	documentIDGetters "github.com/AssetMantle/modules/utilities/rest/idGetters/docs"
+	documentIDGetters "github.com/AssetMantle/modules/utilities/rest/id_getters/docs"
 	"github.com/AssetMantle/modules/x/assets"
 	"github.com/AssetMantle/modules/x/classifications"
 	"github.com/AssetMantle/modules/x/classifications/auxiliaries/bond"
@@ -132,6 +131,7 @@ import (
 
 	"github.com/AssetMantle/node/application/types/applications"
 	"github.com/AssetMantle/node/application/types/applications/constants"
+	"github.com/AssetMantle/node/utilities/rest"
 )
 
 type application struct {
@@ -327,7 +327,7 @@ func (application application) RegisterAPIRoutes(server *api.Server, apiConfig c
 	documentIDGetters.RegisterRESTRoutes(clientCtx, server.Router)
 	application.moduleBasicManager.RegisterRESTRoutes(clientCtx, server.Router)
 	application.moduleBasicManager.RegisterGRPCGatewayRoutes(clientCtx, server.GRPCGatewayRouter)
-	utilitiesRest.RegisterRESTRoutes(clientCtx, server.Router)
+	rest.RegisterRESTRoutes(clientCtx, server.Router)
 	if apiConfig.Swagger {
 		Fs, err := fs.New()
 		if err != nil {
