@@ -3,8 +3,8 @@ module github.com/AssetMantle/node
 go 1.19
 
 require (
-	github.com/AssetMantle/modules v0.3.2-0.20230706051317-79fe9ca28a9a
-	github.com/AssetMantle/schema/go v0.0.0-20230706032903-95e8250e3d19
+	github.com/AssetMantle/modules v0.3.2-0.20230714023659-dcc66228e915
+	github.com/AssetMantle/schema/go v0.0.0-20230714003929-2cdc5fb31c1a
 	github.com/CosmWasm/wasmd v0.30.0
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d
 	github.com/cosmos/cosmos-sdk v0.45.14
@@ -19,11 +19,6 @@ require (
 	github.com/stretchr/testify v1.8.1
 	github.com/tendermint/tendermint v0.34.26
 	github.com/tendermint/tm-db v0.6.7
-)
-
-replace (
-	github.com/AssetMantle/modules => ../modules
-	github.com/AssetMantle/schema/go => ../schema/go
 )
 
 require (
