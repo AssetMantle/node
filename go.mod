@@ -3,8 +3,8 @@ module github.com/AssetMantle/node
 go 1.19
 
 require (
-	github.com/AssetMantle/modules v0.3.2-0.20230714023659-dcc66228e915
-	github.com/AssetMantle/schema/go v0.0.0-20230714003929-2cdc5fb31c1a
+	github.com/AssetMantle/modules v0.3.2-0.20230714125045-b8b6bbb52229
+	github.com/AssetMantle/schema/go v0.0.0-20230714100235-c6bf882d1002
 	github.com/CosmWasm/wasmd v0.30.0
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d
 	github.com/cosmos/cosmos-sdk v0.45.14
