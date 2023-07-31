@@ -48,10 +48,10 @@ github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4/go.mod h1:hN
 github.com/99designs/keyring v1.2.1 h1:tYLp1ULvO7i3fI5vE21ReQuj99QFSs7lGm0xWyJo87o=
 github.com/99designs/keyring v1.2.1/go.mod h1:fc+wB5KTk9wQ9sDx0kFXB3A0MaeGHM9AwRStKOQ5vOA=
 github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9/go.mod h1:bOvUY6CB00SOBii9/FifXqc0awNKxLFCL/+pkDPuyl8=
-github.com/AssetMantle/modules v0.3.2-0.20230731104046-ed21debf48b4 h1:MJxQjgUbA6L4Jh2I6LVH4H76LVbezIHWkZXtsc1Wyos=
-github.com/AssetMantle/modules v0.3.2-0.20230731104046-ed21debf48b4/go.mod h1:PbZt1GO50nhfslLzr4B4Y9vYw6GewxqiZKkT3ZN6t0U=
-github.com/AssetMantle/schema/go v0.0.0-20230731102036-7d775c3468ba h1:peRl/E5EqLIhoOYrsI6hjkjdzy3Hcb8DQ3F1X62Sg8A=
-github.com/AssetMantle/schema/go v0.0.0-20230731102036-7d775c3468ba/go.mod h1:UZAos6rtadqlwU1LaLygza8isTrcnAKNY+dwNNGlBhA=
+github.com/AssetMantle/modules v0.3.2-0.20230731192158-9f2084ac3b3a h1:+BYgYqPB8rzr5qroU+q6JZ3/2SSUekTCZuEymeDUET8=
+github.com/AssetMantle/modules v0.3.2-0.20230731192158-9f2084ac3b3a/go.mod h1:PUIu06uAXiUV+QMpVcDORULjtWdZOiKogPEU0wkyqfY=
+github.com/AssetMantle/schema/go v0.0.0-20230731191929-af063914f07a h1:rj71PyI3wBigpXqEwQFM1GNVauRGpBRmXKa6xiHi7hU=
+github.com/AssetMantle/schema/go v0.0.0-20230731191929-af063914f07a/go.mod h1:UZAos6rtadqlwU1LaLygza8isTrcnAKNY+dwNNGlBhA=
 github.com/Azure/azure-pipeline-go v0.2.1/go.mod h1:UGSo8XybXnIGZ3epmeBw7Jdz+HiUVpqIlpz/HKHylF4=
 github.com/Azure/azure-pipeline-go v0.2.2/go.mod h1:4rQ/NZncSvGqNkkOsNpOU1tgoNuIlp9AfUH5G1tvCHc=
 github.com/Azure/azure-storage-blob-go v0.7.0/go.mod h1:f9YQKtsG1nMisotuTPpO0tjNuEjKRYAcJU8/ydDI++4=
