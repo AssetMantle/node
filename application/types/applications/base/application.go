@@ -125,6 +125,7 @@ import (
 	"github.com/AssetMantle/modules/x/metas/auxiliaries/supplement"
 	"github.com/AssetMantle/modules/x/orders"
 	"github.com/AssetMantle/modules/x/splits"
+	splitsBurn "github.com/AssetMantle/modules/x/splits/auxiliaries/burn"
 	splitsMint "github.com/AssetMantle/modules/x/splits/auxiliaries/mint"
 	"github.com/AssetMantle/modules/x/splits/auxiliaries/renumerate"
 	"github.com/AssetMantle/modules/x/splits/auxiliaries/transfer"
@@ -658,19 +659,20 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	assetsModule := assets.Prototype().Initialize(
 		application.keys[assets.Prototype().Name()],
 		ParamsKeeper.Subspace(assets.Prototype().Name()),
-		identitiesModule.GetAuxiliary(authenticate.Auxiliary.GetName()),
 		classificationsModule.GetAuxiliary(conform.Auxiliary.GetName()),
 		classificationsModule.GetAuxiliary(define.Auxiliary.GetName()),
 		classificationsModule.GetAuxiliary(bond.Auxiliary.GetName()),
 		classificationsModule.GetAuxiliary(unbond.Auxiliary.GetName()),
+		identitiesModule.GetAuxiliary(authenticate.Auxiliary.GetName()),
 		maintainersModule.GetAuxiliary(deputize.Auxiliary.GetName()),
 		maintainersModule.GetAuxiliary(maintain.Auxiliary.GetName()),
-		splitsModule.GetAuxiliary(renumerate.Auxiliary.GetName()),
 		maintainersModule.GetAuxiliary(revoke.Auxiliary.GetName()),
 		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
-		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
-		splitsModule.GetAuxiliary(splitsMint.Auxiliary.GetName()),
 		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
+		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
+		splitsModule.GetAuxiliary(renumerate.Auxiliary.GetName()),
+		splitsModule.GetAuxiliary(splitsBurn.Auxiliary.GetName()),
+		splitsModule.GetAuxiliary(splitsMint.Auxiliary.GetName()),
 	)
 	ordersModule := orders.Prototype().Initialize(
 		application.keys[orders.Prototype().Name()],
