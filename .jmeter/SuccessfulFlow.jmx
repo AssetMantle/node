@@ -2792,7 +2792,7 @@
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;assetID&quot;:&quot;${ASSET_ID}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;supply:D|1000&quot;&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;supply:N|1000&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -3136,7 +3136,7 @@
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
      &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|Non-Renumerated&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:N|100&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
@@ -3254,7 +3254,7 @@
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|Non-Renumerated&quot;,&#xd;
-      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:D|100&quot;,&#xd;
+      &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c,supply:N|100&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
@@ -3338,7 +3338,7 @@
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_2)}&quot;,&#xd;
-      &quot;ownableID&quot;:&quot;${__property(ASSET_ID)}&quot;,&#xd;
+      &quot;ownableID&quot;:&quot;AI|${__property(ASSET_ID)}&quot;,&#xd;
 	 &quot;value&quot;:&quot;1&quot;&#xd;
    }&#xd;
 }</stringProp>
@@ -3565,7 +3565,7 @@
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
-	 &quot;ownableID&quot;:&quot;${DENOM}&quot;,&#xd;
+	 &quot;ownableID&quot;:&quot;COI|${DENOM}&quot;,&#xd;
  	 &quot;value&quot;:&quot;${COINS}&quot;&#xd;
    }&#xd;
 }</stringProp>
@@ -3995,8 +3995,8 @@
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;takerID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;makerOwnableID&quot;:&quot;${__property(ASSET_ID)}&quot;,&#xd;
-      &quot;takerOwnableID&quot;:&quot;${DENOM}&quot;,&#xd;
+      &quot;makerOwnableID&quot;:&quot;$AI|{ASSET_ID}&quot;,&#xd;
+      &quot;takerOwnableID&quot;:&quot;COI|${DENOM}&quot;,&#xd;
       &quot;expiresIn&quot;:&quot;2000&quot;,&#xd;
       &quot;makerOwnableSplit&quot;:&quot;1&quot;,&#xd;
       &quot;takerOwnableSplit&quot;:&quot;1&quot;,&#xd;
@@ -4124,8 +4124,8 @@
      &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;takerID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;makerOwnableID&quot;:&quot;${__property(ASSET_ID)}&quot;,&#xd;
-      &quot;takerOwnableID&quot;:&quot;${DENOM}&quot;,&#xd;
+      &quot;makerOwnableID&quot;:&quot;AI|${ASSET_ID}&quot;,&#xd;
+      &quot;takerOwnableID&quot;:&quot;COI|${DENOM}&quot;,&#xd;
       &quot;expiresIn&quot;:&quot;2000&quot;,&#xd;
       &quot;makerOwnableSplit&quot;:&quot;1&quot;,&#xd;
       &quot;takerOwnableSplit&quot;:&quot;1&quot;,&#xd;
@@ -4317,8 +4317,8 @@
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;takerID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;makerOwnableID&quot;:&quot;${__property(ASSET_ID_NON_RENUMERATED)}&quot;,&#xd;
-      &quot;takerOwnableID&quot;:&quot;${DENOM}&quot;,&#xd;
+      &quot;makerOwnableID&quot;:&quot;AI|${ASSET_ID_NON_RENUMERATED}&quot;,&#xd;
+      &quot;takerOwnableID&quot;:&quot;COI|${DENOM}&quot;,&#xd;
       &quot;expiresIn&quot;:&quot;2000&quot;,&#xd;
       &quot;makerOwnableSplit&quot;:&quot;1&quot;,&#xd;
       &quot;takerOwnableSplit&quot;:&quot;1&quot;,&#xd;
@@ -4446,8 +4446,8 @@
      &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;takerID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
-      &quot;makerOwnableID&quot;:&quot;${__property(ASSET_ID_NON_RENUMERATED)}&quot;,&#xd;
-      &quot;takerOwnableID&quot;:&quot;${DENOM}&quot;,&#xd;
+      &quot;makerOwnableID&quot;:&quot;AI|${__property(ASSET_ID_NON_RENUMERATED)}&quot;,&#xd;
+      &quot;takerOwnableID&quot;:&quot;COI|${DENOM}&quot;,&#xd;
       &quot;expiresIn&quot;:&quot;2000&quot;,&#xd;
       &quot;makerOwnableSplit&quot;:&quot;1&quot;,&#xd;
       &quot;takerOwnableSplit&quot;:&quot;1&quot;,&#xd;
@@ -4524,7 +4524,7 @@
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
-      &quot;takerOwnableSplit&quot;:&quot;0.000000000000000001&quot;,&#xd;
+      &quot;takerOwnableSplit&quot;:&quot;1&quot;,&#xd;
       &quot;orderID&quot;:&quot;${ORDER_ID}&quot;  &#xd;
    }&#xd;
 }</stringProp>
