@@ -920,7 +920,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 
 	if upgradeInfo.Name == constants.UpgradeName && !UpgradeKeeper.IsSkipHeight(upgradeInfo.Height) {
 		storeUpgrades := storeTypes.StoreUpgrades{
-			Added: []string{icaHostTypes.StoreKey},
+			Added: []string{assets.Prototype().Name(), classifications.Prototype().Name(), identities.Prototype().Name(), maintainers.Prototype().Name(), metas.Prototype().Name(), orders.Prototype().Name(), splits.Prototype().Name()},
 		}
 
 		application.SetStoreLoader(upgradeTypes.UpgradeStoreLoader(upgradeInfo.Height, &storeUpgrades))
