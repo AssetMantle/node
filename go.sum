@@ -52,9 +52,12 @@ github.com/AssetMantle/modules v0.3.2-0.20230807132044-671d7d2dd2fd h1:dPKXlzdRq
 github.com/AssetMantle/modules v0.3.2-0.20230807132044-671d7d2dd2fd/go.mod h1:ItnpO0HRYu6RFQYn31cb/Q1sKwVFe8x4kgA36wmBtko=
 github.com/AssetMantle/modules v0.3.2-0.20230808105632-a960699a10c6 h1:xlvQAwYEF5yY1CDfNxXDvmjKsXqx8NS5uvBtdoF/0Zs=
 github.com/AssetMantle/modules v0.3.2-0.20230808105632-a960699a10c6/go.mod h1:VolJuWI5FP78p/PMOvGPTXSSrlKyw7e3U75saby7ti0=
+github.com/AssetMantle/modules v0.3.2-0.20230808123832-c5c3791c5d16 h1:NLhMmr5NabH13ykfm4nZfn7T1rn01WpoQ3Xx4htwwiw=
+github.com/AssetMantle/modules v0.3.2-0.20230808123832-c5c3791c5d16/go.mod h1:aE8vbbVQMsU1b3KT/2WzhHS/Nca7pBK29dXmlqkZ8lI=
 github.com/AssetMantle/schema/go v0.0.0-20230807130911-75ef31a4d631 h1:LqRFbjeoA5RE4c726HCJuZ4lOzlnMM19QblXg/uZtj4=
 github.com/AssetMantle/schema/go v0.0.0-20230807130911-75ef31a4d631/go.mod h1:t8YHm2CsP8j0Mj/qQlWAKYrsosZgYdyHv7aLSCUJWu0=
 github.com/AssetMantle/schema/go v0.0.0-20230808094057-498f7abd346f/go.mod h1:t8YHm2CsP8j0Mj/qQlWAKYrsosZgYdyHv7aLSCUJWu0=
+github.com/AssetMantle/schema/go v0.0.0-20230808123221-09584e8deb45/go.mod h1:t8YHm2CsP8j0Mj/qQlWAKYrsosZgYdyHv7aLSCUJWu0=
 github.com/Azure/azure-pipeline-go v0.2.1/go.mod h1:UGSo8XybXnIGZ3epmeBw7Jdz+HiUVpqIlpz/HKHylF4=
 github.com/Azure/azure-pipeline-go v0.2.2/go.mod h1:4rQ/NZncSvGqNkkOsNpOU1tgoNuIlp9AfUH5G1tvCHc=
 github.com/Azure/azure-storage-blob-go v0.7.0/go.mod h1:f9YQKtsG1nMisotuTPpO0tjNuEjKRYAcJU8/ydDI++4=
