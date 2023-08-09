@@ -16,3 +16,11 @@ func SetAndSealSDKConfig() {
 	sdkConfig.SetPurpose(purpose)
 	sdkConfig.Seal()
 }
+
+func coinDenomRegex() string {
+	return `[a-zA-Z][a-zA-Z0-9/-+_=]{2,127}`
+}
+
+func SetCoinDenomRegex() {
+	sdkTypes.SetCoinDenomRegex(coinDenomRegex)
+}
