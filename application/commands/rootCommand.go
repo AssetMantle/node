@@ -67,6 +67,7 @@ func RootCommand() (*cobra.Command, helpers.Codec) {
 	}
 
 	configurations.SetAndSealSDKConfig()
+	configurations.SetCoinDenomRegex()
 
 	rootCmd.AddCommand(
 		sdkClientCLI.InitCmd(configurations.ModuleBasicManager, application.Prototype.GetDefaultNodeHome()),
