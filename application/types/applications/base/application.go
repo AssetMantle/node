@@ -80,7 +80,7 @@ import (
 	upgradeKeeper "github.com/cosmos/cosmos-sdk/x/upgrade/keeper"
 	upgradeTypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 	ica "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts"
-	icaControllerTypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/controller/types"
+	icaHost "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host"
 	icaHostKeeper "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host/keeper"
 	icaHostTypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host/types"
 	icaTypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/types"
@@ -90,6 +90,7 @@ import (
 	ibc "github.com/cosmos/ibc-go/v4/modules/core"
 	ibcClient "github.com/cosmos/ibc-go/v4/modules/core/02-client"
 	ibcClientTypes "github.com/cosmos/ibc-go/v4/modules/core/02-client/types"
+	ibcPortTypes "github.com/cosmos/ibc-go/v4/modules/core/05-port/types"
 	ibcHost "github.com/cosmos/ibc-go/v4/modules/core/24-host"
 	ibcAnte "github.com/cosmos/ibc-go/v4/modules/core/ante"
 	ibcKeeper "github.com/cosmos/ibc-go/v4/modules/core/keeper"
@@ -611,6 +612,13 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		application.MsgServiceRouter(),
 	)
 
+	icaHostIBCModule := icaHost.NewIBCModule(ICAHostKeeper)
+
+	ibcRouter := ibcPortTypes.NewRouter()
+	ibcRouter.AddRoute(icaHostTypes.SubModuleName, icaHostIBCModule)
+
+	IBCKeeper.SetRouter(ibcRouter)
+
 	EvidenceKeeper := *evidenceKeeper.NewKeeper(
 		application.GetCodec(),
 		application.keys[evidenceTypes.StoreKey],
@@ -874,41 +882,6 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	UpgradeKeeper.SetUpgradeHandler(
 		constants.UpgradeName,
 		func(ctx sdkTypes.Context, _ upgradeTypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
-			fromVM[icaTypes.ModuleName] = ica.NewAppModule(nil, &ICAHostKeeper).ConsensusVersion()
-			controllerParams := icaControllerTypes.Params{}
-			hostParams := icaHostTypes.Params{
-				HostEnabled: true,
-				AllowMessages: []string{
-					constants.AuthzMsgExec,
-					constants.AuthzMsgGrant,
-					constants.AuthzMsgRevoke,
-					constants.BankMsgSend,
-					constants.BankMsgMultiSend,
-					constants.DistrMsgSetWithdrawAddr,
-					constants.DistrMsgWithdrawValidatorCommission,
-					constants.DistrMsgFundCommunityPool,
-					constants.DistrMsgWithdrawDelegatorReward,
-					constants.FeegrantMsgGrantAllowance,
-					constants.FeegrantMsgRevokeAllowance,
-					constants.GovMsgVoteWeighted,
-					constants.GovMsgSubmitProposal,
-					constants.GovMsgDeposit,
-					constants.GovMsgVote,
-					constants.StakingMsgEditValidator,
-					constants.StakingMsgDelegate,
-					constants.StakingMsgUndelegate,
-					constants.StakingMsgBeginRedelegate,
-					constants.StakingMsgCreateValidator,
-					constants.VestingMsgCreateVestingAccount,
-					constants.TransferMsgTransfer,
-					constants.LiquidityMsgCreatePool,
-					constants.LiquidityMsgSwapWithinBatch,
-					constants.LiquidityMsgDepositWithinBatch,
-					constants.LiquidityMsgWithdrawWithinBatch,
-				},
-			}
-			ica.NewAppModule(nil, &ICAHostKeeper).InitModule(ctx, controllerParams, hostParams)
-
 			return application.moduleManager.RunMigrations(ctx, configurator, fromVM)
 		},
 	)
