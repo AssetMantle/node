@@ -6,10 +6,14 @@ package make
 import (
 	"encoding/json"
 	"fmt"
+	"os"
+	"testing"
+	
+	simulationTypes "github.com/cosmos/cosmos-sdk/types/simulation"
+	
 	"github.com/AssetMantle/node/application"
 	"github.com/AssetMantle/node/application/types/applications/base"
-	simulationTypes "github.com/cosmos/cosmos-sdk/types/simulation"
-
+	
 	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	distributionTypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 	govTypes "github.com/cosmos/cosmos-sdk/x/gov/types"
@@ -17,9 +21,7 @@ import (
 	slashingTypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingTypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
-	"os"
-	"testing"
-
+	
 	"github.com/AssetMantle/modules/x/assets"
 	"github.com/AssetMantle/modules/x/classifications"
 	"github.com/AssetMantle/modules/x/identities"
@@ -27,7 +29,6 @@ import (
 	"github.com/AssetMantle/modules/x/metas"
 	"github.com/AssetMantle/modules/x/orders"
 	"github.com/AssetMantle/modules/x/splits"
-	"github.com/CosmWasm/wasmd/x/wasm"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/simapp"
 	"github.com/cosmos/cosmos-sdk/store"
@@ -133,7 +134,6 @@ func TestAppImportExport(t *testing.T) {
 		{simulationApplication.GetKey(distributionTypes.StoreKey), newSimulationApplication.GetKey(distributionTypes.StoreKey), [][]byte{}},
 		{simulationApplication.GetKey(paramsTypes.StoreKey), newSimulationApplication.GetKey(paramsTypes.StoreKey), [][]byte{}},
 		{simulationApplication.GetKey(govTypes.StoreKey), newSimulationApplication.GetKey(govTypes.StoreKey), [][]byte{}},
-		{simulationApplication.GetKey(wasm.StoreKey), newSimulationApplication.GetKey(wasm.StoreKey), [][]byte{}},
 		{simulationApplication.GetKey(assets.Prototype().Name()), newSimulationApplication.GetKey(assets.Prototype().Name()), [][]byte{}},
 		{simulationApplication.GetKey(classifications.Prototype().Name()), newSimulationApplication.GetKey(classifications.Prototype().Name()), [][]byte{}},
 		{simulationApplication.GetKey(identities.Prototype().Name()), newSimulationApplication.GetKey(identities.Prototype().Name()), [][]byte{}},
