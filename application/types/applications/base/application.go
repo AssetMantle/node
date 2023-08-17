@@ -614,8 +614,12 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 
 	icaHostIBCModule := icaHost.NewIBCModule(ICAHostKeeper)
 
+	var ibcStack ibcPortTypes.IBCModule
+	ibcStack = ibcTransfer.NewIBCModule(IBCTransferKeeper)
+
 	ibcRouter := ibcPortTypes.NewRouter()
-	ibcRouter.AddRoute(icaHostTypes.SubModuleName, icaHostIBCModule)
+	ibcRouter.AddRoute(icaHostTypes.SubModuleName, icaHostIBCModule).
+		AddRoute(ibcTransferTypes.ModuleName, ibcStack)
 
 	IBCKeeper.SetRouter(ibcRouter)
 
