@@ -10,8 +10,6 @@ import (
 	"github.com/AssetMantle/modules/x/maintainers"
 	"github.com/AssetMantle/modules/x/orders"
 	"github.com/AssetMantle/modules/x/splits"
-	"github.com/CosmWasm/wasmd/x/wasm"
-	wasmClient "github.com/CosmWasm/wasmd/x/wasm/client"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/auth"
 	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
@@ -59,14 +57,12 @@ var ModuleBasicManagers = module.NewBasicManager(
 	mint.AppModuleBasic{},
 	distribution.AppModuleBasic{},
 	gov.NewAppModuleBasic(
-		append(wasmClient.ProposalHandlers,
-			paramsClient.ProposalHandler,
-			distributionClient.ProposalHandler,
-			upgradeClient.ProposalHandler,
-			upgradeClient.CancelProposalHandler,
-			ibcClientClient.UpdateClientProposalHandler,
-			ibcClientClient.UpgradeProposalHandler,
-		)...,
+		paramsClient.ProposalHandler,
+		distributionClient.ProposalHandler,
+		upgradeClient.ProposalHandler,
+		upgradeClient.CancelProposalHandler,
+		ibcClientClient.UpdateClientProposalHandler,
+		ibcClientClient.UpgradeProposalHandler,
 	),
 	params.AppModuleBasic{},
 	crisis.AppModuleBasic{},
@@ -80,8 +76,6 @@ var ModuleBasicManagers = module.NewBasicManager(
 	vesting.AppModuleBasic{},
 	router.AppModuleBasic{},
 	ica.AppModuleBasic{},
-
-	wasm.AppModuleBasic{},
 
 	assets.Prototype(),
 	classifications.Prototype(),

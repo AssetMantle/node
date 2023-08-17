@@ -27,7 +27,6 @@ import (
 	"github.com/AssetMantle/modules/x/metas"
 	"github.com/AssetMantle/modules/x/orders"
 	"github.com/AssetMantle/modules/x/splits"
-	"github.com/CosmWasm/wasmd/x/wasm"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/simapp"
 	"github.com/cosmos/cosmos-sdk/store"
@@ -133,7 +132,6 @@ func TestAppImportExport(t *testing.T) {
 		{simulationApplication.GetKey(distributionTypes.StoreKey), newSimulationApplication.GetKey(distributionTypes.StoreKey), [][]byte{}},
 		{simulationApplication.GetKey(paramsTypes.StoreKey), newSimulationApplication.GetKey(paramsTypes.StoreKey), [][]byte{}},
 		{simulationApplication.GetKey(govTypes.StoreKey), newSimulationApplication.GetKey(govTypes.StoreKey), [][]byte{}},
-		{simulationApplication.GetKey(wasm.StoreKey), newSimulationApplication.GetKey(wasm.StoreKey), [][]byte{}},
 		{simulationApplication.GetKey(assets.Prototype().Name()), newSimulationApplication.GetKey(assets.Prototype().Name()), [][]byte{}},
 		{simulationApplication.GetKey(classifications.Prototype().Name()), newSimulationApplication.GetKey(classifications.Prototype().Name()), [][]byte{}},
 		{simulationApplication.GetKey(identities.Prototype().Name()), newSimulationApplication.GetKey(identities.Prototype().Name()), [][]byte{}},
