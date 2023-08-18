@@ -6,12 +6,13 @@ package base
 import (
 	"encoding/json"
 	"errors"
-	"github.com/strangelove-ventures/packet-forward-middleware/v4/router"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"path/filepath"
+
+	"github.com/strangelove-ventures/packet-forward-middleware/v4/router"
 
 	"github.com/AssetMantle/modules/helpers"
 	"github.com/AssetMantle/modules/helpers/base"
@@ -693,12 +694,11 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	splitsModule := splits.Prototype().Initialize(
 		application.keys[splits.Prototype().Name()],
 		ParamsKeeper.Subspace(splits.Prototype().Name()),
-		BankKeeper,
-		identitiesModule.GetAuxiliary(authenticate.Auxiliary.GetName()),
 	)
 	assetsModule := assets.Prototype().Initialize(
 		application.keys[assets.Prototype().Name()],
 		ParamsKeeper.Subspace(assets.Prototype().Name()),
+		BankKeeper,
 		classificationsModule.GetAuxiliary(conform.Auxiliary.GetName()),
 		classificationsModule.GetAuxiliary(define.Auxiliary.GetName()),
 		classificationsModule.GetAuxiliary(bond.Auxiliary.GetName()),

@@ -1,7 +1,7 @@
 package faucet
 
 const (
-	faucetEnabled  = true
+	faucetEnabled  = false
 	chainID        = "test-chain-1"
 	faucetDenom    = "stake"
 	faucetAmount   = 1000000000

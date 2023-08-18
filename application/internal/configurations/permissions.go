@@ -4,8 +4,8 @@
 package configurations
 
 import (
+	"github.com/AssetMantle/modules/x/assets"
 	"github.com/AssetMantle/modules/x/classifications"
-	"github.com/AssetMantle/modules/x/splits"
 	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	distributionTypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 	govTypes "github.com/cosmos/cosmos-sdk/x/gov/types"
@@ -24,7 +24,7 @@ var ModuleAccountPermissions = map[string][]string{
 	stakingTypes.NotBondedPoolName:     {authTypes.Burner, authTypes.Staking},
 	govTypes.ModuleName:                {authTypes.Burner},
 	ibcTransferTypes.ModuleName:        {authTypes.Minter, authTypes.Burner},
-	splits.Prototype().Name():          nil,
+	assets.Prototype().Name():          nil,
 	classifications.Prototype().Name(): {authTypes.Burner},
 }
 var TokenReceiveAllowedModules = map[string]bool{

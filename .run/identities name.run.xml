@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="identities nub" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="identities">
+  <configuration default="false" name="identities name" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="identities">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <parameters value="tx identities nub -y --keyring-backend=test --chain-id=test-chain-1 --from=test --nubID=deepanshutr" />
+    <parameters value="tx identities name -y --keyring-backend=test --chain-id=test-chain-1 --from=test --name=deepanshutr" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
