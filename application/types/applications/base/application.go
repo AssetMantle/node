@@ -13,7 +13,34 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/AssetMantle/modules/helpers"
+	"github.com/AssetMantle/modules/helpers/base"
+	documentIDGetters "github.com/AssetMantle/modules/utilities/rest/id_getters/docs"
+	"github.com/AssetMantle/modules/x/assets"
+	"github.com/AssetMantle/modules/x/classifications"
+	"github.com/AssetMantle/modules/x/classifications/auxiliaries/bond"
+	"github.com/AssetMantle/modules/x/classifications/auxiliaries/burn"
+	"github.com/AssetMantle/modules/x/classifications/auxiliaries/conform"
+	"github.com/AssetMantle/modules/x/classifications/auxiliaries/define"
+	"github.com/AssetMantle/modules/x/classifications/auxiliaries/member"
+	"github.com/AssetMantle/modules/x/classifications/auxiliaries/unbond"
+	"github.com/AssetMantle/modules/x/identities"
+	"github.com/AssetMantle/modules/x/identities/auxiliaries/authenticate"
+	"github.com/AssetMantle/modules/x/maintainers"
 	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/authorize"
+	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/deputize"
+	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/maintain"
+	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/revoke"
+	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/super"
+	"github.com/AssetMantle/modules/x/metas"
+	"github.com/AssetMantle/modules/x/metas/auxiliaries/supplement"
+	"github.com/AssetMantle/modules/x/orders"
+	"github.com/AssetMantle/modules/x/splits"
+	burnSplits "github.com/AssetMantle/modules/x/splits/auxiliaries/burn"
+	splitsMint "github.com/AssetMantle/modules/x/splits/auxiliaries/mint"
+	"github.com/AssetMantle/modules/x/splits/auxiliaries/purge"
+	"github.com/AssetMantle/modules/x/splits/auxiliaries/renumerate"
+	"github.com/AssetMantle/modules/x/splits/auxiliaries/transfer"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
@@ -106,33 +133,6 @@ import (
 	tendermintOS "github.com/tendermint/tendermint/libs/os"
 	protoTendermintTypes "github.com/tendermint/tendermint/proto/tendermint/types"
 	tendermintDB "github.com/tendermint/tm-db"
-
-	"github.com/AssetMantle/modules/helpers"
-	"github.com/AssetMantle/modules/helpers/base"
-	documentIDGetters "github.com/AssetMantle/modules/utilities/rest/id_getters/docs"
-	"github.com/AssetMantle/modules/x/assets"
-	"github.com/AssetMantle/modules/x/classifications"
-	"github.com/AssetMantle/modules/x/classifications/auxiliaries/bond"
-	"github.com/AssetMantle/modules/x/classifications/auxiliaries/burn"
-	"github.com/AssetMantle/modules/x/classifications/auxiliaries/conform"
-	"github.com/AssetMantle/modules/x/classifications/auxiliaries/define"
-	"github.com/AssetMantle/modules/x/classifications/auxiliaries/member"
-	"github.com/AssetMantle/modules/x/classifications/auxiliaries/unbond"
-	"github.com/AssetMantle/modules/x/identities"
-	"github.com/AssetMantle/modules/x/identities/auxiliaries/authenticate"
-	"github.com/AssetMantle/modules/x/maintainers"
-	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/deputize"
-	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/maintain"
-	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/revoke"
-	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/super"
-	"github.com/AssetMantle/modules/x/metas"
-	"github.com/AssetMantle/modules/x/metas/auxiliaries/supplement"
-	"github.com/AssetMantle/modules/x/orders"
-	"github.com/AssetMantle/modules/x/splits"
-	splitsBurn "github.com/AssetMantle/modules/x/splits/auxiliaries/burn"
-	splitsMint "github.com/AssetMantle/modules/x/splits/auxiliaries/mint"
-	"github.com/AssetMantle/modules/x/splits/auxiliaries/renumerate"
-	"github.com/AssetMantle/modules/x/splits/auxiliaries/transfer"
 
 	"github.com/AssetMantle/node/application/types/applications"
 	"github.com/AssetMantle/node/application/types/applications/constants"
@@ -710,8 +710,10 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
 		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
 		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
+		splitsModule.GetAuxiliary(transfer.Auxiliary.GetName()),
 		splitsModule.GetAuxiliary(renumerate.Auxiliary.GetName()),
-		splitsModule.GetAuxiliary(splitsBurn.Auxiliary.GetName()),
+		splitsModule.GetAuxiliary(burnSplits.Auxiliary.GetName()),
+		splitsModule.GetAuxiliary(purge.Auxiliary.GetName()),
 		splitsModule.GetAuxiliary(splitsMint.Auxiliary.GetName()),
 	)
 	ordersModule := orders.Prototype().Initialize(

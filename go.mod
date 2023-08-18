@@ -3,8 +3,9 @@ module github.com/AssetMantle/node
 go 1.19
 
 require (
-	github.com/AssetMantle/modules v0.3.2-0.20230808181722-11a779294e47
-	github.com/AssetMantle/schema/go v0.0.0-20230808175125-53c734d49fb6
+	github.com/AssetMantle/modules v0.3.2-0.20230817140123-e0cbe268c97e
+	github.com/AssetMantle/schema/go v0.0.0-20230817135028-5cad5120ba24
+	github.com/CosmWasm/wasmd v0.30.0
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d
 	github.com/cosmos/cosmos-sdk v0.45.16-ics
 	github.com/cosmos/go-bip39 v1.0.0
@@ -20,10 +21,10 @@ require (
 	github.com/tendermint/tm-db v0.6.7
 )
 
-replace (
-	github.com/AssetMantle/modules v0.3.2-0.20230808123832-c5c3791c5d16 => ../modules
-	github.com/AssetMantle/schema/go v0.0.0-20230808123221-09584e8deb45 => ../schema/go
-)
+//replace (
+//	github.com/AssetMantle/modules => ../modules
+//	github.com/AssetMantle/schema/go => ../schema/go
+//)
 
 require (
 	cosmossdk.io/api v0.2.6 // indirect
