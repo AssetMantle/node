@@ -52,10 +52,10 @@ git.sr.ht/~sircmpwn/go-bare v0.0.0-20210406120253-ab86bc2846d9/go.mod h1:BVJwbDf
 github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4 h1:/vQbFIOMbk2FiG/kXiLl8BRyzTWDw7gX/Hz7Dd5eDMs=
 github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4/go.mod h1:hN7oaIRCjzsZ2dE+yG5k+rsdt3qcwykqK6HVGcKwsw4=
 github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9/go.mod h1:bOvUY6CB00SOBii9/FifXqc0awNKxLFCL/+pkDPuyl8=
-github.com/AssetMantle/modules v0.3.2-0.20230818022548-bcc01b9d79fc h1:Jk85rdT0rJI9HE/CBJUGPDQpfzXC1qjFM17RzIZFi98=
-github.com/AssetMantle/modules v0.3.2-0.20230818022548-bcc01b9d79fc/go.mod h1:6jlp7kNPzEqUAA2K9w5aQobcc87Nt1BKVHcz/V62V50=
-github.com/AssetMantle/schema/go v0.0.0-20230818005323-13dfca1fcce5 h1:rI+Vu8CCfJipAXmgh7rMQQhzTzA8Fqm+foKFIHr2TaM=
-github.com/AssetMantle/schema/go v0.0.0-20230818005323-13dfca1fcce5/go.mod h1:+b+pr5ek9on9CiojcnJQAncPfCqSMeC78XpG+n/VX7o=
+github.com/AssetMantle/modules v0.3.2-0.20230818042647-c2a811fdef24 h1:horWOd8h14CX047E2OUJ+n/EX9od4EHDGi5S5kmTJ5k=
+github.com/AssetMantle/modules v0.3.2-0.20230818042647-c2a811fdef24/go.mod h1:LIhi9xTBWN0XAabhcGLT89pKybwcJOJPChRjk3x+A4I=
+github.com/AssetMantle/schema/go v0.0.0-20230818041933-0e4158d6c895 h1:pFhzFuDO8S10lJ/NteojopbevgQx0ULhfR1kh9fcK9M=
+github.com/AssetMantle/schema/go v0.0.0-20230818041933-0e4158d6c895/go.mod h1:+b+pr5ek9on9CiojcnJQAncPfCqSMeC78XpG+n/VX7o=
 github.com/Azure/azure-sdk-for-go/sdk/azcore v0.21.1/go.mod h1:fBF9PQNqB8scdgpZ3ufzaLntG0AG7C1WjPMsiFOmfHM=
 github.com/Azure/azure-sdk-for-go/sdk/internal v0.8.3/go.mod h1:KLF4gFr6DcKFZwSuH8w8yEK6DpFl3LP5rhdvAb7Yz5I=
 github.com/Azure/azure-sdk-for-go/sdk/storage/azblob v0.3.0/go.mod h1:tPaiy8S5bQ+S5sOiDlINkp7+Ef339+Nz5L5XO+cnOHo=
