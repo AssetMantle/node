@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="identities query nub" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="identities">
+  <configuration default="false" name="assets parameter change vote" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="assets">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <parameters value="query identities identities --chain-id=test-chain-1 --identityID=Lkj8sS7M1GMTZT65lJ6K_1vfK5uT8C39icnvHMfQ5RA=" />
+    <parameters value="tx gov vote 1 yes -y --chain-id=test-chain-1 --from=test" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />

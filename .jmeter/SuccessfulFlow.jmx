@@ -497,13 +497,13 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/nub/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/name/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
-      &quot;nubID&quot;:&quot;${RANDOM_NO_1}&quot;&#xd;
+      &quot;name&quot;:&quot;${RANDOM_NO_1}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -514,7 +514,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/identities/nub</stringProp>
+              <stringProp name="HTTPSampler.path">/identities/name</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -615,7 +615,7 @@
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
-      &quot;nubID&quot;:&quot;${RANDOM_NO_1}&quot;&#xd;
+      &quot;name&quot;:&quot;${RANDOM_NO_1}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -626,7 +626,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/get/document/nubID</stringProp>
+              <stringProp name="HTTPSampler.path">/get/document/nameIdentityID</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -678,25 +678,25 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities nub" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="2) identities nub" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) POST - identities nub" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2) POST - identities nub" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/nub/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/name/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_02)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
-      &quot;nubID&quot;:&quot;${RANDOM_NO_2}&quot;&#xd;
+      &quot;name&quot;:&quot;${RANDOM_NO_2}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -707,7 +707,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/identities/nub</stringProp>
+              <stringProp name="HTTPSampler.path">/identities/name</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -718,7 +718,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) code: identities nub" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="2) code: identities nub" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
@@ -728,7 +728,7 @@
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) status: identities nub" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="2) status: identities nub" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="-859968110">txhash</stringProp>
                 </collectionProp>
@@ -738,14 +738,14 @@
                 <intProp name="Assertion.test_type">16</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="1) extract: identities nub" enabled="true">
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="2) extract: identities nub" enabled="true">
                 <stringProp name="JSONPostProcessor.referenceNames">ID_NUB_TXHASH_01</stringProp>
                 <stringProp name="JSONPostProcessor.jsonPathExprs">$..txhash</stringProp>
                 <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
               </JSONPostProcessor>
               <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) GET - query identities nub" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2) GET - query identities nub" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
@@ -764,7 +764,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) code: query identities nub" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="2) code: query identities nub" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
@@ -774,7 +774,7 @@
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) status: query identities nub" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="2) status: query identities nub" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="-1281977283">failed</stringProp>
                 </collectionProp>
@@ -784,18 +784,18 @@
                 <intProp name="Assertion.test_type">6</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="1) delay: query identities nub" enabled="true">
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="2) delay: query identities nub" enabled="true">
                 <stringProp name="ConstantTimer.delay">${LONG}</stringProp>
               </ConstantTimer>
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities query nubID" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="2) identities query nubID" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) POST - docs request" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2) POST - docs request" enabled="true">
               <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
                 <collectionProp name="Arguments.arguments">
@@ -808,7 +808,7 @@
          &quot;from&quot;:&quot;${__property(ADDR_02)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
-      &quot;nubID&quot;:&quot;${RANDOM_NO_2}&quot;&#xd;
+      &quot;name&quot;:&quot;${RANDOM_NO_2}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -819,7 +819,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/get/document/nubID</stringProp>
+              <stringProp name="HTTPSampler.path">/get/document/nameIdentityID</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -830,7 +830,7 @@
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
             </HTTPSamplerProxy>
             <hashTree>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) code: docs request" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="2) code: docs request" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
@@ -840,7 +840,7 @@
                 <intProp name="Assertion.test_type">8</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) status: docs request" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="2) status: docs request" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="-547797305">&quot;success&quot;:true</stringProp>
                 </collectionProp>
@@ -850,19 +850,19 @@
                 <intProp name="Assertion.test_type">16</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="1) extract: NUB ID" enabled="true">
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="2) extract: NUB ID" enabled="true">
                 <stringProp name="JSONPostProcessor.referenceNames">NUB_ID_2</stringProp>
                 <stringProp name="JSONPostProcessor.jsonPathExprs">$..ID</stringProp>
                 <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
               </JSONPostProcessor>
               <hashTree/>
-              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="1) extract: BondAmount" enabled="true">
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="2) extract: BondAmount" enabled="true">
                 <stringProp name="JSONPostProcessor.referenceNames">BOND_AMOUNT</stringProp>
                 <stringProp name="JSONPostProcessor.jsonPathExprs">$..BondAmount</stringProp>
                 <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
               </JSONPostProcessor>
               <hashTree/>
-              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="1) setvar: nubID2" enabled="true">
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="2) setvar: nubID2" enabled="true">
                 <stringProp name="BeanShellAssertion.query">${__setProperty(NUB_ID_2, ${NUB_ID_2})};</stringProp>
                 <stringProp name="BeanShellAssertion.filename"></stringProp>
                 <stringProp name="BeanShellAssertion.parameters"></stringProp>
@@ -1089,7 +1089,7 @@
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;${MUTABLE_META_PROPERTY_DEFINITION}:S|c&quot;,&#xd;
-      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
+      &quot;immutableMetaProperties&quot;:&quot;${IMMUTABLE_META_PROPERTY_DEFINITION}:S|a,,,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
