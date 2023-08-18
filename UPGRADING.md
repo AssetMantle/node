@@ -38,7 +38,12 @@ go: go version go1.18 linux/amd64
 * Verify if you are running new version of `mantleNode`
 
 ```bash
-
+name: mantleNode
+server_name: mantleNode
+version: 1.0.0
+commit: e994a65
+build_tags: netgo
+go: go version go1.19.12 linux/amd64
 ```
 
 * Start your node with correct version
