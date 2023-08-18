@@ -35,6 +35,7 @@ import (
 	"github.com/cosmos/ibc-go/v4/modules/apps/transfer"
 	ibc "github.com/cosmos/ibc-go/v4/modules/core"
 	ibcClientClient "github.com/cosmos/ibc-go/v4/modules/core/02-client/client"
+	"github.com/strangelove-ventures/packet-forward-middleware/v4/router"
 )
 
 var ModuleBasicManager = module.NewBasicManager(
@@ -63,6 +64,7 @@ var ModuleBasicManager = module.NewBasicManager(
 	evidence.AppModuleBasic{},
 	transfer.AppModuleBasic{},
 	vesting.AppModuleBasic{},
+	router.AppModuleBasic{},
 	ica.AppModuleBasic{},
 
 	assets.Prototype(),

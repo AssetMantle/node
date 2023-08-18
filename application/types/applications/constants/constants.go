@@ -4,6 +4,12 @@
 package constants
 
 import (
+	"github.com/AssetMantle/modules/x/assets"
+	"github.com/AssetMantle/modules/x/classifications"
+	"github.com/AssetMantle/modules/x/identities"
+	"github.com/AssetMantle/modules/x/maintainers"
+	"github.com/AssetMantle/modules/x/orders"
+	"github.com/AssetMantle/modules/x/splits"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/auth"
 	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
@@ -29,6 +35,13 @@ import (
 	stakingTypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"github.com/cosmos/cosmos-sdk/x/upgrade"
 	upgradeClient "github.com/cosmos/cosmos-sdk/x/upgrade/client"
+	ica "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts"
+	icaTypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/types"
+	"github.com/cosmos/ibc-go/v4/modules/apps/transfer"
+	ibcTransferTypes "github.com/cosmos/ibc-go/v4/modules/apps/transfer/types"
+	ibc "github.com/cosmos/ibc-go/v4/modules/core"
+	ibcClientClient "github.com/cosmos/ibc-go/v4/modules/core/02-client/client"
+	"github.com/strangelove-ventures/packet-forward-middleware/v4/router"
 
 	"github.com/AssetMantle/modules/x/metas"
 )
@@ -44,28 +57,46 @@ var ModuleBasicManagers = module.NewBasicManager(
 	mint.AppModuleBasic{},
 	distribution.AppModuleBasic{},
 	gov.NewAppModuleBasic(
-		paramsClient.ProposalHandler, distributionClient.ProposalHandler, upgradeClient.ProposalHandler, upgradeClient.CancelProposalHandler,
+		paramsClient.ProposalHandler,
+		distributionClient.ProposalHandler,
+		upgradeClient.ProposalHandler,
+		upgradeClient.CancelProposalHandler,
+		ibcClientClient.UpdateClientProposalHandler,
+		ibcClientClient.UpgradeProposalHandler,
 	),
 	params.AppModuleBasic{},
 	crisis.AppModuleBasic{},
 	slashing.AppModuleBasic{},
 	feeGrantModule.AppModuleBasic{},
+	authzModule.AppModuleBasic{},
+	ibc.AppModuleBasic{},
 	upgrade.AppModuleBasic{},
 	evidence.AppModuleBasic{},
-	authzModule.AppModuleBasic{},
+	transfer.AppModuleBasic{},
 	vesting.AppModuleBasic{},
+	router.AppModuleBasic{},
+	ica.AppModuleBasic{},
 
+	assets.Prototype(),
+	classifications.Prototype(),
+	identities.Prototype(),
+	maintainers.Prototype(),
 	metas.Prototype(),
+	orders.Prototype(),
+	splits.Prototype(),
 )
 var ModuleAccountPermissions = map[string][]string{
-	authTypes.FeeCollectorName:     nil,
-	distributionTypes.ModuleName:   nil,
-	mintTypes.ModuleName:           {authTypes.Minter},
-	stakingTypes.BondedPoolName:    {authTypes.Burner, authTypes.Staking},
-	stakingTypes.NotBondedPoolName: {authTypes.Burner, authTypes.Staking},
-	govTypes.ModuleName:            {authTypes.Burner},
+	authTypes.FeeCollectorName:         nil,
+	distributionTypes.ModuleName:       nil,
+	icaTypes.ModuleName:                nil,
+	mintTypes.ModuleName:               {authTypes.Minter},
+	stakingTypes.BondedPoolName:        {authTypes.Burner, authTypes.Staking},
+	stakingTypes.NotBondedPoolName:     {authTypes.Burner, authTypes.Staking},
+	govTypes.ModuleName:                {authTypes.Burner},
+	ibcTransferTypes.ModuleName:        {authTypes.Minter, authTypes.Burner},
+	splits.Prototype().Name():          nil,
+	classifications.Prototype().Name(): {authTypes.Burner},
 }
-
 var DefaultNodeHome string
 var tokenReceiveAllowedModules = map[string]bool{
 	distributionTypes.ModuleName: true,

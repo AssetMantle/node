@@ -6,6 +6,7 @@ package base
 import (
 	"encoding/json"
 	"errors"
+	"github.com/strangelove-ventures/packet-forward-middleware/v4/router"
 	"io"
 	"log"
 	"net/http"
@@ -107,7 +108,7 @@ import (
 	upgradeKeeper "github.com/cosmos/cosmos-sdk/x/upgrade/keeper"
 	upgradeTypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 	ica "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts"
-	icaControllerTypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/controller/types"
+	icaHost "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host"
 	icaHostKeeper "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host/keeper"
 	icaHostTypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host/types"
 	icaTypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/types"
@@ -117,12 +118,15 @@ import (
 	ibc "github.com/cosmos/ibc-go/v4/modules/core"
 	ibcClient "github.com/cosmos/ibc-go/v4/modules/core/02-client"
 	ibcClientTypes "github.com/cosmos/ibc-go/v4/modules/core/02-client/types"
+	ibcPortTypes "github.com/cosmos/ibc-go/v4/modules/core/05-port/types"
 	ibcHost "github.com/cosmos/ibc-go/v4/modules/core/24-host"
 	ibcAnte "github.com/cosmos/ibc-go/v4/modules/core/ante"
 	ibcKeeper "github.com/cosmos/ibc-go/v4/modules/core/keeper"
 	"github.com/rakyll/statik/fs"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
+	routerKeeper "github.com/strangelove-ventures/packet-forward-middleware/v4/router/keeper"
+	routerTypes "github.com/strangelove-ventures/packet-forward-middleware/v4/router/types"
 	abciTypes "github.com/tendermint/tendermint/abci/types"
 	tendermintJSON "github.com/tendermint/tendermint/libs/json"
 	tendermintLog "github.com/tendermint/tendermint/libs/log"
@@ -447,6 +451,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		capabilityTypes.StoreKey,
 		feegrant.StoreKey,
 		authzKeeper.StoreKey,
+		routerTypes.StoreKey,
 		icaHostTypes.StoreKey,
 
 		assets.Prototype().Name(),
@@ -552,6 +557,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		authTypes.FeeCollectorName,
 	)
 
+	// UpgradeKeeper must be created before IBCKeeper
 	UpgradeKeeper := upgradeKeeper.NewKeeper(
 		skipUpgradeHeights,
 		application.keys[upgradeTypes.StoreKey],
@@ -588,11 +594,25 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		govRouter,
 	)
 
-	IBCTransferKeeper := ibcTransferKeeper.NewKeeper(
+	var IBCTransferKeeper ibcTransferKeeper.Keeper
+
+	// From gaia: RouterKeeper must be created before TransferKeeper
+	RouterKeeper := routerKeeper.NewKeeper(
+		application.GetCodec(),
+		application.keys[routerTypes.StoreKey],
+		ParamsKeeper.Subspace(routerTypes.ModuleName).WithKeyTable(routerTypes.ParamKeyTable()),
+		IBCTransferKeeper,
+		IBCKeeper.ChannelKeeper,
+		application.distributionKeeper,
+		BankKeeper,
+		IBCKeeper.ChannelKeeper,
+	)
+
+	IBCTransferKeeper = ibcTransferKeeper.NewKeeper(
 		application.GetCodec(),
 		application.keys[ibcTransferTypes.StoreKey],
 		ParamsKeeper.Subspace(ibcTransferTypes.ModuleName),
-		IBCKeeper.ChannelKeeper,
+		RouterKeeper,
 		IBCKeeper.ChannelKeeper,
 		&IBCKeeper.PortKeeper,
 		AccountKeeper,
@@ -600,16 +620,36 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		scopedTransferKeeper,
 	)
 
+	RouterKeeper.SetTransferKeeper(IBCTransferKeeper)
+
 	ICAHostKeeper := icaHostKeeper.NewKeeper(
 		application.GetCodec(),
 		application.keys[icaHostTypes.StoreKey],
-		ParamsKeeper.Subspace(icaHostTypes.SubModuleName),
+		ParamsKeeper.Subspace(icaHostTypes.SubModuleName).WithKeyTable(icaHostTypes.ParamKeyTable()),
 		IBCKeeper.ChannelKeeper,
 		&IBCKeeper.PortKeeper,
 		AccountKeeper,
 		scopedICAHostKeeper,
 		application.MsgServiceRouter(),
 	)
+
+	icaHostIBCModule := icaHost.NewIBCModule(ICAHostKeeper)
+
+	var ibcStack ibcPortTypes.IBCModule
+	ibcStack = ibcTransfer.NewIBCModule(IBCTransferKeeper)
+	ibcStack = router.NewIBCMiddleware(
+		ibcStack,
+		RouterKeeper,
+		0,
+		routerKeeper.DefaultForwardTransferPacketTimeoutTimestamp,
+		routerKeeper.DefaultRefundTransferPacketTimeoutTimestamp,
+	)
+
+	ibcRouter := ibcPortTypes.NewRouter()
+	ibcRouter.AddRoute(icaHostTypes.SubModuleName, icaHostIBCModule).
+		AddRoute(ibcTransferTypes.ModuleName, ibcStack)
+
+	IBCKeeper.SetRouter(ibcRouter)
 
 	EvidenceKeeper := *evidenceKeeper.NewKeeper(
 		application.GetCodec(),
@@ -714,6 +754,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		params.NewAppModule(ParamsKeeper),
 		ibcTransfer.NewAppModule(IBCTransferKeeper),
 		ica.NewAppModule(nil, &ICAHostKeeper),
+		router.NewAppModule(RouterKeeper),
 
 		assetsModule,
 		classificationsModule,
@@ -727,24 +768,26 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	application.moduleManager.SetOrderBeginBlockers(
 		upgradeTypes.ModuleName,
 		capabilityTypes.ModuleName,
-		crisisTypes.ModuleName,
-		govTypes.ModuleName,
+		mintTypes.ModuleName,
+		distributionTypes.ModuleName,
+		slashingTypes.ModuleName,
+		evidenceTypes.ModuleName,
 		stakingTypes.ModuleName,
+		authTypes.ModuleName,
+		bankTypes.ModuleName,
+		govTypes.ModuleName,
+		crisisTypes.ModuleName,
 		ibcTransferTypes.ModuleName,
 		ibcHost.ModuleName,
 		icaTypes.ModuleName,
-		authTypes.ModuleName,
-		bankTypes.ModuleName,
-		distributionTypes.ModuleName,
-		slashingTypes.ModuleName,
-		mintTypes.ModuleName,
+		routerTypes.ModuleName,
 		genutilTypes.ModuleName,
-		evidenceTypes.ModuleName,
 		authz.ModuleName,
 		feegrant.ModuleName,
 		paramsTypes.ModuleName,
 		vestingTypes.ModuleName,
 
+		// Order doesn't matter here currently since all of the BeginBlock functions are empty
 		assets.Prototype().Name(),
 		classifications.Prototype().Name(),
 		identities.Prototype().Name(),
@@ -760,8 +803,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		ibcTransferTypes.ModuleName,
 		ibcHost.ModuleName,
 		icaTypes.ModuleName,
-		feegrant.ModuleName,
-		authz.ModuleName,
+		routerTypes.ModuleName,
 		capabilityTypes.ModuleName,
 		authTypes.ModuleName,
 		bankTypes.ModuleName,
@@ -770,46 +812,50 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		mintTypes.ModuleName,
 		genutilTypes.ModuleName,
 		evidenceTypes.ModuleName,
+		authz.ModuleName,
+		feegrant.ModuleName,
 		paramsTypes.ModuleName,
 		upgradeTypes.ModuleName,
 		vestingTypes.ModuleName,
 
+		orders.Prototype().Name(),
 		assets.Prototype().Name(),
 		classifications.Prototype().Name(),
 		identities.Prototype().Name(),
 		maintainers.Prototype().Name(),
 		metas.Prototype().Name(),
-		orders.Prototype().Name(),
 		splits.Prototype().Name(),
 	)
 	application.moduleManager.SetOrderInitGenesis(
 		capabilityTypes.ModuleName,
+		authTypes.ModuleName,
 		bankTypes.ModuleName,
 		distributionTypes.ModuleName,
+		govTypes.ModuleName,
 		stakingTypes.ModuleName,
 		slashingTypes.ModuleName,
-		govTypes.ModuleName,
 		mintTypes.ModuleName,
 		crisisTypes.ModuleName,
+		genutilTypes.ModuleName,
 		ibcTransferTypes.ModuleName,
 		ibcHost.ModuleName,
 		icaTypes.ModuleName,
 		evidenceTypes.ModuleName,
-		feegrant.ModuleName,
 		authz.ModuleName,
-		authTypes.ModuleName,
-		genutilTypes.ModuleName,
+		feegrant.ModuleName,
+		routerTypes.ModuleName,
 		paramsTypes.ModuleName,
 		upgradeTypes.ModuleName,
 		vestingTypes.ModuleName,
 
-		assets.Prototype().Name(),
-		classifications.Prototype().Name(),
-		identities.Prototype().Name(),
-		maintainers.Prototype().Name(),
+		// meta should be initialized first because rest of the modules depends on it
 		metas.Prototype().Name(),
-		orders.Prototype().Name(),
 		splits.Prototype().Name(),
+		classifications.Prototype().Name(),
+		maintainers.Prototype().Name(),
+		identities.Prototype().Name(),
+		assets.Prototype().Name(),
+		orders.Prototype().Name(),
 	)
 	application.moduleManager.RegisterInvariants(&application.crisisKeeper)
 	application.moduleManager.RegisterRoutes(application.BaseApp.Router(), application.BaseApp.QueryRouter(), application.GetCodec().GetLegacyAmino())
@@ -876,41 +922,6 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	UpgradeKeeper.SetUpgradeHandler(
 		constants.UpgradeName,
 		func(ctx sdkTypes.Context, _ upgradeTypes.Plan, fromVM module.VersionMap) (module.VersionMap, error) {
-			fromVM[icaTypes.ModuleName] = ica.NewAppModule(nil, &ICAHostKeeper).ConsensusVersion()
-			controllerParams := icaControllerTypes.Params{}
-			hostParams := icaHostTypes.Params{
-				HostEnabled: true,
-				AllowMessages: []string{
-					constants.AuthzMsgExec,
-					constants.AuthzMsgGrant,
-					constants.AuthzMsgRevoke,
-					constants.BankMsgSend,
-					constants.BankMsgMultiSend,
-					constants.DistrMsgSetWithdrawAddr,
-					constants.DistrMsgWithdrawValidatorCommission,
-					constants.DistrMsgFundCommunityPool,
-					constants.DistrMsgWithdrawDelegatorReward,
-					constants.FeegrantMsgGrantAllowance,
-					constants.FeegrantMsgRevokeAllowance,
-					constants.GovMsgVoteWeighted,
-					constants.GovMsgSubmitProposal,
-					constants.GovMsgDeposit,
-					constants.GovMsgVote,
-					constants.StakingMsgEditValidator,
-					constants.StakingMsgDelegate,
-					constants.StakingMsgUndelegate,
-					constants.StakingMsgBeginRedelegate,
-					constants.StakingMsgCreateValidator,
-					constants.VestingMsgCreateVestingAccount,
-					constants.TransferMsgTransfer,
-					constants.LiquidityMsgCreatePool,
-					constants.LiquidityMsgSwapWithinBatch,
-					constants.LiquidityMsgDepositWithinBatch,
-					constants.LiquidityMsgWithdrawWithinBatch,
-				},
-			}
-			ica.NewAppModule(nil, &ICAHostKeeper).InitModule(ctx, controllerParams, hostParams)
-
 			return application.moduleManager.RunMigrations(ctx, configurator, fromVM)
 		},
 	)

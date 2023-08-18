@@ -32,7 +32,6 @@ func TestHandler(t *testing.T) {
 	std.RegisterLegacyAminoCodec(Codec)
 	Codec.RegisterConcrete(request{}, "request", nil)
 	Codec.RegisterConcrete(response{}, "response", nil)
-	TestMessagePrototype().RegisterLegacyAminoCodec(Codec)
 
 	handler := handler(client.Context{})
 	viper.Set(flags.FlagKeyringBackend, keyring.BackendTest)
