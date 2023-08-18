@@ -52,10 +52,10 @@ git.sr.ht/~sircmpwn/go-bare v0.0.0-20210406120253-ab86bc2846d9/go.mod h1:BVJwbDf
 github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4 h1:/vQbFIOMbk2FiG/kXiLl8BRyzTWDw7gX/Hz7Dd5eDMs=
 github.com/99designs/go-keychain v0.0.0-20191008050251-8e49817e8af4/go.mod h1:hN7oaIRCjzsZ2dE+yG5k+rsdt3qcwykqK6HVGcKwsw4=
 github.com/AndreasBriese/bbloom v0.0.0-20190306092124-e2d15f34fcf9/go.mod h1:bOvUY6CB00SOBii9/FifXqc0awNKxLFCL/+pkDPuyl8=
-github.com/AssetMantle/modules v0.3.2-0.20230817140123-e0cbe268c97e h1:S3Lh3GDUKPwpjJV/3qlan+VAPf7Nq0z1ZjHiN/G7oHE=
-github.com/AssetMantle/modules v0.3.2-0.20230817140123-e0cbe268c97e/go.mod h1:Z8YAfveQ7OuWNGkDK9IXyraT8mFQWxY2cuKio4y60cM=
-github.com/AssetMantle/schema/go v0.0.0-20230817135028-5cad5120ba24 h1:pb9guFOldR0g8HZfXMIQY7dg/Ape981t1DgiUIsA2Vo=
-github.com/AssetMantle/schema/go v0.0.0-20230817135028-5cad5120ba24/go.mod h1:F8zKq4mDADBQZqkF5/ZCltYHmDLXwtAw/8slNvwaYxE=
+github.com/AssetMantle/modules v0.3.2-0.20230818005914-ebd6b7b8dc3a h1:8d3758QnnD0P8Q2HoKtLhe6B4Eo4ImfIUcixhie1czQ=
+github.com/AssetMantle/modules v0.3.2-0.20230818005914-ebd6b7b8dc3a/go.mod h1:6jlp7kNPzEqUAA2K9w5aQobcc87Nt1BKVHcz/V62V50=
+github.com/AssetMantle/schema/go v0.0.0-20230818005323-13dfca1fcce5 h1:rI+Vu8CCfJipAXmgh7rMQQhzTzA8Fqm+foKFIHr2TaM=
+github.com/AssetMantle/schema/go v0.0.0-20230818005323-13dfca1fcce5/go.mod h1:+b+pr5ek9on9CiojcnJQAncPfCqSMeC78XpG+n/VX7o=
 github.com/Azure/azure-sdk-for-go/sdk/azcore v0.21.1/go.mod h1:fBF9PQNqB8scdgpZ3ufzaLntG0AG7C1WjPMsiFOmfHM=
 github.com/Azure/azure-sdk-for-go/sdk/internal v0.8.3/go.mod h1:KLF4gFr6DcKFZwSuH8w8yEK6DpFl3LP5rhdvAb7Yz5I=
 github.com/Azure/azure-sdk-for-go/sdk/storage/azblob v0.3.0/go.mod h1:tPaiy8S5bQ+S5sOiDlINkp7+Ef339+Nz5L5XO+cnOHo=
@@ -232,8 +232,8 @@ github.com/cosmos/cosmos-db v0.0.0-20221226095112-f3c38ecb5e32 h1:zlCp9n3uwQieEL
 github.com/cosmos/cosmos-db v0.0.0-20221226095112-f3c38ecb5e32/go.mod h1:kwMlEC4wWvB48zAShGKVqboJL6w4zCLesaNQ3YLU2BQ=
 github.com/cosmos/cosmos-proto v1.0.0-beta.1 h1:iDL5qh++NoXxG8hSy93FdYJut4XfgbShIocllGaXx/0=
 github.com/cosmos/cosmos-proto v1.0.0-beta.1/go.mod h1:8k2GNZghi5sDRFw/scPL8gMSowT1vDA+5ouxL8GjaUE=
-github.com/cosmos/cosmos-sdk v0.45.16-ics h1:KsPigLNmdyyQMktAsJzW42eBFsq1uajhQF7rlnHDUgM=
-github.com/cosmos/cosmos-sdk v0.45.16-ics/go.mod h1:bScuNwWAP0TZJpUf+SHXRU3xGoUPp+X9nAzfeIXts40=
+github.com/cosmos/cosmos-sdk v0.45.16 h1:5ba/Bh5/LE55IwHQuCU4fiG4eXeDKtSWzehXRpaKDcw=
+github.com/cosmos/cosmos-sdk v0.45.16/go.mod h1:bScuNwWAP0TZJpUf+SHXRU3xGoUPp+X9nAzfeIXts40=
 github.com/cosmos/go-bip39 v0.0.0-20180819234021-555e2067c45d/go.mod h1:tSxLoYXyBmiFeKpvmq4dzayMdCjCnu8uqmCysIGBT2Y=
 github.com/cosmos/go-bip39 v1.0.0 h1:pcomnQdrdH22njcAatO0yWojsUnCO3y2tNoV1cb6hHY=
 github.com/cosmos/go-bip39 v1.0.0/go.mod h1:RNJv0H/pOIVgxw6KS7QeX2a0Uo0aKUlfhZ4xuwvCdJw=
