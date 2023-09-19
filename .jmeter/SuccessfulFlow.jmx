@@ -3323,7 +3323,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/transactions/send/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/send/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -3331,7 +3331,7 @@
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_2)}&quot;,&#xd;
-      &quot;ownableID&quot;:&quot;AI|${__property(ASSET_ID)}&quot;,&#xd;
+      &quot;assetID&quot;:&quot;${__property(ASSET_ID)}&quot;,&#xd;
 	 &quot;value&quot;:&quot;1&quot;&#xd;
    }&#xd;
 }</stringProp>
@@ -3343,7 +3343,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/splits/send</stringProp>
+              <stringProp name="HTTPSampler.path">/assets/send</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3438,7 +3438,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/transactions/wrap/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/wrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -3456,7 +3456,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/splits/wrap</stringProp>
+              <stringProp name="HTTPSampler.path">/assets/wrap</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3551,15 +3551,14 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/transactions/unwrap/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/unwrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
-	 &quot;ownableID&quot;:&quot;COI|${DENOM}&quot;,&#xd;
- 	 &quot;value&quot;:&quot;${COINS}&quot;&#xd;
+	 &quot;coins&quot;:&quot;${DENOM}${COINS}&quot;&#xd;
    }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
@@ -3570,7 +3569,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/splits/unwrap</stringProp>
+              <stringProp name="HTTPSampler.path">/assets/unwrap</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3665,7 +3664,7 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/transactions/wrap/transactionRequest&quot;,&#xd;
+   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/wrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
       &quot;baseReq&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
@@ -3683,7 +3682,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/splits/wrap</stringProp>
+              <stringProp name="HTTPSampler.path">/assets/wrap</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
