@@ -38,13 +38,58 @@ jobs:
       - name: jmeter test
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
-          testFilePath: .jmeter/PopulateNames.jmx
+          testFilePath: .jmeter/ClaimNames1.jmx
+          outputReportsFolder: reports/
+      - name: jmeter test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: .jmeter/ClaimNames2.jmx
+          outputReportsFolder: reports/
+      - name: jmeter test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: .jmeter/ClaimNames3.jmx
+          outputReportsFolder: reports/
+      - name: jmeter test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: .jmeter/ClaimNames4.jmx
+          outputReportsFolder: reports/
+      - name: jmeter test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: .jmeter/ClaimNames5.jmx
+          outputReportsFolder: reports/
+      - name: jmeter test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: .jmeter/ClaimNames6.jmx
+          outputReportsFolder: reports/
+      - name: jmeter test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: .jmeter/ClaimNames7.jmx
+          outputReportsFolder: reports/
+      - name: jmeter test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: .jmeter/ClaimNames8.jmx
+          outputReportsFolder: reports/
+      - name: jmeter test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: .jmeter/ClaimNames9.jmx
+          outputReportsFolder: reports/
+      - name: jmeter test
+        uses: rbhadti94/apache-jmeter-action@v0.5.0
+        with:
+          testFilePath: .jmeter/ClaimNames10.jmx
           outputReportsFolder: reports/
 
       - run: make docker-compose-clean || true
         if: ${{ always() }}
 
-      - uses: actions/upload-artifact@v3
-        with:
-          name: jmeter-report
-          path: reports/
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: jmeter-report
+      #     path: reports/
