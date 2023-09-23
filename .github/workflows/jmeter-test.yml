@@ -3,7 +3,7 @@ name: Jmeter
 on:
   workflow_dispatch:
   push:
-    branches: [ master ]
+    branches: [ claimname-temp ]
   pull_request:
     branches: [ master ]
 
@@ -29,10 +29,16 @@ jobs:
 
       - run: make docker-compose
 
+      # - name: jmeter test
+      #   uses: rbhadti94/apache-jmeter-action@v0.5.0
+      #   with:
+      #     testFilePath: .jmeter/jmeter.jmx
+      #     outputReportsFolder: reports/
+
       - name: jmeter test
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
-          testFilePath: .jmeter/jmeter.jmx
+          testFilePath: .jmeter/PopulateNames.jmx
           outputReportsFolder: reports/
 
       - run: make docker-compose-clean || true
