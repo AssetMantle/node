@@ -35,52 +35,52 @@ jobs:
       #     testFilePath: .jmeter/jmeter.jmx
       #     outputReportsFolder: reports/
 
-      - name: jmeter test
+      - name: jmeter test1
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
           testFilePath: .jmeter/ClaimNames1.jmx
           outputReportsFolder: reports/
-      - name: jmeter test
+      - name: jmeter test2
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
           testFilePath: .jmeter/ClaimNames2.jmx
           outputReportsFolder: reports/
-      - name: jmeter test
+      - name: jmeter test3
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
           testFilePath: .jmeter/ClaimNames3.jmx
           outputReportsFolder: reports/
-      - name: jmeter test
+      - name: jmeter test4
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
           testFilePath: .jmeter/ClaimNames4.jmx
           outputReportsFolder: reports/
-      - name: jmeter test
+      - name: jmeter test5
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
           testFilePath: .jmeter/ClaimNames5.jmx
           outputReportsFolder: reports/
-      - name: jmeter test
+      - name: jmeter test6
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
           testFilePath: .jmeter/ClaimNames6.jmx
           outputReportsFolder: reports/
-      - name: jmeter test
+      - name: jmeter test7
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
           testFilePath: .jmeter/ClaimNames7.jmx
           outputReportsFolder: reports/
-      - name: jmeter test
+      - name: jmeter test8
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
           testFilePath: .jmeter/ClaimNames8.jmx
           outputReportsFolder: reports/
-      - name: jmeter test
+      - name: jmeter test9
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
           testFilePath: .jmeter/ClaimNames9.jmx
           outputReportsFolder: reports/
-      - name: jmeter test
+      - name: jmeter test10
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
           testFilePath: .jmeter/ClaimNames10.jmx
@@ -89,7 +89,7 @@ jobs:
       - run: make docker-compose-clean || true
         if: ${{ always() }}
 
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: jmeter-report
-      #     path: reports/
+      - uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-report
+          path: reports/
