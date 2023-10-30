@@ -62,7 +62,7 @@
           </elementProp>
           <elementProp name="DELAY" elementType="Argument">
             <stringProp name="Argument.name">DELAY</stringProp>
-            <stringProp name="Argument.value">5000</stringProp>
+            <stringProp name="Argument.value">2775</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.desc">min 2775</stringProp>
           </elementProp>

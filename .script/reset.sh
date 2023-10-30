@@ -5,5 +5,4 @@
 
 rm -rf ~/.mantleNode
 
-
 mkdir ~/.mantleNode
