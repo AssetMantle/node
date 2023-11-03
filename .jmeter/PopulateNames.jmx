@@ -50,20 +50,11 @@
       <hashTree/>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="configurations" enabled="true">
         <collectionProp name="Arguments.arguments">
-          <elementProp name="IP" elementType="Argument">
-            <stringProp name="Argument.name">IP</stringProp>
-            <stringProp name="Argument.value">localhost</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="PORT" elementType="Argument">
-            <stringProp name="Argument.name">PORT</stringProp>
-            <stringProp name="Argument.value">1317</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="THREAD_COUNT" elementType="Argument">
             <stringProp name="Argument.name">THREAD_COUNT</stringProp>
             <stringProp name="Argument.value">10</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">should be &lt;= N.txt word files</stringProp>
           </elementProp>
           <elementProp name="DELAY" elementType="Argument">
             <stringProp name="Argument.name">DELAY</stringProp>
@@ -75,20 +66,24 @@
             <stringProp name="Argument.name">THREAD_RAMP_UP_TIME</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
             <stringProp name="Argument.value">100</stringProp>
-            <stringProp name="Argument.desc">should be &gt; DELAY*THREAD_COUNT/1000</stringProp>
+            <stringProp name="Argument.desc">should be &gt;= DELAY*THREAD_COUNT/1000</stringProp>
           </elementProp>
           <elementProp name="CHAIN_ID" elementType="Argument">
             <stringProp name="Argument.name">CHAIN_ID</stringProp>
             <stringProp name="Argument.value">test-chain-1</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="MAIN_ADDRESS" elementType="Argument">
-            <stringProp name="Argument.name">MAIN_ADDRESS</stringProp>
-            <stringProp name="Argument.value">mantle1pkkayn066msg6kn33wnl5srhdt3tnu2vuet86j</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
         </collectionProp>
       </Arguments>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">localhost</stringProp>
+        <stringProp name="HTTPSampler.port">1317</stringProp>
+        <stringProp name="HTTPSampler.protocol">http</stringProp>
+      </ConfigTestElement>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="populate names" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -121,9 +116,6 @@
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${IP}</stringProp>
-            <stringProp name="HTTPSampler.port">${PORT}</stringProp>
-            <stringProp name="HTTPSampler.protocol">http</stringProp>
             <stringProp name="HTTPSampler.path">/keys/add</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -166,9 +158,6 @@
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">localhost</stringProp>
-              <stringProp name="HTTPSampler.port">1317</stringProp>
-              <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.path">/faucet/${address}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -212,9 +201,6 @@
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">${IP}</stringProp>
-              <stringProp name="HTTPSampler.port">${PORT}</stringProp>
-              <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.path">/txs/${tx_hash}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -288,9 +274,6 @@
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">${IP}</stringProp>
-              <stringProp name="HTTPSampler.port">${PORT}</stringProp>
-              <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.path">/identities/name</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
@@ -333,9 +316,6 @@
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments"/>
                 </elementProp>
-                <stringProp name="HTTPSampler.domain">${IP}</stringProp>
-                <stringProp name="HTTPSampler.port">${PORT}</stringProp>
-                <stringProp name="HTTPSampler.protocol">http</stringProp>
                 <stringProp name="HTTPSampler.path">/txs/${tx_hash}</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
