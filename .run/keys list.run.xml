@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="keys list" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="keys">
+  <configuration default="false" name="keys list test keys" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="keys">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$" />
-    <parameters value="keys list" />
+    <parameters value="keys list test1 test2 test3 test4 test5 test6 test7 test8 test9 test10" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$" />
