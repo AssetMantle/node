@@ -12,8 +12,6 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/strangelove-ventures/packet-forward-middleware/v4/router"
-
 	"github.com/AssetMantle/modules/helpers"
 	"github.com/AssetMantle/modules/helpers/base"
 	documentIDGetters "github.com/AssetMantle/modules/utilities/rest/id_getters/docs"
@@ -126,6 +124,7 @@ import (
 	"github.com/rakyll/statik/fs"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
+	"github.com/strangelove-ventures/packet-forward-middleware/v4/router"
 	routerKeeper "github.com/strangelove-ventures/packet-forward-middleware/v4/router/keeper"
 	routerTypes "github.com/strangelove-ventures/packet-forward-middleware/v4/router/types"
 	abciTypes "github.com/tendermint/tendermint/abci/types"
@@ -159,7 +158,7 @@ type application struct {
 
 	moduleManager *module.Manager
 
-	baseapp.BaseApp
+	*baseapp.BaseApp
 }
 
 var _ applications.Application = (*application)(nil)
@@ -177,10 +176,10 @@ func (application application) GetCodec() helpers.Codec {
 	return application.codec
 }
 func (application application) LoadHeight(height int64) error {
-	return application.BaseApp.LoadVersion(height)
+	return application.LoadVersion(height)
 }
 func (application application) ExportApplicationStateAndValidators(forZeroHeight bool, jailWhiteList []string) (serverTypes.ExportedApp, error) {
-	context := application.BaseApp.NewContext(true, protoTendermintTypes.Header{Height: application.BaseApp.LastBlockHeight()})
+	context := application.NewContext(true, protoTendermintTypes.Header{Height: application.LastBlockHeight()})
 
 	height := application.LastBlockHeight() + 1
 	if forZeroHeight {
@@ -321,7 +320,7 @@ func (application application) ExportApplicationStateAndValidators(forZeroHeight
 		AppState:        applicationState,
 		Validators:      validators,
 		Height:          height,
-		ConsensusParams: application.BaseApp.GetConsensusParams(context),
+		ConsensusParams: application.GetConsensusParams(context),
 	}, err
 }
 func (application application) RegisterAPIRoutes(server *api.Server, apiConfig config.APIConfig) {
@@ -344,10 +343,10 @@ func (application application) RegisterAPIRoutes(server *api.Server, apiConfig c
 	}
 }
 func (application application) RegisterTxService(context client.Context) {
-	authTx.RegisterTxService(application.BaseApp.GRPCQueryRouter(), context, application.BaseApp.Simulate, context.InterfaceRegistry)
+	authTx.RegisterTxService(application.GRPCQueryRouter(), context, application.Simulate, context.InterfaceRegistry)
 }
 func (application application) RegisterTendermintService(context client.Context) {
-	tmservice.RegisterTendermintService(application.BaseApp.GRPCQueryRouter(), context, context.InterfaceRegistry)
+	tmservice.RegisterTendermintService(application.GRPCQueryRouter(), context, context.InterfaceRegistry)
 }
 func (application application) AppCreator(logger tendermintLog.Logger, db tendermintDB.DB, writer io.Writer, appOptions serverTypes.AppOptions) serverTypes.Application {
 	var multiStorePersistentCache sdkTypes.MultiStorePersistentCache
@@ -395,7 +394,8 @@ func (application application) AppCreator(logger tendermintLog.Logger, db tender
 		baseapp.SetIndexEvents(cast.ToStringSlice(appOptions.Get(server.FlagIndexEvents))),
 		baseapp.SetSnapshotStore(snapshotStore),
 		baseapp.SetSnapshotInterval(cast.ToUint64(appOptions.Get(server.FlagStateSyncSnapshotInterval))),
-		baseapp.SetSnapshotKeepRecent(cast.ToUint32(appOptions.Get(server.FlagStateSyncSnapshotKeepRecent))))
+		baseapp.SetSnapshotKeepRecent(cast.ToUint32(appOptions.Get(server.FlagStateSyncSnapshotKeepRecent))),
+		baseapp.SetIAVLCacheSize(cast.ToInt(appOptions.Get(server.FlagIAVLCacheSize))))
 }
 func (application application) AppExporter(logger tendermintLog.Logger, db tendermintDB.DB, writer io.Writer, height int64, forZeroHeight bool, jailAllowedAddrs []string, appOptions serverTypes.AppOptions) (serverTypes.ExportedApp, error) {
 	home, ok := appOptions.Get(flags.FlagHome).(string)
@@ -431,10 +431,10 @@ func (application application) ModuleInitFlags(command *cobra.Command) {
 	crisis.AddModuleInitFlags(command)
 }
 func (application application) Initialize(logger tendermintLog.Logger, db tendermintDB.DB, writer io.Writer, loadLatest bool, invCheckPeriod uint, skipUpgradeHeights map[int64]bool, home string, appOptions serverTypes.AppOptions, baseAppOptions ...func(*baseapp.BaseApp)) applications.Application {
-	application.BaseApp = *baseapp.NewBaseApp(application.name, logger, db, application.GetCodec().TxDecoder(), baseAppOptions...)
-	application.BaseApp.SetCommitMultiStoreTracer(writer)
-	application.BaseApp.SetVersion(version.Version)
-	application.BaseApp.SetInterfaceRegistry(application.GetCodec().InterfaceRegistry())
+	application.BaseApp = baseapp.NewBaseApp(application.name, logger, db, application.GetCodec().TxDecoder(), baseAppOptions...)
+	application.SetCommitMultiStoreTracer(writer)
+	application.SetVersion(version.Version)
+	application.SetInterfaceRegistry(application.GetCodec().InterfaceRegistry())
 
 	application.keys = sdkTypes.NewKVStoreKeys(
 		authTypes.StoreKey,
@@ -474,7 +474,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		transientStoreKeys[paramsTypes.TStoreKey],
 	)
 
-	application.BaseApp.SetParamStore(ParamsKeeper.Subspace(baseapp.Paramspace).WithKeyTable(paramsKeeper.ConsensusParamsKeyTable()))
+	application.SetParamStore(ParamsKeeper.Subspace(baseapp.Paramspace).WithKeyTable(paramsKeeper.ConsensusParamsKeyTable()))
 
 	CapabilityKeeper := capabilityKeeper.NewKeeper(application.GetCodec(), application.keys[capabilityTypes.StoreKey], memoryStoreKeys[capabilityTypes.MemStoreKey])
 	scopedIBCKeeper := CapabilityKeeper.ScopeToModule(ibcHost.ModuleName)
@@ -506,7 +506,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	AuthzKeeper := authzKeeper.NewKeeper(
 		application.keys[authzKeeper.StoreKey],
 		application.GetCodec(),
-		application.BaseApp.MsgServiceRouter(),
+		application.MsgServiceRouter(),
 	)
 
 	FeeGrantKeeper := feeGrantKeeper.NewKeeper(
@@ -564,7 +564,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		application.keys[upgradeTypes.StoreKey],
 		application.GetCodec(),
 		home,
-		&application.BaseApp,
+		application.BaseApp,
 	)
 
 	application.stakingKeeper = *application.stakingKeeper.SetHooks(stakingTypes.NewMultiStakingHooks(application.distributionKeeper.Hooks(), application.slashingKeeper.Hooks()))
@@ -735,7 +735,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	)
 
 	application.moduleManager = module.NewManager(
-		genutil.NewAppModule(AccountKeeper, application.stakingKeeper, application.BaseApp.DeliverTx, application.GetCodec()),
+		genutil.NewAppModule(AccountKeeper, application.stakingKeeper, application.DeliverTx, application.GetCodec()),
 		auth.NewAppModule(application.GetCodec(), AccountKeeper, nil),
 		vesting.NewAppModule(AccountKeeper, BankKeeper),
 		bank.NewAppModule(application.GetCodec(), BankKeeper, AccountKeeper),
@@ -858,7 +858,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		orders.Prototype().Name(),
 	)
 	application.moduleManager.RegisterInvariants(&application.crisisKeeper)
-	application.moduleManager.RegisterRoutes(application.BaseApp.Router(), application.BaseApp.QueryRouter(), application.GetCodec().GetLegacyAmino())
+	application.moduleManager.RegisterRoutes(application.Router(), application.QueryRouter(), application.GetCodec().GetLegacyAmino())
 
 	configurator := module.NewConfigurator(application.GetCodec(), application.MsgServiceRouter(), application.GRPCQueryRouter())
 	application.moduleManager.RegisterServices(configurator)
@@ -888,10 +888,10 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		splits.Prototype(),
 	).RegisterStoreDecoders()
 
-	application.BaseApp.MountKVStores(application.keys)
-	application.BaseApp.MountTransientStores(transientStoreKeys)
-	application.BaseApp.MountMemoryStores(memoryStoreKeys)
-	application.BaseApp.SetAnteHandler(sdkTypes.ChainAnteDecorators(
+	application.MountKVStores(application.keys)
+	application.MountTransientStores(transientStoreKeys)
+	application.MountMemoryStores(memoryStoreKeys)
+	application.SetAnteHandler(sdkTypes.ChainAnteDecorators(
 		ante.NewSetUpContextDecorator(),
 		ante.NewRejectExtensionOptionsDecorator(),
 		ante.NewValidateBasicDecorator(),
@@ -906,9 +906,9 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		ante.NewIncrementSequenceDecorator(AccountKeeper),
 		ibcAnte.NewAnteDecorator(IBCKeeper),
 	))
-	application.BaseApp.SetBeginBlocker(application.moduleManager.BeginBlock)
-	application.BaseApp.SetEndBlocker(application.moduleManager.EndBlock)
-	application.BaseApp.SetInitChainer(func(context sdkTypes.Context, requestInitChain abciTypes.RequestInitChain) abciTypes.ResponseInitChain {
+	application.SetBeginBlocker(application.moduleManager.BeginBlock)
+	application.SetEndBlocker(application.moduleManager.EndBlock)
+	application.SetInitChainer(func(context sdkTypes.Context, requestInitChain abciTypes.RequestInitChain) abciTypes.ResponseInitChain {
 		var genesisState map[string]json.RawMessage
 		if err := tendermintJSON.Unmarshal(requestInitChain.AppStateBytes, &genesisState); err != nil {
 			panic(err)
@@ -940,7 +940,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	}
 
 	if loadLatest {
-		err := application.BaseApp.LoadLatestVersion()
+		err := application.LoadLatestVersion()
 		if err != nil {
 			tendermintOS.Exit(err.Error())
 		}
