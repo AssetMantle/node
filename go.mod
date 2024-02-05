@@ -1,6 +1,6 @@
 module github.com/AssetMantle/node
 
-go 1.19
+go 1.20
 
 require (
 	github.com/AssetMantle/modules v0.4.1-0.20231103051808-54c509074b08
