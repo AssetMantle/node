@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="bank send" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="bank">
+    <module name="node" />
+    <working_directory value="$PROJECT_DIR$" />
+    <parameters value="tx bank send test mantle1mva739ke654x5pqzavvyh2k2swq5kafet8x79w 10stake -y --chain-id=test-chain-1 --from=test --gas=auto" />
+    <kind value="FILE" />
+    <package value="$PROJECT_DIR$/node/main.go" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$/node/main.go" />
+    <method v="2" />
+  </configuration>
+</component>
