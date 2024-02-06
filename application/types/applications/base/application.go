@@ -159,7 +159,7 @@ type application struct {
 
 	moduleManager *module.Manager
 
-	baseapp.BaseApp
+	*baseapp.BaseApp
 }
 
 var _ applications.Application = (*application)(nil)
@@ -431,7 +431,7 @@ func (application application) ModuleInitFlags(command *cobra.Command) {
 	crisis.AddModuleInitFlags(command)
 }
 func (application application) Initialize(logger tendermintLog.Logger, db tendermintDB.DB, writer io.Writer, loadLatest bool, invCheckPeriod uint, skipUpgradeHeights map[int64]bool, home string, appOptions serverTypes.AppOptions, baseAppOptions ...func(*baseapp.BaseApp)) applications.Application {
-	application.BaseApp = *baseapp.NewBaseApp(application.name, logger, db, application.GetCodec().TxDecoder(), baseAppOptions...)
+	application.BaseApp = baseapp.NewBaseApp(application.name, logger, db, application.GetCodec().TxDecoder(), baseAppOptions...)
 	application.BaseApp.SetCommitMultiStoreTracer(writer)
 	application.BaseApp.SetVersion(version.Version)
 	application.BaseApp.SetInterfaceRegistry(application.GetCodec().InterfaceRegistry())
@@ -564,7 +564,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		application.keys[upgradeTypes.StoreKey],
 		application.GetCodec(),
 		home,
-		&application.BaseApp,
+		application.BaseApp,
 	)
 
 	application.stakingKeeper = *application.stakingKeeper.SetHooks(stakingTypes.NewMultiStakingHooks(application.distributionKeeper.Hooks(), application.slashingKeeper.Hooks()))
