@@ -52,14 +52,12 @@ func TestHandler(t *testing.T) {
 	require.Nil(t, err)
 
 	address := "cosmos1pkkayn066msg6kn33wnl5srhdt3tnu2vzasz9c"
-	var sdkAddress sdkTypes.AccAddress
-	sdkAddress, err = sdkTypes.AccAddressFromBech32(address)
 
 	// signWithout chainID
 	requestBody1, err := Codec.MarshalJSON(request{
 		BaseRequest: rest.BaseReq{From: address},
 		Type:        "cosmos-sdk/StdTx",
-		StdTx:       legacytx.NewStdTx([]sdkTypes.Msg{base.NewTestMessage(sdkAddress, "id")}, legacytx.NewStdFee(10, sdkTypes.NewCoins()), nil, ""),
+		StdTx:       legacytx.NewStdTx([]sdkTypes.Msg{}, legacytx.NewStdFee(10, sdkTypes.NewCoins()), nil, ""),
 	})
 	require.Nil(t, err)
 	testRequest1, err := http.NewRequest("POST", "/sign", bytes.NewBuffer(requestBody1))
@@ -73,7 +71,7 @@ func TestHandler(t *testing.T) {
 	requestBody2, err := Codec.MarshalJSON(request{
 		BaseRequest: rest.BaseReq{From: "address", ChainID: "test"},
 		Type:        "cosmos-sdk/StdTx",
-		StdTx:       legacytx.NewStdTx([]sdkTypes.Msg{base.NewTestMessage(sdkAddress, "id")}, legacytx.NewStdFee(20, sdkTypes.NewCoins()), nil, ""),
+		StdTx:       legacytx.NewStdTx([]sdkTypes.Msg{}, legacytx.NewStdFee(20, sdkTypes.NewCoins()), nil, ""),
 	})
 	require.Nil(t, err)
 	testRequest2, err := http.NewRequest("POST", "/sign", bytes.NewBuffer(requestBody2))
@@ -87,7 +85,7 @@ func TestHandler(t *testing.T) {
 	requestBody3, err := Codec.MarshalJSON(request{
 		BaseRequest: rest.BaseReq{From: address, ChainID: "test"},
 		Type:        "cosmos-sdk/StdTx",
-		StdTx:       legacytx.NewStdTx([]sdkTypes.Msg{base.NewTestMessage(sdkAddress, "id")}, legacytx.NewStdFee(30, sdkTypes.NewCoins()), nil, ""),
+		StdTx:       legacytx.NewStdTx([]sdkTypes.Msg{}, legacytx.NewStdFee(30, sdkTypes.NewCoins()), nil, ""),
 	})
 	require.Nil(t, err)
 	testRequest3, err := http.NewRequest("POST", "/sign", bytes.NewBuffer(requestBody3))
