@@ -15,12 +15,12 @@ transfer and decentralized exchange.
 ## Hardware Requirements
 
 * **Minimal**
-  * 2vCPU
-  * 4GB RAM
+  * 4vCPU
+  * 32GB RAM
   * 200GB SSD
 * **Recommended**
-  * 4vCPU
-  * 8GB RAM
+  * 8vCPU
+  * 64GB RAM
   * 500GB SSD
 
 > NOTE: SSDs have limited TBW before non-catastrophic data errors. Running a full node requires a TB+ writes per day, causing rapid deterioration of SSDs over HDDs of comparable quality.
@@ -33,7 +33,7 @@ transfer and decentralized exchange.
 
 ## Installation Steps
 
->Prerequisite: go1.18+ required. [ref](https://golang.org/doc/install)
+>Prerequisite: go1.19 required. [ref](https://golang.org/doc/install)
 >Prerequisite: git. [ref](https://github.com/git/git)
 >Optional requirement: GNU make. [ref](https://www.gnu.org/software/make/manual/html_node/index.html)
 
@@ -41,8 +41,8 @@ transfer and decentralized exchange.
 
 ```shell
 git clone https://github.com/AssetMantle/node.git
-git checkout [vX.X.X]
-cd assetMantle
+git checkout v1.0.0
+cd node
 make all
 ```
 
