@@ -4,12 +4,11 @@
 package sign
 
 import (
-	"testing"
-
-	errorConstants "github.com/AssetMantle/schema/go/errors/constants"
+	errorConstants "github.com/AssetMantle/modules/helpers/constants"
 	sdkTypes "github.com/cosmos/cosmos-sdk/types"
 	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	"github.com/stretchr/testify/require"
+	"testing"
 )
 
 func Test_SignTx_Response(t *testing.T) {

@@ -1,0 +1,17 @@
+{
+  "title": "Splits",
+  "description": "allow umntl and usdc",
+  "changes": [
+    {
+      "subspace": "assets",
+      "key": "unwrapAllowedCoinsL",
+      "value": "S|stake,,S|ibc/CBA34207E969623D95D057D9B11B0C8B32B89A71F170577D982FDDE623813FFC"
+    },
+    {
+      "subspace": "assets",
+      "key": "wrapAllowedCoinsL",
+      "value": "S|stake,,S|ibc/CBA34207E969623D95D057D9B11B0C8B32B89A71F170577D982FDDE623813FFC"
+    }
+  ],
+  "deposit": "100000000stake"
+}

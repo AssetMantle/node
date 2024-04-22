@@ -432,9 +432,10 @@ func (application application) ModuleInitFlags(command *cobra.Command) {
 }
 func (application application) Initialize(logger tendermintLog.Logger, db tendermintDB.DB, writer io.Writer, loadLatest bool, invCheckPeriod uint, skipUpgradeHeights map[int64]bool, home string, appOptions serverTypes.AppOptions, baseAppOptions ...func(*baseapp.BaseApp)) applications.Application {
 	application.BaseApp = baseapp.NewBaseApp(application.name, logger, db, application.GetCodec().TxDecoder(), baseAppOptions...)
-	application.SetCommitMultiStoreTracer(writer)
-	application.SetVersion(version.Version)
-	application.SetInterfaceRegistry(application.GetCodec().InterfaceRegistry())
+
+	application.BaseApp.SetCommitMultiStoreTracer(writer)
+	application.BaseApp.SetVersion(version.Version)
+	application.BaseApp.SetInterfaceRegistry(application.GetCodec().InterfaceRegistry())
 
 	application.keys = sdkTypes.NewKVStoreKeys(
 		authTypes.StoreKey,

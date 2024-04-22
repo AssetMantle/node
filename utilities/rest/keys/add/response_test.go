@@ -4,11 +4,10 @@
 package add
 
 import (
-	"testing"
-
-	errorConstants "github.com/AssetMantle/schema/go/errors/constants"
+	errorConstants "github.com/AssetMantle/modules/helpers/constants"
 	"github.com/cosmos/cosmos-sdk/crypto/keyring"
 	"github.com/stretchr/testify/require"
+	"testing"
 )
 
 func Test_Add_Response(t *testing.T) {

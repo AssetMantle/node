@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="assets parameter change" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="assets">
+  <configuration default="false" name="inflation parameter change" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="mint">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <parameters value="tx gov submit-proposal param-change .run/assets/assetsParamChangeProposal.json -y --chain-id=test-chain-1 --from=test" />
+    <parameters value="tx gov submit-proposal param-change .run/assets/mintingParamChangeProposal.json -y --chain-id=test-chain-1 --from=test" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
