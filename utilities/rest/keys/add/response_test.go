@@ -11,8 +11,6 @@ import (
 	"testing"
 
 	errorConstants "github.com/AssetMantle/schema/go/errors/constants"
-	"github.com/cosmos/cosmos-sdk/crypto/keyring"
-	"github.com/stretchr/testify/require"
 )
 
 func Test_Add_Response(t *testing.T) {

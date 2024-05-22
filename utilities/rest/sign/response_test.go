@@ -8,8 +8,6 @@ import (
 	"testing"
 
 	errorConstants "github.com/AssetMantle/schema/go/errors/constants"
-	sdkTypes "github.com/cosmos/cosmos-sdk/types"
-	"github.com/stretchr/testify/require"
 )
 
 func Test_SignTx_Response(t *testing.T) {

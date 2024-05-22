@@ -1,0 +1,17 @@
+{
+  "title": "inflation",
+  "description": "halving",
+  "changes": [
+    {
+      "subspace": "mint",
+      "key": "InflationMax",
+      "value": "0.165"
+    },
+    {
+      "subspace": "mint",
+      "key": "InflationMin",
+      "value": "0.105"
+    }
+  ],
+  "deposit": "100000000stake"
+}

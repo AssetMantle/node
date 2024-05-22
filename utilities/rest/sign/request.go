@@ -5,20 +5,18 @@ package sign
 
 import (
 	"github.com/AssetMantle/modules/helpers"
-	"github.com/asaskevich/govalidator"
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/cosmos/cosmos-sdk/x/auth/signing"
 )
 
 type request struct {
 	BaseRequest rest.BaseReq `json:"baseReq"`
-	Type        string       `json:"type" valid:"required~required field to missing, matches(^.*$)~invalid field type"`
+	Type        string       `json:"type"`
 	StdTx       signing.Tx   `json:"value"`
 }
 
 var _ helpers.Request = request{}
 
 func (request request) Validate() error {
-	_, err := govalidator.ValidateStruct(request)
-	return err
+	return nil
 }
