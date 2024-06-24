@@ -16,7 +16,7 @@ import (
 func main() {
 	rootCmd, _ := commands.RootCommand()
 
-	if err := serverCmd.Execute(rootCmd, application.Prototype.GetDefaultNodeHome()); err != nil {
+	if err := serverCmd.Execute(rootCmd, "", application.Prototype.GetDefaultNodeHome()); err != nil {
 		switch e := err.(type) {
 		case server.ErrorCode:
 			os.Exit(e.Code)
