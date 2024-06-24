@@ -5,7 +5,8 @@ package sign
 
 import (
 	"github.com/AssetMantle/modules/helpers"
-	"github.com/cosmos/cosmos-sdk/types/rest"
+	"github.com/AssetMantle/modules/utilities/rest"
+
 	"github.com/cosmos/cosmos-sdk/x/auth/signing"
 )
 
