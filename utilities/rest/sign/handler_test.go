@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	schemaCodec "github.com/AssetMantle/schema/go/codec"
+	schemaCodec "github.com/AssetMantle/schema/codec"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -19,8 +19,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/std"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkTypes "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/cosmos-sdk/types/rest"
-	"github.com/cosmos/cosmos-sdk/x/auth/legacy/legacytx"
 	"github.com/gorilla/mux"
 	"github.com/spf13/viper"
 	"github.com/stretchr/testify/require"
