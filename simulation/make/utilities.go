@@ -6,10 +6,9 @@ package make
 import (
 	"os"
 
-	"github.com/cosmos/cosmos-sdk/simapp"
+	db "github.com/cometbft/cometbft-db"
+	"github.com/cometbft/cometbft/libs/log"
 	simulationTypes "github.com/cosmos/cosmos-sdk/types/simulation"
-	"github.com/tendermint/tendermint/libs/log"
-	db "github.com/tendermint/tm-db"
 )
 
 type testingLogging interface {
