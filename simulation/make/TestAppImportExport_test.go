@@ -8,20 +8,20 @@ import (
 	"fmt"
 	"os"
 	"testing"
-	
+
 	simulationTypes "github.com/cosmos/cosmos-sdk/types/simulation"
-	
+
 	"github.com/AssetMantle/node/application"
 	"github.com/AssetMantle/node/application/types/applications/base"
-	
+
+	tmproto "github.com/cometbft/cometbft/proto/tendermint/types"
 	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	distributionTypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 	govTypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	mintTypes "github.com/cosmos/cosmos-sdk/x/mint/types"
 	slashingTypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	stakingTypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
-	
+
 	"github.com/AssetMantle/modules/x/assets"
 	"github.com/AssetMantle/modules/x/classifications"
 	"github.com/AssetMantle/modules/x/identities"
@@ -30,7 +30,6 @@ import (
 	"github.com/AssetMantle/modules/x/orders"
 	"github.com/AssetMantle/modules/x/splits"
 	"github.com/cosmos/cosmos-sdk/baseapp"
-	"github.com/cosmos/cosmos-sdk/simapp"
 	"github.com/cosmos/cosmos-sdk/store"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	paramsTypes "github.com/cosmos/cosmos-sdk/x/params/types"
