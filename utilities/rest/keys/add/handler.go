@@ -5,13 +5,14 @@ package add
 
 import (
 	"fmt"
+	"github.com/AssetMantle/modules/utilities/rest"
 	"net/http"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/crypto/hd"
 	"github.com/cosmos/cosmos-sdk/crypto/keyring"
 	sdkTypes "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/cosmos-sdk/types/rest"
+
 	"github.com/cosmos/go-bip39"
 	"github.com/gorilla/mux"
 )
