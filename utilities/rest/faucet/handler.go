@@ -4,12 +4,13 @@
 package faucet
 
 import (
+	"github.com/AssetMantle/modules/utilities/rest"
 	"net/http"
 
 	"github.com/AssetMantle/modules/utilities/rest/queuing"
 	"github.com/cosmos/cosmos-sdk/client"
 	sdkTypes "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/cosmos-sdk/types/rest"
+
 	"github.com/cosmos/cosmos-sdk/x/bank/types"
 	"github.com/gorilla/mux"
 )
@@ -32,9 +33,14 @@ func RegisterRESTRoutes(context client.Context, router *mux.Router) {
 				return
 			}
 
-			context = context.WithFromName(fromKeyInfo.GetName()).WithFromAddress(fromKeyInfo.GetAddress()).WithChainID(chainID).WithSkipConfirmation(true)
+			address, err := fromKeyInfo.GetAddress()
+			if rest.CheckBadRequestError(responseWriter, err) {
+				return
+			}
 
-			if rest.CheckInternalServerError(responseWriter, queuing.QueueOrBroadcastTransaction(context.WithOutput(responseWriter), rest.NewBaseReq(faucetKeyName, "faucet", context.ChainID, gas, gasAdjustment, 0, 0, sdkTypes.NewCoins(), sdkTypes.NewDecCoins(), false), types.NewMsgSend(context.FromAddress, toAddress, sdkTypes.NewCoins(sdkTypes.NewCoin(faucetDenom, sdkTypes.NewInt(faucetAmount)))))) {
+			context = context.WithFromName(fromKeyInfo.Name).WithFromAddress(address).WithChainID(chainID).WithSkipConfirmation(true)
+
+			if rest.CheckInternalServerError(responseWriter, queuing.QueueOrBroadcastTransaction(context.WithOutput(responseWriter), rest.NewBaseReq(faucetKeyName, "faucet", context.ChainID, gas, gasAdjustment, 0, 0, 0, sdkTypes.NewCoins(), sdkTypes.NewDecCoins(), false), types.NewMsgSend(context.FromAddress, toAddress, sdkTypes.NewCoins(sdkTypes.NewCoin(faucetDenom, sdkTypes.NewInt(faucetAmount)))))) {
 				return
 			}
 

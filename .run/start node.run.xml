@@ -2,7 +2,7 @@
   <configuration default="false" name="start node" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="start">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <parameters value="start" />
+    <parameters value="start --minimum-gas-prices 0.01stake"/>
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />

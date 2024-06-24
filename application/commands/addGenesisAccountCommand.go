@@ -55,7 +55,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 				}
 
 				// attempt to lookup address from Keybase if no address was provided
-				kb, err := keyring.New(sdkTypes.KeyringServiceName(), keyringBackend, clientContext.HomeDir, inBuf)
+				kb, err := keyring.New(sdkTypes.KeyringServiceName(), keyringBackend, clientContext.HomeDir, inBuf, clientContext.Codec)
 				if err != nil {
 					return err
 				}
@@ -65,7 +65,9 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 					return fmt.Errorf("failed to get address from Keybase: %w", err)
 				}
 
-				addr = info.GetAddress()
+				if addr, err = info.GetAddress(); err != nil {
+					return fmt.Errorf("failed to get address %w", err)
+				}
 			}
 
 			coins, err := sdkTypes.ParseCoinsNormalized(args[1])
@@ -141,7 +143,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 			}
 
 			// Add the new account to the set of genesis accounts and sanitize the
-			// accounts afterwards.
+			// accounts afterward.
 			accounts = append(accounts, genAccount)
 			accounts = authTypes.SanitizeGenesisAccounts(accounts)
 

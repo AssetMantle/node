@@ -4,11 +4,10 @@
 package sign
 
 import (
-	"github.com/cosmos/cosmos-sdk/x/auth/legacy/legacytx"
 	"testing"
 
 	sdkTypes "github.com/cosmos/cosmos-sdk/types"
-	"github.com/cosmos/cosmos-sdk/types/rest"
+
 	"github.com/stretchr/testify/require"
 )
 

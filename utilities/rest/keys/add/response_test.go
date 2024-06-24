@@ -4,13 +4,15 @@
 package add
 
 import (
+	"github.com/cosmos/cosmos-sdk/crypto/keyring"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/multisig"
 	"github.com/cosmos/cosmos-sdk/crypto/keys/secp256k1"
 	"github.com/cosmos/cosmos-sdk/crypto/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/stretchr/testify/require"
 	"testing"
 
-	errorConstants "github.com/AssetMantle/schema/go/errors/constants"
+	"github.com/AssetMantle/modules/helpers/constants"
 )
 
 func Test_Add_Response(t *testing.T) {
@@ -27,7 +29,7 @@ func Test_Add_Response(t *testing.T) {
 	require.Equal(t, response{Success: true, Error: nil, KeyOutput: testKeyOutput}, testResponse)
 	require.Equal(t, true, testResponse.IsSuccessful())
 	require.Equal(t, nil, testResponse.GetError())
-	testResponse2 := newResponse(testKeyOutput, errorConstants.IncorrectFormat)
+	testResponse2 := newResponse(testKeyOutput, constants.IncorrectFormat)
 	require.Equal(t, false, testResponse2.IsSuccessful())
-	require.Equal(t, errorConstants.IncorrectFormat, testResponse2.GetError())
+	require.Equal(t, constants.IncorrectFormat, testResponse2.GetError())
 }

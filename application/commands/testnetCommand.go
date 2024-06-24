@@ -8,6 +8,11 @@ import (
 	"os"
 	"path/filepath"
 
+	tendermintConfig "github.com/cometbft/cometbft/config"
+	tendermintOS "github.com/cometbft/cometbft/libs/os"
+	tendermintRand "github.com/cometbft/cometbft/libs/rand"
+	"github.com/cometbft/cometbft/types"
+	tendermintTime "github.com/cometbft/cometbft/types/time"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/tx"
@@ -25,11 +30,6 @@ import (
 	genutilTypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
 	stakingTypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"github.com/spf13/cobra"
-	tendermintConfig "github.com/tendermint/tendermint/config"
-	tendermintOS "github.com/tendermint/tendermint/libs/os"
-	tendermintRand "github.com/tendermint/tendermint/libs/rand"
-	"github.com/tendermint/tendermint/types"
-	tendermintTime "github.com/tendermint/tendermint/types/time"
 )
 
 var (
@@ -90,7 +90,7 @@ Example:
 			if err != nil {
 				return err
 			}
-			algo, err := cmd.Flags().GetString(flags.FlagKeyAlgorithm)
+			algo, err := cmd.Flags().GetString(flags.FlagKeyType)
 			if err != nil {
 				return err
 			}
@@ -110,7 +110,7 @@ Example:
 	cmd.Flags().String(flags.FlagChainID, "", "genesis file chain-id, if left blank will be randomly created")
 	cmd.Flags().String(server.FlagMinGasPrices, fmt.Sprintf("0.000006%s", sdkTypes.DefaultBondDenom), "Minimum gas prices to accept for transactions; All fees in a tx must meet this minimum (e.g. 0.01photino,0.001stake)")
 	cmd.Flags().String(flags.FlagKeyringBackend, flags.DefaultKeyringBackend, "Select keyring's backend (os|file|test)")
-	cmd.Flags().String(flags.FlagKeyAlgorithm, string(hd.Secp256k1Type), "Key signing algorithm to generate keys for")
+	cmd.Flags().String(flags.FlagKeyType, string(hd.Secp256k1Type), "Key signing algorithm to generate keys for")
 
 	return cmd
 }
@@ -192,7 +192,7 @@ func InitTestnet(
 		memo := fmt.Sprintf("%s@%s:26656", nodeIDs[i], ip)
 		genFiles = append(genFiles, nodeConfig.GenesisFile())
 
-		kb, err := keyring.New(sdkTypes.KeyringServiceName(), keyringBackend, nodeDir, inBuf)
+		kb, err := keyring.New(sdkTypes.KeyringServiceName(), keyringBackend, nodeDir, inBuf, clientCtx.Codec)
 		if err != nil {
 			return err
 		}
@@ -362,7 +362,7 @@ func collectGenFiles(
 			return err
 		}
 
-		nodeAppState, err := genutil.GenAppStateFromConfig(clientCtx.Codec, clientCtx.TxConfig, nodeConfig, initCfg, *genDoc, genBalIterator)
+		nodeAppState, err := genutil.GenAppStateFromConfig(clientCtx.Codec, clientCtx.TxConfig, nodeConfig, initCfg, *genDoc, genBalIterator, genutilTypes.DefaultMessageValidator)
 		if err != nil {
 			return err
 		}

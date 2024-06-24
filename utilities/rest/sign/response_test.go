@@ -4,10 +4,9 @@
 package sign
 
 import (
-	"github.com/cosmos/cosmos-sdk/x/auth/legacy/legacytx"
 	"testing"
 
-	errorConstants "github.com/AssetMantle/schema/go/errors/constants"
+	"github.com/AssetMantle/modules/helpers/constants"
 )
 
 func Test_SignTx_Response(t *testing.T) {
@@ -15,7 +14,7 @@ func Test_SignTx_Response(t *testing.T) {
 
 	testStdTx := legacytx.NewStdTx([]sdkTypes.Msg{}, testFee, []legacytx.StdSignature{}, "")
 	require.Equal(t, response{Success: true, Error: nil, Tx: testStdTx}, newResponse(testStdTx, nil))
-	testResponse := newResponse(testStdTx, errorConstants.IncorrectFormat)
+	testResponse := newResponse(testStdTx, constants.IncorrectFormat)
 	require.Equal(t, false, testResponse.IsSuccessful())
-	require.Equal(t, errorConstants.IncorrectFormat, testResponse.GetError())
+	require.Equal(t, constants.IncorrectFormat, testResponse.GetError())
 }

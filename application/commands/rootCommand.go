@@ -1,10 +1,13 @@
 package commands
 
 import (
+	"github.com/cosmos/cosmos-sdk/client/snapshot"
 	"os"
 
 	"github.com/AssetMantle/modules/helpers"
 	"github.com/AssetMantle/modules/helpers/base"
+	tmcfg "github.com/cometbft/cometbft/config"
+	tendermintCLI "github.com/cometbft/cometbft/libs/cli"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/config"
 	"github.com/cosmos/cosmos-sdk/client/debug"
@@ -20,7 +23,6 @@ import (
 	bankTypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 	sdkClientCLI "github.com/cosmos/cosmos-sdk/x/genutil/client/cli"
 	"github.com/spf13/cobra"
-	tendermintCLI "github.com/tendermint/tendermint/libs/cli"
 
 	"github.com/AssetMantle/node/application"
 	"github.com/AssetMantle/node/application/internal/configurations"
@@ -62,7 +64,7 @@ func RootCommand() (*cobra.Command, helpers.Codec) {
 			ServerConfig.API.Enable = true
 			ServerConfig.API.Swagger = true
 
-			return server.InterceptConfigsPreRunHandler(cmd, serverConfig.DefaultConfigTemplate, &ServerConfig)
+			return server.InterceptConfigsPreRunHandler(cmd, serverConfig.DefaultConfigTemplate, &ServerConfig, tmcfg.DefaultConfig())
 		},
 	}
 
@@ -70,16 +72,12 @@ func RootCommand() (*cobra.Command, helpers.Codec) {
 
 	rootCmd.AddCommand(
 		sdkClientCLI.InitCmd(configurations.ModuleBasicManager, application.Prototype.GetDefaultNodeHome()),
-		sdkClientCLI.CollectGenTxsCmd(bankTypes.GenesisBalancesIterator{}, application.Prototype.GetDefaultNodeHome()),
-		sdkClientCLI.MigrateGenesisCmd(),
-		sdkClientCLI.GenTxCmd(configurations.ModuleBasicManager, codec, bankTypes.GenesisBalancesIterator{}, application.Prototype.GetDefaultNodeHome()),
-		sdkClientCLI.ValidateGenesisCmd(configurations.ModuleBasicManager),
-		AddGenesisAccountCommand(application.Prototype.GetDefaultNodeHome()),
 		tendermintCLI.NewCompletionCmd(rootCmd, true),
 		debug.Cmd(),
 		config.Cmd(),
 		pruning.PruningCmd(application.Prototype.AppCreator),
 		TestnetCommand(configurations.ModuleBasicManager, bankTypes.GenesisBalancesIterator{}),
+		snapshot.Cmd(application.Prototype.AppCreator),
 		version.NewVersionCommand(),
 	)
 
@@ -87,6 +85,7 @@ func RootCommand() (*cobra.Command, helpers.Codec) {
 
 	rootCmd.AddCommand(
 		rpc.StatusCommand(),
+		sdkClientCLI.GenesisCoreCommand(context.TxConfig, configurations.ModuleBasicManager, application.Prototype.GetDefaultNodeHome()),
 		queryCommand(),
 		txCommand(),
 		keys.Commands(application.Prototype.GetDefaultNodeHome()),

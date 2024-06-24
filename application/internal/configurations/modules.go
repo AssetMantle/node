@@ -19,11 +19,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/capability"
 	"github.com/cosmos/cosmos-sdk/x/crisis"
 	"github.com/cosmos/cosmos-sdk/x/distribution"
-	distributionClient "github.com/cosmos/cosmos-sdk/x/distribution/client"
 	"github.com/cosmos/cosmos-sdk/x/evidence"
 	feegrantModule "github.com/cosmos/cosmos-sdk/x/feegrant/module"
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 	"github.com/cosmos/cosmos-sdk/x/gov"
+	govClient "github.com/cosmos/cosmos-sdk/x/gov/client"
 	"github.com/cosmos/cosmos-sdk/x/mint"
 	"github.com/cosmos/cosmos-sdk/x/params"
 	paramsClient "github.com/cosmos/cosmos-sdk/x/params/client"
@@ -31,11 +31,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/staking"
 	"github.com/cosmos/cosmos-sdk/x/upgrade"
 	upgradeClient "github.com/cosmos/cosmos-sdk/x/upgrade/client"
-	ica "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts"
-	"github.com/cosmos/ibc-go/v4/modules/apps/transfer"
-	ibc "github.com/cosmos/ibc-go/v4/modules/core"
-	ibcClientClient "github.com/cosmos/ibc-go/v4/modules/core/02-client/client"
-	"github.com/strangelove-ventures/packet-forward-middleware/v4/router"
+	router "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v7/packetforward"
+	ica "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts"
+	"github.com/cosmos/ibc-go/v7/modules/apps/transfer"
+	ibc "github.com/cosmos/ibc-go/v7/modules/core"
+	ibcClientClient "github.com/cosmos/ibc-go/v7/modules/core/02-client/client"
 )
 
 var ModuleBasicManager = module.NewBasicManager(
@@ -47,12 +47,13 @@ var ModuleBasicManager = module.NewBasicManager(
 	mint.AppModuleBasic{},
 	distribution.AppModuleBasic{},
 	gov.NewAppModuleBasic(
-		paramsClient.ProposalHandler,
-		distributionClient.ProposalHandler,
-		upgradeClient.ProposalHandler,
-		upgradeClient.CancelProposalHandler,
-		ibcClientClient.UpdateClientProposalHandler,
-		ibcClientClient.UpgradeProposalHandler,
+		[]govClient.ProposalHandler{
+			paramsClient.ProposalHandler,
+			upgradeClient.LegacyProposalHandler,
+			upgradeClient.LegacyCancelProposalHandler,
+			ibcClientClient.UpdateClientProposalHandler,
+			ibcClientClient.UpgradeProposalHandler,
+		},
 	),
 	params.AppModuleBasic{},
 	crisis.AppModuleBasic{},

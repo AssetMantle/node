@@ -10,11 +10,11 @@ import (
 	codecTypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/server/api"
 	"github.com/cosmos/cosmos-sdk/server/config"
-	"github.com/cosmos/cosmos-sdk/simapp"
-	sdkTypes "github.com/cosmos/cosmos-sdk/types"
+	storeTypes "github.com/cosmos/cosmos-sdk/store/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	crisisKeeper "github.com/cosmos/cosmos-sdk/x/crisis/keeper"
 	paramsTypes "github.com/cosmos/cosmos-sdk/x/params/types"
+	"github.com/cosmos/ibc-go/v7/testing/simapp"
 )
 
 type SimulationApplication interface {
@@ -23,9 +23,9 @@ type SimulationApplication interface {
 	GetBaseApp() *baseapp.BaseApp
 	GetAppCodec() helpers.Codec
 	InterfaceRegistry() codecTypes.InterfaceRegistry
-	GetKey(storeKey string) *sdkTypes.KVStoreKey
-	GetTKey(storeKey string) *sdkTypes.TransientStoreKey
-	GetMemKey(storeKey string) *sdkTypes.MemoryStoreKey
+	GetKey(storeKey string) *storeTypes.KVStoreKey
+	GetTKey(storeKey string) *storeTypes.TransientStoreKey
+	GetMemKey(storeKey string) *storeTypes.MemoryStoreKey
 	GetSubspace(moduleName string) paramsTypes.Subspace
 	SimulationManager() *module.SimulationManager
 	RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig)

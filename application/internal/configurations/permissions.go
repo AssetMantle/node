@@ -11,8 +11,8 @@ import (
 	govTypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	mintTypes "github.com/cosmos/cosmos-sdk/x/mint/types"
 	stakingTypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	icaTypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/types"
-	ibcTransferTypes "github.com/cosmos/ibc-go/v4/modules/apps/transfer/types"
+	icaTypes "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/types"
+	ibcTransferTypes "github.com/cosmos/ibc-go/v7/modules/apps/transfer/types"
 )
 
 var ModuleAccountPermissions = map[string][]string{

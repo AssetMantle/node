@@ -7,11 +7,10 @@ import (
 	"fmt"
 	"github.com/AssetMantle/node/application"
 	"github.com/AssetMantle/node/application/types/applications/base"
-	"github.com/cosmos/cosmos-sdk/simapp"
+	abci "github.com/cometbft/cometbft/abci/types"
 	simulationTypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
 	"github.com/stretchr/testify/require"
-	abci "github.com/tendermint/tendermint/abci/types"
 	"os"
 	"testing"
 )
