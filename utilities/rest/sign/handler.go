@@ -4,12 +4,13 @@
 package sign
 
 import (
+	"github.com/AssetMantle/modules/utilities/rest"
 	"net/http"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/tx"
-	"github.com/cosmos/cosmos-sdk/types/rest"
+
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	authSigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 	"github.com/gorilla/mux"
@@ -39,8 +40,15 @@ func handler(context client.Context) http.HandlerFunc {
 			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
 			return
 		}
-		context = context.WithFromAddress(keyInfo.GetAddress())
-		account, err := context.AccountRetriever.GetAccount(context, keyInfo.GetAddress())
+
+		address, err := keyInfo.GetAddress()
+		if err != nil {
+			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
+			return
+		}
+		context = context.WithFromAddress(address)
+
+		account, err := context.AccountRetriever.GetAccount(context, address)
 		if err != nil {
 			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
 			return
@@ -48,7 +56,7 @@ func handler(context client.Context) http.HandlerFunc {
 
 		txFactory := tx.Factory{}.WithKeybase(context.Keyring).WithTxConfig(context.TxConfig).WithAccountRetriever(context.AccountRetriever).WithAccountNumber(account.GetAccountNumber()).WithSequence(account.GetSequence()).WithFees(request.BaseRequest.Fees.String())
 		txFactory = txFactory.WithChainID(request.BaseRequest.ChainID)
-		txBuilder, err := tx.BuildUnsignedTx(txFactory, request.StdTx.GetMsgs()...)
+		txBuilder, err := txFactory.BuildUnsignedTx(request.StdTx.GetMsgs()...)
 		if err != nil {
 			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
 			return
@@ -85,11 +93,18 @@ func handler(context client.Context) http.HandlerFunc {
 			SignMode:  signMode,
 			Signature: signatureBytes,
 		}
+
+		pubKey, err := keyInfo.GetPubKey()
+		if err != nil {
+			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
+			return
+		}
 		signature = signing.SignatureV2{
-			PubKey:   keyInfo.GetPubKey(),
+			PubKey:   pubKey,
 			Data:     &signatureData,
 			Sequence: txFactory.Sequence(),
 		}
+
 		if err := txBuilder.SetSignatures(signature); err != nil {
 			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
 			return
