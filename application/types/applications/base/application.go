@@ -156,7 +156,7 @@ type application struct {
 	moduleAccountPermissions   map[string][]string
 	tokenReceiveAllowedModules map[string]bool
 
-	keys map[string]*sdkTypes.KVStoreKey
+	keys map[string]*storeTypes.KVStoreKey
 
 	stakingKeeper      stakingKeeper.Keeper
 	slashingKeeper     slashingKeeper.Keeper
@@ -170,6 +170,9 @@ type application struct {
 
 var _ applications.Application = (*application)(nil)
 
+func (application application) RegisterNodeService(context client.Context) {
+	node.RegisterNodeService(context, application.GRPCQueryRouter())
+}
 func (application application) GetDefaultNodeHome() string {
 	return os.ExpandEnv("$HOME/." + application.name)
 }
@@ -185,7 +188,7 @@ func (application application) GetCodec() helpers.Codec {
 func (application application) LoadHeight(height int64) error {
 	return application.LoadVersion(height)
 }
-func (application application) ExportApplicationStateAndValidators(forZeroHeight bool, jailWhiteList []string) (serverTypes.ExportedApp, error) {
+func (application application) ExportApplicationStateAndValidators(forZeroHeight bool, jailWhiteList []string, modulesToExport []string) (serverTypes.ExportedApp, error) {
 	context := application.NewContext(true, protoTendermintTypes.Header{Height: application.LastBlockHeight()})
 
 	height := application.LastBlockHeight() + 1
@@ -240,7 +243,9 @@ func (application application) ExportApplicationStateAndValidators(forZeroHeight
 			feePool.CommunityPool = feePool.CommunityPool.Add(scraps...)
 			application.distributionKeeper.SetFeePool(context, feePool)
 
-			application.distributionKeeper.Hooks().AfterValidatorCreated(context, val.GetOperator())
+			if err := application.distributionKeeper.Hooks().AfterValidatorCreated(context, val.GetOperator()); err != nil {
+				panic(err)
+			}
 			return false
 		})
 
@@ -254,8 +259,12 @@ func (application application) ExportApplicationStateAndValidators(forZeroHeight
 			if err != nil {
 				panic(err)
 			}
-			application.distributionKeeper.Hooks().BeforeDelegationCreated(context, delegatorAddress, validatorAddress)
-			application.distributionKeeper.Hooks().AfterDelegationModified(context, delegatorAddress, validatorAddress)
+			if err := application.distributionKeeper.Hooks().BeforeDelegationCreated(context, delegatorAddress, validatorAddress); err != nil {
+				panic(err)
+			}
+			if err := application.distributionKeeper.Hooks().AfterDelegationModified(context, delegatorAddress, validatorAddress); err != nil {
+				panic(err)
+			}
 		}
 
 		context = context.WithBlockHeight(height)
@@ -284,26 +293,23 @@ func (application application) ExportApplicationStateAndValidators(forZeroHeight
 			addr := sdkTypes.ValAddress(stakingTypes.AddressFromValidatorsKey(kvStoreReversePrefixIterator.Key()))
 			validator, found := application.stakingKeeper.GetValidator(context, addr)
 
-			if !found {
-				panic("Validator not found!")
-			}
+				if !found {
+					panic("Validator not found!")
+				}
 
-			validator.UnbondingHeight = 0
+				validator.UnbondingHeight = 0
 
-			if applyWhiteList && !whiteListMap[addr.String()] {
-				validator.Jailed = true
-			}
+				if applyWhiteList && !whiteListMap[addr.String()] {
+					validator.Jailed = true
+				}
 
 			application.stakingKeeper.SetValidator(context, validator)
 			counter++
 		}
 
-		if err := kvStoreReversePrefixIterator.Close(); err != nil {
-			log.Fatal(err)
-		}
-
-		if _, err := application.stakingKeeper.ApplyAndReturnValidatorSetUpdates(context); err != nil {
-			log.Fatal(err)
+		_, err := application.stakingKeeper.ApplyAndReturnValidatorSetUpdates(context)
+		if err != nil {
+			panic(err)
 		}
 
 		application.slashingKeeper.IterateValidatorSigningInfos(
@@ -316,7 +322,7 @@ func (application application) ExportApplicationStateAndValidators(forZeroHeight
 		)
 	}
 
-	genesisState := application.moduleManager.ExportGenesis(context, application.GetCodec())
+	genesisState := application.moduleManager.ExportGenesisForModules(context, application.GetCodec(), modulesToExport)
 	applicationState, err := json.MarshalIndent(genesisState, "", "  ")
 	if err != nil {
 		return serverTypes.ExportedApp{}, err
@@ -353,7 +359,7 @@ func (application application) RegisterTxService(context client.Context) {
 	authTx.RegisterTxService(application.GRPCQueryRouter(), context, application.Simulate, context.InterfaceRegistry)
 }
 func (application application) RegisterTendermintService(context client.Context) {
-	tmservice.RegisterTendermintService(application.GRPCQueryRouter(), context, context.InterfaceRegistry)
+	tmservice.RegisterTendermintService(context, application.GRPCQueryRouter(), context.InterfaceRegistry, application.Query)
 }
 func (application application) AppCreator(logger tendermintLog.Logger, db tendermintDB.DB, writer io.Writer, appOptions serverTypes.AppOptions) serverTypes.Application {
 	var multiStorePersistentCache sdkTypes.MultiStorePersistentCache
@@ -373,7 +379,7 @@ func (application application) AppCreator(logger tendermintLog.Logger, db tender
 	}
 
 	snapshotDir := filepath.Join(cast.ToString(appOptions.Get(flags.FlagHome)), "data", "snapshots")
-	snapshotDB, err := sdkTypes.NewLevelDB("metadata", snapshotDir)
+	snapshotDB, err := tendermintDB.NewDB("metadata", server.GetAppDBBackend(appOptions), snapshotDir)
 	if err != nil {
 		panic(err)
 	}
@@ -432,7 +438,7 @@ func (application application) AppExporter(logger tendermintLog.Logger, db tende
 		}
 	}
 
-	return Application.ExportApplicationStateAndValidators(forZeroHeight, jailAllowedAddrs)
+	return Application.ExportApplicationStateAndValidators(forZeroHeight, jailAllowedAddresses, modulesToExport)
 }
 func (application application) ModuleInitFlags(command *cobra.Command) {
 	crisis.AddModuleInitFlags(command)
@@ -485,7 +491,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	application.SetParamStore(ParamsKeeper.Subspace(baseapp.Paramspace).WithKeyTable(paramsKeeper.ConsensusParamsKeyTable()))
 
 	CapabilityKeeper := capabilityKeeper.NewKeeper(application.GetCodec(), application.keys[capabilityTypes.StoreKey], memoryStoreKeys[capabilityTypes.MemStoreKey])
-	scopedIBCKeeper := CapabilityKeeper.ScopeToModule(ibcHost.ModuleName)
+	scopedIBCKeeper := CapabilityKeeper.ScopeToModule(ibcExported.ModuleName)
 	scopedTransferKeeper := CapabilityKeeper.ScopeToModule(ibcTransferTypes.ModuleName)
 	scopedICAHostKeeper := CapabilityKeeper.ScopeToModule(icaHostTypes.SubModuleName)
 	CapabilityKeeper.Seal()
@@ -786,7 +792,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		govTypes.ModuleName,
 		crisisTypes.ModuleName,
 		ibcTransferTypes.ModuleName,
-		ibcHost.ModuleName,
+		ibcExported.ModuleName,
 		icaTypes.ModuleName,
 		routerTypes.ModuleName,
 		genutilTypes.ModuleName,
@@ -795,7 +801,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		paramsTypes.ModuleName,
 		vestingTypes.ModuleName,
 
-		// Order doesn't matter here currently since all of the BeginBlock functions are empty
+		// Order doesn't matter here currently since all the BeginBlock functions are empty
 		assets.Prototype().Name(),
 		classifications.Prototype().Name(),
 		identities.Prototype().Name(),
@@ -809,7 +815,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		govTypes.ModuleName,
 		stakingTypes.ModuleName,
 		ibcTransferTypes.ModuleName,
-		ibcHost.ModuleName,
+		ibcExported.ModuleName,
 		icaTypes.ModuleName,
 		routerTypes.ModuleName,
 		capabilityTypes.ModuleName,
@@ -846,7 +852,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		crisisTypes.ModuleName,
 		genutilTypes.ModuleName,
 		ibcTransferTypes.ModuleName,
-		ibcHost.ModuleName,
+		ibcExported.ModuleName,
 		icaTypes.ModuleName,
 		evidenceTypes.ModuleName,
 		authz.ModuleName,
