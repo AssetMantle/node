@@ -23,7 +23,7 @@ type Application interface {
 
 	GetDefaultNodeHome() string
 	GetDefaultClientHome() string
-	GetModuleBasicManager() module.BasicManager
+	GetModuleManager() helpers.ModuleManager
 	GetCodec() helpers.Codec
 
 	LoadHeight(int64) error
