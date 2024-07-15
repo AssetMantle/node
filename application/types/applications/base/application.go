@@ -175,8 +175,8 @@ func (application application) GetDefaultNodeHome() string {
 func (application application) GetDefaultClientHome() string {
 	return os.ExpandEnv("$HOME/." + application.name)
 }
-func (application application) GetModuleBasicManager() module.BasicManager {
-	return application.moduleBasicManager
+func (application application) GetModuleManager() helpers.ModuleManager {
+	return application.moduleManager
 }
 func (application application) GetCodec() helpers.Codec {
 	return application.codec
