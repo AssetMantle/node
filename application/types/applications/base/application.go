@@ -959,11 +959,10 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	return &application
 }
 
-func NewApplication(name string, moduleBasicManager module.BasicManager, moduleAccountPermissions map[string][]string, tokenReceiveAllowedModules map[string]bool) applications.Application {
+func NewApplication(name string, moduleManager helpers.ModuleManager, moduleAccountPermissions map[string][]string, tokenReceiveAllowedModules map[string]bool) applications.Application {
 	return &application{
 		name:                       name,
-		moduleBasicManager:         moduleBasicManager,
-		codec:                      base.CodecPrototype().Initialize(moduleBasicManager),
+		moduleManager:              moduleManager,
 		moduleAccountPermissions:   moduleAccountPermissions,
 		tokenReceiveAllowedModules: tokenReceiveAllowedModules,
 	}
