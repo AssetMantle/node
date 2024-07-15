@@ -285,12 +285,19 @@ func (application application) ExportApplicationStateAndValidators(forZeroHeight
 		kvStoreReversePrefixIterator := sdkTypes.KVStoreReversePrefixIterator(kvStore, stakingTypes.ValidatorsKey)
 		counter := int16(0)
 
-		for ; kvStoreReversePrefixIterator.Valid(); kvStoreReversePrefixIterator.Next() {
-			addr := sdkTypes.ValAddress(stakingTypes.AddressFromValidatorsKey(kvStoreReversePrefixIterator.Key()))
-			validator, found := application.stakingKeeper.GetValidator(context, addr)
+		func() {
+			defer func(kvStoreReversePrefixIterator sdkTypes.Iterator) {
+				err := kvStoreReversePrefixIterator.Close()
+				if err != nil {
+					panic(err)
+				}
+			}(kvStoreReversePrefixIterator)
+			for ; kvStoreReversePrefixIterator.Valid(); kvStoreReversePrefixIterator.Next() {
+				addr := sdkTypes.ValAddress(stakingTypes.AddressFromValidatorsKey(kvStoreReversePrefixIterator.Key()))
+				validator, found := application.stakingKeeper.GetValidator(context, addr)
 
 				if !found {
-					panic("Validator not found!")
+					panic("validator not found")
 				}
 
 				validator.UnbondingHeight = 0
@@ -299,9 +306,10 @@ func (application application) ExportApplicationStateAndValidators(forZeroHeight
 					validator.Jailed = true
 				}
 
-			application.stakingKeeper.SetValidator(context, validator)
-			counter++
-		}
+				application.stakingKeeper.SetValidator(context, validator)
+				counter++
+			}
+		}()
 
 		_, err := application.stakingKeeper.ApplyAndReturnValidatorSetUpdates(context)
 		if err != nil {
