@@ -6,8 +6,20 @@ package base
 import (
 	"encoding/json"
 	"errors"
+	rateLimitKeeper "github.com/Stride-Labs/ibc-rate-limiting/ratelimit/keeper"
+	rateLimitTypes "github.com/Stride-Labs/ibc-rate-limiting/ratelimit/types"
+	cometbftTypes "github.com/cometbft/cometbft/types"
+	"github.com/cosmos/cosmos-sdk/client/grpc/node"
+	snapshotsTypes "github.com/cosmos/cosmos-sdk/snapshots/types"
+	"github.com/cosmos/cosmos-sdk/x/auth"
+	consensusParamKeeper "github.com/cosmos/cosmos-sdk/x/consensus/keeper"
+	consensusParamTypes "github.com/cosmos/cosmos-sdk/x/consensus/types"
+	ibcFeeKeeper "github.com/cosmos/ibc-go/v7/modules/apps/29-fee/keeper"
+	ibcFeeTypes "github.com/cosmos/ibc-go/v7/modules/apps/29-fee/types"
+	ibcExported "github.com/cosmos/ibc-go/v7/modules/core/exported"
+
+	"github.com/cometbft/cometbft/libs/log"
 	"io"
-	"log"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -40,11 +52,16 @@ import (
 	"github.com/AssetMantle/modules/x/splits/auxiliaries/purge"
 	"github.com/AssetMantle/modules/x/splits/auxiliaries/renumerate"
 	"github.com/AssetMantle/modules/x/splits/auxiliaries/transfer"
+	tendermintDB "github.com/cometbft/cometbft-db"
+	abciTypes "github.com/cometbft/cometbft/abci/types"
+	tendermintJSON "github.com/cometbft/cometbft/libs/json"
+	tendermintLog "github.com/cometbft/cometbft/libs/log"
+	tendermintOS "github.com/cometbft/cometbft/libs/os"
+	protoTendermintTypes "github.com/cometbft/cometbft/proto/tendermint/types"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/client/grpc/tmservice"
-	"github.com/cosmos/cosmos-sdk/client/rpc"
 	"github.com/cosmos/cosmos-sdk/server"
 	"github.com/cosmos/cosmos-sdk/server/api"
 	"github.com/cosmos/cosmos-sdk/server/config"
@@ -55,11 +72,8 @@ import (
 	sdkTypes "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/version"
-	"github.com/cosmos/cosmos-sdk/x/auth"
 	"github.com/cosmos/cosmos-sdk/x/auth/ante"
-	authRest "github.com/cosmos/cosmos-sdk/x/auth/client/rest"
 	authKeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
-	authSimulation "github.com/cosmos/cosmos-sdk/x/auth/simulation"
 	authTx "github.com/cosmos/cosmos-sdk/x/auth/tx"
 	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	"github.com/cosmos/cosmos-sdk/x/auth/vesting"
@@ -90,6 +104,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/gov"
 	govKeeper "github.com/cosmos/cosmos-sdk/x/gov/keeper"
 	govTypes "github.com/cosmos/cosmos-sdk/x/gov/types"
+	govTypesV1Beta1 "github.com/cosmos/cosmos-sdk/x/gov/types/v1beta1"
 	"github.com/cosmos/cosmos-sdk/x/mint"
 	mintKeeper "github.com/cosmos/cosmos-sdk/x/mint/keeper"
 	mintTypes "github.com/cosmos/cosmos-sdk/x/mint/types"
@@ -106,33 +121,25 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/upgrade"
 	upgradeKeeper "github.com/cosmos/cosmos-sdk/x/upgrade/keeper"
 	upgradeTypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
-	ica "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts"
-	icaHost "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host"
-	icaHostKeeper "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host/keeper"
-	icaHostTypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host/types"
-	icaTypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/types"
-	ibcTransfer "github.com/cosmos/ibc-go/v4/modules/apps/transfer"
-	ibcTransferKeeper "github.com/cosmos/ibc-go/v4/modules/apps/transfer/keeper"
-	ibcTransferTypes "github.com/cosmos/ibc-go/v4/modules/apps/transfer/types"
-	ibc "github.com/cosmos/ibc-go/v4/modules/core"
-	ibcClient "github.com/cosmos/ibc-go/v4/modules/core/02-client"
-	ibcClientTypes "github.com/cosmos/ibc-go/v4/modules/core/02-client/types"
-	ibcPortTypes "github.com/cosmos/ibc-go/v4/modules/core/05-port/types"
-	ibcHost "github.com/cosmos/ibc-go/v4/modules/core/24-host"
-	ibcAnte "github.com/cosmos/ibc-go/v4/modules/core/ante"
-	ibcKeeper "github.com/cosmos/ibc-go/v4/modules/core/keeper"
+	router "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v7/packetforward"
+	routerKeeper "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v7/packetforward/keeper"
+	routerTypes "github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v7/packetforward/types"
+	ica "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts"
+	icaHost "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/host"
+	icaHostKeeper "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/host/keeper"
+	icaHostTypes "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/host/types"
+	icaTypes "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/types"
+	ibcTransfer "github.com/cosmos/ibc-go/v7/modules/apps/transfer"
+	ibcTransferKeeper "github.com/cosmos/ibc-go/v7/modules/apps/transfer/keeper"
+	ibcTransferTypes "github.com/cosmos/ibc-go/v7/modules/apps/transfer/types"
+	ibc "github.com/cosmos/ibc-go/v7/modules/core"
+	ibcClient "github.com/cosmos/ibc-go/v7/modules/core/02-client"
+	ibcClientTypes "github.com/cosmos/ibc-go/v7/modules/core/02-client/types"
+	ibcPortTypes "github.com/cosmos/ibc-go/v7/modules/core/05-port/types"
+	ibcKeeper "github.com/cosmos/ibc-go/v7/modules/core/keeper"
 	"github.com/rakyll/statik/fs"
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
-	"github.com/strangelove-ventures/packet-forward-middleware/v4/router"
-	routerKeeper "github.com/strangelove-ventures/packet-forward-middleware/v4/router/keeper"
-	routerTypes "github.com/strangelove-ventures/packet-forward-middleware/v4/router/types"
-	abciTypes "github.com/tendermint/tendermint/abci/types"
-	tendermintJSON "github.com/tendermint/tendermint/libs/json"
-	tendermintLog "github.com/tendermint/tendermint/libs/log"
-	tendermintOS "github.com/tendermint/tendermint/libs/os"
-	protoTendermintTypes "github.com/tendermint/tendermint/proto/tendermint/types"
-	tendermintDB "github.com/tendermint/tm-db"
 
 	"github.com/AssetMantle/node/application/types/applications"
 	"github.com/AssetMantle/node/application/types/applications/constants"
@@ -142,43 +149,42 @@ import (
 type application struct {
 	name string
 
-	moduleBasicManager module.BasicManager
-
-	codec helpers.Codec
+	moduleManager helpers.ModuleManager
 
 	moduleAccountPermissions   map[string][]string
 	tokenReceiveAllowedModules map[string]bool
 
-	keys map[string]*sdkTypes.KVStoreKey
+	keys map[string]*storeTypes.KVStoreKey
 
 	stakingKeeper      stakingKeeper.Keeper
 	slashingKeeper     slashingKeeper.Keeper
 	distributionKeeper distributionKeeper.Keeper
 	crisisKeeper       crisisKeeper.Keeper
 
-	moduleManager *module.Manager
-
 	*baseapp.BaseApp
 }
 
 var _ applications.Application = (*application)(nil)
 
+func (application application) RegisterNodeService(context client.Context) {
+	node.RegisterNodeService(context, application.GRPCQueryRouter())
+}
 func (application application) GetDefaultNodeHome() string {
 	return os.ExpandEnv("$HOME/." + application.name)
 }
 func (application application) GetDefaultClientHome() string {
 	return os.ExpandEnv("$HOME/." + application.name)
 }
-func (application application) GetModuleBasicManager() module.BasicManager {
-	return application.moduleBasicManager
+func (application application) GetModuleManager() helpers.ModuleManager {
+	return application.moduleManager
 }
 func (application application) GetCodec() helpers.Codec {
-	return application.codec
+	return base.CodecPrototype().Initialize(application.GetModuleManager())
 }
 func (application application) LoadHeight(height int64) error {
 	return application.LoadVersion(height)
 }
-func (application application) ExportApplicationStateAndValidators(forZeroHeight bool, jailWhiteList []string) (serverTypes.ExportedApp, error) {
+func (application application) ExportApplicationStateAndValidators(forZeroHeight bool, jailWhiteList []string, modulesToExport []string) (serverTypes.ExportedApp, error) {
 	context := application.NewContext(true, protoTendermintTypes.Header{Height: application.LastBlockHeight()})
 
 	height := application.LastBlockHeight() + 1
@@ -233,7 +239,9 @@ func (application application) ExportApplicationStateAndValidators(forZeroHeight
 			feePool.CommunityPool = feePool.CommunityPool.Add(scraps...)
 			application.distributionKeeper.SetFeePool(context, feePool)
 
-			application.distributionKeeper.Hooks().AfterValidatorCreated(context, val.GetOperator())
+			if err := application.distributionKeeper.Hooks().AfterValidatorCreated(context, val.GetOperator()); err != nil {
+				panic(err)
+			}
 			return false
 		})
 
@@ -247,8 +255,12 @@ func (application application) ExportApplicationStateAndValidators(forZeroHeight
 			if err != nil {
 				panic(err)
 			}
-			application.distributionKeeper.Hooks().BeforeDelegationCreated(context, delegatorAddress, validatorAddress)
-			application.distributionKeeper.Hooks().AfterDelegationModified(context, delegatorAddress, validatorAddress)
+			if err := application.distributionKeeper.Hooks().BeforeDelegationCreated(context, delegatorAddress, validatorAddress); err != nil {
+				panic(err)
+			}
+			if err := application.distributionKeeper.Hooks().AfterDelegationModified(context, delegatorAddress, validatorAddress); err != nil {
+				panic(err)
+			}
 		}
 
 		context = context.WithBlockHeight(height)
@@ -273,30 +285,35 @@ func (application application) ExportApplicationStateAndValidators(forZeroHeight
 		kvStoreReversePrefixIterator := sdkTypes.KVStoreReversePrefixIterator(kvStore, stakingTypes.ValidatorsKey)
 		counter := int16(0)
 
-		for ; kvStoreReversePrefixIterator.Valid(); kvStoreReversePrefixIterator.Next() {
-			addr := sdkTypes.ValAddress(stakingTypes.AddressFromValidatorsKey(kvStoreReversePrefixIterator.Key()))
-			validator, found := application.stakingKeeper.GetValidator(context, addr)
+		func() {
+			defer func(kvStoreReversePrefixIterator sdkTypes.Iterator) {
+				err := kvStoreReversePrefixIterator.Close()
+				if err != nil {
+					panic(err)
+				}
+			}(kvStoreReversePrefixIterator)
+			for ; kvStoreReversePrefixIterator.Valid(); kvStoreReversePrefixIterator.Next() {
+				addr := sdkTypes.ValAddress(stakingTypes.AddressFromValidatorsKey(kvStoreReversePrefixIterator.Key()))
+				validator, found := application.stakingKeeper.GetValidator(context, addr)
 
-			if !found {
-				panic("Validator not found!")
+				if !found {
+					panic("validator not found")
+				}
+
+				validator.UnbondingHeight = 0
+
+				if applyWhiteList && !whiteListMap[addr.String()] {
+					validator.Jailed = true
+				}
+
+				application.stakingKeeper.SetValidator(context, validator)
+				counter++
 			}
+		}()
 
-			validator.UnbondingHeight = 0
-
-			if applyWhiteList && !whiteListMap[addr.String()] {
-				validator.Jailed = true
-			}
-
-			application.stakingKeeper.SetValidator(context, validator)
-			counter++
-		}
-
-		if err := kvStoreReversePrefixIterator.Close(); err != nil {
-			log.Fatal(err)
-		}
-
-		if _, err := application.stakingKeeper.ApplyAndReturnValidatorSetUpdates(context); err != nil {
-			log.Fatal(err)
+		_, err := application.stakingKeeper.ApplyAndReturnValidatorSetUpdates(context)
+		if err != nil {
+			panic(err)
 		}
 
 		application.slashingKeeper.IterateValidatorSigningInfos(
@@ -309,7 +326,7 @@ func (application application) ExportApplicationStateAndValidators(forZeroHeight
 		)
 	}
 
-	genesisState := application.moduleManager.ExportGenesis(context, application.GetCodec())
+	genesisState := application.moduleManager.ExportGenesisForModules(context, application.GetCodec(), modulesToExport)
 	applicationState, err := json.MarshalIndent(genesisState, "", "  ")
 	if err != nil {
 		return serverTypes.ExportedApp{}, err
@@ -346,7 +363,7 @@ func (application application) RegisterTxService(context client.Context) {
 	authTx.RegisterTxService(application.GRPCQueryRouter(), context, application.Simulate, context.InterfaceRegistry)
 }
 func (application application) RegisterTendermintService(context client.Context) {
-	tmservice.RegisterTendermintService(application.GRPCQueryRouter(), context, context.InterfaceRegistry)
+	tmservice.RegisterTendermintService(context, application.GRPCQueryRouter(), context.InterfaceRegistry, application.Query)
 }
 func (application application) AppCreator(logger tendermintLog.Logger, db tendermintDB.DB, writer io.Writer, appOptions serverTypes.AppOptions) serverTypes.Application {
 	var multiStorePersistentCache sdkTypes.MultiStorePersistentCache
@@ -366,7 +383,7 @@ func (application application) AppCreator(logger tendermintLog.Logger, db tender
 	}
 
 	snapshotDir := filepath.Join(cast.ToString(appOptions.Get(flags.FlagHome)), "data", "snapshots")
-	snapshotDB, err := sdkTypes.NewLevelDB("metadata", snapshotDir)
+	snapshotDB, err := tendermintDB.NewDB("metadata", server.GetAppDBBackend(appOptions), snapshotDir)
 	if err != nil {
 		panic(err)
 	}
@@ -425,7 +442,7 @@ func (application application) AppExporter(logger tendermintLog.Logger, db tende
 		}
 	}
 
-	return Application.ExportApplicationStateAndValidators(forZeroHeight, jailAllowedAddrs)
+	return Application.ExportApplicationStateAndValidators(forZeroHeight, jailAllowedAddresses, modulesToExport)
 }
 func (application application) ModuleInitFlags(command *cobra.Command) {
 	crisis.AddModuleInitFlags(command)
@@ -478,7 +495,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	application.SetParamStore(ParamsKeeper.Subspace(baseapp.Paramspace).WithKeyTable(paramsKeeper.ConsensusParamsKeyTable()))
 
 	CapabilityKeeper := capabilityKeeper.NewKeeper(application.GetCodec(), application.keys[capabilityTypes.StoreKey], memoryStoreKeys[capabilityTypes.MemStoreKey])
-	scopedIBCKeeper := CapabilityKeeper.ScopeToModule(ibcHost.ModuleName)
+	scopedIBCKeeper := CapabilityKeeper.ScopeToModule(ibcExported.ModuleName)
 	scopedTransferKeeper := CapabilityKeeper.ScopeToModule(ibcTransferTypes.ModuleName)
 	scopedICAHostKeeper := CapabilityKeeper.ScopeToModule(icaHostTypes.SubModuleName)
 	CapabilityKeeper.Seal()
@@ -779,7 +796,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		govTypes.ModuleName,
 		crisisTypes.ModuleName,
 		ibcTransferTypes.ModuleName,
-		ibcHost.ModuleName,
+		ibcExported.ModuleName,
 		icaTypes.ModuleName,
 		routerTypes.ModuleName,
 		genutilTypes.ModuleName,
@@ -788,7 +805,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		paramsTypes.ModuleName,
 		vestingTypes.ModuleName,
 
-		// Order doesn't matter here currently since all of the BeginBlock functions are empty
+		// Order doesn't matter here currently since all the BeginBlock functions are empty
 		assets.Prototype().Name(),
 		classifications.Prototype().Name(),
 		identities.Prototype().Name(),
@@ -802,7 +819,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		govTypes.ModuleName,
 		stakingTypes.ModuleName,
 		ibcTransferTypes.ModuleName,
-		ibcHost.ModuleName,
+		ibcExported.ModuleName,
 		icaTypes.ModuleName,
 		routerTypes.ModuleName,
 		capabilityTypes.ModuleName,
@@ -839,7 +856,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		crisisTypes.ModuleName,
 		genutilTypes.ModuleName,
 		ibcTransferTypes.ModuleName,
-		ibcHost.ModuleName,
+		ibcExported.ModuleName,
 		icaTypes.ModuleName,
 		evidenceTypes.ModuleName,
 		authz.ModuleName,
@@ -950,11 +967,10 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	return &application
 }
 
-func NewApplication(name string, moduleBasicManager module.BasicManager, moduleAccountPermissions map[string][]string, tokenReceiveAllowedModules map[string]bool) applications.Application {
+func NewApplication(name string, moduleManager helpers.ModuleManager, moduleAccountPermissions map[string][]string, tokenReceiveAllowedModules map[string]bool) applications.Application {
 	return &application{
 		name:                       name,
-		moduleBasicManager:         moduleBasicManager,
-		codec:                      base.CodecPrototype().Initialize(moduleBasicManager),
+		moduleManager:              moduleManager,
 		moduleAccountPermissions:   moduleAccountPermissions,
 		tokenReceiveAllowedModules: tokenReceiveAllowedModules,
 	}

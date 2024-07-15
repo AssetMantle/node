@@ -4,6 +4,7 @@
 package configurations
 
 import (
+	"github.com/AssetMantle/modules/helpers/base"
 	"github.com/AssetMantle/modules/x/assets"
 	"github.com/AssetMantle/modules/x/classifications"
 	"github.com/AssetMantle/modules/x/identities"
@@ -11,7 +12,6 @@ import (
 	"github.com/AssetMantle/modules/x/metas"
 	"github.com/AssetMantle/modules/x/orders"
 	"github.com/AssetMantle/modules/x/splits"
-	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/auth"
 	"github.com/cosmos/cosmos-sdk/x/auth/vesting"
 	authzModule "github.com/cosmos/cosmos-sdk/x/authz/module"
@@ -38,7 +38,7 @@ import (
 	ibcClientClient "github.com/cosmos/ibc-go/v7/modules/core/02-client/client"
 )
 
-var ModuleBasicManager = module.NewBasicManager(
+var ModuleBasicManager = base.NewModuleManager(
 	auth.AppModuleBasic{},
 	genutil.AppModuleBasic{},
 	bank.AppModuleBasic{},

@@ -4,18 +4,14 @@
 package applications
 
 import (
-	storeTypes "github.com/cosmos/cosmos-sdk/store/types"
-	"io"
-
-	tendermintDB "github.com/cometbft/cometbft-db"
+	"github.com/AssetMantle/modules/helpers"
+	db "github.com/cometbft/cometbft-db"
 	"github.com/cometbft/cometbft/libs/log"
-	tendermintLog "github.com/cometbft/cometbft/libs/log"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	serverTypes "github.com/cosmos/cosmos-sdk/server/types"
-	"github.com/cosmos/cosmos-sdk/types/module"
+	storeTypes "github.com/cosmos/cosmos-sdk/store/types"
 	"github.com/spf13/cobra"
-
-	"github.com/AssetMantle/modules/helpers"
+	"io"
 )
 
 type Application interface {
@@ -23,7 +19,7 @@ type Application interface {
 
 	GetDefaultNodeHome() string
 	GetDefaultClientHome() string
-	GetModuleBasicManager() module.BasicManager
+	GetModuleManager() helpers.ModuleManager
 	GetCodec() helpers.Codec
 
 	LoadHeight(int64) error
@@ -31,10 +27,10 @@ type Application interface {
 
 	Name() string
 	Logger() log.Logger
-	MountStores(keys ...storeTypes.StoreKey)
-	MountKVStores(keys map[string]*storeTypes.KVStoreKey)
-	MountTransientStores(keys map[string]*storeTypes.TransientStoreKey)
-	MountStore(key storeTypes.StoreKey, typ storeTypes.StoreType)
+	MountStores(...storeTypes.StoreKey)
+	MountKVStores(map[string]*storeTypes.KVStoreKey)
+	MountTransientStores(map[string]*storeTypes.TransientStoreKey)
+	MountStore(storeTypes.StoreKey, storeTypes.StoreType)
 	LastCommitID() storeTypes.CommitID
 	LastBlockHeight() int64
 	//Router() storeTypes.Router
@@ -42,9 +38,9 @@ type Application interface {
 	Seal()
 	IsSealed() bool
 
-	AppCreator(log.Logger, tendermintDB.DB, io.Writer, serverTypes.AppOptions) serverTypes.Application
-	AppExporter(log.Logger, tendermintDB.DB, io.Writer, int64, bool, []string, serverTypes.AppOptions, []string) (serverTypes.ExportedApp, error)
-	ModuleInitFlags(startCmd *cobra.Command)
+	AppCreator(log.Logger, db.DB, io.Writer, serverTypes.AppOptions) serverTypes.Application
+	AppExporter(log.Logger, db.DB, io.Writer, int64, bool, []string, serverTypes.AppOptions, []string) (serverTypes.ExportedApp, error)
+	ModuleInitFlags(*cobra.Command)
 
-	Initialize(logger tendermintLog.Logger, db tendermintDB.DB, traceStore io.Writer, loadLatest bool, invCheckPeriod uint, skipUpgradeHeights map[int64]bool, home string, appOptions serverTypes.AppOptions, baseAppOptions ...func(*baseapp.BaseApp)) Application
+	Initialize(log.Logger, db.DB, io.Writer, bool, uint, map[int64]bool, string, serverTypes.AppOptions, ...func(*baseapp.BaseApp)) Application
 }
