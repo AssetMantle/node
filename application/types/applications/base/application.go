@@ -149,9 +149,7 @@ import (
 type application struct {
 	name string
 
-	moduleBasicManager module.BasicManager
-
-	codec helpers.Codec
+	moduleManager helpers.ModuleManager
 
 	moduleAccountPermissions   map[string][]string
 	tokenReceiveAllowedModules map[string]bool
@@ -162,8 +160,6 @@ type application struct {
 	slashingKeeper     slashingKeeper.Keeper
 	distributionKeeper distributionKeeper.Keeper
 	crisisKeeper       crisisKeeper.Keeper
-
-	moduleManager *module.Manager
 
 	*baseapp.BaseApp
 }
