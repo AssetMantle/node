@@ -7,7 +7,7 @@ require (
 	github.com/AssetMantle/modules v0.4.0
 	github.com/AssetMantle/schema v0.0.0-20240206102051-27352b802163
 	github.com/Stride-Labs/ibc-rate-limiting v1.0.1
-	github.com/cometbft/cometbft v0.37.5
+	github.com/cometbft/cometbft v0.37.7
 	github.com/cometbft/cometbft-db v0.8.0
 	github.com/cosmos/cosmos-sdk v0.47.11
 	github.com/cosmos/go-bip39 v1.0.0
@@ -117,6 +117,7 @@ require (
 	github.com/hashicorp/go-safetemp v1.0.0 // indirect
 	github.com/hashicorp/go-version v1.6.0 // indirect
 	github.com/hashicorp/golang-lru v1.0.2 // indirect
+	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/hdevalence/ed25519consensus v0.1.0 // indirect
 	github.com/huandu/skiplist v1.2.0 // indirect
