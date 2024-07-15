@@ -71,12 +71,12 @@ func RootCommand() (*cobra.Command, helpers.Codec) {
 	configurations.SetAndSealSDKConfig()
 
 	rootCmd.AddCommand(
-		sdkClientCLI.InitCmd(configurations.ModuleBasicManager, application.Prototype.GetDefaultNodeHome()),
+		sdkClientCLI.InitCmd(configurations.ModuleBasicManager.GetBasicManager(), application.Prototype.GetDefaultNodeHome()),
 		tendermintCLI.NewCompletionCmd(rootCmd, true),
 		debug.Cmd(),
 		config.Cmd(),
 		pruning.PruningCmd(application.Prototype.AppCreator),
-		TestnetCommand(configurations.ModuleBasicManager, bankTypes.GenesisBalancesIterator{}),
+		TestnetCommand(configurations.ModuleBasicManager.GetBasicManager(), bankTypes.GenesisBalancesIterator{}),
 		snapshot.Cmd(application.Prototype.AppCreator),
 		version.NewVersionCommand(),
 	)
@@ -85,7 +85,7 @@ func RootCommand() (*cobra.Command, helpers.Codec) {
 
 	rootCmd.AddCommand(
 		rpc.StatusCommand(),
-		sdkClientCLI.GenesisCoreCommand(context.TxConfig, configurations.ModuleBasicManager, application.Prototype.GetDefaultNodeHome()),
+		sdkClientCLI.GenesisCoreCommand(context.TxConfig, configurations.ModuleBasicManager.GetBasicManager(), application.Prototype.GetDefaultNodeHome()),
 		queryCommand(),
 		txCommand(),
 		keys.Commands(application.Prototype.GetDefaultNodeHome()),
