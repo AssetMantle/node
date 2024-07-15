@@ -38,7 +38,7 @@ import (
 	ibcClientClient "github.com/cosmos/ibc-go/v7/modules/core/02-client/client"
 )
 
-var ModuleBasicManager = module.NewBasicManager(
+var ModuleBasicManager = base.NewModuleManager(
 	auth.AppModuleBasic{},
 	genutil.AppModuleBasic{},
 	bank.AppModuleBasic{},
