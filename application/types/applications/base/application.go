@@ -179,7 +179,7 @@ func (application application) GetModuleManager() helpers.ModuleManager {
 	return application.moduleManager
 }
 func (application application) GetCodec() helpers.Codec {
-	return application.codec
+	return base.CodecPrototype().Initialize(application.GetModuleManager())
 }
 func (application application) LoadHeight(height int64) error {
 	return application.LoadVersion(height)
