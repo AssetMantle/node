@@ -4,125 +4,70 @@
 package base
 
 import (
+	simAppParams "cosmossdk.io/simapp/params"
 	"encoding/json"
-	"io"
-	"log"
-	"net/http"
-
 	"github.com/AssetMantle/modules/helpers"
 	"github.com/AssetMantle/modules/helpers/base"
 	"github.com/AssetMantle/modules/x/assets"
 	"github.com/AssetMantle/modules/x/classifications"
-	"github.com/AssetMantle/modules/x/classifications/auxiliaries/bond"
-	"github.com/AssetMantle/modules/x/classifications/auxiliaries/burn"
-	"github.com/AssetMantle/modules/x/classifications/auxiliaries/conform"
-	"github.com/AssetMantle/modules/x/classifications/auxiliaries/define"
-	"github.com/AssetMantle/modules/x/classifications/auxiliaries/member"
-	"github.com/AssetMantle/modules/x/classifications/auxiliaries/unbond"
 	"github.com/AssetMantle/modules/x/identities"
-	"github.com/AssetMantle/modules/x/identities/auxiliaries/authenticate"
 	"github.com/AssetMantle/modules/x/maintainers"
-	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/authorize"
-	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/deputize"
-	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/maintain"
-	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/revoke"
-	"github.com/AssetMantle/modules/x/maintainers/auxiliaries/super"
 	"github.com/AssetMantle/modules/x/metas"
-	"github.com/AssetMantle/modules/x/metas/auxiliaries/supplement"
 	"github.com/AssetMantle/modules/x/orders"
 	"github.com/AssetMantle/modules/x/splits"
-	splitsMint "github.com/AssetMantle/modules/x/splits/auxiliaries/mint"
-	"github.com/AssetMantle/modules/x/splits/auxiliaries/renumerate"
-	"github.com/AssetMantle/modules/x/splits/auxiliaries/transfer"
-	ica "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts"
-	icaHostKeeper "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host/keeper"
-	icaHostTypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/host/types"
-	icaTypes "github.com/cosmos/ibc-go/v4/modules/apps/27-interchain-accounts/types"
-	ibcTransfer "github.com/cosmos/ibc-go/v4/modules/apps/transfer"
-	ibcTransferKeeper "github.com/cosmos/ibc-go/v4/modules/apps/transfer/keeper"
-	ibcTransferTypes "github.com/cosmos/ibc-go/v4/modules/apps/transfer/types"
-	ibc "github.com/cosmos/ibc-go/v4/modules/core"
-	ibcHost "github.com/cosmos/ibc-go/v4/modules/core/24-host"
-	ibcKeeper "github.com/cosmos/ibc-go/v4/modules/core/keeper"
-
 	"github.com/AssetMantle/node/application/internal/configurations"
+	"github.com/AssetMantle/node/application/types/applications"
 	simulationMake "github.com/AssetMantle/node/application/types/applications/constants"
-
+	dbm "github.com/cometbft/cometbft-db"
+	abci "github.com/cometbft/cometbft/abci/types"
+	tmLog "github.com/cometbft/cometbft/libs/log"
+	tmos "github.com/cometbft/cometbft/libs/os"
+	tmProto "github.com/cometbft/cometbft/proto/tendermint/types"
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/grpc/tmservice"
-	"github.com/cosmos/cosmos-sdk/client/rpc"
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/cosmos/cosmos-sdk/server/api"
 	"github.com/cosmos/cosmos-sdk/server/config"
 	serverTypes "github.com/cosmos/cosmos-sdk/server/types"
-	simAppParams "github.com/cosmos/cosmos-sdk/simapp/params"
-	"github.com/cosmos/cosmos-sdk/store/streaming"
-	"github.com/cosmos/cosmos-sdk/testutil/testdata"
+	storeTypes "github.com/cosmos/cosmos-sdk/store/types"
 	sdkTypes "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	"github.com/cosmos/cosmos-sdk/x/auth"
 	"github.com/cosmos/cosmos-sdk/x/auth/ante"
-	authRest "github.com/cosmos/cosmos-sdk/x/auth/client/rest"
 	authKeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
-	authSimulation "github.com/cosmos/cosmos-sdk/x/auth/simulation"
 	authTx "github.com/cosmos/cosmos-sdk/x/auth/tx"
 	authTypes "github.com/cosmos/cosmos-sdk/x/auth/types"
-	"github.com/cosmos/cosmos-sdk/x/auth/vesting"
-	vestingTypes "github.com/cosmos/cosmos-sdk/x/auth/vesting/types"
-	"github.com/cosmos/cosmos-sdk/x/authz"
 	authzKeeper "github.com/cosmos/cosmos-sdk/x/authz/keeper"
-	authzModule "github.com/cosmos/cosmos-sdk/x/authz/module"
-	"github.com/cosmos/cosmos-sdk/x/bank"
 	bankKeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 	bankTypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	"github.com/cosmos/cosmos-sdk/x/capability"
 	capabilityKeeper "github.com/cosmos/cosmos-sdk/x/capability/keeper"
 	capabilityTypes "github.com/cosmos/cosmos-sdk/x/capability/types"
-	"github.com/cosmos/cosmos-sdk/x/crisis"
 	crisisKeeper "github.com/cosmos/cosmos-sdk/x/crisis/keeper"
 	crisisTypes "github.com/cosmos/cosmos-sdk/x/crisis/types"
-	"github.com/cosmos/cosmos-sdk/x/distribution"
 	distributionKeeper "github.com/cosmos/cosmos-sdk/x/distribution/keeper"
 	distributionTypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
-	"github.com/cosmos/cosmos-sdk/x/evidence"
 	evidenceKeeper "github.com/cosmos/cosmos-sdk/x/evidence/keeper"
 	evidenceTypes "github.com/cosmos/cosmos-sdk/x/evidence/types"
 	"github.com/cosmos/cosmos-sdk/x/feegrant"
 	feeGrantKeeper "github.com/cosmos/cosmos-sdk/x/feegrant/keeper"
-	feeGrantModule "github.com/cosmos/cosmos-sdk/x/feegrant/module"
-	"github.com/cosmos/cosmos-sdk/x/genutil"
-	genutilTypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
-	"github.com/cosmos/cosmos-sdk/x/gov"
 	govKeeper "github.com/cosmos/cosmos-sdk/x/gov/keeper"
 	govTypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	"github.com/cosmos/cosmos-sdk/x/mint"
 	mintKeeper "github.com/cosmos/cosmos-sdk/x/mint/keeper"
 	mintTypes "github.com/cosmos/cosmos-sdk/x/mint/types"
-	"github.com/cosmos/cosmos-sdk/x/params"
 	paramsKeeper "github.com/cosmos/cosmos-sdk/x/params/keeper"
 	paramsTypes "github.com/cosmos/cosmos-sdk/x/params/types"
-	paramsProposal "github.com/cosmos/cosmos-sdk/x/params/types/proposal"
-	"github.com/cosmos/cosmos-sdk/x/slashing"
 	slashingKeeper "github.com/cosmos/cosmos-sdk/x/slashing/keeper"
 	slashingTypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	"github.com/cosmos/cosmos-sdk/x/staking"
 	stakingKeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 	stakingTypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/cosmos/cosmos-sdk/x/upgrade"
 	upgradeKeeper "github.com/cosmos/cosmos-sdk/x/upgrade/keeper"
 	upgradeTypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
-	"github.com/gorilla/mux"
-	"github.com/rakyll/statik/fs"
-	"github.com/spf13/cast"
-	abci "github.com/tendermint/tendermint/abci/types"
-	tmLog "github.com/tendermint/tendermint/libs/log"
-	tmos "github.com/tendermint/tendermint/libs/os"
-	tmProto "github.com/tendermint/tendermint/proto/tendermint/types"
-	dbm "github.com/tendermint/tm-db"
-
-	"github.com/AssetMantle/node/application/types/applications"
+	icaHostTypes "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/host/types"
+	ibcTransferTypes "github.com/cosmos/ibc-go/v7/modules/apps/transfer/types"
+	"io"
+	"log"
 )
 
 type GenesisState map[string]json.RawMessage
@@ -139,9 +84,9 @@ type SimulationApplication struct {
 
 	invCheckPeriod uint
 
-	keys          map[string]*sdkTypes.KVStoreKey
-	transientKeys map[string]*sdkTypes.TransientStoreKey
-	memoryKeys    map[string]*sdkTypes.MemoryStoreKey
+	keys          map[string]*storeTypes.KVStoreKey
+	transientKeys map[string]*storeTypes.TransientStoreKey
+	memoryKeys    map[string]*storeTypes.MemoryStoreKey
 
 	AccountKeeper      authKeeper.AccountKeeper
 	BankKeeper         bankKeeper.Keeper
@@ -180,7 +125,7 @@ func (app *SimulationApplication) ExportAppStateAndValidators(forZeroHeight bool
 		return serverTypes.ExportedApp{}, err
 	}
 
-	validators, err := staking.WriteValidators(ctx, app.StakingKeeper)
+	validators, err := staking.WriteValidators(ctx, &app.StakingKeeper)
 	return serverTypes.ExportedApp{
 		AppState:        appState,
 		Validators:      validators,
@@ -363,15 +308,15 @@ func (app *SimulationApplication) InterfaceRegistry() types.InterfaceRegistry {
 	return app.interfaceRegistry
 }
 
-func (app *SimulationApplication) GetKey(storeKey string) *sdkTypes.KVStoreKey {
+func (app *SimulationApplication) GetKey(storeKey string) *storeTypes.KVStoreKey {
 	return app.keys[storeKey]
 }
 
-func (app *SimulationApplication) GetTKey(storeKey string) *sdkTypes.TransientStoreKey {
+func (app *SimulationApplication) GetTKey(storeKey string) *storeTypes.TransientStoreKey {
 	return app.transientKeys[storeKey]
 }
 
-func (app *SimulationApplication) GetMemKey(storeKey string) *sdkTypes.MemoryStoreKey {
+func (app *SimulationApplication) GetMemKey(storeKey string) *storeTypes.MemoryStoreKey {
 	return app.memoryKeys[storeKey]
 }
 
@@ -386,16 +331,12 @@ func (app *SimulationApplication) SimulationManager() *module.SimulationManager 
 
 func (app *SimulationApplication) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig) {
 	clientCtx := apiSvr.ClientCtx
-	rpc.RegisterRoutes(clientCtx, apiSvr.Router)
-	authRest.RegisterTxRoutes(clientCtx, apiSvr.Router)
+	//rpc.RegisterRoutes(clientCtx, apiSvr.Router)
+	//authRest.RegisterTxRoutes(clientCtx, apiSvr.Router)
 	authTx.RegisterGRPCGatewayRoutes(clientCtx, apiSvr.GRPCGatewayRouter)
 	tmservice.RegisterGRPCGatewayRoutes(clientCtx, apiSvr.GRPCGatewayRouter)
-	simulationMake.ModuleBasicManagers.RegisterRESTRoutes(clientCtx, apiSvr.Router)
+	//simulationMake.ModuleBasicManagers.RegisterRESTRoutes(clientCtx, apiSvr.Router)
 	simulationMake.ModuleBasicManagers.RegisterGRPCGatewayRoutes(clientCtx, apiSvr.GRPCGatewayRouter)
-
-	if apiConfig.Swagger {
-		RegisterSwaggerAPI(clientCtx, apiSvr.Router)
-	}
 }
 
 func (app *SimulationApplication) RegisterTxService(clientCtx client.Context) {
@@ -403,17 +344,7 @@ func (app *SimulationApplication) RegisterTxService(clientCtx client.Context) {
 }
 
 func (app *SimulationApplication) RegisterTendermintService(clientCtx client.Context) {
-	tmservice.RegisterTendermintService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.interfaceRegistry)
-}
-
-func RegisterSwaggerAPI(ctx client.Context, rtr *mux.Router) {
-	statikFS, err := fs.New()
-	if err != nil {
-		panic(err)
-	}
-
-	staticServer := http.FileServer(statikFS)
-	rtr.PathPrefix("/swagger/").Handler(http.StripPrefix("/swagger/", staticServer))
+	//tmservice.RegisterTendermintService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.interfaceRegistry)
 }
 
 func GetModuleAccountPermissions() map[string][]string {
@@ -445,7 +376,7 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 		slashingTypes.StoreKey,
 		govTypes.StoreKey,
 		paramsTypes.StoreKey,
-		ibcHost.StoreKey,
+		//	ibcExpo.StoreKey,
 		upgradeTypes.StoreKey,
 		evidenceTypes.StoreKey,
 		ibcTransferTypes.StoreKey,
@@ -465,9 +396,9 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 	tkeys := sdkTypes.NewTransientStoreKeys(paramsTypes.TStoreKey)
 	memKeys := sdkTypes.NewMemoryStoreKeys(capabilityTypes.MemStoreKey, "testingkey")
 
-	if _, _, err := streaming.LoadStreamingServices(bApp, appOpts, appCodec, keys); err != nil {
-		tmos.Exit(err.Error())
-	}
+	//if _, _, err := streaming.LoadStreamingServices(bApp, appOpts, appCodec, keys); err != nil {
+	//	tmos.Exit(err.Error())
+	//}
 
 	app := &SimulationApplication{
 		BaseApp: bApp,
@@ -481,305 +412,305 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 	}
 	app.ParamsKeeper = initParamsKeeper(appCodec, appCodec.GetLegacyAmino(), keys[paramsTypes.StoreKey], tkeys[paramsTypes.TStoreKey])
 
-	app.BaseApp.SetParamStore(app.ParamsKeeper.Subspace(baseapp.Paramspace).WithKeyTable(paramsKeeper.ConsensusParamsKeyTable()))
+	//app.BaseApp.SetParamStore(app.ParamsKeeper.Subspace(baseapp.Paramspace).WithKeyTable(paramsKeeper.ConsensusParamsKeyTable()))
 
 	app.CapabilityKeeper = capabilityKeeper.NewKeeper(appCodec, keys[capabilityTypes.StoreKey], memKeys[capabilityTypes.MemStoreKey])
-	scopedIBCKeeper := app.CapabilityKeeper.ScopeToModule(ibcHost.ModuleName)
-	scopedTransferKeeper := app.CapabilityKeeper.ScopeToModule(ibcTransferTypes.ModuleName)
-	scopedICAHostKeeper := app.CapabilityKeeper.ScopeToModule(icaHostTypes.SubModuleName)
+	//scopedIBCKeeper := app.CapabilityKeeper.ScopeToModule(ibcExported.ModuleName)
+	//scopedTransferKeeper := app.CapabilityKeeper.ScopeToModule(ibcTransferTypes.ModuleName)
+	//scopedICAHostKeeper := app.CapabilityKeeper.ScopeToModule(icaHostTypes.SubModuleName)
 	app.CapabilityKeeper.Seal()
 
-	app.AccountKeeper = authKeeper.NewAccountKeeper(
-		app.GetAppCodec(),
-		keys[authTypes.StoreKey],
-		app.GetSubspace(authTypes.ModuleName),
-		authTypes.ProtoBaseAccount,
-		configurations.ModuleAccountPermissions,
-	)
-	app.BankKeeper = bankKeeper.NewBaseKeeper(
-		appCodec, keys[bankTypes.StoreKey], app.AccountKeeper, app.GetSubspace(bankTypes.ModuleName), app.ModuleAccountAddrs(),
-	)
-	stakingKeeper := stakingKeeper.NewKeeper(
-		appCodec, keys[stakingTypes.StoreKey], app.AccountKeeper, app.BankKeeper, app.GetSubspace(stakingTypes.ModuleName),
-	)
-	app.MintKeeper = mintKeeper.NewKeeper(
-		appCodec, keys[mintTypes.StoreKey], app.GetSubspace(mintTypes.ModuleName), &stakingKeeper,
-		app.AccountKeeper, app.BankKeeper, authTypes.FeeCollectorName,
-	)
-	app.DistributionKeeper = distributionKeeper.NewKeeper(
-		appCodec, keys[distributionTypes.StoreKey], app.GetSubspace(distributionTypes.ModuleName), app.AccountKeeper, app.BankKeeper,
-		&stakingKeeper, authTypes.FeeCollectorName, app.ModuleAccountAddrs(),
-	)
-	app.SlashingKeeper = slashingKeeper.NewKeeper(
-		appCodec, keys[slashingTypes.StoreKey], &stakingKeeper, app.GetSubspace(slashingTypes.ModuleName),
-	)
-	app.CrisisKeeper = crisisKeeper.NewKeeper(
-		app.GetSubspace(crisisTypes.ModuleName), invCheckPeriod, app.BankKeeper, authTypes.FeeCollectorName,
-	)
+	//app.AccountKeeper = authKeeper.NewAccountKeeper(
+	//	app.GetAppCodec(),
+	//	keys[authTypes.StoreKey],
+	//	app.GetSubspace(authTypes.ModuleName),
+	//	authTypes.ProtoBaseAccount,
+	//	configurations.ModuleAccountPermissions,
+	//)
+	//app.BankKeeper = bankKeeper.NewBaseKeeper(
+	//	appCodec, keys[bankTypes.StoreKey], app.AccountKeeper, app.GetSubspace(bankTypes.ModuleName), app.ModuleAccountAddrs(),
+	//)
+	//stakingKeeper := stakingKeeper.NewKeeper(
+	//	appCodec, keys[stakingTypes.StoreKey], app.AccountKeeper, app.BankKeeper, app.GetSubspace(stakingTypes.ModuleName),
+	//)
+	//app.MintKeeper = mintKeeper.NewKeeper(
+	//	appCodec, keys[mintTypes.StoreKey], app.GetSubspace(mintTypes.ModuleName), &stakingKeeper,
+	//	app.AccountKeeper, app.BankKeeper, authTypes.FeeCollectorName,
+	//)
+	//app.DistributionKeeper = distributionKeeper.NewKeeper(
+	//	appCodec, keys[distributionTypes.StoreKey], app.GetSubspace(distributionTypes.ModuleName), app.AccountKeeper, app.BankKeeper,
+	//	&stakingKeeper, authTypes.FeeCollectorName, app.ModuleAccountAddrs(),
+	//)
+	//app.SlashingKeeper = slashingKeeper.NewKeeper(
+	//	appCodec, keys[slashingTypes.StoreKey], &stakingKeeper, app.GetSubspace(slashingTypes.ModuleName),
+	//)
+	//app.CrisisKeeper = crisisKeeper.NewKeeper(
+	//	app.GetSubspace(crisisTypes.ModuleName), invCheckPeriod, app.BankKeeper, authTypes.FeeCollectorName,
+	//)
+	//
+	//app.FeeGrantKeeper = feeGrantKeeper.NewKeeper(appCodec, keys[feegrant.StoreKey], app.AccountKeeper)
+	//app.UpgradeKeeper = upgradeKeeper.NewKeeper(skipUpgradeHeights, keys[upgradeTypes.StoreKey], appCodec, homePath, app.BaseApp)
+	//
+	//app.StakingKeeper = *stakingKeeper.SetHooks(
+	//	stakingTypes.NewMultiStakingHooks(app.DistributionKeeper.Hooks(), app.SlashingKeeper.Hooks()),
+	//)
 
-	app.FeeGrantKeeper = feeGrantKeeper.NewKeeper(appCodec, keys[feegrant.StoreKey], app.AccountKeeper)
-	app.UpgradeKeeper = upgradeKeeper.NewKeeper(skipUpgradeHeights, keys[upgradeTypes.StoreKey], appCodec, homePath, app.BaseApp)
+	//IBCKeeper := ibcKeeper.NewKeeper(
+	//	app.GetAppCodec(),
+	//	keys[ibcHost.StoreKey],
+	//	app.ParamsKeeper.Subspace(ibcHost.ModuleName),
+	//	app.StakingKeeper,
+	//	app.UpgradeKeeper,
+	//	scopedIBCKeeper,
+	//)
 
-	app.StakingKeeper = *stakingKeeper.SetHooks(
-		stakingTypes.NewMultiStakingHooks(app.DistributionKeeper.Hooks(), app.SlashingKeeper.Hooks()),
-	)
+	//app.AuthzKeeper = authzKeeper.NewKeeper(keys[authzKeeper.StoreKey], appCodec, app.BaseApp.MsgServiceRouter())
 
-	IBCKeeper := ibcKeeper.NewKeeper(
-		app.GetAppCodec(),
-		keys[ibcHost.StoreKey],
-		app.ParamsKeeper.Subspace(ibcHost.ModuleName),
-		app.StakingKeeper,
-		app.UpgradeKeeper,
-		scopedIBCKeeper,
-	)
+	//govRouter := govTypes.NewRouter()
+	//govRouter.AddRoute(govTypes.RouterKey, govTypes.ProposalHandler).
+	//	AddRoute(paramsProposal.RouterKey, params.NewParamChangeProposalHandler(app.ParamsKeeper)).
+	//	AddRoute(distributionTypes.RouterKey, distribution.NewCommunityPoolSpendProposalHandler(app.DistributionKeeper)).
+	//	AddRoute(upgradeTypes.RouterKey, upgrade.NewSoftwareUpgradeProposalHandler(app.UpgradeKeeper))
+	//govKeeper := govKeeper.NewKeeper(
+	//	appCodec, keys[govTypes.StoreKey], app.GetSubspace(govTypes.ModuleName), app.AccountKeeper, app.BankKeeper,
+	//	&stakingKeeper, govRouter,
+	//)
 
-	app.AuthzKeeper = authzKeeper.NewKeeper(keys[authzKeeper.StoreKey], appCodec, app.BaseApp.MsgServiceRouter())
+	//app.GovKeeper = *govKeeper.SetHooks(
+	//	govTypes.NewMultiGovHooks(),
+	//)
 
-	govRouter := govTypes.NewRouter()
-	govRouter.AddRoute(govTypes.RouterKey, govTypes.ProposalHandler).
-		AddRoute(paramsProposal.RouterKey, params.NewParamChangeProposalHandler(app.ParamsKeeper)).
-		AddRoute(distributionTypes.RouterKey, distribution.NewCommunityPoolSpendProposalHandler(app.DistributionKeeper)).
-		AddRoute(upgradeTypes.RouterKey, upgrade.NewSoftwareUpgradeProposalHandler(app.UpgradeKeeper))
-	govKeeper := govKeeper.NewKeeper(
-		appCodec, keys[govTypes.StoreKey], app.GetSubspace(govTypes.ModuleName), app.AccountKeeper, app.BankKeeper,
-		&stakingKeeper, govRouter,
-	)
+	//IBCTransferKeeper := ibcTransferKeeper.NewKeeper(
+	//	app.GetAppCodec(),
+	//	keys[ibcTransferTypes.StoreKey],
+	//	app.ParamsKeeper.Subspace(ibcTransferTypes.ModuleName),
+	//	IBCKeeper.ChannelKeeper,
+	//	IBCKeeper.ChannelKeeper,
+	//	&IBCKeeper.PortKeeper,
+	//	app.AccountKeeper,
+	//	app.BankKeeper,
+	//	scopedTransferKeeper,
+	//)
 
-	app.GovKeeper = *govKeeper.SetHooks(
-		govTypes.NewMultiGovHooks(),
-	)
+	//ICAHostKeeper := icaHostKeeper.NewKeeper(
+	//	app.GetAppCodec(),
+	//	keys[icaHostTypes.StoreKey],
+	//	app.ParamsKeeper.Subspace(icaHostTypes.SubModuleName),
+	//	IBCKeeper.ChannelKeeper,
+	//	&IBCKeeper.PortKeeper,
+	//	app.AccountKeeper,
+	//	scopedICAHostKeeper,
+	//	app.MsgServiceRouter(),
+	//)
 
-	IBCTransferKeeper := ibcTransferKeeper.NewKeeper(
-		app.GetAppCodec(),
-		keys[ibcTransferTypes.StoreKey],
-		app.ParamsKeeper.Subspace(ibcTransferTypes.ModuleName),
-		IBCKeeper.ChannelKeeper,
-		IBCKeeper.ChannelKeeper,
-		&IBCKeeper.PortKeeper,
-		app.AccountKeeper,
-		app.BankKeeper,
-		scopedTransferKeeper,
-	)
+	//evidenceKeeper := evidenceKeeper.NewKeeper(
+	//	appCodec, keys[evidenceTypes.StoreKey], &app.StakingKeeper, app.SlashingKeeper,
+	//)
+	//app.EvidenceKeeper = *evidenceKeeper
 
-	ICAHostKeeper := icaHostKeeper.NewKeeper(
-		app.GetAppCodec(),
-		keys[icaHostTypes.StoreKey],
-		app.ParamsKeeper.Subspace(icaHostTypes.SubModuleName),
-		IBCKeeper.ChannelKeeper,
-		&IBCKeeper.PortKeeper,
-		app.AccountKeeper,
-		scopedICAHostKeeper,
-		app.MsgServiceRouter(),
-	)
+	//metasModule := metas.Prototype().Initialize(
+	//	keys[metas.Prototype().Name()],
+	//	app.ParamsKeeper.Subspace(metas.Prototype().Name()),
+	//)
+	//
+	//classificationsModule := classifications.Prototype().Initialize(
+	//	keys[classifications.Prototype().Name()],
+	//	app.ParamsKeeper.Subspace(classifications.Prototype().Name()),
+	//	app.BankKeeper,
+	//	app.StakingKeeper,
+	//)
 
-	evidenceKeeper := evidenceKeeper.NewKeeper(
-		appCodec, keys[evidenceTypes.StoreKey], &app.StakingKeeper, app.SlashingKeeper,
-	)
-	app.EvidenceKeeper = *evidenceKeeper
-
-	metasModule := metas.Prototype().Initialize(
-		keys[metas.Prototype().Name()],
-		app.ParamsKeeper.Subspace(metas.Prototype().Name()),
-	)
-
-	classificationsModule := classifications.Prototype().Initialize(
-		keys[classifications.Prototype().Name()],
-		app.ParamsKeeper.Subspace(classifications.Prototype().Name()),
-		app.BankKeeper,
-		app.StakingKeeper,
-	)
-
-	maintainersModule := maintainers.Prototype().Initialize(
-		keys[maintainers.Prototype().Name()],
-		app.ParamsKeeper.Subspace(maintainers.Prototype().Name()),
-		classificationsModule.GetAuxiliary(member.Auxiliary.GetName()),
-	)
-	identitiesModule := identities.Prototype().Initialize(
-		keys[identities.Prototype().Name()],
-		app.ParamsKeeper.Subspace(identities.Prototype().Name()),
-		classificationsModule.GetAuxiliary(bond.Auxiliary.GetName()),
-		classificationsModule.GetAuxiliary(conform.Auxiliary.GetName()),
-		classificationsModule.GetAuxiliary(define.Auxiliary.GetName()),
-		classificationsModule.GetAuxiliary(member.Auxiliary.GetName()),
-		classificationsModule.GetAuxiliary(unbond.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(deputize.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(maintain.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(revoke.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
-		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
-	)
-	splitsModule := splits.Prototype().Initialize(
-		keys[splits.Prototype().Name()],
-		app.ParamsKeeper.Subspace(splits.Prototype().Name()),
-		app.BankKeeper,
-		identitiesModule.GetAuxiliary(authenticate.Auxiliary.GetName()),
-	)
-	assetsModule := assets.Prototype().Initialize(
-		keys[assets.Prototype().Name()],
-		app.ParamsKeeper.Subspace(assets.Prototype().Name()),
-		identitiesModule.GetAuxiliary(authenticate.Auxiliary.GetName()),
-		classificationsModule.GetAuxiliary(conform.Auxiliary.GetName()),
-		classificationsModule.GetAuxiliary(define.Auxiliary.GetName()),
-		classificationsModule.GetAuxiliary(bond.Auxiliary.GetName()),
-		classificationsModule.GetAuxiliary(unbond.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(deputize.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(maintain.Auxiliary.GetName()),
-		splitsModule.GetAuxiliary(renumerate.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(revoke.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
-		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
-		splitsModule.GetAuxiliary(splitsMint.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
-	)
-	ordersModule := orders.Prototype().Initialize(
-		keys[orders.Prototype().Name()],
-		app.ParamsKeeper.Subspace(orders.Prototype().Name()),
-		identitiesModule.GetAuxiliary(authenticate.Auxiliary.GetName()),
-		classificationsModule.GetAuxiliary(bond.Auxiliary.GetName()),
-		classificationsModule.GetAuxiliary(burn.Auxiliary.GetName()),
-		classificationsModule.GetAuxiliary(unbond.Auxiliary.GetName()),
-		classificationsModule.GetAuxiliary(conform.Auxiliary.GetName()),
-		classificationsModule.GetAuxiliary(define.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(deputize.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(maintain.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(revoke.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
-		metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
-		splitsModule.GetAuxiliary(transfer.Auxiliary.GetName()),
-		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
-	)
+	//maintainersModule := maintainers.Prototype().Initialize(
+	//	keys[maintainers.Prototype().Name()],
+	//	app.ParamsKeeper.Subspace(maintainers.Prototype().Name()),
+	//	classificationsModule.GetAuxiliary(member.Auxiliary.GetName()),
+	//)
+	//identitiesModule := identities.Prototype().Initialize(
+	//	keys[identities.Prototype().Name()],
+	//	app.ParamsKeeper.Subspace(identities.Prototype().Name()),
+	//	classificationsModule.GetAuxiliary(bond.Auxiliary.GetName()),
+	//	classificationsModule.GetAuxiliary(conform.Auxiliary.GetName()),
+	//	classificationsModule.GetAuxiliary(define.Auxiliary.GetName()),
+	//	classificationsModule.GetAuxiliary(member.Auxiliary.GetName()),
+	//	classificationsModule.GetAuxiliary(unbond.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(deputize.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(maintain.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(revoke.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
+	//	metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
+	//)
+	//splitsModule := splits.Prototype().Initialize(
+	//	keys[splits.Prototype().Name()],
+	//	app.ParamsKeeper.Subspace(splits.Prototype().Name()),
+	//	app.BankKeeper,
+	//	identitiesModule.GetAuxiliary(authenticate.Auxiliary.GetName()),
+	//)
+	//assetsModule := assets.Prototype().Initialize(
+	//	keys[assets.Prototype().Name()],
+	//	app.ParamsKeeper.Subspace(assets.Prototype().Name()),
+	//	identitiesModule.GetAuxiliary(authenticate.Auxiliary.GetName()),
+	//	classificationsModule.GetAuxiliary(conform.Auxiliary.GetName()),
+	//	classificationsModule.GetAuxiliary(define.Auxiliary.GetName()),
+	//	classificationsModule.GetAuxiliary(bond.Auxiliary.GetName()),
+	//	classificationsModule.GetAuxiliary(unbond.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(deputize.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(maintain.Auxiliary.GetName()),
+	//	splitsModule.GetAuxiliary(renumerate.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(revoke.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
+	//	metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
+	//	splitsModule.GetAuxiliary(splitsMint.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
+	//)
+	//ordersModule := orders.Prototype().Initialize(
+	//	keys[orders.Prototype().Name()],
+	//	app.ParamsKeeper.Subspace(orders.Prototype().Name()),
+	//	identitiesModule.GetAuxiliary(authenticate.Auxiliary.GetName()),
+	//	classificationsModule.GetAuxiliary(bond.Auxiliary.GetName()),
+	//	classificationsModule.GetAuxiliary(burn.Auxiliary.GetName()),
+	//	classificationsModule.GetAuxiliary(unbond.Auxiliary.GetName()),
+	//	classificationsModule.GetAuxiliary(conform.Auxiliary.GetName()),
+	//	classificationsModule.GetAuxiliary(define.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(deputize.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(maintain.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(revoke.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(super.Auxiliary.GetName()),
+	//	metasModule.GetAuxiliary(supplement.Auxiliary.GetName()),
+	//	splitsModule.GetAuxiliary(transfer.Auxiliary.GetName()),
+	//	maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
+	//)
 
 	// skipGenesisInvariants := cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))
 
-	app.moduleManager = module.NewManager(
-		genutil.NewAppModule(app.AccountKeeper, app.StakingKeeper, app.BaseApp.DeliverTx, app.GetAppCodec()),
-		auth.NewAppModule(app.GetAppCodec(), app.AccountKeeper, nil),
-		vesting.NewAppModule(app.AccountKeeper, app.BankKeeper),
-		bank.NewAppModule(app.GetAppCodec(), app.BankKeeper, app.AccountKeeper),
-		capability.NewAppModule(app.GetAppCodec(), *app.CapabilityKeeper),
-		crisis.NewAppModule(&app.CrisisKeeper, cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))),
-		gov.NewAppModule(app.GetAppCodec(), app.GovKeeper, app.AccountKeeper, app.BankKeeper),
-		mint.NewAppModule(app.GetAppCodec(), app.MintKeeper, app.AccountKeeper),
-		slashing.NewAppModule(app.GetAppCodec(), app.SlashingKeeper, app.AccountKeeper, app.BankKeeper, app.StakingKeeper),
-		distribution.NewAppModule(app.GetAppCodec(), app.DistributionKeeper, app.AccountKeeper, app.BankKeeper, app.StakingKeeper),
-		staking.NewAppModule(app.GetAppCodec(), app.StakingKeeper, app.AccountKeeper, app.BankKeeper),
-		upgrade.NewAppModule(app.UpgradeKeeper),
-		evidence.NewAppModule(app.EvidenceKeeper),
-		feeGrantModule.NewAppModule(app.GetAppCodec(), app.AccountKeeper, app.BankKeeper, app.FeeGrantKeeper, app.GetAppCodec().InterfaceRegistry()),
-		authzModule.NewAppModule(app.GetAppCodec(), app.AuthzKeeper, app.AccountKeeper, app.BankKeeper, app.GetAppCodec().InterfaceRegistry()),
-		ibc.NewAppModule(IBCKeeper),
-		params.NewAppModule(app.ParamsKeeper),
-		ibcTransfer.NewAppModule(IBCTransferKeeper),
-		ica.NewAppModule(nil, &ICAHostKeeper),
+	//app.moduleManager = module.NewManager(
+	//	genutil.NewAppModule(app.AccountKeeper, app.StakingKeeper, app.BaseApp.DeliverTx, app.GetAppCodec()),
+	//	auth.NewAppModule(app.GetAppCodec(), app.AccountKeeper, nil),
+	//	vesting.NewAppModule(app.AccountKeeper, app.BankKeeper),
+	//	bank.NewAppModule(app.GetAppCodec(), app.BankKeeper, app.AccountKeeper),
+	//	capability.NewAppModule(app.GetAppCodec(), *app.CapabilityKeeper),
+	//	crisis.NewAppModule(&app.CrisisKeeper, cast.ToBool(appOpts.Get(crisis.FlagSkipGenesisInvariants))),
+	//	gov.NewAppModule(app.GetAppCodec(), app.GovKeeper, app.AccountKeeper, app.BankKeeper),
+	//	mint.NewAppModule(app.GetAppCodec(), app.MintKeeper, app.AccountKeeper),
+	//	slashing.NewAppModule(app.GetAppCodec(), app.SlashingKeeper, app.AccountKeeper, app.BankKeeper, app.StakingKeeper),
+	//	distribution.NewAppModule(app.GetAppCodec(), app.DistributionKeeper, app.AccountKeeper, app.BankKeeper, app.StakingKeeper),
+	//	staking.NewAppModule(app.GetAppCodec(), app.StakingKeeper, app.AccountKeeper, app.BankKeeper),
+	//	upgrade.NewAppModule(app.UpgradeKeeper),
+	//	evidence.NewAppModule(app.EvidenceKeeper),
+	//	feeGrantModule.NewAppModule(app.GetAppCodec(), app.AccountKeeper, app.BankKeeper, app.FeeGrantKeeper, app.GetAppCodec().InterfaceRegistry()),
+	//	authzModule.NewAppModule(app.GetAppCodec(), app.AuthzKeeper, app.AccountKeeper, app.BankKeeper, app.GetAppCodec().InterfaceRegistry()),
+	//	ibc.NewAppModule(IBCKeeper),
+	//	params.NewAppModule(app.ParamsKeeper),
+	//	ibcTransfer.NewAppModule(IBCTransferKeeper),
+	//	ica.NewAppModule(nil, &ICAHostKeeper),
+	//
+	//	assetsModule,
+	//	classificationsModule,
+	//	identitiesModule,
+	//	maintainersModule,
+	//	metasModule,
+	//	ordersModule,
+	//	splitsModule,
+	//)
+	//app.moduleManager.SetOrderBeginBlockers(
+	//	upgradeTypes.ModuleName,
+	//	capabilityTypes.ModuleName,
+	//	crisisTypes.ModuleName,
+	//	govTypes.ModuleName,
+	//	stakingTypes.ModuleName,
+	//	ibcTransferTypes.ModuleName,
+	//	ibcHost.ModuleName,
+	//	icaTypes.ModuleName,
+	//	authTypes.ModuleName,
+	//	bankTypes.ModuleName,
+	//	distributionTypes.ModuleName,
+	//	slashingTypes.ModuleName,
+	//	mintTypes.ModuleName,
+	//	genutilTypes.ModuleName,
+	//	evidenceTypes.ModuleName,
+	//	authz.ModuleName,
+	//	feegrant.ModuleName,
+	//	paramsTypes.ModuleName,
+	//	vestingTypes.ModuleName,
+	//
+	//	assets.Prototype().Name(),
+	//	classifications.Prototype().Name(),
+	//	identities.Prototype().Name(),
+	//	maintainers.Prototype().Name(),
+	//	metas.Prototype().Name(),
+	//	orders.Prototype().Name(),
+	//	splits.Prototype().Name(),
+	//)
+	//app.moduleManager.SetOrderEndBlockers(
+	//	crisisTypes.ModuleName,
+	//	govTypes.ModuleName,
+	//	stakingTypes.ModuleName,
+	//	ibcTransferTypes.ModuleName,
+	//	ibcHost.ModuleName,
+	//	icaTypes.ModuleName,
+	//	feegrant.ModuleName,
+	//	authz.ModuleName,
+	//	capabilityTypes.ModuleName,
+	//	authTypes.ModuleName,
+	//	bankTypes.ModuleName,
+	//	distributionTypes.ModuleName,
+	//	slashingTypes.ModuleName,
+	//	mintTypes.ModuleName,
+	//	genutilTypes.ModuleName,
+	//	evidenceTypes.ModuleName,
+	//	paramsTypes.ModuleName,
+	//	upgradeTypes.ModuleName,
+	//	vestingTypes.ModuleName,
+	//
+	//	assets.Prototype().Name(),
+	//	classifications.Prototype().Name(),
+	//	identities.Prototype().Name(),
+	//	maintainers.Prototype().Name(),
+	//	metas.Prototype().Name(),
+	//	orders.Prototype().Name(),
+	//	splits.Prototype().Name(),
+	//)
+	//app.moduleManager.SetOrderInitGenesis(
+	//	capabilityTypes.ModuleName,
+	//	bankTypes.ModuleName,
+	//	distributionTypes.ModuleName,
+	//	stakingTypes.ModuleName,
+	//	slashingTypes.ModuleName,
+	//	govTypes.ModuleName,
+	//	mintTypes.ModuleName,
+	//	crisisTypes.ModuleName,
+	//	ibcTransferTypes.ModuleName,
+	//	ibcHost.ModuleName,
+	//	icaTypes.ModuleName,
+	//	evidenceTypes.ModuleName,
+	//	feegrant.ModuleName,
+	//	authz.ModuleName,
+	//	authTypes.ModuleName,
+	//	genutilTypes.ModuleName,
+	//	paramsTypes.ModuleName,
+	//	upgradeTypes.ModuleName,
+	//	vestingTypes.ModuleName,
+	//
+	//	assets.Prototype().Name(),
+	//	classifications.Prototype().Name(),
+	//	identities.Prototype().Name(),
+	//	maintainers.Prototype().Name(),
+	//	metas.Prototype().Name(),
+	//	orders.Prototype().Name(),
+	//	splits.Prototype().Name(),
+	//)
+	//
+	//app.moduleManager.RegisterInvariants(&app.CrisisKeeper)
+	//app.moduleManager.RegisterRoutes(app.Router(), app.QueryRouter(), app.GetAppCodec().GetLegacyAmino())
+	//app.configurator = module.NewConfigurator(app.GetAppCodec(), app.MsgServiceRouter(), app.GRPCQueryRouter())
+	//app.moduleManager.RegisterServices(app.configurator)
+	//
+	//testdata.RegisterQueryServer(app.GRPCQueryRouter(), testdata.QueryImpl{})
 
-		assetsModule,
-		classificationsModule,
-		identitiesModule,
-		maintainersModule,
-		metasModule,
-		ordersModule,
-		splitsModule,
-	)
-	app.moduleManager.SetOrderBeginBlockers(
-		upgradeTypes.ModuleName,
-		capabilityTypes.ModuleName,
-		crisisTypes.ModuleName,
-		govTypes.ModuleName,
-		stakingTypes.ModuleName,
-		ibcTransferTypes.ModuleName,
-		ibcHost.ModuleName,
-		icaTypes.ModuleName,
-		authTypes.ModuleName,
-		bankTypes.ModuleName,
-		distributionTypes.ModuleName,
-		slashingTypes.ModuleName,
-		mintTypes.ModuleName,
-		genutilTypes.ModuleName,
-		evidenceTypes.ModuleName,
-		authz.ModuleName,
-		feegrant.ModuleName,
-		paramsTypes.ModuleName,
-		vestingTypes.ModuleName,
-
-		assets.Prototype().Name(),
-		classifications.Prototype().Name(),
-		identities.Prototype().Name(),
-		maintainers.Prototype().Name(),
-		metas.Prototype().Name(),
-		orders.Prototype().Name(),
-		splits.Prototype().Name(),
-	)
-	app.moduleManager.SetOrderEndBlockers(
-		crisisTypes.ModuleName,
-		govTypes.ModuleName,
-		stakingTypes.ModuleName,
-		ibcTransferTypes.ModuleName,
-		ibcHost.ModuleName,
-		icaTypes.ModuleName,
-		feegrant.ModuleName,
-		authz.ModuleName,
-		capabilityTypes.ModuleName,
-		authTypes.ModuleName,
-		bankTypes.ModuleName,
-		distributionTypes.ModuleName,
-		slashingTypes.ModuleName,
-		mintTypes.ModuleName,
-		genutilTypes.ModuleName,
-		evidenceTypes.ModuleName,
-		paramsTypes.ModuleName,
-		upgradeTypes.ModuleName,
-		vestingTypes.ModuleName,
-
-		assets.Prototype().Name(),
-		classifications.Prototype().Name(),
-		identities.Prototype().Name(),
-		maintainers.Prototype().Name(),
-		metas.Prototype().Name(),
-		orders.Prototype().Name(),
-		splits.Prototype().Name(),
-	)
-	app.moduleManager.SetOrderInitGenesis(
-		capabilityTypes.ModuleName,
-		bankTypes.ModuleName,
-		distributionTypes.ModuleName,
-		stakingTypes.ModuleName,
-		slashingTypes.ModuleName,
-		govTypes.ModuleName,
-		mintTypes.ModuleName,
-		crisisTypes.ModuleName,
-		ibcTransferTypes.ModuleName,
-		ibcHost.ModuleName,
-		icaTypes.ModuleName,
-		evidenceTypes.ModuleName,
-		feegrant.ModuleName,
-		authz.ModuleName,
-		authTypes.ModuleName,
-		genutilTypes.ModuleName,
-		paramsTypes.ModuleName,
-		upgradeTypes.ModuleName,
-		vestingTypes.ModuleName,
-
-		assets.Prototype().Name(),
-		classifications.Prototype().Name(),
-		identities.Prototype().Name(),
-		maintainers.Prototype().Name(),
-		metas.Prototype().Name(),
-		orders.Prototype().Name(),
-		splits.Prototype().Name(),
-	)
-
-	app.moduleManager.RegisterInvariants(&app.CrisisKeeper)
-	app.moduleManager.RegisterRoutes(app.Router(), app.QueryRouter(), app.GetAppCodec().GetLegacyAmino())
-	app.configurator = module.NewConfigurator(app.GetAppCodec(), app.MsgServiceRouter(), app.GRPCQueryRouter())
-	app.moduleManager.RegisterServices(app.configurator)
-
-	testdata.RegisterQueryServer(app.GRPCQueryRouter(), testdata.QueryImpl{})
-
-	overrideModules := map[string]module.AppModuleSimulation{
-		authTypes.ModuleName: auth.NewAppModule(app.appCodec, app.AccountKeeper, authSimulation.RandomGenesisAccounts),
-	}
-	app.simulationManager = module.NewSimulationManagerFromAppModules(app.moduleManager.Modules, overrideModules)
+	//overrideModules := map[string]module.AppModuleSimulation{
+	//	authTypes.ModuleName: auth.NewAppModule(app.appCodec, app.AccountKeeper, authSimulation.RandomGenesisAccounts),
+	//}
+	//app.simulationManager = module.NewSimulationManagerFromAppModules(app.moduleManager.Modules, overrideModules)
 
 	app.simulationManager.RegisterStoreDecoders()
 	app.MountKVStores(keys)
@@ -813,7 +744,7 @@ func NewSimulationApplication(logger tmLog.Logger, db dbm.DB, traceStore io.Writ
 
 	return app
 }
-func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino, key, tkey sdkTypes.StoreKey) paramsKeeper.Keeper {
+func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino, key, tkey storeTypes.StoreKey) paramsKeeper.Keeper {
 	parametersKeeper := paramsKeeper.NewKeeper(appCodec, legacyAmino, key, tkey)
 
 	parametersKeeper.Subspace(authTypes.ModuleName)
@@ -822,7 +753,7 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	parametersKeeper.Subspace(mintTypes.ModuleName)
 	parametersKeeper.Subspace(distributionTypes.ModuleName)
 	parametersKeeper.Subspace(slashingTypes.ModuleName)
-	parametersKeeper.Subspace(govTypes.ModuleName).WithKeyTable(govTypes.ParamKeyTable())
+	//parametersKeeper.Subspace(govTypes.ModuleName).WithKeyTable(govTypes.ParamKeyTable())
 	parametersKeeper.Subspace(crisisTypes.ModuleName)
 
 	return parametersKeeper
