@@ -4,7 +4,7 @@ Content-Type: application/json
 {
  "type": "github.com/AssetMantle/modules/x/metas/internal/transactions/reveal/transactionRequest",
  "value": {
-    "baseReq": {
+    "commonTransactionRequest": {
       "from": "{{TEST_ACCOUNT_ADDRESS}}",
       "chain_id": "{{CHAIN_ID}}"
     },

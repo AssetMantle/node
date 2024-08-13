@@ -4,7 +4,7 @@ Content-Type: application/json
 {
  "type": "github.com/AssetMantle/modules/x/orders/internal/transactions/define/transactionRequest",
  "value": {
-    "baseReq": {
+    "commonTransactionRequest": {
       "from": "{{ACCOUNT_1_ADDRESS}}",
       "chain_id": "{{CHAIN_ID}}"
     },
