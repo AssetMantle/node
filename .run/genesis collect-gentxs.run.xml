@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="genesis collect-gentxs" type="GoApplicationRunConfiguration"
+                   factoryName="Go Application" folderName="genesis">
+        <module name="node"/>
+        <working_directory value="$PROJECT_DIR$/"/>
+        <parameters value="genesis collect-gentxs"/>
+        <kind value="FILE"/>
+        <package value="github.com/AssetMantle/node"/>
+        <directory value="$PROJECT_DIR$/"/>
+        <filePath value="$PROJECT_DIR$/node/main.go"/>
+        <method v="2"/>
+    </configuration>
+</component>
