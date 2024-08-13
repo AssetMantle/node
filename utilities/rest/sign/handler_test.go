@@ -53,9 +53,9 @@ func TestHandler(t *testing.T) {
 
 	// signWithout chainID
 	requestBody1, err := Codec.MarshalJSON(request{
-		BaseRequest: rest.BaseReq{From: address},
-		Type:        "cosmos-sdk/StdTx",
-		StdTx:       legacytx.NewStdTx([]sdkTypes.Msg{}, legacytx.NewStdFee(10, sdkTypes.NewCoins()), nil, ""),
+		CommonTransactionRequest: rest.BaseReq{From: address},
+		Type:                     "cosmos-sdk/StdTx",
+		StdTx:                    legacytx.NewStdTx([]sdkTypes.Msg{}, legacytx.NewStdFee(10, sdkTypes.NewCoins()), nil, ""),
 	})
 	require.Nil(t, err)
 	testRequest1, err := http.NewRequest("POST", "/sign", bytes.NewBuffer(requestBody1))
@@ -67,9 +67,9 @@ func TestHandler(t *testing.T) {
 
 	// with wrong key
 	requestBody2, err := Codec.MarshalJSON(request{
-		BaseRequest: rest.BaseReq{From: "address", ChainID: "test"},
-		Type:        "cosmos-sdk/StdTx",
-		StdTx:       legacytx.NewStdTx([]sdkTypes.Msg{}, legacytx.NewStdFee(20, sdkTypes.NewCoins()), nil, ""),
+		CommonTransactionRequest: rest.BaseReq{From: "address", ChainID: "test"},
+		Type:                     "cosmos-sdk/StdTx",
+		StdTx:                    legacytx.NewStdTx([]sdkTypes.Msg{}, legacytx.NewStdFee(20, sdkTypes.NewCoins()), nil, ""),
 	})
 	require.Nil(t, err)
 	testRequest2, err := http.NewRequest("POST", "/sign", bytes.NewBuffer(requestBody2))
@@ -81,9 +81,9 @@ func TestHandler(t *testing.T) {
 
 	// RPC client offline
 	requestBody3, err := Codec.MarshalJSON(request{
-		BaseRequest: rest.BaseReq{From: address, ChainID: "test"},
-		Type:        "cosmos-sdk/StdTx",
-		StdTx:       legacytx.NewStdTx([]sdkTypes.Msg{}, legacytx.NewStdFee(30, sdkTypes.NewCoins()), nil, ""),
+		CommonTransactionRequest: rest.BaseReq{From: address, ChainID: "test"},
+		Type:                     "cosmos-sdk/StdTx",
+		StdTx:                    legacytx.NewStdTx([]sdkTypes.Msg{}, legacytx.NewStdFee(30, sdkTypes.NewCoins()), nil, ""),
 	})
 	require.Nil(t, err)
 	testRequest3, err := http.NewRequest("POST", "/sign", bytes.NewBuffer(requestBody3))

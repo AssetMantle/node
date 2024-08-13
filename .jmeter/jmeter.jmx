@@ -185,7 +185,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-   &quot;baseReq&quot;:{&#xd;
+   &quot;commonTransactionRequest&quot;:{&#xd;
       &quot;from&quot;:&quot;${MAIN}&quot;,&#xd;
       &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
    },&#xd;
@@ -403,7 +403,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-   &quot;baseReq&quot;:{&#xd;
+   &quot;commonTransactionRequest&quot;:{&#xd;
       &quot;from&quot;:&quot;${MAIN}&quot;,&#xd;
       &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
    },&#xd;
@@ -603,7 +603,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/nub/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -664,7 +664,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ID_NUB_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ID_NUB_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -715,7 +715,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -796,7 +796,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/nub/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_02)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -857,7 +857,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ID_NUB_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ID_NUB_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -908,7 +908,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_02)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -989,7 +989,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/define/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1105,7 +1105,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1183,7 +1183,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/issue/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1301,7 +1301,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1375,7 +1375,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/unprovision/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1488,7 +1488,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/provision/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1601,7 +1601,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/mutate/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1716,7 +1716,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/deputize/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1837,7 +1837,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/revoke/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1951,7 +1951,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/quash/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2089,7 +2089,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2205,7 +2205,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2283,7 +2283,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2401,7 +2401,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2475,7 +2475,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/burn/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2588,7 +2588,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2706,7 +2706,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2787,7 +2787,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/deputize/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2908,7 +2908,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -3023,7 +3023,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/renumerate/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -3136,7 +3136,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/revoke/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -3250,7 +3250,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -3368,7 +3368,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -3474,7 +3474,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/internal/transactions/send/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -3589,7 +3589,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/internal/transactions/wrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -3702,7 +3702,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/internal/transactions/unwrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -3816,7 +3816,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/internal/transactions/wrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -3954,7 +3954,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -4070,7 +4070,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -4149,7 +4149,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -4278,7 +4278,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -4358,7 +4358,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/cancel/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -4471,7 +4471,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -4600,7 +4600,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -4680,7 +4680,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/take/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;

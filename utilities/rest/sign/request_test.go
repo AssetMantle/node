@@ -13,10 +13,10 @@ import (
 
 func Test_SignTx_Request(t *testing.T) {
 	fromAddress := "cosmos1pkkayn066msg6kn33wnl5srhdt3tnu2vzasz9c"
-	testBaseReq := rest.BaseReq{From: fromAddress, ChainID: "test", Fees: sdkTypes.NewCoins()}
+	commonTransactionRequest := rest.BaseReq{From: fromAddress, ChainID: "test", Fees: sdkTypes.NewCoins()}
 
 	testFee := legacytx.NewStdFee(12, sdkTypes.NewCoins())
 
 	testStdTx := legacytx.NewStdTx([]sdkTypes.Msg{}, testFee, []legacytx.StdSignature{}, "")
-	require.Equal(t, nil, request{BaseRequest: testBaseReq, Type: "type", StdTx: testStdTx}.Validate())
+	require.Equal(t, nil, request{CommonTransactionRequest: commonTransactionRequest, Type: "type", StdTx: testStdTx}.Validate())
 }

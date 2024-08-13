@@ -72,7 +72,7 @@ describe('Keys', async () => {
         it(name1 + ' should be able to signTx ', async () => {
 
             let obj = {
-                "baseReq": {
+                "commonTransactionRequest": {
                     "from": config.testAccountAddress,
                     "chain_id": config.chain_id
                 },
@@ -205,7 +205,7 @@ describe('Keys', async () => {
         it(name2 + ' should be able to signTx ', async () => {
 
             let obj = {
-                "baseReq": {
+                "commonTransactionRequest": {
                     "from": config.testAccountAddress,
                     "chain_id": config.chain_id
                 },
