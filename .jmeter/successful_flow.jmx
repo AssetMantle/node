@@ -176,7 +176,7 @@
           </collectionProp>
         </Arguments>
         <hashTree/>
-        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="NONCE" enabled="true">
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="NONCE">
           <stringProp name="maximumValue">9999999</stringProp>
           <stringProp name="minimumValue">1</stringProp>
           <stringProp name="outputFormat">0000000</stringProp>
@@ -185,7 +185,7 @@
           <stringProp name="variableName">NONCE</stringProp>
         </RandomVariableConfig>
         <hashTree/>
-        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="REPEATED RANDOM NUMBER 1" enabled="true">
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="REPEATED RANDOM NUMBER 1">
           <stringProp name="maximumValue">9999999</stringProp>
           <stringProp name="minimumValue">1</stringProp>
           <stringProp name="outputFormat">0000000</stringProp>
@@ -194,7 +194,7 @@
           <stringProp name="variableName">RANDOM_NO_1</stringProp>
         </RandomVariableConfig>
         <hashTree/>
-        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="REPEATED RANDOM NUMBER 2" enabled="true">
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="REPEATED RANDOM NUMBER 2">
           <stringProp name="maximumValue">9999999</stringProp>
           <stringProp name="minimumValue">1</stringProp>
           <stringProp name="outputFormat">0000000</stringProp>
@@ -203,7 +203,7 @@
           <stringProp name="variableName">RANDOM_NO_2</stringProp>
         </RandomVariableConfig>
         <hashTree/>
-        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="IMMUTABLE_META_PROPERTY_DEFINITION" enabled="true">
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="IMMUTABLE_META_PROPERTY_DEFINITION">
           <stringProp name="maximumValue">9999999</stringProp>
           <stringProp name="minimumValue">1</stringProp>
           <stringProp name="outputFormat">0000000</stringProp>
@@ -212,7 +212,7 @@
           <stringProp name="variableName">IMMUTABLE_META_PROPERTY_DEFINITION</stringProp>
         </RandomVariableConfig>
         <hashTree/>
-        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="IMMUTABLE_PROPERTY_DEFINITION" enabled="true">
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="IMMUTABLE_PROPERTY_DEFINITION">
           <stringProp name="maximumValue">9999999</stringProp>
           <stringProp name="minimumValue">1</stringProp>
           <stringProp name="outputFormat">0000000</stringProp>
@@ -221,7 +221,7 @@
           <stringProp name="variableName">IMMUTABLE_PROPERTY_DEFINITION</stringProp>
         </RandomVariableConfig>
         <hashTree/>
-        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="MUTABLE_META_PROPERTY_DEFINITION" enabled="true">
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="MUTABLE_META_PROPERTY_DEFINITION">
           <stringProp name="maximumValue">9999999</stringProp>
           <stringProp name="minimumValue">1</stringProp>
           <stringProp name="outputFormat">0000000</stringProp>
@@ -230,7 +230,7 @@
           <stringProp name="variableName">MUTABLE_META_PROPERTY_DEFINITION</stringProp>
         </RandomVariableConfig>
         <hashTree/>
-        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="IMMUTABLE_PROPERTY_DEFINITION" enabled="true">
+        <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="IMMUTABLE_PROPERTY_DEFINITION">
           <stringProp name="maximumValue">9999999</stringProp>
           <stringProp name="minimumValue">1</stringProp>
           <stringProp name="outputFormat">0000000</stringProp>
@@ -239,11 +239,11 @@
           <stringProp name="variableName">MUTABLE_PROPERTY_DEFINITION</stringProp>
         </RandomVariableConfig>
         <hashTree/>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) test account" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) test account">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) POST - add key" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) POST - add key">
             <stringProp name="HTTPSampler.domain">${IP}</stringProp>
             <stringProp name="HTTPSampler.port">${PORT}</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -265,7 +265,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) check: add key code" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) check: add key code">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -275,7 +275,7 @@
               <intProp name="Assertion.test_type">8</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) check: add key status" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) check: add key status">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="-1147692044">address</stringProp>
               </collectionProp>
@@ -285,13 +285,13 @@
               <intProp name="Assertion.test_type">16</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="1) extract: acc address" enabled="true">
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="1) extract: acc address">
               <stringProp name="JSONPostProcessor.referenceNames">ADDR_01</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$..address</stringProp>
               <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="1) setvar: acc address" enabled="true">
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="1) setvar: acc address">
               <stringProp name="BeanShellAssertion.query">${__setProperty(ADDR_01, ${ADDR_01})};</stringProp>
               <stringProp name="BeanShellAssertion.filename"></stringProp>
               <stringProp name="BeanShellAssertion.parameters"></stringProp>
@@ -299,7 +299,7 @@
             </BeanShellAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) GET - Faucet" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) GET - Faucet">
             <stringProp name="HTTPSampler.domain">localhost</stringProp>
             <stringProp name="HTTPSampler.port">1317</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -313,7 +313,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) code: sign send" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="1) code: sign send">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="49586">200</stringProp>
               </collectionProp>
@@ -323,17 +323,17 @@
               <intProp name="Assertion.test_type">8</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
               <stringProp name="ConstantTimer.delay">${LONG}</stringProp>
             </ConstantTimer>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="2) test account" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="2) test account">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2) POST - add key" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2) POST - add key">
             <stringProp name="HTTPSampler.domain">${IP}</stringProp>
             <stringProp name="HTTPSampler.port">${PORT}</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -389,7 +389,7 @@
             </BeanShellAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2) GET - Faucet" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2) GET - Faucet">
             <stringProp name="HTTPSampler.domain">localhost</stringProp>
             <stringProp name="HTTPSampler.port">1317</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -419,15 +419,15 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities module" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities module">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities name">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) identities name" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) POST - identities name">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1) POST - identities name" enabled="true">
               <stringProp name="HTTPSampler.domain">${IP}</stringProp>
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -443,12 +443,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/name/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;name&quot;:&quot;${RANDOM_NO_1}&quot;&#xd;
    }&#xd;
 }</stringProp>
@@ -615,12 +614,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/name/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;name&quot;:&quot;${RANDOM_NO_2}&quot;&#xd;
    }&#xd;
 }</stringProp>
@@ -787,12 +785,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/define/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
@@ -954,12 +951,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/issue/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
@@ -1061,12 +1057,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;to&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
@@ -1130,12 +1125,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/unprovision/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;identityID&quot;:&quot;${IDENTITY_ID}&quot;,&#xd;
       &quot;to&quot;:&quot;${__property(ADDR_02)}&quot;&#xd;
    }&#xd;
@@ -1233,12 +1227,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/provision/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;identityID&quot;:&quot;${IDENTITY_ID}&quot;,&#xd;
       &quot;to&quot;:&quot;${__property(ADDR_02)}&quot;&#xd;
    }&#xd;
@@ -1336,12 +1329,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/update/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;identityID&quot;:&quot;${IDENTITY_ID}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
@@ -1441,12 +1433,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/deputize/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;toID&quot;:&quot;${NUB_ID_2}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
@@ -1552,12 +1543,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/revoke/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;toID&quot;:&quot;${NUB_ID_2}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;&#xd;
@@ -1656,12 +1646,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/quash/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;identityID&quot;:&quot;${IDENTITY_ID}&quot;&#xd;
    }&#xd;
@@ -1740,7 +1729,7 @@
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) assets module" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) assets module">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
@@ -1764,12 +1753,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/define/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
       &quot;immutableProperties&quot;:&quot;${IMMUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
@@ -1937,12 +1925,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/mint/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
@@ -2108,12 +2095,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/burn/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;assetID&quot;:&quot;${ASSET_ID}&quot;&#xd;
    }&#xd;
@@ -2211,12 +2197,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/mint/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
@@ -2389,12 +2374,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/deputize/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_2)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
@@ -2500,12 +2484,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/mutate/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;assetID&quot;:&quot;${ASSET_ID}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|d&quot;,&#xd;
@@ -2605,12 +2588,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/renumerate/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;assetID&quot;:&quot;${ASSET_ID}&quot;&#xd;
    }&#xd;
@@ -2708,12 +2690,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/revoke/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_2)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;&#xd;
@@ -2812,12 +2793,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/mint/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
@@ -2971,7 +2951,7 @@
             </hashTree>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) splits module" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="1) splits module">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
@@ -2995,12 +2975,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/send/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_2)}&quot;,&#xd;
       &quot;assetID&quot;:&quot;${__property(ASSET_ID)}&quot;,&#xd;
@@ -3100,12 +3079,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/wrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;coins&quot;:&quot;${COINS}${DENOM}&quot;&#xd;
    }&#xd;
@@ -3203,12 +3181,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/unwrap/transactionRequest&quot;,&#xd;
     &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
 	 &quot;coins&quot;:&quot;${COINS}${DENOM}&quot;&#xd;
    }&#xd;
@@ -3306,12 +3283,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/transactions/wrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-   	&quot;commonTransactionRequest&quot;:{&quot;type&quot;:&quot;github.com/AssetMantle/modules/helpers/base/CommonTransactionRequest&quot;,&#xd;
-   	&quot;value&quot;:{&#xd;
+   	&quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chainID&quot;:&quot;${CHAIN}&quot;,&#xd;
          &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
-   }},&#xd;
+   },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;coins&quot;:&quot;${COINS}${DENOM}&quot;&#xd;
    }&#xd;
