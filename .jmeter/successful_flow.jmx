@@ -447,7 +447,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;name&quot;:&quot;${RANDOM_NO_1}&quot;&#xd;
    }&#xd;
@@ -619,7 +619,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;name&quot;:&quot;${RANDOM_NO_2}&quot;&#xd;
    }&#xd;
@@ -791,7 +791,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
@@ -958,7 +958,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;,&#xd;
@@ -1065,7 +1065,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;to&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
@@ -1134,7 +1134,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;identityID&quot;:&quot;${IDENTITY_ID}&quot;,&#xd;
       &quot;to&quot;:&quot;${__property(ADDR_02)}&quot;&#xd;
@@ -1237,7 +1237,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;identityID&quot;:&quot;${IDENTITY_ID}&quot;,&#xd;
       &quot;to&quot;:&quot;${__property(ADDR_02)}&quot;&#xd;
@@ -1340,7 +1340,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;identityID&quot;:&quot;${IDENTITY_ID}&quot;,&#xd;
@@ -1445,7 +1445,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;toID&quot;:&quot;${NUB_ID_2}&quot;,&#xd;
@@ -1556,7 +1556,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;toID&quot;:&quot;${NUB_ID_2}&quot;,&#xd;
@@ -1660,7 +1660,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;identityID&quot;:&quot;${IDENTITY_ID}&quot;&#xd;
@@ -1768,7 +1768,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;${MUTABLE_PROPERTY_DEFINITION}:S|&quot;,&#xd;
@@ -1941,7 +1941,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
@@ -2112,7 +2112,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;assetID&quot;:&quot;${ASSET_ID}&quot;&#xd;
@@ -2215,7 +2215,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
@@ -2393,7 +2393,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_2)}&quot;,&#xd;
@@ -2504,7 +2504,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;assetID&quot;:&quot;${ASSET_ID}&quot;,&#xd;
@@ -2609,7 +2609,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;assetID&quot;:&quot;${ASSET_ID}&quot;&#xd;
@@ -2712,7 +2712,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_2)}&quot;,&#xd;
@@ -2816,7 +2816,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
@@ -2999,7 +2999,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_2)}&quot;,&#xd;
@@ -3104,7 +3104,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;coins&quot;:&quot;${COINS}${DENOM}&quot;&#xd;
@@ -3207,7 +3207,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
 	 &quot;coins&quot;:&quot;${COINS}${DENOM}&quot;&#xd;
@@ -3310,7 +3310,7 @@
    	&quot;value&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;,&#xd;
-         &quot;fees&quot;:[{&quot;denom&quot;:&quot;${DENOM}&quot;,&quot;amount&quot;:&quot;${FEES}&quot;}]&#xd;
+         &quot;fees&quot;:&quot;${FEES}${DENOM}&quot;&#xd;
    }},&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;coins&quot;:&quot;${COINS}${DENOM}&quot;&#xd;
