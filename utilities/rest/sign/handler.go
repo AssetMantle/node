@@ -4,7 +4,9 @@
 package sign
 
 import (
+	"encoding/json"
 	"github.com/AssetMantle/modules/utilities/rest"
+	"io"
 	"net/http"
 
 	"github.com/cosmos/cosmos-sdk/client"
@@ -19,9 +21,15 @@ import (
 
 func handler(context client.Context) http.HandlerFunc {
 	return func(responseWriter http.ResponseWriter, httpRequest *http.Request) {
-		var request request
-		if !rest.ReadRESTReq(responseWriter, httpRequest, context.LegacyAmino, &request) {
-			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, "")
+		body, err := io.ReadAll(httpRequest.Body)
+		if err != nil {
+			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
+			return
+		}
+
+		request := request{}
+		if err := json.Unmarshal(body, &request); err != nil {
+			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
 			return
 		}
 

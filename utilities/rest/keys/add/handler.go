@@ -4,8 +4,10 @@
 package add
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/AssetMantle/modules/utilities/rest"
+	"io"
 	"net/http"
 
 	"github.com/cosmos/cosmos-sdk/client"
@@ -19,20 +21,19 @@ import (
 
 func handler(context client.Context) http.HandlerFunc {
 	return func(responseWriter http.ResponseWriter, httpRequest *http.Request) {
-		var request request
-		if !rest.ReadRESTReq(responseWriter, httpRequest, context.LegacyAmino, &request) {
-			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, "")
-			return
-		}
-
-		err := request.Validate()
+		body, err := io.ReadAll(httpRequest.Body)
 		if err != nil {
 			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
 			return
 		}
 
-		_, err = context.Keyring.Key(request.Name)
-		if err == nil {
+		request := request{}
+		if err := json.Unmarshal(body, &request); err != nil {
+			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
+			return
+		}
+
+		if _, err := context.Keyring.Key(request.Name); err == nil {
 			rest.WriteErrorResponse(responseWriter, http.StatusInternalServerError, fmt.Sprintf("Account for keyname %v already exists", request.Name))
 			return
 		}
@@ -45,8 +46,7 @@ func handler(context client.Context) http.HandlerFunc {
 		if request.Mnemonic == "" {
 			const mnemonicEntropySize = 256
 
-			var entropySeed []byte
-			entropySeed, err = bip39.NewEntropy(mnemonicEntropySize)
+			entropySeed, err := bip39.NewEntropy(mnemonicEntropySize)
 			if err != nil {
 				rest.WriteErrorResponse(responseWriter, http.StatusInternalServerError, err.Error())
 				return

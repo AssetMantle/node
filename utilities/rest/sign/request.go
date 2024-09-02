@@ -13,9 +13,3 @@ type request struct {
 	Type                             string     `json:"type"`
 	StdTx                            signing.Tx `json:"value"`
 }
-
-var _ helpers.Request = request{}
-
-func (request request) Validate() error {
-	return nil
-}
