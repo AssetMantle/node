@@ -234,14 +234,12 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/name/transactionRequest&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
+
       &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${address}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN_ID}&quot;&#xd;
       },&#xd;
       &quot;name&quot;:&quot;${__RandomString(${__Random(1,30,)},abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_)}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -344,14 +342,12 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/name/transactionRequest&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
+
       &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${address}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN_ID}&quot;&#xd;
       },&#xd;
       &quot;name&quot;:&quot;${NAME}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -437,14 +433,12 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/name/transactionRequest&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
+
       &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${address}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN_ID}&quot;&#xd;
       },&#xd;
       &quot;name&quot;:&quot;${NAME}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -533,14 +527,12 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/name/transactionRequest&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
+
       &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${address}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN_ID}&quot;&#xd;
       },&#xd;
       &quot;name&quot;:&quot;${__RandomString(31,abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_)}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -582,14 +574,12 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/name/transactionRequest&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
+
       &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${address}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN_ID}&quot;&#xd;
       },&#xd;
       &quot;name&quot;:&quot;&quot;&#xd;
-   }&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -631,14 +621,12 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/name/transactionRequest&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
+
       &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${address}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN_ID}&quot;&#xd;
       },&#xd;
       &quot;name&quot;:&quot;${__RandomString(${__Random(1,30,)},!@#$%^&amp;*()+-=[]{};&apos;:,.&lt;&gt;/?`~|\\\&quot;)}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
