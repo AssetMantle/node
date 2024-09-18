@@ -578,9 +578,10 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 
 	application.slashingKeeper = slashingKeeper.NewKeeper(
 		application.GetCodec(),
+		application.GetCodec().GetLegacyAmino(),
 		application.keys[slashingTypes.StoreKey],
-		&application.stakingKeeper,
-		ParamsKeeper.Subspace(slashingTypes.ModuleName),
+		application.stakingKeeper,
+		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
 	)
 
 	application.crisisKeeper = crisisKeeper.NewKeeper(
