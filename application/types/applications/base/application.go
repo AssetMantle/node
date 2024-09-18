@@ -408,6 +408,7 @@ func (application application) AppCreator(logger tendermintLog.Logger, db tender
 		skipUpgradeHeights,
 		cast.ToString(appOptions.Get(flags.FlagHome)),
 		appOptions,
+		baseapp.SetChainID(chainID),
 		baseapp.SetPruning(pruningOpts),
 		baseapp.SetMinGasPrices(cast.ToString(appOptions.Get(server.FlagMinGasPrices))),
 		baseapp.SetHaltHeight(cast.ToUint64(appOptions.Get(server.FlagHaltHeight))),
@@ -416,9 +417,7 @@ func (application application) AppCreator(logger tendermintLog.Logger, db tender
 		baseapp.SetInterBlockCache(multiStorePersistentCache),
 		baseapp.SetTrace(cast.ToBool(appOptions.Get(server.FlagTrace))),
 		baseapp.SetIndexEvents(cast.ToStringSlice(appOptions.Get(server.FlagIndexEvents))),
-		baseapp.SetSnapshotStore(snapshotStore),
-		baseapp.SetSnapshotInterval(cast.ToUint64(appOptions.Get(server.FlagStateSyncSnapshotInterval))),
-		baseapp.SetSnapshotKeepRecent(cast.ToUint32(appOptions.Get(server.FlagStateSyncSnapshotKeepRecent))),
+		baseapp.SetSnapshot(snapshotStore, snapshotOptions),
 		baseapp.SetIAVLCacheSize(cast.ToInt(appOptions.Get(server.FlagIAVLCacheSize))))
 }
 func (application application) AppExporter(logger tendermintLog.Logger, db tendermintDB.DB, writer io.Writer, height int64, forZeroHeight bool, jailAllowedAddrs []string, appOptions serverTypes.AppOptions) (serverTypes.ExportedApp, error) {
