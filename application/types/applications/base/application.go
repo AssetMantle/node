@@ -531,8 +531,8 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		application.GetCodec(),
 		application.keys[bankTypes.StoreKey],
 		AccountKeeper,
-		ParamsKeeper.Subspace(bankTypes.ModuleName),
 		blacklistedAddresses,
+		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
 	)
 
 	AuthzKeeper := authzKeeper.NewKeeper(
