@@ -559,11 +559,11 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	MintKeeper := mintKeeper.NewKeeper(
 		application.GetCodec(),
 		application.keys[mintTypes.StoreKey],
-		ParamsKeeper.Subspace(mintTypes.ModuleName),
-		&application.stakingKeeper,
+		application.stakingKeeper,
 		AccountKeeper,
 		BankKeeper,
 		authTypes.FeeCollectorName,
+		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
 	)
 
 	application.distributionKeeper = distributionKeeper.NewKeeper(
