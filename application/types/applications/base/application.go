@@ -569,12 +569,11 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	application.distributionKeeper = distributionKeeper.NewKeeper(
 		application.GetCodec(),
 		application.keys[distributionTypes.StoreKey],
-		ParamsKeeper.Subspace(distributionTypes.ModuleName),
 		AccountKeeper,
 		BankKeeper,
-		&application.stakingKeeper,
+		application.stakingKeeper,
 		authTypes.FeeCollectorName,
-		blacklistedAddresses,
+		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
 	)
 
 	application.slashingKeeper = slashingKeeper.NewKeeper(
