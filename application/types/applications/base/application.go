@@ -500,7 +500,12 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		transientStoreKeys[paramsTypes.TStoreKey],
 	)
 
-	application.SetParamStore(ParamsKeeper.Subspace(baseapp.Paramspace).WithKeyTable(paramsKeeper.ConsensusParamsKeyTable()))
+	ConsensusParamsKeeper := consensusParamKeeper.NewKeeper(
+		application.GetCodec(),
+		application.keys[consensusParamTypes.StoreKey],
+		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
+	)
+	application.SetParamStore(&ConsensusParamsKeeper)
 
 	CapabilityKeeper := capabilityKeeper.NewKeeper(application.GetCodec(), application.keys[capabilityTypes.StoreKey], memoryStoreKeys[capabilityTypes.MemStoreKey])
 	scopedIBCKeeper := CapabilityKeeper.ScopeToModule(ibcExported.ModuleName)
