@@ -342,21 +342,14 @@ func (application application) ExportApplicationStateAndValidators(forZeroHeight
 }
 func (application application) RegisterAPIRoutes(server *api.Server, apiConfig config.APIConfig) {
 	clientCtx := server.ClientCtx
-	rpc.RegisterRoutes(clientCtx, server.Router)
-	authRest.RegisterTxRoutes(clientCtx, server.Router)
 	authTx.RegisterGRPCGatewayRoutes(clientCtx, server.GRPCGatewayRouter)
 	tmservice.RegisterGRPCGatewayRoutes(clientCtx, server.GRPCGatewayRouter)
-	documentIDGetters.RegisterRESTRoutes(clientCtx, server.Router)
-	application.moduleBasicManager.RegisterRESTRoutes(clientCtx, server.Router)
-	application.moduleBasicManager.RegisterGRPCGatewayRoutes(clientCtx, server.GRPCGatewayRouter)
 	rest.RegisterRESTRoutes(clientCtx, server.Router)
-	if apiConfig.Swagger {
-		Fs, err := fs.New()
-		if err != nil {
-			panic(err)
-		}
-
-		server.Router.PathPrefix("/swagger/").Handler(http.StripPrefix("/swagger/", http.FileServer(Fs)))
+	application.moduleManager.RegisterRESTRoutes(clientCtx, server.Router)
+	application.moduleManager.RegisterGRPCGatewayRoutes(clientCtx, server.GRPCGatewayRouter)
+	sdkGRPCNode.RegisterGRPCGatewayRoutes(clientCtx, server.GRPCGatewayRouter)
+	if err := sdkServer.RegisterSwaggerAPI(server.ClientCtx, server.Router, apiConfig.Swagger); err != nil {
+		panic(err)
 	}
 }
 func (application application) RegisterTxService(context client.Context) {
