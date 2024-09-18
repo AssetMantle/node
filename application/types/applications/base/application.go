@@ -156,10 +156,10 @@ type application struct {
 
 	keys map[string]*storeTypes.KVStoreKey
 
-	stakingKeeper      stakingKeeper.Keeper
+	stakingKeeper      *stakingKeeper.Keeper
+	crisisKeeper       *crisisKeeper.Keeper
 	slashingKeeper     slashingKeeper.Keeper
 	distributionKeeper distributionKeeper.Keeper
-	crisisKeeper       crisisKeeper.Keeper
 
 	*baseapp.BaseApp
 }
