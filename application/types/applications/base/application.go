@@ -539,6 +539,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		application.keys[authzKeeper.StoreKey],
 		application.GetCodec(),
 		application.MsgServiceRouter(),
+		AccountKeeper,
 	)
 
 	FeeGrantKeeper := feeGrantKeeper.NewKeeper(
