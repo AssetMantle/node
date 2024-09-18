@@ -516,9 +516,10 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	AccountKeeper := authKeeper.NewAccountKeeper(
 		application.GetCodec(),
 		application.keys[authTypes.StoreKey],
-		ParamsKeeper.Subspace(authTypes.ModuleName),
 		authTypes.ProtoBaseAccount,
 		application.moduleAccountPermissions,
+		sdkTypes.GetConfig().GetBech32AccountAddrPrefix(),
+		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
 	)
 
 	blacklistedAddresses := make(map[string]bool)
