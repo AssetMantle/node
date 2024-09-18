@@ -553,7 +553,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		application.keys[stakingTypes.StoreKey],
 		AccountKeeper,
 		BankKeeper,
-		ParamsKeeper.Subspace(stakingTypes.ModuleName),
+		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
 	)
 
 	MintKeeper := mintKeeper.NewKeeper(
