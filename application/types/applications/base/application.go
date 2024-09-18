@@ -585,10 +585,12 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	)
 
 	application.crisisKeeper = crisisKeeper.NewKeeper(
-		ParamsKeeper.Subspace(crisisTypes.ModuleName),
+		application.GetCodec(),
+		application.keys[crisisTypes.StoreKey],
 		invCheckPeriod,
 		BankKeeper,
 		authTypes.FeeCollectorName,
+		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
 	)
 
 	// UpgradeKeeper must be created before IBCKeeper
