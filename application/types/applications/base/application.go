@@ -385,6 +385,20 @@ func (application application) AppCreator(logger tendermintLog.Logger, db tender
 		panic(err)
 	}
 
+	snapshotOptions := snapshotsTypes.NewSnapshotOptions(
+		cast.ToUint64(appOptions.Get(server.FlagStateSyncSnapshotInterval)),
+		cast.ToUint32(appOptions.Get(server.FlagStateSyncSnapshotKeepRecent)),
+	)
+
+	chainID := cast.ToString(appOptions.Get(flags.FlagChainID))
+	if chainID == "" {
+		if appGenesis, err := cometbftTypes.GenesisDocFromFile(filepath.Join(cast.ToString(appOptions.Get(flags.FlagHome)), cast.ToString(appOptions.Get("genesis_file")))); err != nil {
+			panic(err)
+		} else {
+			chainID = appGenesis.ChainID
+		}
+	}
+
 	return application.Initialize(
 		logger,
 		db,
