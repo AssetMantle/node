@@ -420,7 +420,7 @@ func (application application) AppCreator(logger tendermintLog.Logger, db tender
 		baseapp.SetSnapshot(snapshotStore, snapshotOptions),
 		baseapp.SetIAVLCacheSize(cast.ToInt(appOptions.Get(server.FlagIAVLCacheSize))))
 }
-func (application application) AppExporter(logger tendermintLog.Logger, db tendermintDB.DB, writer io.Writer, height int64, forZeroHeight bool, jailAllowedAddrs []string, appOptions serverTypes.AppOptions) (serverTypes.ExportedApp, error) {
+func (application application) AppExporter(logger log.Logger, db tendermintDB.DB, writer io.Writer, height int64, forZeroHeight bool, jailAllowedAddresses []string, appOptions serverTypes.AppOptions, modulesToExport []string) (serverTypes.ExportedApp, error) {
 	home, ok := appOptions.Get(flags.FlagHome).(string)
 	if !ok || home == "" {
 		return serverTypes.ExportedApp{}, errors.New("application home is not set")
