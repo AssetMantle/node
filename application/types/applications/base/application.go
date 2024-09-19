@@ -667,7 +667,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
 	)
 
-	IBCTransferKeeper = ibcTransferKeeper.NewKeeper(
+	IBCTransferKeeper := ibcTransferKeeper.NewKeeper(
 		application.GetCodec(),
 		application.keys[ibcTransferTypes.StoreKey],
 		ParamsKeeper.Subspace(ibcTransferTypes.ModuleName),
