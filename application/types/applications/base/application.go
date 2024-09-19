@@ -603,7 +603,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
 	)
 
-	application.stakingKeeper = *application.stakingKeeper.SetHooks(stakingTypes.NewMultiStakingHooks(application.distributionKeeper.Hooks(), application.slashingKeeper.Hooks()))
+	application.stakingKeeper.SetHooks(stakingTypes.NewMultiStakingHooks(application.distributionKeeper.Hooks(), application.slashingKeeper.Hooks()))
 
 	IBCKeeper := ibcKeeper.NewKeeper(
 		application.GetCodec(),
