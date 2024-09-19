@@ -628,7 +628,32 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
 	)
 
-	var IBCTransferKeeper ibcTransferKeeper.Keeper
+	GovKeeper.SetLegacyRouter(
+		govTypesV1Beta1.NewRouter().
+			AddRoute(govTypes.RouterKey, govTypesV1Beta1.ProposalHandler).
+			AddRoute(paramsProposal.RouterKey, params.NewParamChangeProposalHandler(ParamsKeeper)).
+			AddRoute(upgradeTypes.RouterKey, upgrade.NewSoftwareUpgradeProposalHandler(UpgradeKeeper)).
+			AddRoute(ibcClientTypes.RouterKey, ibcClient.NewClientProposalHandler(IBCKeeper.ClientKeeper)))
+
+	IBCFeeKeeper := ibcFeeKeeper.NewKeeper(
+		application.GetCodec(),
+		application.keys[ibcFeeTypes.StoreKey],
+		IBCKeeper.ChannelKeeper, // may be replaced with IBC middleware
+		IBCKeeper.ChannelKeeper,
+		&IBCKeeper.PortKeeper,
+		AccountKeeper,
+		BankKeeper,
+	)
+
+	RateLimitKeeper := *rateLimitKeeper.NewKeeper(
+		application.GetCodec(),                    // BinaryCodec
+		application.keys[rateLimitTypes.StoreKey], // StoreKey
+		ParamsKeeper.Subspace(rateLimitTypes.ModuleName),
+		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
+		BankKeeper,
+		IBCKeeper.ChannelKeeper, // ChannelKeeper
+		IBCFeeKeeper,            // ICS4Wrapper
+	)
 
 	// From gaia: RouterKeeper must be created before TransferKeeper
 	RouterKeeper := routerKeeper.NewKeeper(
