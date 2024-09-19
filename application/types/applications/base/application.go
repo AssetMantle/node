@@ -713,7 +713,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	EvidenceKeeper := *evidenceKeeper.NewKeeper(
 		application.GetCodec(),
 		application.keys[evidenceTypes.StoreKey],
-		&application.stakingKeeper,
+		application.stakingKeeper,
 		application.slashingKeeper,
 	)
 
