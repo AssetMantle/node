@@ -607,8 +607,8 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 
 	IBCKeeper := ibcKeeper.NewKeeper(
 		application.GetCodec(),
-		application.keys[ibcHost.StoreKey],
-		ParamsKeeper.Subspace(ibcHost.ModuleName),
+		application.keys[ibcExported.StoreKey],
+		ParamsKeeper.Subspace(ibcExported.ModuleName),
 		application.stakingKeeper,
 		UpgradeKeeper,
 		scopedIBCKeeper,
