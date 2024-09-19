@@ -659,12 +659,12 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	RouterKeeper := routerKeeper.NewKeeper(
 		application.GetCodec(),
 		application.keys[routerTypes.StoreKey],
-		ParamsKeeper.Subspace(routerTypes.ModuleName).WithKeyTable(routerTypes.ParamKeyTable()),
-		IBCTransferKeeper,
+		nil,
 		IBCKeeper.ChannelKeeper,
 		application.distributionKeeper,
 		BankKeeper,
-		IBCKeeper.ChannelKeeper,
+		RateLimitKeeper,
+		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
 	)
 
 	IBCTransferKeeper = ibcTransferKeeper.NewKeeper(
