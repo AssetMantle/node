@@ -614,21 +614,18 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		scopedIBCKeeper,
 	)
 
-	govRouter := govTypes.NewRouter().
-		AddRoute(govTypes.RouterKey, govTypes.ProposalHandler).
-		AddRoute(paramsProposal.RouterKey, params.NewParamChangeProposalHandler(ParamsKeeper)).
-		AddRoute(distributionTypes.RouterKey, distribution.NewCommunityPoolSpendProposalHandler(application.distributionKeeper)).
-		AddRoute(upgradeTypes.RouterKey, upgrade.NewSoftwareUpgradeProposalHandler(UpgradeKeeper)).
-		AddRoute(ibcClientTypes.RouterKey, ibcClient.NewClientProposalHandler(IBCKeeper.ClientKeeper))
+	govConfig := govTypes.DefaultConfig()
+	govConfig.MaxMetadataLen = 10200
 
 	GovKeeper := govKeeper.NewKeeper(
 		application.GetCodec(),
 		application.keys[govTypes.StoreKey],
-		ParamsKeeper.Subspace(govTypes.ModuleName).WithKeyTable(govTypes.ParamKeyTable()),
 		AccountKeeper,
 		BankKeeper,
-		&application.stakingKeeper,
-		govRouter,
+		application.stakingKeeper,
+		application.MsgServiceRouter(),
+		govConfig,
+		authTypes.NewModuleAddress(govTypes.ModuleName).String(),
 	)
 
 	var IBCTransferKeeper ibcTransferKeeper.Keeper
