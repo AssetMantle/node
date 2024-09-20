@@ -949,21 +949,17 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	application.MountKVStores(application.keys)
 	application.MountTransientStores(transientStoreKeys)
 	application.MountMemoryStores(memoryStoreKeys)
-	application.SetAnteHandler(sdkTypes.ChainAnteDecorators(
-		ante.NewSetUpContextDecorator(),
-		ante.NewRejectExtensionOptionsDecorator(),
-		ante.NewValidateBasicDecorator(),
-		ante.NewTxTimeoutHeightDecorator(),
-		ante.NewValidateMemoDecorator(AccountKeeper),
-		ante.NewConsumeGasForTxSizeDecorator(AccountKeeper),
-		ante.NewDeductFeeDecorator(AccountKeeper, BankKeeper, FeeGrantKeeper),
-		ante.NewSetPubKeyDecorator(AccountKeeper),
-		ante.NewValidateSigCountDecorator(AccountKeeper),
-		ante.NewSigGasConsumeDecorator(AccountKeeper, ante.DefaultSigVerificationGasConsumer),
-		ante.NewSigVerificationDecorator(AccountKeeper, application.GetCodec().SignModeHandler()),
-		ante.NewIncrementSequenceDecorator(AccountKeeper),
-		ibcAnte.NewAnteDecorator(IBCKeeper),
-	))
+	anteHandler, err := ante.NewAnteHandler(ante.HandlerOptions{
+		AccountKeeper:   AccountKeeper,
+		BankKeeper:      BankKeeper,
+		FeegrantKeeper:  FeeGrantKeeper,
+		SignModeHandler: application.GetCodec().SignModeHandler(),
+		SigGasConsumer:  ante.DefaultSigVerificationGasConsumer,
+	})
+	if err != nil {
+		panic(err)
+	}
+	application.SetAnteHandler(anteHandler)
 	application.SetBeginBlocker(application.moduleManager.BeginBlock)
 	application.SetEndBlocker(application.moduleManager.EndBlock)
 	application.SetInitChainer(func(context sdkTypes.Context, requestInitChain abciTypes.RequestInitChain) abciTypes.ResponseInitChain {
