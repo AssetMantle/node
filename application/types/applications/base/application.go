@@ -684,7 +684,8 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	ICAHostKeeper := icaHostKeeper.NewKeeper(
 		application.GetCodec(),
 		application.keys[icaHostTypes.StoreKey],
-		ParamsKeeper.Subspace(icaHostTypes.SubModuleName).WithKeyTable(icaHostTypes.ParamKeyTable()),
+		ParamsKeeper.Subspace(icaHostTypes.SubModuleName),
+		IBCKeeper.ChannelKeeper,
 		IBCKeeper.ChannelKeeper,
 		&IBCKeeper.PortKeeper,
 		AccountKeeper,
