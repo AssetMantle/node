@@ -793,18 +793,18 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		maintainersModule.GetAuxiliary(authorize.Auxiliary.GetName()),
 	)
 
-	application.moduleManager = module.NewManager(
+	application.moduleManager = base.NewModuleManager(
 		genutil.NewAppModule(AccountKeeper, application.stakingKeeper, application.DeliverTx, application.GetCodec()),
-		auth.NewAppModule(application.GetCodec(), AccountKeeper, nil),
+		auth.NewAppModule(application.GetCodec(), AccountKeeper, nil, ParamsKeeper.Subspace(authTypes.ModuleName)),
 		vesting.NewAppModule(AccountKeeper, BankKeeper),
-		bank.NewAppModule(application.GetCodec(), BankKeeper, AccountKeeper),
-		capability.NewAppModule(application.GetCodec(), *CapabilityKeeper),
-		crisis.NewAppModule(&application.crisisKeeper, cast.ToBool(appOptions.Get(crisis.FlagSkipGenesisInvariants))),
-		gov.NewAppModule(application.GetCodec(), GovKeeper, AccountKeeper, BankKeeper),
-		mint.NewAppModule(application.GetCodec(), MintKeeper, AccountKeeper),
-		slashing.NewAppModule(application.GetCodec(), application.slashingKeeper, AccountKeeper, BankKeeper, application.stakingKeeper),
-		distribution.NewAppModule(application.GetCodec(), application.distributionKeeper, AccountKeeper, BankKeeper, application.stakingKeeper),
-		staking.NewAppModule(application.GetCodec(), application.stakingKeeper, AccountKeeper, BankKeeper),
+		bank.NewAppModule(application.GetCodec(), BankKeeper, AccountKeeper, ParamsKeeper.Subspace(bankTypes.ModuleName)),
+		capability.NewAppModule(application.GetCodec(), *CapabilityKeeper, false),
+		crisis.NewAppModule(application.crisisKeeper, cast.ToBool(appOptions.Get(crisis.FlagSkipGenesisInvariants)), ParamsKeeper.Subspace(crisisTypes.ModuleName)),
+		gov.NewAppModule(application.GetCodec(), GovKeeper, AccountKeeper, BankKeeper, ParamsKeeper.Subspace(govTypes.ModuleName)),
+		mint.NewAppModule(application.GetCodec(), MintKeeper, AccountKeeper, nil, ParamsKeeper.Subspace(mintTypes.ModuleName)),
+		slashing.NewAppModule(application.GetCodec(), application.slashingKeeper, AccountKeeper, BankKeeper, application.stakingKeeper, ParamsKeeper.Subspace(slashingTypes.ModuleName)),
+		distribution.NewAppModule(application.GetCodec(), application.distributionKeeper, AccountKeeper, BankKeeper, application.stakingKeeper, ParamsKeeper.Subspace(distributionTypes.ModuleName)),
+		staking.NewAppModule(application.GetCodec(), application.stakingKeeper, AccountKeeper, BankKeeper, ParamsKeeper.Subspace(stakingTypes.ModuleName)),
 		upgrade.NewAppModule(UpgradeKeeper),
 		evidence.NewAppModule(EvidenceKeeper),
 		feeGrantModule.NewAppModule(application.GetCodec(), AccountKeeper, BankKeeper, FeeGrantKeeper, application.GetCodec().InterfaceRegistry()),
@@ -813,7 +813,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		params.NewAppModule(ParamsKeeper),
 		ibcTransfer.NewAppModule(IBCTransferKeeper),
 		ica.NewAppModule(nil, &ICAHostKeeper),
-		router.NewAppModule(RouterKeeper),
+		router.NewAppModule(RouterKeeper, ParamsKeeper.Subspace(routerTypes.ModuleName)),
 
 		assetsModule,
 		classificationsModule,
@@ -822,9 +822,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		metasModule,
 		ordersModule,
 		splitsModule,
-	)
-
-	application.moduleManager.SetOrderBeginBlockers(
+	).SetOrderBeginBlockers(
 		upgradeTypes.ModuleName,
 		capabilityTypes.ModuleName,
 		mintTypes.ModuleName,
@@ -836,8 +834,8 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		bankTypes.ModuleName,
 		govTypes.ModuleName,
 		crisisTypes.ModuleName,
-		ibcTransferTypes.ModuleName,
 		ibcExported.ModuleName,
+		ibcTransferTypes.ModuleName,
 		icaTypes.ModuleName,
 		routerTypes.ModuleName,
 		genutilTypes.ModuleName,
@@ -854,13 +852,12 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		metas.Prototype().Name(),
 		orders.Prototype().Name(),
 		splits.Prototype().Name(),
-	)
-	application.moduleManager.SetOrderEndBlockers(
+	).SetOrderEndBlockers(
 		crisisTypes.ModuleName,
 		govTypes.ModuleName,
 		stakingTypes.ModuleName,
-		ibcTransferTypes.ModuleName,
 		ibcExported.ModuleName,
+		ibcTransferTypes.ModuleName,
 		icaTypes.ModuleName,
 		routerTypes.ModuleName,
 		capabilityTypes.ModuleName,
@@ -884,8 +881,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		maintainers.Prototype().Name(),
 		metas.Prototype().Name(),
 		splits.Prototype().Name(),
-	)
-	application.moduleManager.SetOrderInitGenesis(
+	).SetOrderInitGenesis(
 		capabilityTypes.ModuleName,
 		authTypes.ModuleName,
 		bankTypes.ModuleName,
