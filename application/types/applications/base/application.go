@@ -912,8 +912,7 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 		assets.Prototype().Name(),
 		orders.Prototype().Name(),
 	)
-	application.moduleManager.RegisterInvariants(&application.crisisKeeper)
-	application.moduleManager.RegisterRoutes(application.Router(), application.QueryRouter(), application.GetCodec().GetLegacyAmino())
+	application.moduleManager.RegisterInvariants(application.crisisKeeper)
 
 	configurator := module.NewConfigurator(application.GetCodec(), application.MsgServiceRouter(), application.GRPCQueryRouter())
 	application.moduleManager.RegisterServices(configurator)
