@@ -916,16 +916,23 @@ func (application application) Initialize(logger tendermintLog.Logger, db tender
 	configurator := module.NewConfigurator(application.GetCodec(), application.MsgServiceRouter(), application.GRPCQueryRouter())
 	application.moduleManager.RegisterServices(configurator)
 
+	getSubspace := func(moduleName string) paramsTypes.Subspace {
+		if subspace, ok := ParamsKeeper.GetSubspace(moduleName); ok {
+			return subspace
+		}
+		panic("subspace not found: " + moduleName)
+	}
+
 	module.NewSimulationManager(
-		auth.NewAppModule(application.GetCodec(), AccountKeeper, simulation.RandomGenesisAccounts, ParamsKeeper.Subspace(authTypes.ModuleName)),
-		bank.NewAppModule(application.GetCodec(), BankKeeper, AccountKeeper, ParamsKeeper.Subspace(bankTypes.ModuleName)),
+		auth.NewAppModule(application.GetCodec(), AccountKeeper, simulation.RandomGenesisAccounts, getSubspace(authTypes.ModuleName)),
+		bank.NewAppModule(application.GetCodec(), BankKeeper, AccountKeeper, getSubspace(bankTypes.ModuleName)),
 		capability.NewAppModule(application.GetCodec(), *CapabilityKeeper, false),
 		feeGrantModule.NewAppModule(application.GetCodec(), AccountKeeper, BankKeeper, FeeGrantKeeper, application.GetCodec().InterfaceRegistry()),
-		gov.NewAppModule(application.GetCodec(), GovKeeper, AccountKeeper, BankKeeper, ParamsKeeper.Subspace(govTypes.ModuleName)),
-		mint.NewAppModule(application.GetCodec(), MintKeeper, AccountKeeper, nil, ParamsKeeper.Subspace(mintTypes.ModuleName)),
-		staking.NewAppModule(application.GetCodec(), application.stakingKeeper, AccountKeeper, BankKeeper, ParamsKeeper.Subspace(stakingTypes.ModuleName)),
-		distribution.NewAppModule(application.GetCodec(), application.distributionKeeper, AccountKeeper, BankKeeper, application.stakingKeeper, ParamsKeeper.Subspace(distributionTypes.ModuleName)),
-		slashing.NewAppModule(application.GetCodec(), application.slashingKeeper, AccountKeeper, BankKeeper, application.stakingKeeper, ParamsKeeper.Subspace(slashingTypes.ModuleName)),
+		gov.NewAppModule(application.GetCodec(), GovKeeper, AccountKeeper, BankKeeper, getSubspace(govTypes.ModuleName)),
+		mint.NewAppModule(application.GetCodec(), MintKeeper, AccountKeeper, nil, getSubspace(mintTypes.ModuleName)),
+		staking.NewAppModule(application.GetCodec(), application.stakingKeeper, AccountKeeper, BankKeeper, getSubspace(stakingTypes.ModuleName)),
+		distribution.NewAppModule(application.GetCodec(), application.distributionKeeper, AccountKeeper, BankKeeper, application.stakingKeeper, getSubspace(distributionTypes.ModuleName)),
+		slashing.NewAppModule(application.GetCodec(), application.slashingKeeper, AccountKeeper, BankKeeper, application.stakingKeeper, getSubspace(slashingTypes.ModuleName)),
 		authzModule.NewAppModule(application.GetCodec(), AuthzKeeper, AccountKeeper, BankKeeper, application.GetCodec().InterfaceRegistry()),
 		ibc.NewAppModule(IBCKeeper),
 		params.NewAppModule(ParamsKeeper),
