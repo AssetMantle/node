@@ -4,7 +4,9 @@
 package sign
 
 import (
+	"encoding/json"
 	"github.com/AssetMantle/modules/utilities/rest"
+	"io"
 	"net/http"
 
 	"github.com/cosmos/cosmos-sdk/client"
@@ -19,23 +21,29 @@ import (
 
 func handler(context client.Context) http.HandlerFunc {
 	return func(responseWriter http.ResponseWriter, httpRequest *http.Request) {
-		var request request
-		if !rest.ReadRESTReq(responseWriter, httpRequest, context.LegacyAmino, &request) {
-			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, "")
+		body, err := io.ReadAll(httpRequest.Body)
+		if err != nil {
+			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
 			return
 		}
 
-		if request.BaseRequest.ChainID == "" {
-			request.BaseRequest.ChainID = viper.GetString(flags.FlagChainID)
-			if request.BaseRequest.ChainID == "" {
+		request := request{}
+		if err := json.Unmarshal(body, &request); err != nil {
+			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
+			return
+		}
+
+		if request.CommonTransactionRequest.GetChainID() == "" {
+			request.CommonTransactionRequest = request.CommonTransactionRequest.SetChainID(viper.GetString(flags.FlagChainID))
+			if request.CommonTransactionRequest.GetChainID() == "" {
 				rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, "Chain-ID required but not specified")
 				return
 			}
 		}
 
-		context = context.WithFrom(request.BaseRequest.From).WithChainID(request.BaseRequest.ChainID)
+		context = context.WithFrom(request.CommonTransactionRequest.GetFrom()).WithChainID(request.CommonTransactionRequest.GetChainID())
 
-		keyInfo, err := context.Keyring.Key(request.BaseRequest.From)
+		keyInfo, err := context.Keyring.Key(request.CommonTransactionRequest.GetFrom())
 		if err != nil {
 			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
 			return
@@ -54,8 +62,8 @@ func handler(context client.Context) http.HandlerFunc {
 			return
 		}
 
-		txFactory := tx.Factory{}.WithKeybase(context.Keyring).WithTxConfig(context.TxConfig).WithAccountRetriever(context.AccountRetriever).WithAccountNumber(account.GetAccountNumber()).WithSequence(account.GetSequence()).WithFees(request.BaseRequest.Fees.String())
-		txFactory = txFactory.WithChainID(request.BaseRequest.ChainID)
+		txFactory := tx.Factory{}.WithKeybase(context.Keyring).WithTxConfig(context.TxConfig).WithAccountRetriever(context.AccountRetriever).WithAccountNumber(account.GetAccountNumber()).WithSequence(account.GetSequence()).WithFees(request.CommonTransactionRequest.GetFees().String())
+		txFactory = txFactory.WithChainID(request.CommonTransactionRequest.GetChainID())
 		txBuilder, err := txFactory.BuildUnsignedTx(request.StdTx.GetMsgs()...)
 		if err != nil {
 			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
@@ -83,7 +91,7 @@ func handler(context client.Context) http.HandlerFunc {
 			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
 			return
 		}
-		signatureBytes, _, err := context.Keyring.Sign(request.BaseRequest.From, bytesToSign)
+		signatureBytes, _, err := context.Keyring.Sign(request.CommonTransactionRequest.GetFrom(), bytesToSign)
 		if err != nil {
 			rest.WriteErrorResponse(responseWriter, http.StatusBadRequest, err.Error())
 			return

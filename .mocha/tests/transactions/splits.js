@@ -37,7 +37,7 @@ describe('Splits', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -69,7 +69,7 @@ describe('Splits', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -105,7 +105,7 @@ describe('Splits', async () => {
             let obj = {
                 "type": config.sendSplitType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -144,7 +144,7 @@ describe('Splits', async () => {
             let obj = {
                 "type": config.wrapCoinType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -182,7 +182,7 @@ describe('Splits', async () => {
             let obj = {
                 "type": config.unwrapCoinType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -222,7 +222,7 @@ describe('Splits', async () => {
             let obj = {
                 "type": config.sendSplitType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },

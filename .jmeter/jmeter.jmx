@@ -185,7 +185,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-   &quot;baseReq&quot;:{&#xd;
+   &quot;commonTransactionRequest&quot;:{&#xd;
       &quot;from&quot;:&quot;${MAIN}&quot;,&#xd;
       &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
    },&#xd;
@@ -214,7 +214,6 @@
       },&#xd;
       &quot;signatures&quot;:null,&#xd;
       &quot;memo&quot;:&quot;&quot;&#xd;
-   }&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -403,7 +402,7 @@
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
-   &quot;baseReq&quot;:{&#xd;
+   &quot;commonTransactionRequest&quot;:{&#xd;
       &quot;from&quot;:&quot;${MAIN}&quot;,&#xd;
       &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
    },&#xd;
@@ -432,7 +431,6 @@
       },&#xd;
       &quot;signatures&quot;:null,&#xd;
       &quot;memo&quot;:&quot;&quot;&#xd;
-   }&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -603,12 +601,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/nub/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;nubID&quot;:&quot;${RANDOM_NO_1}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -664,7 +661,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ID_NUB_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ID_NUB_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -713,14 +710,12 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;nubID&quot;:&quot;${RANDOM_NO_1}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -796,12 +791,11 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/nub/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_02)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;nubID&quot;:&quot;${RANDOM_NO_2}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -857,7 +851,7 @@
               <stringProp name="HTTPSampler.port">${PORT}</stringProp>
               <stringProp name="HTTPSampler.protocol">http</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${ID_NUB_TXHASH_01}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${ID_NUB_TXHASH_01}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -906,14 +900,12 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_02)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;nubID&quot;:&quot;${RANDOM_NO_2}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -989,7 +981,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/define/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -998,7 +990,6 @@
       &quot;immutableProperties&quot;:&quot;B:S|&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;A:S|a&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -1103,9 +1094,8 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1114,7 +1104,6 @@
       &quot;immutableProperties&quot;:&quot;B:S|&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;A:S|a&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -1183,7 +1172,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/issue/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1194,7 +1183,6 @@
       &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -1299,9 +1287,8 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1312,7 +1299,6 @@
       &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -1375,13 +1361,12 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/unprovision/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;identityID&quot;:&quot;${IDENTITY_ID}&quot;,&#xd;
       &quot;to&quot;:&quot;${__property(ADDR_02)}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -1488,13 +1473,12 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/provision/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;identityID&quot;:&quot;${IDENTITY_ID}&quot;,&#xd;
       &quot;to&quot;:&quot;${__property(ADDR_02)}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -1601,7 +1585,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/mutate/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1609,7 +1593,6 @@
       &quot;identityID&quot;:&quot;${IDENTITY_ID}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|xyz&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -1716,7 +1699,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/deputize/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -1730,7 +1713,6 @@
       &quot;canAddMaintainer&quot;:true,&#xd;
       &quot;canRemoveMaintainer&quot;:true,&#xd;
       &quot;canMutateMaintainer&quot;:true&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -1837,14 +1819,13 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/revoke/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;toID&quot;:&quot;${NUB_ID_2}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -1951,13 +1932,12 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/internal/transactions/quash/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${NUB_ID_1}&quot;,&#xd;
       &quot;identityID&quot;:&quot;${IDENTITY_ID}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -2089,7 +2069,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/define/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2098,7 +2078,6 @@
       &quot;immutableProperties&quot;:&quot;B:S|&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|,supply:D|&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;A:S|a&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -2203,9 +2182,8 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2214,7 +2192,6 @@
       &quot;immutableProperties&quot;:&quot;B:S|&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|,supply:D|&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;A:S|a&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -2283,7 +2260,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2294,7 +2271,6 @@
       &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -2399,9 +2375,8 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2412,7 +2387,6 @@
       &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -2475,13 +2449,12 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/burn/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;assetID&quot;:&quot;${ASSET_ID}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -2588,7 +2561,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2599,7 +2572,6 @@
       &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -2704,9 +2676,8 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2717,7 +2688,6 @@
       &quot;immutableProperties&quot;:&quot;B:S|b&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -2787,7 +2757,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/deputize/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2801,7 +2771,6 @@
       &quot;canAddMaintainer&quot;:true,&#xd;
       &quot;canRemoveMaintainer&quot;:true,&#xd;
       &quot;canMutateMaintainer&quot;:true&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -2908,7 +2877,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/mutate/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -2916,7 +2885,6 @@
       &quot;assetID&quot;:&quot;${ASSET_ID}&quot;,&#xd;
       &quot;mutableProperties&quot;:&quot;D:S|d&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;supply:D|1000&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -3023,13 +2991,12 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/renumerate/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;assetID&quot;:&quot;${ASSET_ID}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -3136,14 +3103,13 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/revoke/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;toID&quot;:&quot;${__property(NUB_ID_2)}&quot;,&#xd;
       &quot;classificationID&quot;:&quot;${CLASSIFICATION_ID}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -3250,7 +3216,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/assets/internal/transactions/mint/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -3261,7 +3227,6 @@
       &quot;immutableProperties&quot;:&quot;B:S|Non-Renumerated&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -3366,9 +3331,8 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -3379,7 +3343,6 @@
       &quot;immutableProperties&quot;:&quot;B:S|Non-Renumerated&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;C:S|c,supply:D|100&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;A:S|a,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -3474,7 +3437,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/internal/transactions/send/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -3482,7 +3445,6 @@
       &quot;toID&quot;:&quot;${__property(NUB_ID_2)}&quot;,&#xd;
       &quot;ownableID&quot;:&quot;${__property(ASSET_ID)}&quot;,&#xd;
 	 &quot;value&quot;:&quot;0.000000000000000001&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -3589,13 +3551,12 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/internal/transactions/wrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;coins&quot;:&quot;${COINS}${DENOM}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -3702,14 +3663,13 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/internal/transactions/unwrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
 	 &quot;ownableID&quot;:&quot;${DENOM}&quot;,&#xd;
  	 &quot;value&quot;:&quot;${COINS}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -3816,13 +3776,12 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/splits/internal/transactions/wrap/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;coins&quot;:&quot;${COINS}${DENOM}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -3954,7 +3913,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/define/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -3963,7 +3922,6 @@
       &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;E:S|e&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -4068,9 +4026,8 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -4079,7 +4036,6 @@
       &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;E:S|e&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -4149,7 +4105,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -4165,7 +4121,6 @@
       &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -4276,9 +4231,8 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -4295,7 +4249,6 @@
       &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:N|${BOND_AMOUNT}&quot;,&#xd;
       &quot;height&quot;:&quot;${BLOCK_HEIGHT}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -4358,13 +4311,12 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/cancel/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;orderID&quot;:&quot;${ORDER_ID}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -4471,7 +4423,7 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/make/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -4487,7 +4439,6 @@
       &quot;immutableProperties&quot;:&quot;F:S|f&quot;,&#xd;
       &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:N|${BOND_AMOUNT}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -4598,9 +4549,8 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/utilities/rest/id_getters/docs/request&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
@@ -4617,7 +4567,6 @@
       &quot;mutableMetaProperties&quot;:&quot;G:S|g&quot;,&#xd;
       &quot;immutableMetaProperties&quot;:&quot;E:S|e,bondAmount:N|${BOND_AMOUNT}&quot;,&#xd;
       &quot;height&quot;:&quot;${BLOCK_HEIGHT}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -4680,14 +4629,13 @@
                     <stringProp name="Argument.value">{&#xd;
    &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/orders/internal/transactions/take/transactionRequest&quot;,&#xd;
    &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${__property(ADDR_01)}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN}&quot;&#xd;
       },&#xd;
       &quot;fromID&quot;:&quot;${__property(NUB_ID_1)}&quot;,&#xd;
       &quot;takerOwnableSplit&quot;:&quot;0.000000000000000001&quot;,&#xd;
       &quot;orderID&quot;:&quot;${ORDER_ID}&quot;  &#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>

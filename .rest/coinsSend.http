@@ -20,7 +20,7 @@ POST http://{{ASSET_MANTLE_CLIENT_HOST}}:{{ASSET_MANTLE_CLIENT_PORT}}/signTx
 Content-Type: application/json
 
 {
-  "baseReq":{
+  "commonTransactionRequest":{
     "from":"{{TEST_ACCOUNT_ADDRESS}}"
   },
   "type": "cosmos-sdk/StdTx",

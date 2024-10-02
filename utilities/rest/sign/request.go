@@ -5,19 +5,11 @@ package sign
 
 import (
 	"github.com/AssetMantle/modules/helpers"
-	"github.com/AssetMantle/modules/utilities/rest"
-
 	"github.com/cosmos/cosmos-sdk/x/auth/signing"
 )
 
 type request struct {
-	BaseRequest rest.BaseReq `json:"baseReq"`
-	Type        string       `json:"type"`
-	StdTx       signing.Tx   `json:"value"`
-}
-
-var _ helpers.Request = request{}
-
-func (request request) Validate() error {
-	return nil
+	helpers.CommonTransactionRequest `json:"commonTransactionRequest"`
+	Type                             string     `json:"type"`
+	StdTx                            signing.Tx `json:"value"`
 }

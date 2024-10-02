@@ -37,7 +37,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -69,7 +69,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -102,7 +102,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.defineOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -135,7 +135,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.makeOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -182,7 +182,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.cancelOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -222,7 +222,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.makeOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -259,7 +259,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.sendSplitType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -290,7 +290,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.takeOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -329,7 +329,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -361,7 +361,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -394,7 +394,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.defineOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -425,7 +425,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.wrapCoinType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -455,7 +455,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.makeOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -502,7 +502,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.cancelOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -541,7 +541,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.makeOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -579,7 +579,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.takeOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -619,7 +619,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -651,7 +651,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -684,7 +684,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.defineOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -718,7 +718,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.makeOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -755,7 +755,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.takeOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -784,7 +784,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.takeOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -823,7 +823,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -857,7 +857,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -891,7 +891,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.defineOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -923,7 +923,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.makeOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -960,7 +960,7 @@ describe('Orders', async () => {
             let obj = {
                 "type": config.takeOrderType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },

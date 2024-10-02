@@ -8,6 +8,7 @@ import (
 	"github.com/AssetMantle/modules/x/classifications"
 	"github.com/AssetMantle/modules/x/identities"
 	"github.com/AssetMantle/modules/x/maintainers"
+	"github.com/AssetMantle/modules/x/metas"
 	"github.com/AssetMantle/modules/x/orders"
 	"github.com/AssetMantle/modules/x/splits"
 	"github.com/cosmos/cosmos-sdk/types/module"
@@ -42,8 +43,6 @@ import (
 	ibcTransferTypes "github.com/cosmos/ibc-go/v7/modules/apps/transfer/types"
 	ibc "github.com/cosmos/ibc-go/v7/modules/core"
 	ibcClientClient "github.com/cosmos/ibc-go/v7/modules/core/02-client/client"
-
-	"github.com/AssetMantle/modules/x/metas"
 )
 
 const applicationName = "SimulationApplication"

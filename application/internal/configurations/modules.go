@@ -22,6 +22,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/evidence"
 	feegrantModule "github.com/cosmos/cosmos-sdk/x/feegrant/module"
 	"github.com/cosmos/cosmos-sdk/x/genutil"
+	"github.com/cosmos/cosmos-sdk/x/genutil/types"
 	"github.com/cosmos/cosmos-sdk/x/gov"
 	govClient "github.com/cosmos/cosmos-sdk/x/gov/client"
 	"github.com/cosmos/cosmos-sdk/x/mint"
@@ -40,11 +41,11 @@ import (
 
 var ModuleBasicManager = base.NewModuleManager(
 	auth.AppModuleBasic{},
-	genutil.AppModuleBasic{},
+	genutil.NewAppModuleBasic(types.DefaultMessageValidator),
 	bank.AppModuleBasic{},
 	capability.AppModuleBasic{},
-	staking.AppModuleBasic{},
 	mint.AppModuleBasic{},
+	staking.AppModuleBasic{},
 	distribution.AppModuleBasic{},
 	gov.NewAppModuleBasic(
 		[]govClient.ProposalHandler{

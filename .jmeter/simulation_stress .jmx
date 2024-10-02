@@ -209,7 +209,7 @@
               <stringProp name="HTTPSampler.port"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/txs/${tx_hash}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${tx_hash}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -255,14 +255,12 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/name/transactionRequest&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${address}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN_ID}&quot;&#xd;
       },&#xd;
       &quot;name&quot;:&quot;${__RandomString(${__Random(1,30,)},abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_)}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -314,7 +312,7 @@
                 <stringProp name="HTTPSampler.port"></stringProp>
                 <stringProp name="HTTPSampler.protocol"></stringProp>
                 <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-                <stringProp name="HTTPSampler.path">/txs/${tx_hash}</stringProp>
+                <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${tx_hash}</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -348,15 +346,13 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/name/transactionRequest&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${address}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN_ID}&quot;,&#xd;
          &quot;simulate&quot;: true&#xd;
       },&#xd;
       &quot;name&quot;:&quot;${__RandomString(${__Random(1,30,)},abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_)}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>

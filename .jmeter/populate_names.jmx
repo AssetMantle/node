@@ -201,7 +201,7 @@
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
-              <stringProp name="HTTPSampler.path">/txs/${tx_hash}</stringProp>
+              <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${tx_hash}</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -261,14 +261,12 @@
                   <elementProp name="" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
                     <stringProp name="Argument.value">{&#xd;
-   &quot;type&quot;:&quot;github.com/AssetMantle/modules/x/identities/transactions/name/transactionRequest&quot;,&#xd;
-   &quot;value&quot;:{&#xd;
-      &quot;baseReq&quot;:{&#xd;
+
+      &quot;commonTransactionRequest&quot;:{&#xd;
          &quot;from&quot;:&quot;${address}&quot;,&#xd;
          &quot;chain_id&quot;:&quot;${CHAIN_ID}&quot;&#xd;
       },&#xd;
       &quot;name&quot;:&quot;${name}&quot;&#xd;
-   }&#xd;
 }</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -316,7 +314,7 @@
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments"/>
                 </elementProp>
-                <stringProp name="HTTPSampler.path">/txs/${tx_hash}</stringProp>
+                <stringProp name="HTTPSampler.path">/cosmos/tx/v1beta1/txs/${tx_hash}</stringProp>
                 <stringProp name="HTTPSampler.method">GET</stringProp>
                 <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
                 <boolProp name="HTTPSampler.auto_redirects">false</boolProp>

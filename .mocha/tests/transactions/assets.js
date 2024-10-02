@@ -37,7 +37,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -69,7 +69,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -113,7 +113,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mutateAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -155,7 +155,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -198,7 +198,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -231,7 +231,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -262,7 +262,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.metaRevealType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -288,7 +288,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mutateAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -329,7 +329,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -361,7 +361,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -404,7 +404,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -436,7 +436,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -471,7 +471,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mutateAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -512,7 +512,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -553,7 +553,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -585,7 +585,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -617,7 +617,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.metaRevealType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -643,7 +643,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.burnAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -668,7 +668,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.metaRevealType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -694,7 +694,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mutateAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -727,7 +727,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.burnAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -763,7 +763,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -795,7 +795,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -830,7 +830,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.sendSplitType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -861,7 +861,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mutateAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -893,7 +893,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.deputizeType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -928,7 +928,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mutateAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -968,7 +968,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -1001,7 +1001,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -1044,7 +1044,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.defineAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -1076,7 +1076,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.mintAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -1107,7 +1107,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.metaRevealType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -1133,7 +1133,7 @@ describe('Assets', async () => {
             let obj = {
                 "type": config.burnAssetType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },

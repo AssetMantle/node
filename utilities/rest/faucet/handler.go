@@ -4,6 +4,7 @@
 package faucet
 
 import (
+	"github.com/AssetMantle/modules/helpers"
 	"github.com/AssetMantle/modules/utilities/rest"
 	"net/http"
 
@@ -40,7 +41,7 @@ func RegisterRESTRoutes(context client.Context, router *mux.Router) {
 
 			context = context.WithFromName(fromKeyInfo.Name).WithFromAddress(address).WithChainID(chainID).WithSkipConfirmation(true)
 
-			if rest.CheckInternalServerError(responseWriter, queuing.QueueOrBroadcastTransaction(context.WithOutput(responseWriter), rest.NewBaseReq(faucetKeyName, "faucet", context.ChainID, gas, gasAdjustment, 0, 0, 0, sdkTypes.NewCoins(), sdkTypes.NewDecCoins(), false), types.NewMsgSend(context.FromAddress, toAddress, sdkTypes.NewCoins(sdkTypes.NewCoin(faucetDenom, sdkTypes.NewInt(faucetAmount)))))) {
+			if rest.CheckInternalServerError(responseWriter, queuing.QueueOrBroadcastTransaction(context.WithOutput(responseWriter), helpers.NewCommonTransactionRequest(faucetKeyName, faucetMemo, context.ChainID, gas, gasAdjustment, 0, 0, 0, sdkTypes.NewCoins(sdkTypes.NewCoin(faucetDenom, sdkTypes.NewInt(faucetFees))).String(), "", false), types.NewMsgSend(context.FromAddress, toAddress, sdkTypes.NewCoins(sdkTypes.NewCoin(faucetDenom, sdkTypes.NewInt(faucetAmount)))))) {
 				return
 			}
 

@@ -35,7 +35,7 @@ describe('Identity', async () => {
             let obj = {
                 "type": config.nubType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -72,7 +72,7 @@ describe('Identity', async () => {
             let obj = {
                 "type": config.defineIdentityType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -105,7 +105,7 @@ describe('Identity', async () => {
             let obj = {
                 "type": config.issueIdentityType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -148,7 +148,7 @@ describe('Identity', async () => {
             let obj = {
                 "type": config.provisionKeyType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -187,7 +187,7 @@ describe('Identity', async () => {
             let obj = {
                 "type": config.unprovisionKeyType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -225,7 +225,7 @@ describe('Identity', async () => {
             let obj = {
                 "type": config.provisionKeyType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -262,7 +262,7 @@ describe('Identity', async () => {
             let obj = {
                 "type": config.defineIdentityType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -293,7 +293,7 @@ describe('Identity', async () => {
             let obj = {
                 "type": config.issueIdentityType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -336,7 +336,7 @@ describe('Identity', async () => {
             let obj = {
                 "type": config.defineIdentityType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
@@ -368,7 +368,7 @@ describe('Identity', async () => {
             let obj = {
                 "type": config.issueIdentityType,
                 "value": {
-                    "baseReq": {
+                    "commonTransactionRequest": {
                         "from": config.testAccountAddress,
                         "chain_id": config.chain_id
                     },
