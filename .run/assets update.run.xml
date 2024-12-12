@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="assets parameter change" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="assets">
+  <configuration default="false" name="assets update" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="assets">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <parameters value="tx gov submit-proposal .run/assets/assetsParamChangeProposal.json -y --fees=200000000stake --chain-id=test-chain-1 --from=test" />
+    <parameters value="tx assets update -y --chain-id=test-chain-1 --from=test --fees=2000stake" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />

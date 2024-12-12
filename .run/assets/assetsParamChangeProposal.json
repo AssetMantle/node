@@ -1,16 +1,27 @@
 {
   "title": "Splits",
-  "description": "allow umntl and usdc",
-  "changes": [
+  "summary": "allow umntl and usdc",
+  "messages": [
     {
-      "subspace": "assets",
-      "key": "unwrapAllowedCoinsL",
-      "value": "S|stake,,S|ibc/CBA34207E969623D95D057D9B11B0C8B32B89A71F170577D982FDDE623813FFC"
-    },
-    {
-      "subspace": "assets",
-      "key": "wrapAllowedCoinsL",
-      "value": "S|stake,,S|ibc/CBA34207E969623D95D057D9B11B0C8B32B89A71F170577D982FDDE623813FFC"
+      "@type": "/AssetMantle.modules.x.assets.transactions.update.Message",
+      "from": "mantle10d07y265gmmuvt4z0w9aw880jnsr700jyxgqfe",
+      "parameter": {
+        "meta_property": {
+          "i_d": {
+            "key_i_d": {
+              "i_d_string": "burnEnabled"
+            },
+            "type_i_d": {
+              "i_d_string": "B"
+            }
+          },
+          "data": {
+            "boolean_data": {
+              "value": false
+            }
+          }
+        }
+      }
     }
   ],
   "deposit": "100000000stake"
