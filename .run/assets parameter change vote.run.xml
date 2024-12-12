@@ -2,7 +2,7 @@
   <configuration default="false" name="assets parameter change vote" type="GoApplicationRunConfiguration" factoryName="Go Application" folderName="assets">
     <module name="node" />
     <working_directory value="$PROJECT_DIR$/" />
-    <parameters value="tx gov vote 1 yes -y --chain-id=test-chain-1 --from=test" />
+    <parameters value="tx gov vote $Prompt$ yes -y --fees=2000000stake --chain-id=test-chain-1 --from=test" />
     <kind value="FILE" />
     <package value="github.com/AssetMantle/node" />
     <directory value="$PROJECT_DIR$/" />
