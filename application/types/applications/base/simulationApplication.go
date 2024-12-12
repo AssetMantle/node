@@ -1,4 +1,4 @@
-// Copyright [2021] - [2022], AssetMantle Pte. Ltd. and the code contributors
+// Copyright [2021] - [2025], AssetMantle Pte. Ltd. and the code contributors
 // SPDX-License-Identifier: Apache-2.0
 
 package base
@@ -753,7 +753,6 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	parametersKeeper.Subspace(mintTypes.ModuleName)
 	parametersKeeper.Subspace(distributionTypes.ModuleName)
 	parametersKeeper.Subspace(slashingTypes.ModuleName)
-	//parametersKeeper.Subspace(govTypes.ModuleName).WithKeyTable(govTypes.ParamKeyTable())
 	parametersKeeper.Subspace(crisisTypes.ModuleName)
 
 	return parametersKeeper
