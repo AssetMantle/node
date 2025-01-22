@@ -11,4 +11,4 @@ vendor/
 .vscode/
 
 # log files
-jmeter.log
+jmeter.lognode/__debug_bin*
