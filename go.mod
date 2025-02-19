@@ -10,8 +10,8 @@ require (
 	github.com/cometbft/cometbft-db v0.8.0
 	github.com/cosmos/cosmos-sdk v0.47.14
 	github.com/cosmos/go-bip39 v1.0.0
-	github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v7 v7.1.3
-	github.com/cosmos/ibc-go/v7 v7.4.0
+	github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v7 v7.2.1
+	github.com/cosmos/ibc-go/v7 v7.7.0
 	github.com/gorilla/mux v1.8.1
 	github.com/spf13/cast v1.6.0
 	github.com/spf13/cobra v1.8.1
@@ -120,7 +120,7 @@ require (
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/hdevalence/ed25519consensus v0.1.0 // indirect
 	github.com/huandu/skiplist v1.2.0 // indirect
-	github.com/iancoleman/orderedmap v0.2.0 // indirect
+	github.com/iancoleman/orderedmap v0.3.0 // indirect
 	github.com/improbable-eng/grpc-web v0.15.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/jcmturner/aescts/v2 v2.0.0 // indirect
